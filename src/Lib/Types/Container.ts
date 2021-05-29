@@ -4,7 +4,7 @@ export interface Container {
   /**The nessacary Minecraft project data
    *
    */
-  readonly Context: MCProject;
+  Context: MCProject;
 }
 
 export namespace Container {
