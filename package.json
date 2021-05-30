@@ -57,7 +57,7 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "bc-minecraft-bedrock-vanilla-data": "^1.0.0",
+    "bc-minecraft-bedrock-vanilla-data": "^1.1.0",
     "bc-minecraft-project": "^1.0.0"
   }
 }

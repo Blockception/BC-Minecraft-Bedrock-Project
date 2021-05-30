@@ -1,6 +1,10 @@
+import { Container } from "./Container";
 import { Identifiable } from "./Identifiable";
 import { VanillaConnector } from "./VanillaConnector";
 
+/**
+ *
+ */
 export class DataSet<T extends Identifiable, U> {
   private _data: Map<string, T>;
   private _vanilla: VanillaConnector<U>;
@@ -45,5 +49,17 @@ export class DataSet<T extends Identifiable, U> {
     this._data.set(value.id, value);
 
     return this;
+  }
+
+  static createID<T extends Identifiable, U extends Identifiable>(vanilla: U[], edu: U[], Container: Container): DataSet<T, U> {
+    const conn = VanillaConnector.createID<U>(vanilla, edu, Container);
+
+    return new DataSet<T, U>(conn);
+  }
+
+  static createString<T extends Identifiable>(vanilla: string[], edu: string[], Container: Container): DataSet<T, string> {
+    const conn = VanillaConnector.createString(vanilla, edu, Container);
+
+    return new DataSet<T, string>(conn);
   }
 }
