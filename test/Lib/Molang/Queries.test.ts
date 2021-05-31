@@ -7,9 +7,9 @@ describe("molang", () => {
     it("using", () => {
       let receiver: string[] = [];
 
-      Molang.Geometries.getUsing(VanillaPlayer.Data, receiver);
+      Molang.Queries.getUsing(VanillaPlayer.Data, receiver);
 
-      expect(receiver).to.have.members(["humanoid.custom", "cape"]);
+      expect(receiver).to.contain.members(["modified_distance_moved", "life_time", "main_hand_item_use_duration", "main_hand_item_max_duration", "is_alive"]);
     });
   });
 });

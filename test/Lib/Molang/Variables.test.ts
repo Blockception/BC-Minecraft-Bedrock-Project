@@ -29,7 +29,7 @@ describe("molang", () => {
 
       Molang.Variables.getUsing(VanillaPlayer.Data, receiver);
 
-      expect(receiver).to.have.members(["player_x_rotation", "attack_time", "is_first_person"]);
+      expect(receiver).to.contain.members(["player_x_rotation", "attack_time", "is_first_person"]);
     });
   });
 });
