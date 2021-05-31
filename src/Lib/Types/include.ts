@@ -2,5 +2,10 @@
 
 export * from "./Container";
 export * from "./DataSet";
+export * from "./Defined";
+export * from "./DefinedUsing";
+export * from "./FileReference";
 export * from "./Identifiable";
+export * from "./Script";
+export * from "./Used";
 export * from "./VanillaConnector";
