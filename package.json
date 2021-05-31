@@ -4,9 +4,6 @@
   "description": "The typescript library responsible for reading/parsing minecraft bedrock data",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "compile": "tsc -b",
     "build": "npm run clean && npm run compile",
@@ -47,14 +44,10 @@
     "@types/mocha": "^8.2.2",
     "@types/node": "^15.6.1",
     "chai": "^4.3.4",
-    "json-loader": "^0.5.7",
     "mocha": "^8.4.0",
     "rimraf": "^3.0.2",
-    "ts-loader": "^9.2.2",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.2",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0"
+    "typescript": "^4.3.2"
   },
   "dependencies": {
     "bc-minecraft-bedrock-vanilla-data": "^1.1.0",

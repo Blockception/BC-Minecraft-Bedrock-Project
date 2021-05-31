@@ -30,7 +30,7 @@ class _VanillaObjConnector<T extends Identifiable> implements VanillaConnector<T
   }
 
   isEdu() {
-    return this._container.Context.attributes["education.enable"] === "true";
+    return this._container.context.attributes["education.enable"] === "true";
   }
 
   has(id: string): boolean {
@@ -69,7 +69,7 @@ class _VanillaStringConnector implements VanillaConnector<string> {
   }
 
   isEdu() {
-    return this._container.Context.attributes["education.enable"] === "true";
+    return this._container.context.attributes["education.enable"] === "true";
   }
 
   has(id: string): boolean {

@@ -1,5 +1,5 @@
 {
-  "ui": "tdd",
+  "ui": "bdd",
   "color": true,
   "spec": "./lib/test",
   "recursive": true
