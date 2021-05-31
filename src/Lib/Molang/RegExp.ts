@@ -26,9 +26,15 @@ export namespace RegularExpression {
    * @param regexp
    * @param receiver
    */
-  export function harvestArray(data: string[], regexp: RegExp, receiver: string[]): void {
+  export function harvestArray(data: string[] | { [key: string]: string }[], regexp: RegExp, receiver: string[]): void {
     for (let I = 0; I < data.length; I++) {
-      harvestString(data[I], regexp, receiver);
+      const elem = data[I];
+
+      if (typeof elem === "string") {
+        harvestString(elem, regexp, receiver);
+      } else {
+        harvestObject(elem, regexp, receiver);
+      }
     }
   }
 
