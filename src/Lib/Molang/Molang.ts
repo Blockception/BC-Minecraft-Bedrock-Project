@@ -55,7 +55,7 @@ export namespace Molang {
   /**The namespace that governs molang geometries*/
   export namespace Geometries {
     /**The pattern used to find the used geometries*/
-    export const getUsedPatt: RegExp = /(?:geometry)\.([a-z0-9_]+)/gim;
+    export const getUsedPatt: RegExp = /(?:geometry)\.([a-z0-9_\.]+)/gim;
 
     /**Spits through all the provided strings searching for all instances of using geometries
      * @param data The string(s)/container to look through
