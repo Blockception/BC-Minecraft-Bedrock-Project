@@ -4,12 +4,12 @@ export interface Container {
   /**The nessacary Minecraft project data
    *
    */
-  Context: MCProject;
+  context: MCProject;
 }
 
 export namespace Container {
   export function is(value: any): value is Container {
-    if (value && MCProject.is(value.Context)) return true;
+    if (value && MCProject.is(value.context)) return true;
 
     return false;
   }

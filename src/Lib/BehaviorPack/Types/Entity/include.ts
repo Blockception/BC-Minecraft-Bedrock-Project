@@ -1,3 +1,3 @@
 /*	Auto generated	*/
 
-export * from "./Entity";
+export * from "./Entity/Entity";

@@ -9,25 +9,47 @@ export class DataSet<T extends Identifiable, U> {
   private _data: Map<string, T>;
   private _vanilla: VanillaConnector<U>;
 
+  /**
+   *
+   * @param vanilla
+   */
   constructor(vanilla: VanillaConnector<U>) {
     this._data = new Map<string, T>();
     this._vanilla = vanilla;
   }
 
+  /**
+   *
+   */
   clear(): void {
     this._data.clear();
   }
 
+  /**
+   *
+   * @param key
+   * @returns
+   */
   delete(key: string | Identifiable): boolean {
     if (typeof key !== "string") key = key.id;
 
     return this._data.delete(key);
   }
 
+  /**
+   *
+   * @param callbackfn
+   * @param thisArg
+   */
   forEach(callbackfn: (value: T) => void, thisArg?: any): void {
     this._data.forEach(callbackfn, thisArg);
   }
 
+  /**
+   *
+   * @param key
+   * @returns
+   */
   get(key: string | Identifiable): T | U | undefined {
     if (typeof key !== "string") key = key.id;
 
@@ -37,6 +59,11 @@ export class DataSet<T extends Identifiable, U> {
     return out;
   }
 
+  /**
+   *
+   * @param key
+   * @returns
+   */
   has(key: string | Identifiable): boolean {
     if (typeof key !== "string") key = key.id;
 
@@ -45,18 +72,37 @@ export class DataSet<T extends Identifiable, U> {
     return this._vanilla.has(key);
   }
 
+  /**
+   *
+   * @param value
+   * @returns
+   */
   set(value: T): this {
     this._data.set(value.id, value);
 
     return this;
   }
 
+  /**
+   *
+   * @param vanilla
+   * @param edu
+   * @param Container
+   * @returns
+   */
   static createID<T extends Identifiable, U extends Identifiable>(vanilla: U[], edu: U[], Container: Container): DataSet<T, U> {
     const conn = VanillaConnector.createID<U>(vanilla, edu, Container);
 
     return new DataSet<T, U>(conn);
   }
 
+  /**
+   *
+   * @param vanilla
+   * @param edu
+   * @param Container
+   * @returns
+   */
   static createString<T extends Identifiable>(vanilla: string[], edu: string[], Container: Container): DataSet<T, string> {
     const conn = VanillaConnector.createString(vanilla, edu, Container);
 
