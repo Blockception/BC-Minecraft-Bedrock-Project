@@ -20,7 +20,7 @@ describe("molang", () => {
       expect(receiver).to.have.members(["foo1", "foo2", "foo3"]);
     });
 
-    it("defined sticky?", () => {
+    it("defined not sticky?", () => {
       expect(Molang.Variables.getDefinedPatt.sticky).to.equal(false);
     });
 
