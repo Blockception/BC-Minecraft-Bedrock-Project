@@ -15,7 +15,15 @@ export interface Script {
   variables?: Definition;
 }
 
+/**
+ *
+ */
 export namespace Script {
+  /**
+   *
+   * @param value
+   * @returns
+   */
   export function is(value: any): value is Script {
     if (value) {
       if (Array.isArray(value.animate) || Array.isArray(value.initialize) || Array.isArray(value.pre_animation) || typeof value.variables === "object") return true;
@@ -25,7 +33,23 @@ export namespace Script {
   }
 }
 
+/**
+ *
+ */
 export interface ScriptContainer {
   scripts?: Script;
   animations?: Definition;
+}
+
+/**
+ *
+ */
+export namespace ScriptContainer {
+  export function is(value: any): value is ScriptContainer {
+    if (value) {
+      if (typeof value.scripts === "object" || typeof value.animations === "object") return true;
+    }
+
+    return false;
+  }
 }

@@ -3,18 +3,46 @@ import { DefinedUsing } from "../Types/DefinedUsing";
 import { Defined, Using } from "../Types/include";
 import { Molang } from "./Molang";
 
+/**
+ *
+ */
 export interface MolangSet {
+  /**
+   *
+   */
   variables: DefinedUsing<string>;
+  /**
+   *
+   */
   queries: Using<string>;
 }
 
+/**
+ *
+ */
 export interface MolangFullSet extends MolangSet {
+  /**
+   *
+   */
   materials: DefinedUsing<string>;
+  /**
+   *
+   */
   textures: DefinedUsing<string>;
+  /**
+   *
+   */
   geometries: DefinedUsing<string>;
 }
 
+/**
+ *
+ */
 export namespace MolangSet {
+  /**
+   *
+   * @returns
+   */
   export function create(): MolangSet {
     return {
       queries: DefinedUsing.create<string>(),
@@ -22,6 +50,11 @@ export namespace MolangSet {
     };
   }
 
+  /**
+   *
+   * @param object
+   * @returns
+   */
   export function harvest(object: object | string): MolangSet {
     const out = create();
 
@@ -30,6 +63,11 @@ export namespace MolangSet {
     return out;
   }
 
+  /**
+   *
+   * @param object
+   * @param receiver
+   */
   function internalHarvest(object: any, receiver: MolangSet): void {
     switch (typeof object) {
       case "string":
