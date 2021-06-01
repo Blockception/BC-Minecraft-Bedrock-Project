@@ -1,6 +1,5 @@
-import { MolangSet } from "../../../../Molang/MolangSet";
-import { DefinedUsing } from "../../../../Types/DefinedUsing";
-import { Identifiable } from "../../../../Types/Identifiable";
+import { MolangSet } from "../../../../../Molang/MolangSet";
+import { DefinedUsing, Identifiable } from "../../../../../Types/include";
 
 export interface Entity extends Identifiable {
   molang: MolangSet;

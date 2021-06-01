@@ -1,5 +1,9 @@
-export interface Identifiable {
-  readonly id: string;
+import { Types } from "bc-minecraft-bedrock-vanilla-data";
+
+/**The interface that governs if a object is identifiable*/
+export interface Identifiable extends Types.Identifiable {
+  /**The identifier of this object*/
+  id: string;
 }
 
 export namespace Identifiable {
