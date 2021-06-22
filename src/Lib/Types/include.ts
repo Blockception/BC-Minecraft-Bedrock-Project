@@ -1,7 +1,7 @@
 /*	Auto generated	*/
 
 export * from "./Container";
-export * from "./DataSet";
+export * from "./DataSetConnected";
 export * from "./Defined";
 export * from "./DefinedUsing";
 export * from "./FileReference";
