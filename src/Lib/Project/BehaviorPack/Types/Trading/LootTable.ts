@@ -1,6 +1,6 @@
-import { Identifiable } from "../../../../Types/Identifiable";
+import { Documentated, Identifiable, Locatable } from "../../../../Types/include";
 
 /**
  *
  */
-export interface Trading extends Identifiable {}
+export interface Trading extends Identifiable, Documentated, Locatable {}

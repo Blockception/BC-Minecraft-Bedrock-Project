@@ -1,5 +1,4 @@
-import { Documentated } from "../../../../Types/Documentated";
-import { Identifiable } from "../../../../Types/include";
-import { Locatable } from "../../../../Types/Locatable";
+import { Documentated, Identifiable, Locatable } from "../../../../Types/include";
 
+/** */
 export interface Function extends Identifiable, Documentated, Locatable {}
