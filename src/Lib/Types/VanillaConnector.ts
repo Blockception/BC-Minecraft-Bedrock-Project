@@ -16,6 +16,21 @@ export namespace VanillaConnector {
   export function createString(vanilla: string[], edu: string[], container: Container): VanillaConnector<string> {
     return new _VanillaStringConnector(vanilla, edu, container);
   }
+
+  /**Returns a empty connector connected to nothing
+   * @returns
+   */
+  export function empty<T>(): VanillaConnector<T> {
+    return {
+      get(id: string): T | undefined {
+        return undefined;
+      },
+      has(id: string): boolean {
+        return false;
+      },
+      forEach(callbackfn: (value: T) => void, thisArg?: any): void {},
+    };
+  }
 }
 
 class _VanillaObjConnector<T extends Identifiable> implements VanillaConnector<T> {

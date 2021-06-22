@@ -1,13 +1,16 @@
 import { MCProject } from "bc-minecraft-project";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
-import { Entity } from "./Types/Entity/Entity/Entity";
-import { Block } from "./Types/Entity/Block/Block";
+import { Entity } from "./Types/Entity/Entity";
+import { Block } from "./Types/Block/Block";
 import { Item } from "./Types/Entity/Item/Item";
 import { Trading } from "./Types/Entity/Trading/LootTable";
 import { LootTable } from "./Types/Entity/LootTable/LootTable";
 import { Container } from "../../Types/Container";
 import { DataSet } from "../../Types/DataSet";
 
+/**
+ *
+ */
 export class BehaviorPack implements Container {
   readonly folder: string;
   readonly context: MCProject;
@@ -16,6 +19,7 @@ export class BehaviorPack implements Container {
   readonly entities: DataSet<Entity, Types.BehaviorPack.Entity>;
   readonly items: DataSet<Item, Types.BehaviorPack.Item>;
   readonly loot_tables: DataSet<LootTable, string>;
+  readonly structures: DataSet<Structure, string>;
   readonly trading: DataSet<Trading, string>;
 
   /**

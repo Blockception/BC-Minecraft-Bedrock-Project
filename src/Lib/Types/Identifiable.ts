@@ -6,7 +6,16 @@ export interface Identifiable extends Types.Identifiable {
   id: string;
 }
 
+/**
+ *
+ */
 export namespace Identifiable {
+  /**
+   *
+   * @param items
+   * @param id
+   * @returns
+   */
   export function has<T extends Identifiable>(items: T[], id: string): boolean {
     for (let I = 0; I < items.length; I++) {
       const elem = items[I];
@@ -17,6 +26,12 @@ export namespace Identifiable {
     return false;
   }
 
+  /**
+   *
+   * @param items
+   * @param id
+   * @returns
+   */
   export function get<T extends Identifiable>(items: T[], id: string): T | undefined {
     for (let I = 0; I < items.length; I++) {
       const elem = items[I];
