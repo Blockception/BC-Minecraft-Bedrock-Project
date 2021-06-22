@@ -1,12 +1,15 @@
-import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
-import { ResourcePack } from "./ResourcePack/ResourcePack";
+import { TextDocument } from "../Types/TextDocument";
+import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
+import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 
 export class ProjectData {
-  BehaviorPacks: BehaviorPack[];
-  ResourcePacks: ResourcePack[];
+  BehaviorPacks: BehaviorPackCollection;
+  ResourcePacks: ResourcePackCollection;
 
   constructor() {
-    this.BehaviorPacks = [];
-    this.ResourcePacks = [];
+    this.BehaviorPacks = new BehaviorPackCollection();
+    this.ResourcePacks = new ResourcePackCollection();
   }
+
+  process(doc: TextDocument): void {}
 }

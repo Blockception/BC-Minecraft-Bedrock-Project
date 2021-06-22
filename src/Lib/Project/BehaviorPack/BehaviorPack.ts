@@ -12,6 +12,7 @@ import { Trading } from "./Types/Trading/include";
 import { AnimationController } from "./Types/AnimationControllers/include";
 import { Animation } from "./Types/Animation/include";
 import { Pack } from "../../Types/Pack";
+import { TextDocument } from "../../Types/TextDocument";
 
 /**
  *
@@ -63,5 +64,13 @@ export class BehaviorPack implements Container, Pack {
 
     this.structures = DataSet.create<Structure>();
     this.trading = DataSet.createString(Vanilla.BehaviorPack.Trading, Edu.BehaviorPack.Trading, this);
+  }
+
+  /**
+   *
+   * @param doc
+   */
+  process(doc: TextDocument) {
+    //TODO
   }
 }

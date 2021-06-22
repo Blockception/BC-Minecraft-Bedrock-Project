@@ -13,6 +13,7 @@ import { Fog } from "./Types/Fog/include";
 import { Material } from "./Types/Material/include";
 import { Model } from "./Types/Model/include";
 import { Attachable } from "./Types/Attachable/include";
+import { TextDocument } from "../../Types/TextDocument";
 
 export class ResourcePack implements Container, Pack {
   /**The folder path of the pack*/
@@ -63,5 +64,13 @@ export class ResourcePack implements Container, Pack {
     this.models = DataSet.createID(Vanilla.ResourcePack.Models, Edu.ResourcePack.Models, this);
     this.sounds = DataSet.createID(Vanilla.ResourcePack.Sounds, Edu.ResourcePack.Sounds, this);
     this.textures = DataSet.createID(Vanilla.ResourcePack.Textures, Edu.ResourcePack.Textures, this);
+  }
+
+  /**
+   *
+   * @param doc
+   */
+  process(doc: TextDocument) {
+    //TODO
   }
 }
