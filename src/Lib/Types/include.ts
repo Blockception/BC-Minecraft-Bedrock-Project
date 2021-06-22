@@ -12,6 +12,8 @@ export * from "./Locatable";
 export * from "./Location";
 export * from "./Pack";
 export * from "./Position";
+export * from "./Range";
 export * from "./Script";
+export * from "./TextDocument";
 export * from "./Used";
 export * from "./VanillaConnector";
