@@ -3,4 +3,4 @@ import { Documentated, Identifiable, Locatable } from "../../../../Types/include
 /**
  *
  */
-export interface Item extends Identifiable, Documentated, Locatable {}
+export interface Model extends Identifiable, Documentated, Locatable {}

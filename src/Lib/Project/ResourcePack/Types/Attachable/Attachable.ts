@@ -4,7 +4,7 @@ import { DefinedUsing, Documentated, Identifiable, Locatable } from "../../../..
 /**
  *
  */
-export interface Entity extends Identifiable, Documentated, Locatable {
+export interface Attachable extends Identifiable, Documentated, Locatable {
   /**
    *
    */
