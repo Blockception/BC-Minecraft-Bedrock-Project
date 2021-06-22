@@ -21,4 +21,14 @@ export namespace Locatable {
 
     return false;
   }
+
+  /**
+   *
+   * @returns
+   */
+  export function empty(): Locatable {
+    return {
+      location: { uri: "", position: 0 },
+    };
+  }
 }
