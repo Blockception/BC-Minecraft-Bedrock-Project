@@ -22,7 +22,9 @@ export class BehaviorPack implements Container, Pack {
   /**The context of the project*/
   readonly context: MCProject;
 
+  /**The collection of the animations*/
   readonly animations: DataSetSingle<Animation>;
+  /**The collection of the animations*/
   readonly animation_controllers: DataSetSingle<AnimationController>;
   readonly blocks: DataSet<Block, Types.BehaviorPack.Block>;
   readonly entities: DataSet<Entity, Types.BehaviorPack.Entity>;

@@ -1,6 +1,8 @@
 import { MolangSet } from "../../../../Molang/MolangSet";
+import { Documentated } from "../../../../Types/Documentated";
 import { Identifiable } from "../../../../Types/include";
+import { Locatable } from "../../../../Types/Locatable";
 
-export interface Item extends Identifiable {
+export interface Item extends Identifiable, Documentated, Locatable {
   molang: MolangSet;
 }
