@@ -1,3 +1,5 @@
+import { Map } from "../../Types/Map";
+
 /** */
 export interface Animation {
   /** */
@@ -5,9 +7,7 @@ export interface Animation {
   /** */
   loop?: boolean;
   /** */
-  timeline?: {
-    [time: string]: string | string[];
-  };
+  timeline?: Map<string | string[]>;
 }
 
 export namespace Animation {

@@ -1,3 +1,5 @@
+import { Map } from "../../Types/Map";
+
 /** */
 export interface Animation {
   /** */
@@ -8,21 +10,13 @@ export interface Animation {
   loop?: boolean | "hold_on_last_frame";
 
   /** */
-  bones?: {
-    [bone: string]: any;
-  };
+  bones?: Map<any>;
   /** */
-  particle_effects?: {
-    [particle_effect: string]: { effect: string };
-  };
+  particle_effects?: Map<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
   /** */
-  sound_effects?: {
-    [sound_effect: string]: { effect: string };
-  };
+  sound_effects?: Map<{ effect?: string } | { effect?: string }[]>;
   /** */
-  timeline?: {
-    [time: string]: string | string[];
-  };
+  timeline?: Map<string | string[]>;
 }
 
 export namespace Animation {

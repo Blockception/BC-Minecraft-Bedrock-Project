@@ -6,6 +6,7 @@ import { TextDocument } from "../../../../Types/TextDocument";
 import { Animation } from "./include";
 import { DefinedUsing } from "../../../../Types/DefinedUsing";
 import { Using } from "../../../../Types/Used";
+import { Map } from "../../../../Types/Map";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {
@@ -28,7 +29,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         id: id,
         location: Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(anim),
-        documentation: `\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
+        documentation: `RP Animation\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
         particles: DefinedUsing.empty(),
         sounds: DefinedUsing.empty(),
       };
@@ -43,7 +44,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
   return out;
 }
 
-function harvest(data: { [data: string]: { effect?: string } | { effect?: string }[] }, receiver: Using<string>) {
+function harvest(data: Map<{ effect?: string } | { effect?: string }[]>, receiver: Using<string>) {
   const keys = Object.getOwnPropertyNames(data);
 
   for (var I = 0; I < keys.length; I++) {

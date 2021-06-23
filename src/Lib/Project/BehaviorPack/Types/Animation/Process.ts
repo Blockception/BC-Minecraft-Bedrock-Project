@@ -26,7 +26,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         id: id,
         location: Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(anim),
-        documentation: `\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
+        documentation: `BP Animation: \`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
       });
     }
   }

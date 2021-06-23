@@ -53,7 +53,7 @@ export class BehaviorPack implements Container, Pack {
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
     this.animation_controllers = DataSet.create<AnimationController>();
-    this.animations = DataSet.create<Animation>();
+    this.animations = DataSet.create<Animation.Animation>();
 
     this.blocks = DataSet.createID(Vanilla.BehaviorPack.Blocks, Edu.BehaviorPack.Blocks, this);
     this.entities = DataSet.createID(Vanilla.BehaviorPack.Entities, Edu.BehaviorPack.Entities, this);
