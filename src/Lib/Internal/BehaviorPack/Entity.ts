@@ -1,4 +1,4 @@
-import { Json } from "../../Parse/Json";
+import { Map } from "../../Types/Map";
 import { ScriptContainer } from "../Types/Script";
 
 /**The interface that deals with entity events that add or remove component groups*/
@@ -44,36 +44,29 @@ export interface Entity {
     /** */
     description: EntityDescription;
     /** */
-    component_groups: {
-      /** */
-      [group: string]: EntityComponentContainer;
-    };
+    component_groups?: Map<EntityComponentContainer>;
     /** */
     components: EntityComponentContainer;
     /** */
-    events: EntityEvent;
+    events?: Map<EntityEvent>;
   };
 }
 
 /** */
 export namespace Entity {
-  /**Loads the given file as an Entity interface
-   * @param filepath The filepath to a json file
-   * @returns Either undefined if something went wrong or the file as an Entity object*/
-  export function Load(filepath: string): Entity | undefined {
-    return Json.load<Entity>(filepath, ensure);
-  }
+  /**
+   *
+   * @param value
+   */
+  export function is(value: any): value is Entity {
+    if (value && typeof value.format_version === "string" && typeof value["minecraf:entity"] === "object") {
+      const b = value["minecraf:entity"];
 
-  /**Ensures the given object adheres to the basics of the interface
-   * @param value A suspected incomplete value object*/
-  export function ensure(value: Entity): void {
-    if (!value.format_version) value.format_version = "";
+      if (typeof b.description === "object" && typeof b.description.identifier === "string" && typeof b.components === "object") {
+        return true;
+      }
+    }
 
-    let me = value["minecraf:entity"];
-
-    if (!me.component_groups) me.component_groups = {};
-    if (!me.components) me.components = {};
-    if (!me.description) me.description = { identifier: "" };
-    if (!me.events) me.events = {};
+    return false;
   }
 }
