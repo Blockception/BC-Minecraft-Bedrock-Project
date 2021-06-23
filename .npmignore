@@ -4,3 +4,4 @@ tslint.json
 .prettierrc
 test/
 lib/**
+*.test.*

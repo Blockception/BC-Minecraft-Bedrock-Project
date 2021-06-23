@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { Molang } from "../../../src/Lib/Molang/Molang";
-import { VanillaPlayer } from "../../Utillity/Player";
+import { VanillaPlayer } from "../../../test/Player.test";
 
 describe("molang", () => {
   describe("queries", () => {

@@ -1,3 +1,8 @@
+import { TextDocument } from "./TextDocument";
+
+/**
+ *
+ */
 export interface Pack {
   /**The folder path of the pack*/
   readonly folder: string;
@@ -6,5 +11,5 @@ export interface Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument);
+  process(doc: TextDocument): void;
 }

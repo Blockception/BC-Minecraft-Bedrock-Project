@@ -53,17 +53,17 @@ export class ResourcePack implements Container, Pack {
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
-    this.animation_controllers = DataSet.createID(Vanilla.ResourcePack.AnimationControllers, Edu.ResourcePack.AnimationControllers, this);
-    this.animations = DataSet.createID(Vanilla.ResourcePack.Animations, Edu.ResourcePack.Animations, this);
+    this.animation_controllers = DataSet.createString(Vanilla.ResourcePack.AnimationControllers, Edu.ResourcePack.AnimationControllers, this);
+    this.animations = DataSet.createString(Vanilla.ResourcePack.Animations, Edu.ResourcePack.Animations, this);
     this.attachables = DataSet.create();
     this.blocks = DataSet.create();
     this.entities = DataSet.createID(Vanilla.ResourcePack.Entities, Edu.ResourcePack.Entities, this);
     this.items = DataSet.create();
-    this.fogs = DataSet.createID(Vanilla.ResourcePack.Fogs, Edu.ResourcePack.Fogs, this);
-    this.materials = DataSet.createID(Vanilla.ResourcePack.Materials, Edu.ResourcePack.Materials, this);
-    this.models = DataSet.createID(Vanilla.ResourcePack.Models, Edu.ResourcePack.Models, this);
-    this.sounds = DataSet.createID(Vanilla.ResourcePack.Sounds, Edu.ResourcePack.Sounds, this);
-    this.textures = DataSet.createID(Vanilla.ResourcePack.Textures, Edu.ResourcePack.Textures, this);
+    this.fogs = DataSet.createString(Vanilla.ResourcePack.Fogs, Edu.ResourcePack.Fogs, this);
+    this.materials = DataSet.createString(Vanilla.ResourcePack.Materials, Edu.ResourcePack.Materials, this);
+    this.models = DataSet.createString(Vanilla.ResourcePack.Models, Edu.ResourcePack.Models, this);
+    this.sounds = DataSet.createString(Vanilla.ResourcePack.Sounds, Edu.ResourcePack.Sounds, this);
+    this.textures = DataSet.createString(Vanilla.ResourcePack.Textures, Edu.ResourcePack.Textures, this);
   }
 
   /**

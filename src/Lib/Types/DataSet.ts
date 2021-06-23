@@ -74,7 +74,7 @@ export namespace DataSet {
    * @param Container
    * @returns
    */
-  export function createID<T extends Identifiable & Locatable, U>(vanilla: U[], edu: U[], Container: Container): DataSetConnected<T, U> {
+  export function createID<T extends Identifiable & Locatable, U extends Identifiable>(vanilla: U[], edu: U[], Container: Container): DataSetConnected<T, U> {
     const conn = VanillaConnector.createID<U>(vanilla, edu, Container);
 
     return new DataSetConnected<T, U>(conn);
