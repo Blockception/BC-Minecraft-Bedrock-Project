@@ -4,7 +4,6 @@ import { MolangSet } from "../../../../Molang/MolangSet";
 import { Location } from "../../../../Types/Location";
 import { TextDocument } from "../../../../Types/TextDocument";
 import { Animation } from "./include";
-import { DefinedUsing } from "../../../../Types/DefinedUsing";
 import { Using } from "../../../../Types/Used";
 import { Map } from "../../../../Types/Map";
 
@@ -30,8 +29,8 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         location: Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(anim),
         documentation: `RP Animation\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
-        particles: DefinedUsing.empty(),
-        sounds: DefinedUsing.empty(),
+        particles: Using.empty(),
+        sounds: Using.empty(),
       };
 
       if (anim.particle_effects) harvest(anim.particle_effects, item.particles);

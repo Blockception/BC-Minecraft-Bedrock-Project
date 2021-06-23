@@ -2,7 +2,7 @@ import { MCProject } from "bc-minecraft-project";
 import { Container, DataSet, DataSetSingle } from "../../Types/include";
 import { Pack } from "../../Types/Pack";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
-import { AnimationController } from "./Types/AnimationControllers/AnimationController";
+import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
 import { Block } from "./Types/Block/include";
 import { Entity } from "./Types/Entity/include";
@@ -25,7 +25,7 @@ export class ResourcePack implements Container, Pack {
   /**The collection of  animations*/
   readonly animations: DataSet<Animation.Animation, Types.ResourcePack.Animation>;
   /**The collection of animations controllers*/
-  readonly animation_controllers: DataSet<AnimationController, Types.ResourcePack.AnimationController>;
+  readonly animation_controllers: DataSet<AnimationController.AnimationController, Types.ResourcePack.AnimationController>;
   /**The collection of animations controllers*/
   readonly attachables: DataSetSingle<Attachable>;
   /**The collection of */
@@ -77,6 +77,9 @@ export class ResourcePack implements Container, Pack {
     switch (Type) {
       case FileType.animation:
         return this.animations.set(Animation.Process(doc));
+
+      case FileType.animation_controller:
+        return this.animation_controllers.set(AnimationController.Process(doc));
     }
   }
 }

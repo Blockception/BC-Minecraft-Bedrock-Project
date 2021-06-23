@@ -1,12 +1,12 @@
 import { MolangSet } from "../../../../Molang/include";
-import { DefinedUsing, Documentated, Identifiable, Locatable } from "../../../../Types/include";
+import { Documentated, Identifiable, Locatable, Using } from "../../../../Types/include";
 
 /** */
 export interface Animation extends Identifiable, Documentated, Locatable {
   /** */
   molang: MolangSet;
   /** */
-  particles: DefinedUsing<string>;
+  particles: Using<string>;
   /** */
-  sounds: DefinedUsing<string>;
+  sounds: Using<string>;
 }
