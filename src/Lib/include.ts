@@ -1,5 +1,4 @@
 /*	Auto generated	*/
-export * as Format from "./Format/include";
 export * as Internal from "./Internal/include";
 export * as Molang from "./Molang/include";
 export * as Parse from "./Parse/include";
