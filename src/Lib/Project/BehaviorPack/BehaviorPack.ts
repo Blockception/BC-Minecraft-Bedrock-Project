@@ -10,9 +10,10 @@ import { Item } from "./Types/Item/include";
 import { LootTable } from "./Types/LootTable/include";
 import { Trading } from "./Types/Trading/include";
 import { AnimationController } from "./Types/AnimationControllers/include";
-import { Animation } from "./Types/Animation/include";
+import * as Animation from "./Types/Animation/include";
 import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
+import { FileType } from "./Enum/FileType";
 
 /**
  *
@@ -24,7 +25,7 @@ export class BehaviorPack implements Container, Pack {
   readonly context: MCProject;
 
   /**The collection of  animations*/
-  readonly animations: DataSetSingle<Animation>;
+  readonly animations: DataSetSingle<Animation.Animation>;
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSetSingle<AnimationController>;
   /**The collection of */
@@ -71,6 +72,11 @@ export class BehaviorPack implements Container, Pack {
    * @param doc
    */
   process(doc: TextDocument) {
-    //TODO
+    const Type = FileType.detect(doc.uri);
+
+    switch (Type) {
+      case FileType.animation:
+        return this.animations.set(Animation.Process(doc));
+    }
   }
 }

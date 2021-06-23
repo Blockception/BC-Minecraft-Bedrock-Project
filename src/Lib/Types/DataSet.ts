@@ -44,7 +44,7 @@ export interface DataSet<T extends Identifiable & Locatable, U> {
    * @param value
    * @returns
    */
-  set(value: T): this;
+  set(value: T | T[] | undefined): this;
 }
 
 /**
@@ -186,8 +186,14 @@ export class DataSetConnected<T extends Identifiable & Locatable, U> implements 
    * @param value
    * @returns
    */
-  set(value: T): this {
-    this._data.set(value.id, value);
+  set(value: T | T[] | undefined): this {
+    if (value) {
+      if (Array.isArray(value)) {
+        value.forEach((i) => this._data.set(i.id, i));
+      } else {
+        this._data.set(value.id, value);
+      }
+    }
 
     return this;
   }
@@ -278,8 +284,14 @@ export class DataSetUnconnected<T extends Identifiable & Locatable> implements D
    * @param value
    * @returns
    */
-  set(value: T): this {
-    this._data.set(value.id, value);
+  set(value: T | T[] | undefined): this {
+    if (value) {
+      if (Array.isArray(value)) {
+        value.forEach((i) => this._data.set(i.id, i));
+      } else {
+        this._data.set(value.id, value);
+      }
+    }
 
     return this;
   }

@@ -13,4 +13,8 @@ export namespace DefinedUsing {
       using: using,
     };
   }
+
+  export function empty<T>(): DefinedUsing<T> {
+    return { defined: [], using: [] };
+  }
 }

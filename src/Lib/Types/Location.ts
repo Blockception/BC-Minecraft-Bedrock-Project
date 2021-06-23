@@ -32,4 +32,11 @@ export namespace Location {
 
     return false;
   }
+
+  export function create(uri: string, position: Position | JsonPath | number = 0): Location {
+    return {
+      uri: uri,
+      position: position,
+    };
+  }
 }

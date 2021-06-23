@@ -10,4 +10,8 @@ export namespace Using {
 
     return { using: [] };
   }
+
+  export function empty<T>(): Using<T> {
+    return { using: [] };
+  }
 }

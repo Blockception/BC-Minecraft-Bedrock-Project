@@ -3,7 +3,7 @@ import { Container, DataSet, DataSetSingle } from "../../Types/include";
 import { Pack } from "../../Types/Pack";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 import { AnimationController } from "./Types/AnimationControllers/AnimationController";
-import { Animation } from "./Types/Animation/Animation";
+import * as Animation from "./Types/Animation/include";
 import { Block } from "./Types/Block/include";
 import { Entity } from "./Types/Entity/include";
 import { Item } from "./Types/Item/Item";
@@ -14,6 +14,7 @@ import { Material } from "./Types/Material/include";
 import { Model } from "./Types/Model/include";
 import { Attachable } from "./Types/Attachable/include";
 import { TextDocument } from "../../Types/TextDocument";
+import { FileType } from "./Enum/include";
 
 export class ResourcePack implements Container, Pack {
   /**The folder path of the pack*/
@@ -22,7 +23,7 @@ export class ResourcePack implements Container, Pack {
   readonly context: MCProject;
 
   /**The collection of  animations*/
-  readonly animations: DataSet<Animation, Types.ResourcePack.Animation>;
+  readonly animations: DataSet<Animation.Animation, Types.ResourcePack.Animation>;
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSet<AnimationController, Types.ResourcePack.AnimationController>;
   /**The collection of animations controllers*/
@@ -71,6 +72,11 @@ export class ResourcePack implements Container, Pack {
    * @param doc
    */
   process(doc: TextDocument) {
-    //TODO
+    const Type = FileType.detect(doc.uri);
+
+    switch (Type) {
+      case FileType.animation:
+        return this.animations.set(Animation.Process(doc));
+    }
   }
 }

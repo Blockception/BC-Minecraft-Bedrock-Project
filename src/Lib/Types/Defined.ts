@@ -10,4 +10,8 @@ export namespace Defined {
 
     return { defined: [] };
   }
+
+  export function empty<T>(): Defined<T> {
+    return { defined: [] };
+  }
 }
