@@ -1,4 +1,5 @@
 import { Map } from "../../Types/Map";
+import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
 export interface Animation {
@@ -35,7 +36,7 @@ export namespace Animation {
 /**
  *
  */
-export interface Animations {
+export interface Animations extends FormatVersion {
   /**
    *
    */

@@ -1,8 +1,9 @@
 import { Map } from "../../Types/Map";
 import { Conditional } from "../Types/Conditional";
+import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface AnimationControllers {
+export interface AnimationControllers extends FormatVersion {
   /** */
   format_version: string;
   /** */

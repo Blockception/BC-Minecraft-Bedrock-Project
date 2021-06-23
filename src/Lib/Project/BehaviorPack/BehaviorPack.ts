@@ -1,7 +1,6 @@
 import { MCProject } from "bc-minecraft-project";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 import { Entity } from "./Types/Entity/Entity";
-import { Block } from "./Types/Block/Block";
 import { Function } from "./Types/Function/Function";
 import { Container } from "../../Types/Container";
 import { DataSet, DataSetSingle } from "../../Types/DataSet";
@@ -11,6 +10,7 @@ import { LootTable } from "./Types/LootTable/include";
 import { Trading } from "./Types/Trading/include";
 import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
+import * as Block from "./Types/Block/include";
 import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
 import { FileType } from "./Enum/FileType";
@@ -29,7 +29,7 @@ export class BehaviorPack implements Container, Pack {
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSetSingle<AnimationController.AnimationController>;
   /**The collection of */
-  readonly blocks: DataSet<Block, Types.BehaviorPack.Block>;
+  readonly blocks: DataSet<Block.Block, Types.BehaviorPack.Block>;
   /**The collection of */
   readonly entities: DataSet<Entity, Types.BehaviorPack.Entity>;
   /**The collection of */
@@ -80,6 +80,9 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.animation_controller:
         return this.animation_controllers.set(AnimationController.Process(doc));
+
+      case FileType.block:
+        return this.blocks.set(Block.Process(doc));
     }
   }
 }

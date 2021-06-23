@@ -1,7 +1,8 @@
 import { Map } from "../../Types/Map";
+import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface Animation {
+export interface Animation extends FormatVersion {
   /** */
   animation_length?: number;
   /** */
