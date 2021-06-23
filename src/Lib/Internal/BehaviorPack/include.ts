@@ -1,2 +1,4 @@
 /*	Auto generated	*/
-export * as Entity from "./Entity/include";
+
+export * from "./Animation";
+export * from "./Entity";
