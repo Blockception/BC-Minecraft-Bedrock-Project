@@ -1,5 +1,6 @@
 import { TextDocument } from "../Types/TextDocument";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
+import { PackType } from "./Enum/PackType";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 
 export class ProjectData {
@@ -11,5 +12,20 @@ export class ProjectData {
     this.ResourcePacks = new ResourcePackCollection();
   }
 
-  process(doc: TextDocument): void {}
+  /**
+   *
+   * @param doc
+   * @returns
+   */
+  process(doc: TextDocument): void {
+    const type = PackType.detect(doc.uri);
+
+    switch (type) {
+      case PackType.behavior_pack:
+        return this.BehaviorPacks.process(doc);
+
+      case PackType.resource_pack:
+        return this.ResourcePacks.process(doc);
+    }
+  }
 }
