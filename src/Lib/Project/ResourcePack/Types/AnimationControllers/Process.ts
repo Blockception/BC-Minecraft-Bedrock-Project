@@ -1,0 +1,60 @@
+import * as internal from "../../../../Internal/ResourcePack/AnimationController";
+import { Json } from "../../../../Internal/Json";
+import { MolangSet } from "../../../../Molang/MolangSet";
+import { Location } from "../../../../Types/Location";
+import { TextDocument } from "../../../../Types/TextDocument";
+import { AnimationController } from "./include";
+import { DefinedUsing } from "../../../../Types/DefinedUsing";
+import { Using } from "../../../../Types/Used";
+import { Map } from "../../../../Types/Map";
+import { Conditional } from "../../../../Internal/Types/Conditional";
+
+/** */
+export function Process(doc: TextDocument): AnimationController[] | undefined {
+  const uri = doc.uri;
+  const content = doc.getText();
+  const imp = Json.To<internal.AnimationControllers>(content);
+
+  if (!internal.AnimationControllers.is(imp)) return undefined;
+
+  const out: AnimationController[] = [];
+  const container = imp.animation_controllers;
+  const keys = Object.getOwnPropertyNames(container);
+
+  for (var I = 0; I < keys.length; I++) {
+    const id = keys[I];
+    const controller = container[id];
+
+    if (internal.AnimationController.is(controller)) {
+      const item: AnimationController = {
+        id: id,
+        location: Location.create(uri, content.indexOf(id)),
+        molang: MolangSet.harvest(controller),
+        documentation: `RP Animation Controller: \`${id}\``,
+        animations: Using.empty(),
+        particles: Using.empty(),
+        sounds: Using.empty(),
+      };
+
+      Map.forEach(controller.states, (State) => {
+        if (State.animations)
+          Conditional.forEach(State.animations, (value, key) => {
+            item.animations.using.push(key);
+          });
+
+        if (State.particle_effects) harvest(State.particle_effects, item.particles);
+        if (State.sound_effects) harvest(State.sound_effects, item.particles);
+      });
+
+      out.push(item);
+    }
+  }
+
+  return out;
+}
+
+function harvest(data: { effect?: string }[], receiver: Using<string>) {
+  data.forEach((e) => {
+    if (e.effect) receiver.using.push(e.effect);
+  });
+}

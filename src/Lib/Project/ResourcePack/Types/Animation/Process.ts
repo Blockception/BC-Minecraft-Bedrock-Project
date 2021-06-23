@@ -45,16 +45,13 @@ export function Process(doc: TextDocument): Animation[] | undefined {
 }
 
 function harvest(data: Map<{ effect?: string } | { effect?: string }[]>, receiver: Using<string>) {
-  const keys = Object.getOwnPropertyNames(data);
-
-  for (var I = 0; I < keys.length; I++) {
-    const elem = data[keys[I]];
-    if (Array.isArray(elem)) {
-      elem.forEach((e) => {
+  Map.forEach(data, (value) => {
+    if (Array.isArray(value)) {
+      value.forEach((e) => {
         if (e.effect) receiver.using.push(e.effect);
       });
     } else {
-      if (elem.effect) receiver.using.push(elem.effect);
+      if (value.effect) receiver.using.push(value.effect);
     }
-  }
+  });
 }
