@@ -10,6 +10,7 @@ export * from "./Identifiable";
 export * from "./JsonPath";
 export * from "./Locatable";
 export * from "./Location";
+export * from "./Map";
 export * from "./Pack";
 export * from "./Position";
 export * from "./Range";
