@@ -1,5 +1,6 @@
 import * as internal from "../../../../Internal/BehaviorPack/AnimationController";
 import { Json } from "../../../../Internal/Json";
+import { Conditional } from "../../../../Internal/Types/Conditional";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { DefinedUsing } from "../../../../Types/DefinedUsing";
 import { Using } from "../../../../Types/include";
@@ -47,4 +48,11 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
   return out;
 }
 
-function getAnimations(state: internal.State, receiver: Using<string>): void {}
+/**
+ *
+ * @param state
+ * @param receiver
+ */
+function getAnimations(state: internal.State, receiver: Using<string>): void {
+  if (state.animations) Conditional.forEach(state.animations, (value, key) => receiver.using.push(key));
+}
