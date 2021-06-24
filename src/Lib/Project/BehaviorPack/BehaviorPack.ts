@@ -1,7 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
-import { Container } from "../../Types/Container/Container";
-import { DataSet, DataSetSingle } from "../../Types/DataSet/DataSet";
+import { Container } from "../../Types/Container/include";
+import { DataSet, DataSetSingle } from "../../Types/DataSet/include";
 
 import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
@@ -24,7 +24,7 @@ export class BehaviorPack implements Container, Pack {
   /**The context of the project*/
   readonly context: MCProject;
 
-  /**The collection of  animations*/
+  /**The collection of animations*/
   readonly animations: DataSetSingle<Animation.Animation>;
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSetSingle<AnimationController.AnimationController>;
@@ -44,10 +44,8 @@ export class BehaviorPack implements Container, Pack {
   readonly trading: DataSet<Trading.Trading, Types.BehaviorPack.Trading>;
 
   /**
-   *
    * @param folder The folder of the behavior
-   * @param Context The Mcproject data or the filepath to read from
-   */
+   * @param Context The Mcproject data or the filepath to read from.*/
   constructor(folder: string, Context: MCProject | string) {
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
