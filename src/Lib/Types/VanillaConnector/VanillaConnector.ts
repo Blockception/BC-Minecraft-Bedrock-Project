@@ -1,18 +1,49 @@
 import { Container } from "../Container/Container";
 import { Identifiable } from "../Identifiable/Identifiable";
 
+/** */
 export interface VanillaConnector<T> {
+  /**
+   *
+   * @param id
+   */
   has(id: string): boolean;
+  /**
+   *
+   * @param id
+   */
   get(id: string): T | undefined;
 
+  /**
+   *
+   * @param callbackfn
+   * @param thisArg
+   */
   forEach(callbackfn: (value: T) => void, thisArg?: any): void;
 }
 
+/**
+ *
+ */
 export namespace VanillaConnector {
+  /**
+   *
+   * @param vanilla
+   * @param edu
+   * @param container
+   * @returns
+   */
   export function createID<T extends Identifiable>(vanilla: T[], edu: T[], container: Container): VanillaConnector<T> {
     return new _VanillaObjConnector<T>(vanilla, edu, container);
   }
 
+  /**
+   *
+   * @param vanilla
+   * @param edu
+   * @param container
+   * @returns
+   */
   export function createString(vanilla: string[], edu: string[], container: Container): VanillaConnector<string> {
     return new _VanillaStringConnector(vanilla, edu, container);
   }

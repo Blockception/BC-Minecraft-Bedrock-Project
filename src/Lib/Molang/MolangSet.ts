@@ -1,6 +1,5 @@
-import { type } from "os";
 import { DefinedUsing } from "../Types/Defined Using/DefinedUsing";
-import { Defined, Using } from "../Types/include";
+import { Using } from "../Types/Defined Using/include";
 import { Molang } from "./Molang";
 
 /**

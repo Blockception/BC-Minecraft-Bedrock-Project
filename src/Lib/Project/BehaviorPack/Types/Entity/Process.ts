@@ -4,6 +4,7 @@ import { MolangSet } from "../../../../Molang/MolangSet";
 import { Location } from "../../../../Types/Location/Location";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { Block } from "../Block/include";
 import { Entity } from "./include";
 
 /**
@@ -20,22 +21,6 @@ export function Process(doc: TextDocument): Entity | undefined {
 
   const container = imp["minecraf:entity"];
   const id = container.description.identifier;
-
-  const out: Block = {
-    id: id,
-    location: Location.create(uri, content.indexOf(id)),
-    molang: MolangSet.harvest(container),
-    states: [],
-    documentation: `BP Block: ${id}`,
-  };
-
-  const props = container.description.properties;
-  if (props)
-    Map.forEach(props, (values, prop) => {
-      const s = BlockState.create(prop, values);
-
-      if (s) out.states.push(s);
-    });
 
   return out;
 }
