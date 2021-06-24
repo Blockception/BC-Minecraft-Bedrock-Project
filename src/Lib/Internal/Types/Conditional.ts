@@ -1,5 +1,6 @@
 export type Conditional = string | ConditionalObject;
 
+/** */
 export namespace Conditional {
   /**
    *
@@ -35,6 +36,8 @@ export namespace Conditional {
   }
 }
 
+/** */
 export interface ConditionalObject {
+  /** */
   [definition: string]: string;
 }

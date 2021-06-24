@@ -1,15 +1,24 @@
 import { Map } from "../../Types/Map/Map";
 import { FormatVersion } from "../Types/FormatVersion";
 
+/** */
 export interface Item extends FormatVersion {
+  /** */
   format_version: string;
+  /** */
   "minecraft:item": {
+    /** */
     description: {
+      /** */
       identifier: string;
+      /** */
       category?: string;
+      /** */
       is_experimental?: boolean;
     };
+    /** */
     components: Map<any>;
+    /** */
     events?: Map<any>;
   };
 }
