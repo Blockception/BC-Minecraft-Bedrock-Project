@@ -16,5 +16,5 @@ export * from "./Position/Position";
 export * from "./Range/Range";
 export * from "./Script/Script";
 export * from "./TextDocument/TextDocument";
-export * from "./Used";
+export * from "./Defined Using/Using";
 export * from "./VanillaConnector/VanillaConnector";
