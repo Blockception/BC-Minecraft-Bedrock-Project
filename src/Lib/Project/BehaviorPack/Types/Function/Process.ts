@@ -21,6 +21,7 @@ export function Process(doc: TextDocument): Function | undefined {
   index += 10;
 
   let id = uri.substring(index, uri.length).replace(/\\/g, "/");
+  id = id.replace(".mcfunction", "");
 
   if (id.includes(" ") || id.includes("\t")) {
     id = `"${id}"`;
