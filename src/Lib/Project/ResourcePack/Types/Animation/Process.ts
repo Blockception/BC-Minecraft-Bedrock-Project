@@ -5,6 +5,7 @@ import { Location } from "../../../../Types/Location/Location";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./include";
 import { Map } from "../../../../Types/Map/Map";
+import { Using } from "../../../../Types/Defined Using/include";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {

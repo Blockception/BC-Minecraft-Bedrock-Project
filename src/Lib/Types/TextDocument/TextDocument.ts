@@ -4,7 +4,14 @@
  *
  */
 export interface TextDocument {
+  /**
+   *
+   */
   readonly uri: string;
 
+  /**
+   *
+   * @param range
+   */
   getText(range?: Range): string;
 }

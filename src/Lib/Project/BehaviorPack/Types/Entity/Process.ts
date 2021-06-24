@@ -22,5 +22,7 @@ export function Process(doc: TextDocument): Entity | undefined {
   const container = imp["minecraf:entity"];
   const id = container.description.identifier;
 
-  return out;
+  //TODO
+
+  return undefined;
 }
