@@ -1,16 +1,18 @@
 import { MCProject } from "bc-minecraft-project";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
-import { Entity } from "./Types/Entity/Entity";
-import { Function } from "./Types/Function/Function";
 import { Container } from "../../Types/Container/Container";
 import { DataSet, DataSetSingle } from "../../Types/DataSet/DataSet";
-import { Structure } from "./Types/Structure/include";
-import { Item } from "./Types/Item/include";
-import { LootTable } from "./Types/LootTable/include";
-import { Trading } from "./Types/Trading/include";
+
 import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
 import * as Block from "./Types/Block/include";
+import * as Entity from "./Types/Entity/include";
+import * as Function from "./Types/Function/include";
+import * as Item from "./Types/Item/include";
+import * as LootTable from "./Types/LootTable/include";
+import * as Structure from "./Types/Structure/include";
+import * as Trading from "./Types/Trading/include";
+
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/FileType";
@@ -28,20 +30,20 @@ export class BehaviorPack implements Container, Pack {
   readonly animations: DataSetSingle<Animation.Animation>;
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSetSingle<AnimationController.AnimationController>;
-  /**The collection of */
+  /**The collection of blocks*/
   readonly blocks: DataSet<Block.Block, Types.BehaviorPack.Block>;
-  /**The collection of */
-  readonly entities: DataSet<Entity, Types.BehaviorPack.Entity>;
-  /**The collection of */
-  readonly functions: DataSetSingle<Function>;
-  /**The collection of */
-  readonly items: DataSet<Item, Types.BehaviorPack.Item>;
-  /**The collection of */
-  readonly loot_tables: DataSet<LootTable, Types.BehaviorPack.LootTable>;
-  /**The collection of */
-  readonly structures: DataSetSingle<Structure>;
-  /**The collection of */
-  readonly trading: DataSet<Trading, Types.BehaviorPack.Trading>;
+  /**The collection of entities*/
+  readonly entities: DataSet<Entity.Entity, Types.BehaviorPack.Entity>;
+  /**The collection of mcfunctions*/
+  readonly functions: DataSetSingle<Function.Function>;
+  /**The collection of items*/
+  readonly items: DataSet<Item.Item, Types.BehaviorPack.Item>;
+  /**The collection of loot tables*/
+  readonly loot_tables: DataSet<LootTable.LootTable, Types.BehaviorPack.LootTable>;
+  /**The collection of structures*/
+  readonly structures: DataSetSingle<Structure.Structure>;
+  /**The collection of trading tables*/
+  readonly trading: DataSet<Trading.Trading, Types.BehaviorPack.Trading>;
 
   /**
    *
@@ -58,12 +60,12 @@ export class BehaviorPack implements Container, Pack {
     this.blocks = DataSet.createID(Vanilla.BehaviorPack.Blocks, Edu.BehaviorPack.Blocks, this);
     this.entities = DataSet.createID(Vanilla.BehaviorPack.Entities, Edu.BehaviorPack.Entities, this);
 
-    this.functions = DataSet.create<Function>();
+    this.functions = DataSet.create<Function.Function>();
 
     this.items = DataSet.createID(Vanilla.BehaviorPack.Items, Edu.BehaviorPack.Items, this);
     this.loot_tables = DataSet.createString(Vanilla.BehaviorPack.LootTables, Edu.BehaviorPack.LootTables, this);
 
-    this.structures = DataSet.create<Structure>();
+    this.structures = DataSet.create<Structure.Structure>();
     this.trading = DataSet.createString(Vanilla.BehaviorPack.Trading, Edu.BehaviorPack.Trading, this);
   }
 
@@ -83,6 +85,24 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.block:
         return this.blocks.set(Block.Process(doc));
+
+      case FileType.entity:
+        return this.entities.set(Entity.Process(doc));
+
+      case FileType.function:
+        return this.functions.set(Function.Process(doc));
+
+      case FileType.item:
+        return this.items.set(Item.Process(doc));
+
+      case FileType.loot_table:
+        return this.loot_tables.set(LootTable.Process(doc));
+
+      case FileType.structure:
+        return this.structures.set(Structure.Process(doc));
+
+      case FileType.trading:
+        return this.trading.set(Trading.Process(doc));
     }
   }
 }
