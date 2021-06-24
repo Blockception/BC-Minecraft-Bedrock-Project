@@ -4,6 +4,7 @@ import { Conditional } from "../../../../Internal/Types/Conditional";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
 import { Using } from "../../../../Types/Defined Using/include";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Location } from "../../../../Types/Location/Location";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
@@ -36,7 +37,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         location: Location.create(uri, content.indexOf(id)),
         animations: DefinedUsing.empty(),
         molang: MolangSet.harvest(controller),
-        documentation: `BP Animation Controller: ${id}`,
+        documentation: Documentation.getDoc(doc, () => `BP Animation Controller: ${id}`),
       };
 
       Map.forEach(controller.states, (state) => getAnimations(state, item.animations));

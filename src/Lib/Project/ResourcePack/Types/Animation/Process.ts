@@ -6,6 +6,7 @@ import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./include";
 import { Map } from "../../../../Types/Map/Map";
 import { Using } from "../../../../Types/Defined Using/include";
+import { Documentation } from "../../../../Types/Documentated/include";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {
@@ -28,7 +29,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         id: id,
         location: Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(anim),
-        documentation: `RP Animation\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
+        documentation: Documentation.getDoc(doc, () => `RP Animation\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
         particles: Using.empty(),
         sounds: Using.empty(),
       };

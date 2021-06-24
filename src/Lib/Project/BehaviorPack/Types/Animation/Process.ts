@@ -1,6 +1,7 @@
 import * as internal from "../../../../Internal/BehaviorPack/Animation";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Location } from "../../../../Types/Location/Location";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./include";
@@ -26,7 +27,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         id: id,
         location: Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(anim),
-        documentation: `BP Animation: \`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`,
+        documentation: Documentation.getDoc(doc, () => `BP Animation: \`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
       });
     }
   }

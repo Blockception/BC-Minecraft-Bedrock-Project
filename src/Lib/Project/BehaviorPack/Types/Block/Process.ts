@@ -1,6 +1,7 @@
 import * as internal from "../../../../Internal/BehaviorPack/Block";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
+import { Documentation } from "../../../../Types/Documentated/include";
 import { Location } from "../../../../Types/Location/Location";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
@@ -27,7 +28,7 @@ export function Process(doc: TextDocument): Block | undefined {
     location: Location.create(uri, content.indexOf(id)),
     molang: MolangSet.harvest(container),
     states: [],
-    documentation: `BP Block: ${id}`,
+    documentation: Documentation.getDoc(doc, () => `BP Block: ${id}`),
   };
 
   const props = container.description.properties;

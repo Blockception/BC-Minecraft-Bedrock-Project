@@ -38,4 +38,14 @@ export namespace Range {
   export function create(start: Position, end: Position): Range {
     return { start: start, end: end };
   }
+
+  /**
+   *
+   * @param start
+   * @param end
+   * @returns
+   */
+  export function createR(startLine: number, startOffset: number, endLine: number, endOffset: number): Range {
+    return { start: { character: startOffset, line: startLine }, end: { character: endOffset, line: endLine } };
+  }
 }

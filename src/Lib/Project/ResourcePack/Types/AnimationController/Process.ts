@@ -7,6 +7,7 @@ import { AnimationController } from "./include";
 import { Map } from "../../../../Types/Map/Map";
 import { Conditional } from "../../../../Internal/Types/Conditional";
 import { Using } from "../../../../Types/Defined Using/include";
+import { Documentation } from "../../../../Types/Documentated/include";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
@@ -29,7 +30,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         id: id,
         location: Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(controller),
-        documentation: `RP Animation Controller: \`${id}\``,
+        documentation: Documentation.getDoc(doc, () => `RP Animation Controller: \`${id}\``),
         animations: Using.empty(),
         particles: Using.empty(),
         sounds: Using.empty(),

@@ -2,10 +2,10 @@ import * as internal from "../../../../Internal/BehaviorPack/Entity";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
+import { Documentation } from "../../../../Types/Documentated/include";
 import { Location } from "../../../../Types/Location/Location";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Block } from "../Block/include";
 import { Entity } from "./include";
 
 /**
@@ -26,7 +26,7 @@ export function Process(doc: TextDocument): Entity | undefined {
   const out: Entity = {
     id: id,
     location: Location.create(uri, content.indexOf(id)),
-    documentation: `BP Entity: ${id}`,
+    documentation: Documentation.getDoc(doc, () => `BP Entity: ${id}`),
     animations: DefinedUsing.empty(),
     events: [],
     groups: [],
