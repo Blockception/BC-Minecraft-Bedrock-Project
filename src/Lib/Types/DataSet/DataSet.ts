@@ -1,7 +1,7 @@
-import { Container } from "./Container";
-import { Identifiable } from "./Identifiable";
-import { Locatable } from "./Locatable";
-import { VanillaConnector } from "./VanillaConnector";
+import { Container } from "../Container/Container";
+import { Identifiable } from "../Identifiable/Identifiable";
+import { Locatable } from "../Locatable/Locatable";
+import { VanillaConnector } from "../VanillaConnector/VanillaConnector";
 
 /**
  *

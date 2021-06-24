@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { Map } from "../../Types/Map/Map";
 import { FormatVersion } from "../Types/FormatVersion";
 
 export interface Block extends FormatVersion {

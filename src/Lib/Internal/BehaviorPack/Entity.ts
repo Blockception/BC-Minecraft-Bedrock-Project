@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { Map } from "../../Types/Map/Map";
 import { ScriptContainer } from "../Types/Script";
 
 /**The interface that deals with entity events that add or remove component groups*/

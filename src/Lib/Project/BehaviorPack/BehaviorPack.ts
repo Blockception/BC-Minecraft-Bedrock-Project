@@ -2,8 +2,8 @@ import { MCProject } from "bc-minecraft-project";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 import { Entity } from "./Types/Entity/Entity";
 import { Function } from "./Types/Function/Function";
-import { Container } from "../../Types/Container";
-import { DataSet, DataSetSingle } from "../../Types/DataSet";
+import { Container } from "../../Types/Container/Container";
+import { DataSet, DataSetSingle } from "../../Types/DataSet/DataSet";
 import { Structure } from "./Types/Structure/include";
 import { Item } from "./Types/Item/include";
 import { LootTable } from "./Types/LootTable/include";
@@ -11,8 +11,8 @@ import { Trading } from "./Types/Trading/include";
 import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
 import * as Block from "./Types/Block/include";
-import { Pack } from "../../Types/Pack";
-import { TextDocument } from "../../Types/TextDocument";
+import { Pack } from "../../Types/Pack/Pack";
+import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/FileType";
 
 /**

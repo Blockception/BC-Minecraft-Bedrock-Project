@@ -1,5 +1,5 @@
-import { JsonPath } from "./JsonPath";
-import { Position } from "./Position";
+import { JsonPath } from "../Json/JsonPath";
+import { Position } from "../Position/Position";
 
 /**
  *

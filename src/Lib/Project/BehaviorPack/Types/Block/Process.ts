@@ -1,9 +1,9 @@
 import * as internal from "../../../../Internal/BehaviorPack/Block";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location";
-import { Map } from "../../../../Types/Map";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { Location } from "../../../../Types/Location/Location";
+import { Map } from "../../../../Types/Map/Map";
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { BlockState } from "./Block";
 import { Block } from "./include";
 

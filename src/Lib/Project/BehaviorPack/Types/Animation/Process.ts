@@ -1,8 +1,8 @@
 import * as internal from "../../../../Internal/BehaviorPack/Animation";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { Location } from "../../../../Types/Location/Location";
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./include";
 
 /** */

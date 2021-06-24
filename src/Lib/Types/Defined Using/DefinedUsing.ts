@@ -1,5 +1,5 @@
 import { Defined } from "./Defined";
-import { Using } from "./Used";
+import { Using } from "./Using";
 
 export interface DefinedUsing<T> extends Defined<T>, Using<T> {}
 

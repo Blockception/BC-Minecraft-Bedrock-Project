@@ -1,4 +1,4 @@
-import { TextDocument } from "../Types/TextDocument";
+import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
 import { PackType } from "./Enum/PackType";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";

@@ -1,4 +1,4 @@
-import { Location } from "./Location";
+import { Location } from "../Location/Location";
 
 export interface Locatable {
   /**The location of the object in memory*/

@@ -1,11 +1,11 @@
 import * as internal from "../../../../Internal/ResourcePack/Animation";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { Location } from "../../../../Types/Location/Location";
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./include";
 import { Using } from "../../../../Types/Used";
-import { Map } from "../../../../Types/Map";
+import { Map } from "../../../../Types/Map/Map";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {

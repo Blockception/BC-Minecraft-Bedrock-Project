@@ -1,12 +1,12 @@
 import * as internal from "../../../../Internal/ResourcePack/AnimationController";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { Location } from "../../../../Types/Location/Location";
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { AnimationController } from "./include";
-import { DefinedUsing } from "../../../../Types/DefinedUsing";
+import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
 import { Using } from "../../../../Types/Used";
-import { Map } from "../../../../Types/Map";
+import { Map } from "../../../../Types/Map/Map";
 import { Conditional } from "../../../../Internal/Types/Conditional";
 
 /** */

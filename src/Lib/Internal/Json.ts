@@ -1,5 +1,5 @@
 import { jsonc } from "jsonc";
-import { TextDocument } from "../Types/TextDocument";
+import { TextDocument } from "../Types/TextDocument/TextDocument";
 
 export namespace Json {
   export function To<T>(doc: TextDocument | string): T | undefined {

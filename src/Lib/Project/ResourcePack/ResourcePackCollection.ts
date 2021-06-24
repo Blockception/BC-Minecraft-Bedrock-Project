@@ -1,5 +1,5 @@
 import { MCProject } from "bc-minecraft-project";
-import { TextDocument } from "../../Types/TextDocument";
+import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { ResourcePack } from "./ResourcePack";
 
 /**

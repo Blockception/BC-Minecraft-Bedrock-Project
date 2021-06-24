@@ -1,6 +1,6 @@
 import { MCProject } from "bc-minecraft-project";
 import { Container, DataSet, DataSetSingle } from "../../Types/include";
-import { Pack } from "../../Types/Pack";
+import { Pack } from "../../Types/Pack/Pack";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
@@ -13,7 +13,7 @@ import { Fog } from "./Types/Fog/include";
 import { Material } from "./Types/Material/include";
 import { Model } from "./Types/Model/include";
 import { Attachable } from "./Types/Attachable/include";
-import { TextDocument } from "../../Types/TextDocument";
+import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/include";
 
 export class ResourcePack implements Container, Pack {

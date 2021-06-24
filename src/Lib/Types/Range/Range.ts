@@ -1,4 +1,4 @@
-import { Position } from "./include";
+import { Position } from "../include";
 
 /**
  *

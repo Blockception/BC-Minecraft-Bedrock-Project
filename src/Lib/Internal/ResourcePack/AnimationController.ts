@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { Map } from "../../Types/Map/Map";
 import { Conditional } from "../Types/Conditional";
 import { Definition } from "../Types/Definition";
 import { FormatVersion } from "../Types/FormatVersion";

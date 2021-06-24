@@ -1,5 +1,5 @@
-import { Container } from "./Container";
-import { Identifiable } from "./Identifiable";
+import { Container } from "../Container/Container";
+import { Identifiable } from "../Identifiable/Identifiable";
 
 export interface VanillaConnector<T> {
   has(id: string): boolean;
