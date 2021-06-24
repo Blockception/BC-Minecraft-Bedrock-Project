@@ -10,7 +10,7 @@ import { Trading } from "./include";
  */
 export function Process(doc: TextDocument): Trading | undefined {
   const uri = doc.uri;
-  const index = uri.indexOf("loot_tables");
+  const index = uri.indexOf("trading");
 
   if (index < 0) return undefined;
 

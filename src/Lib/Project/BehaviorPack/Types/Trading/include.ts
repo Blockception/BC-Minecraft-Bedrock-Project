@@ -1,4 +1,4 @@
 /*	Auto generated	*/
 
-export * from "./LootTable";
+export * from "./Trading";
 export * from "./Process";
