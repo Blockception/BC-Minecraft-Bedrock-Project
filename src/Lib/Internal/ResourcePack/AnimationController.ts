@@ -72,9 +72,7 @@ export interface State {
   variables?: Definition;
 }
 
-/**
- *
- */
+/** */
 export namespace State {
   /**
    *

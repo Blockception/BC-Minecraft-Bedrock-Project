@@ -3,9 +3,7 @@ import { Identifiable } from "../Identifiable/Identifiable";
 import { Locatable } from "../Locatable/Locatable";
 import { VanillaConnector } from "../VanillaConnector/VanillaConnector";
 
-/**
- *
- */
+/** */
 export interface DataSet<T extends Identifiable & Locatable, U> {
   /**Clears the entire dataset*/
   clear(): void;
@@ -47,14 +45,10 @@ export interface DataSet<T extends Identifiable & Locatable, U> {
   set(value: T | T[] | undefined): this;
 }
 
-/**
- *
- */
+/** */
 export interface DataSetSingle<T extends Identifiable & Locatable> extends DataSet<T, T> {}
 
-/**
- *
- */
+/** */
 export namespace DataSet {
   /**
    *
@@ -94,9 +88,7 @@ export namespace DataSet {
   }
 }
 
-/**
- *
- */
+/** */
 export class DataSetConnected<T extends Identifiable & Locatable, U> implements DataSet<T, U> {
   private _data: Map<string, T>;
   private _vanilla: VanillaConnector<U>;
@@ -110,9 +102,7 @@ export class DataSetConnected<T extends Identifiable & Locatable, U> implements 
     this._vanilla = vanilla;
   }
 
-  /**
-   *
-   */
+  /** */
   clear(): void {
     this._data.clear();
   }
@@ -199,9 +189,7 @@ export class DataSetConnected<T extends Identifiable & Locatable, U> implements 
   }
 }
 
-/**
- *
- */
+/** */
 export class DataSetUnconnected<T extends Identifiable & Locatable> implements DataSetSingle<T> {
   private _data: Map<string, T>;
 
@@ -213,9 +201,7 @@ export class DataSetUnconnected<T extends Identifiable & Locatable> implements D
     this._data = new Map<string, T>();
   }
 
-  /**
-   *
-   */
+  /** */
   clear(): void {
     this._data.clear();
   }

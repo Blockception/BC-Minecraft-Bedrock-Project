@@ -1,6 +1,4 @@
-/**
- *
- */
+/** */
 export enum FileType {
   /** */
   animation,
@@ -50,6 +48,7 @@ export enum FileType {
   unknown,
 }
 
+/** */
 export namespace FileType {
   /**Detects resource pack resource, already assumed the path belongs to a resource pack
    * @param uri the decoded uri, expects slashes to be '/'*/

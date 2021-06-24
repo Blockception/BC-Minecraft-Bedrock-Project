@@ -1,19 +1,12 @@
-import { Range } from "../Range/Range";
 import { TextDocument } from "../TextDocument/TextDocument";
 
-/**
- *
- */
+/** */
 export interface Documentated {
-  /**
-   *
-   */
+  /** */
   documentation?: string;
 }
 
-/**
- *
- */
+/** */
 export namespace Documentated {
   /**
    *
@@ -29,6 +22,7 @@ export namespace Documentated {
   }
 }
 
+/** */
 export namespace Documentation {
   /**Retrieves the comment from the first line or uses the given default to generate a default line of documentation
    * @param receiver The receiving object

@@ -1,13 +1,12 @@
 import { Location } from "../Location/Location";
 
+/** */
 export interface Locatable {
   /**The location of the object in memory*/
   location: Location;
 }
 
-/**
- *
- */
+/** */
 export namespace Locatable {
   /**
    *

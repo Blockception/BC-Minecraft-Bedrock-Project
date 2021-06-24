@@ -6,9 +6,7 @@ export interface Identifiable extends Types.Identifiable {
   id: string;
 }
 
-/**
- *
- */
+/** */
 export namespace Identifiable {
   /**
    *

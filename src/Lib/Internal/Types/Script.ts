@@ -1,5 +1,3 @@
-import { Molang } from "../../Molang/Molang";
-import { MolangSet } from "../../Molang/MolangSet";
 import { Conditional } from "./Conditional";
 import { Definition } from "./Definition";
 
@@ -15,9 +13,7 @@ export interface Script {
   variables?: Definition;
 }
 
-/**
- *
- */
+/** */
 export namespace Script {
   /**
    *
@@ -33,18 +29,21 @@ export namespace Script {
   }
 }
 
-/**
- *
- */
+/** */
 export interface ScriptContainer {
+  /** */
   scripts?: Script;
+  /** */
   animations?: Definition;
 }
 
-/**
- *
- */
+/** */
 export namespace ScriptContainer {
+  /**
+   *
+   * @param value
+   * @returns
+   */
   export function is(value: any): value is ScriptContainer {
     if (value) {
       if (typeof value.scripts === "object" || typeof value.animations === "object") return true;

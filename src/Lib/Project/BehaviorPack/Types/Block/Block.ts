@@ -44,9 +44,7 @@ export interface BlockStateBoolean {
   values: boolean[];
 }
 
-/**
- *
- */
+/** */
 export namespace BlockState {
   /**
    *

@@ -61,9 +61,7 @@ export interface State {
   transitions?: Conditional[];
 }
 
-/**
- *
- */
+/** */
 export namespace State {
   /**
    *

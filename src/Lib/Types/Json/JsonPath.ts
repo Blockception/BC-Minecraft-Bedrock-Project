@@ -1,13 +1,9 @@
 import { TextDocument } from "../TextDocument/include";
 
-/**
- *
- */
+/** */
 export type JsonPath = string;
 
-/**
- *
- */
+/** */
 export namespace JsonPath {
   /**
    *

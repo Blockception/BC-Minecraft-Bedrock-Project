@@ -17,9 +17,7 @@ import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/FileType";
 
-/**
- *
- */
+/** */
 export class BehaviorPack implements Container, Pack {
   /**The folder path of the pack*/
   readonly folder: string;

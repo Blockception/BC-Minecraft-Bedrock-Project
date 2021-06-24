@@ -1,16 +1,10 @@
-/**
- *
- */
+/** */
 export interface Definition {
-  /**
-   *
-   */
+  /** */
   [definition: string]: string;
 }
 
-/**
- *
- */
+/** */
 export namespace Definition {
   /**
    *

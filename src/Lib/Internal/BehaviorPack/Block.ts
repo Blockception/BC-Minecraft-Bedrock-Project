@@ -16,9 +16,7 @@ export interface Block extends FormatVersion {
   };
 }
 
-/**
- *
- */
+/** */
 export namespace Block {
   /**
    *

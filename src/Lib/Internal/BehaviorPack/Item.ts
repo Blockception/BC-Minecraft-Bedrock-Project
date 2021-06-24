@@ -14,9 +14,7 @@ export interface Item extends FormatVersion {
   };
 }
 
-/**
- *
- */
+/** */
 export namespace Item {
   /**
    *

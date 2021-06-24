@@ -2,13 +2,9 @@ import { MCProject } from "bc-minecraft-project";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack";
 
-/**
- *
- */
+/** */
 export class BehaviorPackCollection {
-  /**
-   *
-   */
+  /** */
   public packs: BehaviorPack[];
 
   constructor() {

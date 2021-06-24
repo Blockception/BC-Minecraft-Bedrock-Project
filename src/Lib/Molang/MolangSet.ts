@@ -2,41 +2,25 @@ import { DefinedUsing } from "../Types/Defined Using/DefinedUsing";
 import { Using } from "../Types/Defined Using/include";
 import { Molang } from "./Molang";
 
-/**
- *
- */
+/** */
 export interface MolangSet {
-  /**
-   *
-   */
+  /** */
   variables: DefinedUsing<string>;
-  /**
-   *
-   */
+  /** */
   queries: Using<string>;
 }
 
-/**
- *
- */
+/** */
 export interface MolangFullSet extends MolangSet {
-  /**
-   *
-   */
+  /** */
   materials: DefinedUsing<string>;
-  /**
-   *
-   */
+  /** */
   textures: DefinedUsing<string>;
-  /**
-   *
-   */
+  /** */
   geometries: DefinedUsing<string>;
 }
 
-/**
- *
- */
+/** */
 export namespace MolangSet {
   /**
    *

@@ -1,8 +1,6 @@
 import { DataContent } from "./DataContent";
 
-/**
- *
- */
+/** */
 export namespace RegularExpression {
   /**
    *

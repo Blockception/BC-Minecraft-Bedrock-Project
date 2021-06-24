@@ -1,16 +1,10 @@
-/**
- *
- */
+/** */
 export interface FormatVersion {
-  /**
-   *
-   */
+  /** */
   format_version: string;
 }
 
-/**
- *
- */
+/** */
 export namespace FormatVersion {
   /**
    *

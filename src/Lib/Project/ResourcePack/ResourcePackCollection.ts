@@ -2,13 +2,9 @@ import { MCProject } from "bc-minecraft-project";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { ResourcePack } from "./ResourcePack";
 
-/**
- *
- */
+/** */
 export class ResourcePackCollection {
-  /**
-   *
-   */
+  /** */
   public packs: ResourcePack[];
 
   constructor() {

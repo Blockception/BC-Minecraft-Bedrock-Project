@@ -1,24 +1,16 @@
 import { JsonPath } from "../Json/JsonPath";
 import { Position } from "../Position/Position";
 
-/**
- *
- */
+/** */
 export interface Location {
-  /**
-   *
-   */
+  /** */
   uri: string;
 
-  /**
-   *
-   */
+  /** */
   position: Position | JsonPath | number;
 }
 
-/**
- *
- */
+/** */
 export namespace Location {
   /**
    *
@@ -33,6 +25,12 @@ export namespace Location {
     return false;
   }
 
+  /**
+   *
+   * @param uri
+   * @param position
+   * @returns
+   */
   export function create(uri: string, position: Position | JsonPath | number = 0): Location {
     return {
       uri: uri,

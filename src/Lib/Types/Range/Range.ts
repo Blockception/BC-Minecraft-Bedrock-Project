@@ -1,22 +1,14 @@
 import { Position } from "../Position/include";
 
-/**
- *
- */
+/** */
 export interface Range {
-  /**
-   *
-   */
+  /** */
   start: Position;
-  /**
-   *
-   */
+  /** */
   end: Position;
 }
 
-/**
- *
- */
+/** */
 export namespace Range {
   /**
    *

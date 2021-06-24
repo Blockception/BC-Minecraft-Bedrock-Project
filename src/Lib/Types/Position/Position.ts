@@ -6,9 +6,7 @@ export interface Position {
   character: number;
 }
 
-/**
- *
- */
+/** */
 export namespace Position {
   /**
    *

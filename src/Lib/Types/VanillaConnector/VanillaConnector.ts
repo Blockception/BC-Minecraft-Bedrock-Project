@@ -22,9 +22,7 @@ export interface VanillaConnector<T> {
   forEach(callbackfn: (value: T) => void, thisArg?: any): void;
 }
 
-/**
- *
- */
+/** */
 export namespace VanillaConnector {
   /**
    *
