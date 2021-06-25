@@ -1,4 +1,6 @@
-export type Conditional = string | ConditionalObject;
+import { Definition } from "./Definition";
+
+export type Conditional = string | Definition;
 
 /** */
 export namespace Conditional {
@@ -34,10 +36,4 @@ export namespace Conditional {
   export function forEach(container: Conditional[], callbackfn: (value: string, key: string, container: Conditional[]) => void): void {
     container.forEach((c) => callbackfn(getCondition(c), getDefinition(c), container));
   }
-}
-
-/** */
-export interface ConditionalObject {
-  /** */
-  [definition: string]: string;
 }

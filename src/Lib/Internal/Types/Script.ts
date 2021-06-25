@@ -42,8 +42,7 @@ export namespace ScriptContainer {
   /**
    *
    * @param value
-   * @returns
-   */
+   * @returns*/
   export function is(value: any): value is ScriptContainer {
     if (value) {
       if (typeof value.scripts === "object" || typeof value.animations === "object") return true;

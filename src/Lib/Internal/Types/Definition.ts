@@ -18,8 +18,7 @@ export namespace Definition {
    *
    * @param id
    * @param container
-   * @returns
-   */
+   * @returns*/
   export function has(id: string, container: Definition): boolean {
     return typeof container[id] === "string";
   }
@@ -28,8 +27,7 @@ export namespace Definition {
    *
    * @param value
    * @param container
-   * @returns
-   */
+   * @returns*/
   export function uses(value: string, container: Definition): boolean {
     const keys = Object.getOwnPropertyNames(container);
 
@@ -44,8 +42,7 @@ export namespace Definition {
    *
    * @param id
    * @param container
-   * @returns
-   */
+   * @returns*/
   export function get(id: string, container: Definition): string | undefined {
     return container[id];
   }
