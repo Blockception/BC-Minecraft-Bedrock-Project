@@ -17,6 +17,11 @@
     "version": "npm run format && git add -A src",
     "watch": "tsc -w -p ./src"
   },
+  "files": [
+    "lib/src/**/*.js",
+    "lib/src/**/*.js.map",
+    "lib/src/**/*.d.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Blockception/BC-Minecraft-Bedrock-Project.git"
@@ -34,11 +39,6 @@
     "url": "https://github.com/Blockception/BC-Minecraft-Bedrock-Project/issues"
   },
   "homepage": "https://github.com/Blockception/BC-Minecraft-Bedrock-Project#readme",
-  "files": [
-    "lib/*.js",
-    "lib/*.js.map",
-    "lib/*.ts"
-  ],
   "devDependencies": {
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.2.2",
