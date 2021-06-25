@@ -86,6 +86,12 @@ export class ResourcePack implements Container, Pack {
 
       case FileType.attachable:
         return this.attachables.set(Attachable.Process(doc));
+
+      case FileType.entity:
+        return this.entities.set(Entity.Process(doc));
+
+      case FileType.fog:
+        return this.fogs.set(Fog.Process(doc));
     }
   }
 }

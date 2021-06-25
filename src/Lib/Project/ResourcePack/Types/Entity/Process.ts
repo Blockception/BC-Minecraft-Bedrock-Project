@@ -27,7 +27,7 @@ export function Process(doc: TextDocument): Entity | undefined {
     location: Location.create(uri, content.indexOf(id)),
     molang: MolangFullSet.harvest(container),
     animations: DefinedUsing.create(),
-    documentation: Documentation.getDoc(doc, () => `Entity Item: ${id}`),
+    documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),
   };
 
   if (container.animations)
