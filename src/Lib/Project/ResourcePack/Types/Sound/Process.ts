@@ -1,4 +1,4 @@
-import * as internal from "../../../../Internal/ResourcePack/Sound Definitions";
+import * as internal from "../../../../Internal/ResourcePack/SoundDefinitions";
 import { Json } from "../../../../Internal/Json";
 import { Location } from "../../../../Types/Location/Location";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
