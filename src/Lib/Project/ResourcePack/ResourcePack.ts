@@ -83,6 +83,9 @@ export class ResourcePack implements Container, Pack {
 
       case FileType.animation_controller:
         return this.animation_controllers.set(AnimationController.Process(doc));
+
+      case FileType.attachable:
+        return this.attachables.set(Attachable.Process(doc));
     }
   }
 }

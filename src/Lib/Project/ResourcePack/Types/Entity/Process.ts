@@ -1,11 +1,10 @@
-import * as internal from "../../../../Internal/ResourcePack/Attachable";
+import * as internal from "../../../../Internal/ResourcePack/Entity";
 import { Json } from "../../../../Internal/Json";
-import { MolangFullSet, MolangSet } from "../../../../Molang/MolangSet";
+import { MolangFullSet } from "../../../../Molang/MolangSet";
 import { Location } from "../../../../Types/Location/Location";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Attachable } from "./include";
-import { Map } from "../../../../Types/Map/Map";
-import { DefinedUsing, Using } from "../../../../Types/Defined Using/include";
+import { Entity } from "./include";
+import { DefinedUsing } from "../../../../Types/Defined Using/include";
 import { Documentation } from "../../../../Types/Documentated/include";
 import { Definition } from "../../../../Internal/Types/Definition";
 
@@ -14,21 +13,21 @@ import { Definition } from "../../../../Internal/Types/Definition";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Attachable | undefined {
+export function Process(doc: TextDocument): Entity | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Attachable>(content);
+  const imp = Json.To<internal.Entity>(content);
 
-  if (!internal.Attachable.is(imp)) return undefined;
+  if (!internal.Entity.is(imp)) return undefined;
 
-  const container = imp["minecraft:attachable"];
+  const container = imp["minecraft:entity"];
   const id = container.description.identifier;
-  const out: Attachable = {
+  const out: Entity = {
     id: id,
     location: Location.create(uri, content.indexOf(id)),
     molang: MolangFullSet.harvest(container),
     animations: DefinedUsing.create(),
-    documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
+    documentation: Documentation.getDoc(doc, () => `Entity Item: ${id}`),
   };
 
   if (container.animations)
