@@ -54,7 +54,7 @@ export namespace Fog {
    */
   export function is(value: any): value is Fog {
     if (typeof value === "object" && typeof value.format_version === "string" && typeof value["minecraft:fog_settings"] === "object") {
-      const desc = value.description;
+      const desc = value["minecraft:fog_settings"].description;
 
       if (typeof desc === "object" && typeof desc.identifier === "string") {
         return true;

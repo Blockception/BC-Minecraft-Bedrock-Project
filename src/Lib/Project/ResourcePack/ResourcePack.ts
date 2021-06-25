@@ -13,7 +13,7 @@ import * as Attachable from "./Types/Attachable/include";
 import * as Block from "./Types/Block/include";
 import * as Entity from "./Types/Entity/include";
 import * as Fog from "./Types/Fog/include";
-import * as Item from "./Types/Item/Item";
+import * as Particle from "./Types/Particle/include";
 import * as Material from "./Types/Material/include";
 import * as Model from "./Types/Model/include";
 import * as Sound from "./Types/Sound/include";
@@ -35,14 +35,14 @@ export class ResourcePack implements Container, Pack {
   readonly blocks: DataSetSingle<Block.Block>;
   /**The collection of entities*/
   readonly entities: DataSet<Entity.Entity, Types.ResourcePack.Entity>;
-  /**The collection of items*/
-  readonly items: DataSetSingle<Item.Item>;
   /**The collection of fogs*/
   readonly fogs: DataSet<Fog.Fog, Types.ResourcePack.Fog>;
   /**The collection of materials*/
   readonly materials: DataSet<Material.Material, Types.ResourcePack.Material>;
   /**The collection of models*/
   readonly models: DataSet<Model.Model, Types.ResourcePack.Model>;
+  /**The collection of models*/
+  readonly particles: DataSet<Particle.Particle, Types.ResourcePack.Particle>;
   /**The collection of sounds*/
   readonly sounds: DataSet<Sound.Sound, Types.ResourcePack.Sound>;
   /**The collection of textures*/
@@ -51,8 +51,7 @@ export class ResourcePack implements Container, Pack {
   /**
    *
    * @param folder The folder of the behavior
-   * @param Context The Mcproject data or the filepath to read from
-   */
+   * @param Context The Mcproject data or the filepath to read from*/
   constructor(folder: string, Context: MCProject | string) {
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
@@ -62,10 +61,10 @@ export class ResourcePack implements Container, Pack {
     this.attachables = DataSet.create();
     this.blocks = DataSet.create();
     this.entities = DataSet.createID(Vanilla.ResourcePack.Entities, Edu.ResourcePack.Entities, this);
-    this.items = DataSet.create();
     this.fogs = DataSet.createString(Vanilla.ResourcePack.Fogs, Edu.ResourcePack.Fogs, this);
     this.materials = DataSet.createString(Vanilla.ResourcePack.Materials, Edu.ResourcePack.Materials, this);
     this.models = DataSet.createString(Vanilla.ResourcePack.Models, Edu.ResourcePack.Models, this);
+    this.particles = DataSet.createString(Vanilla.ResourcePack.Particles, Edu.ResourcePack.Particles, this);
     this.sounds = DataSet.createString(Vanilla.ResourcePack.Sounds, Edu.ResourcePack.Sounds, this);
     this.textures = DataSet.createString(Vanilla.ResourcePack.Textures, Edu.ResourcePack.Textures, this);
   }
@@ -92,6 +91,15 @@ export class ResourcePack implements Container, Pack {
 
       case FileType.fog:
         return this.fogs.set(Fog.Process(doc));
+
+      case FileType.material:
+        return this.materials.set(Material.Process(doc));
+
+      case FileType.model:
+        return this.models.set(Model.Process(doc));
+
+      case FileType.particle:
+        return this.particles.set(Model.Process(doc));
     }
   }
 }
