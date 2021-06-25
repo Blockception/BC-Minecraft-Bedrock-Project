@@ -3,8 +3,11 @@ import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
 import { PackType } from "./Enum/PackType";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 
+/** */
 export class ProjectData {
+  /** */
   BehaviorPacks: BehaviorPackCollection;
+  /** */
   ResourcePacks: ResourcePackCollection;
 
   constructor() {
