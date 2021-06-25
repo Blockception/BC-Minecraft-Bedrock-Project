@@ -11,3 +11,19 @@ export interface Pack {
    */
   process(doc: TextDocument): void;
 }
+
+/** */
+export namespace Pack {
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  export function is(value: any): value is Pack {
+    if (typeof value === "object" && typeof value.folder === "string" && typeof value.process === "function") {
+      return true;
+    }
+
+    return false;
+  }
+}

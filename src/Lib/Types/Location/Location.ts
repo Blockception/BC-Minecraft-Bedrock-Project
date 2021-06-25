@@ -32,9 +32,6 @@ export namespace Location {
    * @returns
    */
   export function create(uri: string, position: Position | JsonPath | number = 0): Location {
-    return {
-      uri: uri,
-      position: position,
-    };
+    return { uri: uri, position: position };
   }
 }
