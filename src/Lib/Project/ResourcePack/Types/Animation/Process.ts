@@ -34,24 +34,12 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         sounds: Using.empty(),
       };
 
-      if (anim.particle_effects) harvest(anim.particle_effects, item.particles);
-      if (anim.sound_effects) harvest(anim.sound_effects, item.sounds);
+      if (anim.particle_effects) Map.forEach(anim.particle_effects, (value, key) => item.particles.using.push(key));
+      if (anim.sound_effects) Map.forEach(anim.sound_effects, (value, key) => item.sounds.using.push(key));
 
       out.push(item);
     }
   }
 
   return out;
-}
-
-function harvest(data: Map<{ effect?: string } | { effect?: string }[]>, receiver: Using<string>) {
-  Map.forEach(data, (value) => {
-    if (Array.isArray(value)) {
-      value.forEach((e) => {
-        if (e.effect) receiver.using.push(e.effect);
-      });
-    } else {
-      if (value.effect) receiver.using.push(value.effect);
-    }
-  });
 }

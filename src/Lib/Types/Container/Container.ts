@@ -3,7 +3,7 @@ import { MCProject } from "bc-minecraft-project";
 /** */
 export interface Container {
   /**The nessacary Minecraft project data*/
-  context: MCProject;
+  readonly context: MCProject;
 }
 
 /** */

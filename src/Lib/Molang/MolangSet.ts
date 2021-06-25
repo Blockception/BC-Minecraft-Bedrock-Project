@@ -80,3 +80,72 @@ export namespace MolangSet {
     }
   }
 }
+
+/**
+ *
+ */
+export namespace MolangFullSet {
+  /**
+   *
+   * @returns
+   */
+  export function create(): MolangFullSet {
+    return {
+      queries: DefinedUsing.empty(),
+      variables: DefinedUsing.empty(),
+      geometries: DefinedUsing.empty(),
+      materials: DefinedUsing.empty(),
+      textures: DefinedUsing.empty(),
+    };
+  }
+
+  /**
+   *
+   * @param object
+   */
+  export function harvest(object: object | string): MolangFullSet {
+    const out = create();
+
+    internalHarvest(object, out);
+
+    return out;
+  }
+
+  /**
+   *
+   * @param object
+   * @param receiver
+   */
+  function internalHarvest(object: any, receiver: MolangFullSet): void {
+    switch (typeof object) {
+      case "string":
+        Molang.Queries.getUsing(object, receiver.queries.using);
+        Molang.Variables.getUsing(object, receiver.variables.using);
+        Molang.Variables.getDefined(object, receiver.variables.defined);
+
+        Molang.Textures.getUsing(object, receiver.textures.using);
+        Molang.Geometries.getUsing(object, receiver.textures.using);
+        Molang.Materials.getUsing(object, receiver.textures.using);
+        break;
+
+      case "object":
+        if (Array.isArray(object)) {
+          for (let I = 0; I < object.length; I++) {
+            const elemt = object[I];
+            internalHarvest(elemt, receiver);
+          }
+        } else {
+          const keys = Object.getOwnPropertyNames(object);
+
+          for (let I = 0; I < keys.length; I++) {
+            const elemt = object[I];
+            internalHarvest(elemt, receiver);
+          }
+        }
+        break;
+
+      default:
+        break;
+    }
+  }
+}

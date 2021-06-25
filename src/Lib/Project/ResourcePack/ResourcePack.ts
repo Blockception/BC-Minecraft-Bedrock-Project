@@ -2,20 +2,22 @@ import { MCProject } from "bc-minecraft-project";
 import { DataSet, DataSetSingle } from "../../Types/DataSet/include";
 import { Pack } from "../../Types/Pack/Pack";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
-import * as AnimationController from "./Types/AnimationController/include";
-import * as Animation from "./Types/Animation/include";
-import { Block } from "./Types/Block/include";
-import { Entity } from "./Types/Entity/include";
-import { Item } from "./Types/Item/Item";
-import { Sound } from "./Types/Sound/include";
-import { Texture } from "./Types/Texture/include";
-import { Fog } from "./Types/Fog/include";
-import { Material } from "./Types/Material/include";
-import { Model } from "./Types/Model/include";
-import { Attachable } from "./Types/Attachable/include";
+
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/include";
 import { Container } from "../../Types/Container/include";
+
+import * as Animation from "./Types/Animation/include";
+import * as AnimationController from "./Types/AnimationController/include";
+import * as Attachable from "./Types/Attachable/include";
+import * as Block from "./Types/Block/include";
+import * as Entity from "./Types/Entity/include";
+import * as Fog from "./Types/Fog/include";
+import * as Item from "./Types/Item/Item";
+import * as Material from "./Types/Material/include";
+import * as Model from "./Types/Model/include";
+import * as Sound from "./Types/Sound/include";
+import * as Texture from "./Types/Texture/include";
 
 export class ResourcePack implements Container, Pack {
   /**The folder path of the pack*/
@@ -28,23 +30,23 @@ export class ResourcePack implements Container, Pack {
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSet<AnimationController.AnimationController, Types.ResourcePack.AnimationController>;
   /**The collection of animations controllers*/
-  readonly attachables: DataSetSingle<Attachable>;
-  /**The collection of */
-  readonly blocks: DataSetSingle<Block>;
-  /**The collection of */
-  readonly entities: DataSet<Entity, Types.ResourcePack.Entity>;
-  /**The collection of */
-  readonly items: DataSetSingle<Item>;
-  /**The collection of */
-  readonly fogs: DataSet<Fog, Types.ResourcePack.Fog>;
-  /**The collection of */
-  readonly materials: DataSet<Material, Types.ResourcePack.Material>;
-  /**The collection of */
-  readonly models: DataSet<Model, Types.ResourcePack.Model>;
-  /**The collection of */
-  readonly sounds: DataSet<Sound, Types.ResourcePack.Sound>;
-  /**The collection of */
-  readonly textures: DataSet<Texture, Types.ResourcePack.Texture>;
+  readonly attachables: DataSetSingle<Attachable.Attachable>;
+  /**The collection of blocks*/
+  readonly blocks: DataSetSingle<Block.Block>;
+  /**The collection of entities*/
+  readonly entities: DataSet<Entity.Entity, Types.ResourcePack.Entity>;
+  /**The collection of items*/
+  readonly items: DataSetSingle<Item.Item>;
+  /**The collection of fogs*/
+  readonly fogs: DataSet<Fog.Fog, Types.ResourcePack.Fog>;
+  /**The collection of materials*/
+  readonly materials: DataSet<Material.Material, Types.ResourcePack.Material>;
+  /**The collection of models*/
+  readonly models: DataSet<Model.Model, Types.ResourcePack.Model>;
+  /**The collection of sounds*/
+  readonly sounds: DataSet<Sound.Sound, Types.ResourcePack.Sound>;
+  /**The collection of textures*/
+  readonly textures: DataSet<Texture.Texture, Types.ResourcePack.Texture>;
 
   /**
    *

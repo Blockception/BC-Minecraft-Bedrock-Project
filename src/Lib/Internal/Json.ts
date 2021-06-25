@@ -1,7 +1,15 @@
 import { jsonc } from "jsonc";
 import { TextDocument } from "../Types/TextDocument/TextDocument";
 
+/**
+ *
+ */
 export namespace Json {
+  /**
+   *
+   * @param doc
+   * @returns
+   */
   export function To<T>(doc: TextDocument | string): T | undefined {
     let out: T | undefined = undefined;
 

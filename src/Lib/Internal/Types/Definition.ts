@@ -1,11 +1,19 @@
+import { Map } from "../../Types/Map/Map";
+
 /** */
-export interface Definition {
-  /** */
-  [definition: string]: string;
-}
+export interface Definition extends Map<string> {}
 
 /** */
 export namespace Definition {
+  /**
+   *
+   * @param map
+   * @param callbackfn
+   */
+  export function forEach(map: Definition, callbackfn: (value: string, key: string, map: Definition) => void): void {
+    Map.forEach(map, callbackfn);
+  }
+
   /**
    *
    * @param id
@@ -40,20 +48,5 @@ export namespace Definition {
    */
   export function get(id: string, container: Definition): string | undefined {
     return container[id];
-  }
-
-  /**
-   *
-   * @param container
-   * @param callbackfn
-   */
-  export function forEach(container: Definition, callbackfn: (value: string, key: string, container: Definition) => void): void {
-    const keys = Object.getOwnPropertyNames(container);
-
-    for (let I = 0; I < keys.length; I++) {
-      const key = container[I];
-      const elem = container[I];
-      callbackfn(elem, key, container);
-    }
   }
 }
