@@ -7,6 +7,9 @@ export class ResourcePackCollection {
   /** */
   public packs: ResourcePack[];
 
+  /**
+   *
+   */
   constructor() {
     this.packs = [];
   }
