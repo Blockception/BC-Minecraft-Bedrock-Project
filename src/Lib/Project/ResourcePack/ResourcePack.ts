@@ -99,7 +99,14 @@ export class ResourcePack implements Container, Pack {
         return this.models.set(Model.Process(doc));
 
       case FileType.particle:
-        return this.particles.set(Model.Process(doc));
+        return this.particles.set(Particle.Process(doc));
+
+      case FileType.sounds_definitions:
+        return this.sounds.set(Sound.Process(doc));
+
+      case FileType.texture_item_atlas:
+      case FileType.texture_terrain_atlas:
+        return this.textures.set(Texture.ProcessTextureAtlas(doc));
     }
   }
 }

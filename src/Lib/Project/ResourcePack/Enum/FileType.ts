@@ -29,8 +29,6 @@ export enum FileType {
   /** */
   render_controller,
   /** */
-  sound,
-  /** */
   sounds,
   /** */
   sounds_definitions,
@@ -94,6 +92,8 @@ export namespace FileType {
       case "terrain_texture":
         return FileType.texture_terrain_atlas;
     }
+
+    if (uri.includes("/textures/")) return FileType.texture;
 
     return FileType.unknown;
   }

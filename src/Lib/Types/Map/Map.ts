@@ -6,6 +6,9 @@ export namespace Map {
   export function forEach<T>(map: { [key: string]: T }, callbackfn: (value: T, key: string, map: { [key: string]: T }) => void): void {
     const keys = Object.getOwnPropertyNames(map);
 
-    keys.forEach((k) => callbackfn(map[k], k, map));
+    keys.forEach((k) => {
+      const elem = map[k];
+      if (typeof elem === "string") callbackfn(elem, k, map);
+    });
   }
 }
