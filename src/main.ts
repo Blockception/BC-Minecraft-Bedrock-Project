@@ -1,4 +1,4 @@
-export { Json, Types } from "./Lib/Internal/include";
+export * as Internal from "./Lib/Internal/include";
 export { DataContent, Molang, MolangFullSet, MolangSet, RegularExpression } from "./Lib/Molang/include";
 export { BehaviorPack, PackType, ProjectData, ResourcePack } from "./Lib/Project/include";
 export {

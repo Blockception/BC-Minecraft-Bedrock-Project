@@ -1,3 +1,5 @@
 /*	Auto generated	*/
-export * as Types from "./Types/include";
+export * from "./Types/include";
+export * as BehaviorPack from "./BehaviorPack/include";
+export * as ResourcePack from "./ResourcePack/include";
 export * from "./Json";
