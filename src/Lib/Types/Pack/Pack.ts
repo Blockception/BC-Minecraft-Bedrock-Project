@@ -1,9 +1,12 @@
+import { MCProject } from "bc-minecraft-project";
 import { TextDocument } from "../TextDocument/TextDocument";
 
 /** */
 export interface Pack {
   /**The folder path of the pack*/
   readonly folder: string;
+  /**The context of the project*/
+  readonly context: MCProject;
 
   /**
    *
