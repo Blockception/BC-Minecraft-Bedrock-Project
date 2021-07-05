@@ -5,6 +5,8 @@ export type JsonPath = string;
 
 /** */
 export namespace JsonPath {
+  export const seperator = "/";
+
   /**
    *
    * @param text
@@ -26,5 +28,23 @@ export namespace JsonPath {
     }
 
     return index;
+  }
+
+  /**
+   *
+   * @param path
+   * @returns
+   */
+  export function create(...path: string[]): JsonPath {
+    return path.join(JsonPath.seperator);
+  }
+
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  export function is(value: any): value is JsonPath {
+    return typeof value === "string";
   }
 }
