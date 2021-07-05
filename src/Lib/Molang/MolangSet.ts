@@ -161,4 +161,18 @@ export namespace MolangFullSet {
         break;
     }
   }
+
+  /**
+   *
+   * @param value
+   */
+  export function isEither(value: MolangSet | MolangFullSet): value is MolangFullSet {
+    const temp = <MolangFullSet>value;
+
+    if (typeof temp.geometries === "object" && typeof temp.materials === "object" && typeof temp.textures === "object") {
+      return true;
+    }
+
+    return false;
+  }
 }
