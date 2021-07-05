@@ -29,4 +29,17 @@ export namespace DefinedUsing {
   export function empty<T>(): DefinedUsing<T> {
     return { defined: [], using: [] };
   }
+
+  /** Check wheter or not is the given value atleast implements a DefinedUsing interface
+   * @param value The object to examine
+   * @returns Returns true or false wheter or not the object implements DefinedUsing*/
+  export function is<T>(value: any): value is DefinedUsing<T> {
+    if (typeof value === "object") {
+      if (Array.isArray(value.using) && Array.isArray(value.defined)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }

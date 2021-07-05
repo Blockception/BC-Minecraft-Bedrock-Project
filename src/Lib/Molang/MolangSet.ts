@@ -99,6 +99,19 @@ export namespace MolangFullSet {
     };
   }
 
+  /**Add the necessary properties to the given data set to the full MolangFullSet
+   * @param data
+   */
+  export function upgrade(data: MolangSet): MolangFullSet {
+    const out = <MolangFullSet>data;
+
+    if (!DefinedUsing.is<string>(out.geometries)) out.geometries = DefinedUsing.empty();
+    if (!DefinedUsing.is<string>(out.materials)) out.materials = DefinedUsing.empty();
+    if (!DefinedUsing.is<string>(out.textures)) out.textures = DefinedUsing.empty();
+
+    return out;
+  }
+
   /**
    *
    * @param object
