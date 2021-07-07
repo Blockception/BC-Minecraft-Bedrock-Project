@@ -33,8 +33,6 @@ export enum FileType {
   /** */
   sounds_definitions,
   /** */
-  spawn_rule,
-  /** */
   texture,
   /** */
   texture_flipbook_atlas,
