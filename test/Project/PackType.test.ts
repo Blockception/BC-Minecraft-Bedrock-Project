@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { PackType } from "./PackType";
+import { PackType } from "../../src/Lib/Project/Enum/PackType";
 
 describe("PackType", () => {
   it("world", () => {
