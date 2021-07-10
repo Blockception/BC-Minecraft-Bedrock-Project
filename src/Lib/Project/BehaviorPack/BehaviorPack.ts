@@ -102,3 +102,25 @@ export class BehaviorPack implements Container, Pack {
     }
   }
 }
+
+export namespace BehaviorPack {
+  export function is(value: any): value is BehaviorPack {
+    if (typeof value === "object") {
+      //Order is determined buy likely / unlikely it is that it missing
+      if (!value.functions) return false;
+      if (!value.items) return false;
+      if (!value.loot_tables) return false;
+      if (!value.structures) return false;
+      if (!value.trading) return false;
+
+      if (!value.animations) return false;
+      if (!value.animation_controllers) return false;
+      if (!value.blocks) return false;
+      if (!value.context) return false;
+      if (!value.entities) return false;
+      if (!value.folder) return false;
+    }
+
+    return false;
+  }
+}

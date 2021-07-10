@@ -110,3 +110,27 @@ export class ResourcePack implements Container, Pack {
     }
   }
 }
+
+export namespace ResourcePack {
+  export function is(value: any): value is ResourcePack {
+    if (typeof value === "object") {
+      //Order is determined buy likely / unlikely it is that it missing
+      if (!value.attachables) return false;
+      if (!value.fogs) return false;
+      if (!value.materials) return false;
+      if (!value.models) return false;
+      if (!value.particles) return false;
+      if (!value.sounds) return false;
+      if (!value.textures) return false;
+
+      if (!value.animations) return false;
+      if (!value.animation_controllers) return false;
+      if (!value.blocks) return false;
+      if (!value.context) return false;
+      if (!value.entities) return false;
+      if (!value.folder) return false;
+    }
+
+    return false;
+  }
+}

@@ -120,16 +120,18 @@ export class BehaviorPackCollection {
    *
    * @param doc
    */
-  process(doc: TextDocument): void {
+  process(doc: TextDocument): boolean {
     const uri = doc.uri;
 
     for (var I = 0; I < this.packs.length; I++) {
       const current = this.packs[I];
       if (uri.startsWith(current.folder)) {
         current.process(doc);
-        return;
+        return true;
       }
     }
+
+    return false;
   }
 
   /**
