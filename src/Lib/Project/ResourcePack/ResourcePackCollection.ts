@@ -1,6 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { ResourcePack } from "./ResourcePack";
+import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 
 import * as Animation from "./Types/Animation/include";
 import * as AnimationController from "./Types/AnimationController/include";
@@ -13,8 +14,6 @@ import * as Material from "./Types/Material/include";
 import * as Model from "./Types/Model/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
-import { Types } from "bc-minecraft-bedrock-vanilla-data";
-import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 
 /** */
 export class ResourcePackCollection {
@@ -22,27 +21,27 @@ export class ResourcePackCollection {
   public packs: ResourcePack[];
 
   /**The collection of  animations*/
-  readonly animations: DataSetConnector<Animation.Animation | Types.ResourcePack.Animation>;
+  readonly animations: DataSetConnector<Animation.Animation>;
   /**The collection of animations controllers*/
-  readonly animation_controllers: DataSetConnector<AnimationController.AnimationController | Types.ResourcePack.AnimationController>;
+  readonly animation_controllers: DataSetConnector<AnimationController.AnimationController>;
   /**The collection of animations controllers*/
   readonly attachables: DataSetConnector<Attachable.Attachable>;
   /**The collection of blocks*/
   readonly blocks: DataSetConnector<Block.Block>;
   /**The collection of entities*/
-  readonly entities: DataSetConnector<Entity.Entity | Types.ResourcePack.Entity>;
+  readonly entities: DataSetConnector<Entity.Entity>;
   /**The collection of fogs*/
-  readonly fogs: DataSetConnector<Fog.Fog | Types.ResourcePack.Fog>;
+  readonly fogs: DataSetConnector<Fog.Fog>;
   /**The collection of materials*/
-  readonly materials: DataSetConnector<Material.Material | Types.ResourcePack.Material>;
+  readonly materials: DataSetConnector<Material.Material>;
   /**The collection of models*/
-  readonly models: DataSetConnector<Model.Model | Types.ResourcePack.Model>;
+  readonly models: DataSetConnector<Model.Model>;
   /**The collection of models*/
-  readonly particles: DataSetConnector<Particle.Particle | Types.ResourcePack.Particle>;
+  readonly particles: DataSetConnector<Particle.Particle>;
   /**The collection of sounds*/
-  readonly sounds: DataSetConnector<Sound.Sound | Types.ResourcePack.Sound>;
+  readonly sounds: DataSetConnector<Sound.Sound>;
   /**The collection of textures*/
-  readonly textures: DataSetConnector<Texture.Texture | Types.ResourcePack.Texture>;
+  readonly textures: DataSetConnector<Texture.Texture>;
 
   /**
    *
@@ -50,95 +49,20 @@ export class ResourcePackCollection {
   constructor() {
     this.packs = [];
 
+    const count = () => this.packs.length;
+
     //Connections
-    this.animations = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].animations.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.animation_controllers = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].animation_controllers.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.attachables = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].attachables.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.blocks = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].blocks.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.entities = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].entities.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.fogs = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].fogs.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.materials = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].materials.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.models = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].models.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.particles = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].particles.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.sounds = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].sounds.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
-    this.textures = DataSetConnector.create((id: string) => {
-      for (let I = 0; I < this.packs.length; I++) {
-        const p = this.packs[I].textures.get(id);
-        if (p) return p;
-      }
-
-      return undefined;
-    });
+    this.animations = new DataSetConnector(count, (index) => this.packs[index].animations);
+    this.animation_controllers = new DataSetConnector(count, (index) => this.packs[index].animation_controllers);
+    this.attachables = new DataSetConnector(count, (index) => this.packs[index].attachables);
+    this.blocks = new DataSetConnector(count, (index) => this.packs[index].blocks);
+    this.entities = new DataSetConnector(count, (index) => this.packs[index].entities);
+    this.fogs = new DataSetConnector(count, (index) => this.packs[index].fogs);
+    this.materials = new DataSetConnector(count, (index) => this.packs[index].materials);
+    this.models = new DataSetConnector(count, (index) => this.packs[index].models);
+    this.particles = new DataSetConnector(count, (index) => this.packs[index].particles);
+    this.sounds = new DataSetConnector(count, (index) => this.packs[index].sounds);
+    this.textures = new DataSetConnector(count, (index) => this.packs[index].textures);
   }
 
   /**
@@ -151,6 +75,7 @@ export class ResourcePackCollection {
     for (var I = 0; I < this.packs.length; I++) {
       const current = this.packs[I];
       if (uri.startsWith(current.folder)) {
+        current.deleteFile(doc.uri);
         current.process(doc);
         return true;
       }

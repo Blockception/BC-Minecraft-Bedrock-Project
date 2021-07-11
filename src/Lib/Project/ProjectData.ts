@@ -2,6 +2,7 @@ import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
 import { PackType } from "./Enum/PackType";
+import { GeneralCollection } from "./General/General";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 
@@ -11,10 +12,13 @@ export class ProjectData {
   BehaviorPacks: BehaviorPackCollection;
   /**The collection of resource packs*/
   ResourcePacks: ResourcePackCollection;
+  /**The collection of general items*/
+  General: GeneralCollection;
 
   constructor() {
     this.BehaviorPacks = new BehaviorPackCollection();
     this.ResourcePacks = new ResourcePackCollection();
+    this.General = new GeneralCollection();
   }
 
   /**Processes the given textdocument into the bacp

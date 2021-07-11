@@ -1,5 +1,5 @@
 import { MCProject } from "bc-minecraft-project";
-import { DataSet, DataSetSingle } from "../../Types/DataSet/include";
+import { DataSet, DataSetBase, DataSetSingle } from "../../Types/DataSet/include";
 import { Pack } from "../../Types/Pack/Pack";
 import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 
@@ -108,6 +108,60 @@ export class ResourcePack implements Container, Pack {
       case FileType.texture_terrain_atlas:
         return this.textures.set(Texture.ProcessTextureAtlas(doc));
     }
+  }
+
+  /**
+   *
+   * @param uri
+   * @returns
+   */
+  getDataset(uri: string): DataSetBase | undefined {
+    const Type = FileType.detect(uri);
+
+    switch (Type) {
+      case FileType.animation:
+        return this.animations;
+
+      case FileType.animation_controller:
+        return this.animation_controllers;
+
+      case FileType.attachable:
+        return this.attachables;
+
+      case FileType.entity:
+        return this.entities;
+
+      case FileType.fog:
+        return this.fogs;
+
+      case FileType.material:
+        return this.materials;
+
+      case FileType.model:
+        return this.models;
+
+      case FileType.particle:
+        return this.particles;
+
+      case FileType.sounds_definitions:
+        return this.sounds;
+
+      case FileType.texture_item_atlas:
+      case FileType.texture_terrain_atlas:
+        return this.textures;
+
+      default:
+        return undefined;
+    }
+  }
+
+  /**
+   *
+   * @param uri
+   * @returns
+   */
+  deleteFile(uri: string): boolean {
+    return this.getDataset(uri)?.deleteFile(uri) ?? false;
   }
 }
 

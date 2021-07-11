@@ -1,13 +1,12 @@
 import { MCProject } from "bc-minecraft-project";
-import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 import { Container } from "../../Types/Container/include";
-import { DataSet, DataSetSingle } from "../../Types/DataSet/include";
+import { DataSet, DataSetBase } from "../../Types/DataSet/include";
 
 import * as AnimationController from "./Types/AnimationController/include";
 import * as Animation from "./Types/Animation/include";
 import * as Block from "./Types/Block/include";
 import * as Entity from "./Types/Entity/include";
-import * as Function from "./Types/Function/include";
+import * as Function from "./Types/McFunction/include";
 import * as Item from "./Types/Item/include";
 import * as LootTable from "./Types/LootTable/include";
 import * as Structure from "./Types/Structure/include";
@@ -25,23 +24,23 @@ export class BehaviorPack implements Container, Pack {
   readonly context: MCProject;
 
   /**The collection of animations*/
-  readonly animations: DataSetSingle<Animation.Animation>;
+  readonly animations: DataSet<Animation.Animation>;
   /**The collection of animations controllers*/
-  readonly animation_controllers: DataSetSingle<AnimationController.AnimationController>;
+  readonly animation_controllers: DataSet<AnimationController.AnimationController>;
   /**The collection of blocks*/
-  readonly blocks: DataSet<Block.Block, Types.BehaviorPack.Block>;
+  readonly blocks: DataSet<Block.Block>;
   /**The collection of entities*/
-  readonly entities: DataSet<Entity.Entity, Types.BehaviorPack.Entity>;
+  readonly entities: DataSet<Entity.Entity>;
   /**The collection of mcfunctions*/
-  readonly functions: DataSetSingle<Function.Function>;
+  readonly functions: DataSet<Function.Function>;
   /**The collection of items*/
-  readonly items: DataSet<Item.Item, Types.BehaviorPack.Item>;
+  readonly items: DataSet<Item.Item>;
   /**The collection of loot tables*/
-  readonly loot_tables: DataSet<LootTable.LootTable, Types.BehaviorPack.LootTable>;
+  readonly loot_tables: DataSet<LootTable.LootTable>;
   /**The collection of structures*/
-  readonly structures: DataSetSingle<Structure.Structure>;
+  readonly structures: DataSet<Structure.Structure>;
   /**The collection of trading tables*/
-  readonly trading: DataSet<Trading.Trading, Types.BehaviorPack.Trading>;
+  readonly trading: DataSet<Trading.Trading>;
 
   /**
    * @param folder The folder of the behavior
@@ -50,19 +49,19 @@ export class BehaviorPack implements Container, Pack {
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
-    this.animation_controllers = DataSet.create<AnimationController.AnimationController>();
-    this.animations = DataSet.create<Animation.Animation>();
+    this.animation_controllers = new DataSet();
+    this.animations = new DataSet();
 
-    this.blocks = DataSet.createID(Vanilla.BehaviorPack.Blocks, Edu.BehaviorPack.Blocks, this);
-    this.entities = DataSet.createID(Vanilla.BehaviorPack.Entities, Edu.BehaviorPack.Entities, this);
+    this.blocks = new DataSet();
+    this.entities = new DataSet();
 
-    this.functions = DataSet.create<Function.Function>();
+    this.functions = new DataSet();
 
-    this.items = DataSet.createID(Vanilla.BehaviorPack.Items, Edu.BehaviorPack.Items, this);
-    this.loot_tables = DataSet.createString(Vanilla.BehaviorPack.LootTables, Edu.BehaviorPack.LootTables, this);
+    this.items = new DataSet();
+    this.loot_tables = new DataSet();
 
-    this.structures = DataSet.create<Structure.Structure>();
-    this.trading = DataSet.createString(Vanilla.BehaviorPack.Trading, Edu.BehaviorPack.Trading, this);
+    this.structures = new DataSet();
+    this.trading = new DataSet();
   }
 
   /**
@@ -72,6 +71,7 @@ export class BehaviorPack implements Container, Pack {
   process(doc: TextDocument) {
     const Type = FileType.detect(doc.uri);
 
+    //If extended, also extend the delete
     switch (Type) {
       case FileType.animation:
         return this.animations.set(Animation.Process(doc));
@@ -100,6 +100,56 @@ export class BehaviorPack implements Container, Pack {
       case FileType.trading:
         return this.trading.set(Trading.Process(doc));
     }
+  }
+
+  /**
+   *
+   * @param uri
+   * @returns
+   */
+  getDataset(uri: string): DataSetBase | undefined {
+    const Type = FileType.detect(uri);
+
+    switch (Type) {
+      case FileType.animation:
+        return this.animations;
+
+      case FileType.animation_controller:
+        return this.animation_controllers;
+
+      case FileType.block:
+        return this.blocks;
+
+      case FileType.entity:
+        return this.entities;
+
+      case FileType.function:
+        return this.functions;
+
+      case FileType.item:
+        return this.items;
+
+      case FileType.loot_table:
+        return this.loot_tables;
+
+      case FileType.structure:
+        return this.structures;
+
+      case FileType.trading:
+        return this.trading;
+
+      default:
+        return undefined;
+    }
+  }
+
+  /**
+   *
+   * @param uri
+   * @returns
+   */
+  deleteFile(uri: string): boolean {
+    return this.getDataset(uri)?.deleteFile(uri) ?? false;
   }
 }
 

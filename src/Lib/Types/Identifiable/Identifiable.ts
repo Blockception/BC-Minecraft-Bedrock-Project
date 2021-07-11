@@ -1,13 +1,22 @@
-import { Types } from "bc-minecraft-bedrock-vanilla-data";
-
 /**The interface that governs if a object is identifiable*/
-export interface Identifiable extends Types.Identifiable {
+export interface Identifiable {
   /**The identifier of this object*/
   id: string;
 }
 
 /** */
 export namespace Identifiable {
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  export function is(value: any): value is Identifiable {
+    if (typeof value === "object" && typeof value.id === "string") return true;
+
+    return false;
+  }
+
   /**
    *
    * @param items
@@ -34,9 +43,20 @@ export namespace Identifiable {
     for (let I = 0; I < items.length; I++) {
       const elem = items[I];
 
-      if (elem.id == id) return elem;
+      if (elem.id === id) return elem;
     }
 
     return undefined;
+  }
+
+  /**
+   *
+   * @param carrier
+   * @returns
+   */
+  export function getId(carrier: string | Identifiable): string {
+    if (typeof carrier === "string") return carrier;
+
+    return carrier.id;
   }
 }

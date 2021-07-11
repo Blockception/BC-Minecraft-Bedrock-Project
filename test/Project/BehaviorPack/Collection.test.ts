@@ -1,0 +1,3 @@
+describe("BehaviorPack Collection", () => {
+  it("");
+});
