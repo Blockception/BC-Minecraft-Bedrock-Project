@@ -1,6 +1,9 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { TextDocument } from "../../../../Types/include";
 import { GeneralCollection } from "../../General";
+import * as Tag from "../Tag/Process";
+import * as Objective from "../Objective/Process";
+import * as TickingArea from "../TickingArea/Process";
 
 export function ProcessCommand(line: string, doc: TextDocument, edu: boolean, receiver: GeneralCollection): void {
   if (line.startsWith("#")) return;
@@ -13,15 +16,15 @@ export function ProcessCommand(line: string, doc: TextDocument, edu: boolean, re
 
     switch (command != undefined && command.parameters[0].text) {
       case "tag":
-        ProcessTagCommand(command, doc);
+        Tag.Process(command, doc.uri);
         break;
 
       case "scoreboard":
-        ProcessScoreboardCommand(command, doc);
+        Objective.Process(command, doc.uri);
         break;
 
       case "tickingarea":
-        ProcessTickingAreaCommand(command);
+        TickingArea.Process(command, doc.uri);
         break;
     }
 
