@@ -1,3 +1,0 @@
-describe("BehaviorPack Collection", () => {
-  it("");
-});
