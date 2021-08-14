@@ -1,15 +1,10 @@
 export * from "./Container/include";
 export * from "./DataSet/include";
-export * from "./Defined Using/include";
 export * from "./Documentated/include";
+export * from "./Defined Using/include";
 export * from "./FileReference/include";
-export * from "./Identifiable/include";
 export * from "./Json/include";
-export * from "./Locatable/include";
-export * from "./Location/include";
 export * from "./Map/include";
 export * from "./Pack/include";
-export * from "./Position/include";
-export * from "./Range/include";
 export * from "./Script/include";
 export * from "./TextDocument/include";

@@ -1,6 +1,6 @@
 import { Command } from "bc-minecraft-bedrock-command";
+import { Types } from "bc-minecraft-bedrock-types";
 import { GeneralInfo } from "../GeneralInfo";
-import { Location } from "../../../../Types/include";
 
 export function Process(command: Command, uri: string): GeneralInfo | undefined {
   if (command.parameters.length < 3) {
@@ -42,7 +42,7 @@ function CheckObjective(Com: Command, uri: string): GeneralInfo | undefined {
       Doc += " " + Com.parameters[5].text.replace(/"/g, "");
     }
 
-    return GeneralInfo.create(ID.text, Location.create(uri, ID.offset), Doc);
+    return GeneralInfo.create(ID.text, Types.Location.create(uri, ID.offset), Doc);
   }
 
   return undefined;
@@ -53,7 +53,7 @@ function CheckPlayer(Com: Command, uri: string): GeneralInfo | undefined {
     const Selector = Com.parameters[3];
 
     if (!Selector.text.startsWith("@")) {
-      return GeneralInfo.create(Selector.text, Location.create(uri, Selector.offset), "The fake player: " + Selector.text);
+      return GeneralInfo.create(Selector.text, Types.Location.create(uri, Selector.offset), "The fake player: " + Selector.text);
     }
   }
 

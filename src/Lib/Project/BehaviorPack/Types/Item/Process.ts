@@ -1,8 +1,8 @@
 import * as internal from "../../../../Internal/BehaviorPack/Item";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Documentation } from "../../../../Types/Documentated/include";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Item } from "./include";
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): Item | undefined {
 
   const out: Item = {
     id: id,
-    location: Location.create(uri, content.indexOf(id)),
+    location: Types.Location.create(uri, content.indexOf(id)),
     molang: MolangSet.harvest(container),
     documentation: Documentation.getDoc(doc, () => `BP Item: ${id} ${container.description.category ? "category: " + container.description.category : ""}`),
   };

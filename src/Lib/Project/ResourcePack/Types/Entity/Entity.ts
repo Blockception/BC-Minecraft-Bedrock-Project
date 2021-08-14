@@ -1,11 +1,9 @@
 import { MolangFullSet } from "../../../../Molang/include";
 import { DefinedUsing } from "../../../../Types/Defined Using/include";
-import { Documentated } from "../../../../Types/Documentated/include";
-import { Identifiable } from "../../../../Types/Identifiable/include";
-import { Locatable } from "../../../../Types/Locatable/include";
+import { Types } from "bc-minecraft-bedrock-types";
 
 /** */
-export interface Entity extends Identifiable, Documentated, Locatable {
+export interface Entity extends Types.Identifiable, Types.Documentated, Types.Locatable {
   /** */
   animations: DefinedUsing<string>;
   /** */

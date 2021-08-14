@@ -1,10 +1,8 @@
+import { Types } from "bc-minecraft-bedrock-types";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Documentated } from "../../../../Types/Documentated/include";
-import { Identifiable } from "../../../../Types/Identifiable/include";
-import { Locatable } from "../../../../Types/Locatable/include";
 
 /** */
-export interface Block extends Identifiable, Documentated, Locatable {
+export interface Block extends Types.Identifiable, Types.Documentated, Types.Locatable {
   /** */
   molang: MolangSet;
   /** */

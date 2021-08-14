@@ -1,9 +1,9 @@
-import { Documentated, Identifiable, Locatable, Location } from "../../../Types/include";
+import { Types } from "bc-minecraft-bedrock-types";
 
 /**
  *
  */
-export interface GeneralInfo extends Locatable, Identifiable, Documentated {}
+export interface GeneralInfo extends Types.Locatable, Types.Identifiable, Types.Documentated {}
 
 /**
  *
@@ -16,7 +16,7 @@ export namespace GeneralInfo {
    * @param documentation
    * @returns
    */
-  export function create(id: string, location: Location, documentation: string | undefined = undefined): GeneralInfo {
+  export function create(id: string, location: Types.Location, documentation: string | undefined = undefined): GeneralInfo {
     return {
       id: id,
       location: location,

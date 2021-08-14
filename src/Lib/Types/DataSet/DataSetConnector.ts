@@ -1,5 +1,5 @@
-import { Identifiable } from "../Identifiable/Identifiable";
-import { Locatable } from "../Locatable/Locatable";
+import { Types } from "bc-minecraft-bedrock-types";
+import { Types } from "bc-minecraft-bedrock-types";
 import { DataSet } from "./DataSet";
 
 /**

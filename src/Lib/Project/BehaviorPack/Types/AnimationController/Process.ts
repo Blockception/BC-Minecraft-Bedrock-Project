@@ -1,3 +1,4 @@
+import { Types } from "bc-minecraft-bedrock-types";
 import * as internal from "../../../../Internal/BehaviorPack/AnimationController";
 import { Json } from "../../../../Internal/Json";
 import { Conditional } from "../../../../Internal/Types/Conditional";
@@ -5,7 +6,6 @@ import { MolangSet } from "../../../../Molang/MolangSet";
 import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
 import { Using } from "../../../../Types/Defined Using/include";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
-import { Location } from "../../../../Types/Location/Location";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { AnimationController } from "./include";
@@ -34,7 +34,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
     if (internal.AnimationController.is(controller)) {
       const item: AnimationController = {
         id: id,
-        location: Location.create(uri, content.indexOf(id)),
+        location: Types.Location.create(uri, content.indexOf(id)),
         animations: DefinedUsing.empty(),
         molang: MolangSet.harvest(controller),
         documentation: Documentation.getDoc(doc, () => `BP Animation Controller: ${id}`),

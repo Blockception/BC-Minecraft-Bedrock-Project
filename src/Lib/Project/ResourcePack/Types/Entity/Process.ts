@@ -1,11 +1,11 @@
 import * as internal from "../../../../Internal/ResourcePack/Entity";
 import { Json } from "../../../../Internal/Json";
 import { MolangFullSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Entity } from "./include";
 import { DefinedUsing } from "../../../../Types/Defined Using/include";
-import { Documentation } from "../../../../Types/Documentated/include";
+("../../../../Types/Documentated/Documentated");
 import { Definition } from "../../../../Internal/Types/Definition";
 
 /**

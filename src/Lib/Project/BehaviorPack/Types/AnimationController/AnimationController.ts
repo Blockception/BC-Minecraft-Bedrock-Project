@@ -1,11 +1,9 @@
+import { Types } from "bc-minecraft-bedrock-types";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { DefinedUsing } from "../../../../Types/Defined Using/include";
-import { Documentated } from "../../../../Types/Documentated/include";
-import { Identifiable } from "../../../../Types/Identifiable/include";
-import { Locatable } from "../../../../Types/Locatable/include";
 
 /** */
-export interface AnimationController extends Identifiable, Documentated, Locatable {
+export interface AnimationController extends Types.Identifiable, Types.Documentated, Types.Locatable {
   /** */
   molang: MolangSet;
   /** */

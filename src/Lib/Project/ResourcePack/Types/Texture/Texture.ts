@@ -1,6 +1,4 @@
-import { Documentated } from "../../../../Types/Documentated/include";
-import { Identifiable } from "../../../../Types/Identifiable/include";
-import { Locatable } from "../../../../Types/Locatable/include";
+import { Types } from "bc-minecraft-bedrock-types";
 
 /** */
-export interface Texture extends Identifiable, Documentated, Locatable {}
+export interface Texture extends Types.Identifiable, Types.Documentated, Types.Locatable {}

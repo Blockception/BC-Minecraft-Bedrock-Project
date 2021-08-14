@@ -1,13 +1,12 @@
 import * as internal from "../../../../Internal/ResourcePack/Attachable";
 import { Json } from "../../../../Internal/Json";
-import { MolangFullSet, MolangSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location/Location";
+import { MolangFullSet } from "../../../../Molang/MolangSet";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Attachable } from "./include";
-import { Map } from "../../../../Types/Map/Map";
-import { DefinedUsing, Using } from "../../../../Types/Defined Using/include";
-import { Documentation } from "../../../../Types/Documentated/include";
+import { DefinedUsing } from "../../../../Types/Defined Using/include";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Definition } from "../../../../Internal/Types/Definition";
+import { Types } from "bc-minecraft-bedrock-types";
 
 /**
  *
@@ -25,7 +24,7 @@ export function Process(doc: TextDocument): Attachable | undefined {
   const id = container.description.identifier;
   const out: Attachable = {
     id: id,
-    location: Location.create(uri, content.indexOf(id)),
+    location: Types.Location.create(uri, content.indexOf(id)),
     molang: MolangFullSet.harvest(container),
     animations: DefinedUsing.create(),
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),

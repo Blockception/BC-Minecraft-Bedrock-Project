@@ -1,5 +1,5 @@
-import { Documentation } from "../../../../Types/Documentated/include";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Trading } from "./include";
 
@@ -18,7 +18,7 @@ export function Process(doc: TextDocument): Trading | undefined {
 
   const out: Trading = {
     id: id,
-    location: Location.create(uri, 0),
+    location: Types.Location.create(uri, 0),
     documentation: Documentation.getDoc(doc, () => `Trading table: ${id}`),
   };
 

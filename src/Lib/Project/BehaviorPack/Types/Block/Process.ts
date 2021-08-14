@@ -1,12 +1,12 @@
 import * as internal from "../../../../Internal/BehaviorPack/Block";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Documentation } from "../../../../Types/Documentated/include";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { BlockState } from "./Block";
 import { Block } from "./include";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /**
  *
@@ -25,7 +25,7 @@ export function Process(doc: TextDocument): Block | undefined {
 
   const out: Block = {
     id: id,
-    location: Location.create(uri, content.indexOf(id)),
+    location: Types.Location.create(uri, content.indexOf(id)),
     molang: MolangSet.harvest(container),
     states: [],
     documentation: Documentation.getDoc(doc, () => `BP Block: ${id}`),

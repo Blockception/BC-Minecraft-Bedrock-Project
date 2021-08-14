@@ -1,13 +1,13 @@
 import * as internal from "../../../../Internal/ResourcePack/AnimationController";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Location } from "../../../../Types/Location/Location";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { AnimationController } from "./include";
 import { Map } from "../../../../Types/Map/Map";
 import { Conditional } from "../../../../Internal/Types/Conditional";
 import { Using } from "../../../../Types/Defined Using/include";
-import { Documentation } from "../../../../Types/Documentated/include";
+import { Documentation } from "../../../../Types/include";
+import { Types } from "bc-minecraft-bedrock-types";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
@@ -28,7 +28,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
     if (internal.AnimationController.is(controller)) {
       const item: AnimationController = {
         id: id,
-        location: Location.create(uri, content.indexOf(id)),
+        location: Types.Location.create(uri, content.indexOf(id)),
         molang: MolangSet.harvest(controller),
         documentation: Documentation.getDoc(doc, () => `RP Animation Controller: \`${id}\``),
         animations: Using.empty(),

@@ -2,11 +2,11 @@ import * as internal from "../../../../Internal/BehaviorPack/Entity";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
-import { Documentation } from "../../../../Types/Documentated/include";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Entity } from "./include";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /**
  *
@@ -25,7 +25,7 @@ export function Process(doc: TextDocument): Entity | undefined {
 
   const out: Entity = {
     id: id,
-    location: Location.create(uri, content.indexOf(id)),
+    location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `BP Entity: ${id}`),
     animations: DefinedUsing.empty(),
     events: [],

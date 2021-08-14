@@ -1,9 +1,9 @@
 import * as internal from "../../../../Internal/ResourcePack/Model";
 import { Json } from "../../../../Internal/Json";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Model } from "./include";
-import { Documentation } from "../../../../Types/Documentated/include";
+("../../../../Types/Documentated/Documentated");
 import { Map } from "../../../../Types/Map/Map";
 
 /**

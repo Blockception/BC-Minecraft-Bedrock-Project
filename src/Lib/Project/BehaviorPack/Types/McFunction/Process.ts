@@ -1,5 +1,5 @@
-import { Documentation } from "../../../../Types/Documentated/include";
-import { Location } from "../../../../Types/Location/Location";
+import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Function } from "./Function";
 
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): Function | undefined {
 
   const out: Function = {
     id: id,
-    location: Location.create(uri, 0),
+    location: Types.Location.create(uri, 0),
     documentation: Documentation.getDoc(doc, () => `Mcfunction: ${id}`),
   };
 

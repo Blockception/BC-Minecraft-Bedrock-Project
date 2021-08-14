@@ -1,6 +1,6 @@
 import { Command } from "bc-minecraft-bedrock-command";
+import { Types } from "bc-minecraft-bedrock-types";
 import { GeneralInfo } from "../GeneralInfo";
-import { Location } from "../../../../Types/include";
 
 export function Process(Command: Command, uri: string): GeneralInfo | undefined {
   //tickingarea add
@@ -28,13 +28,13 @@ function ProcessCircleCommand(Command: Command, uri: string): GeneralInfo | unde
   const Area = `x: ${parameters[3].text}, y: ${parameters[4].text}, z: ${parameters[5].text}, radius: ${parameters[6].text}`;
   let Name = "";
 
-  let Loc: Location;
+  let Loc: Types.Location;
 
   if (parameters.length > 7) {
     Name = parameters[7].text;
-    Loc = Location.create(uri, parameters[7].offset);
+    Loc = Types.Location.create(uri, parameters[7].offset);
   } else {
-    Loc = Location.create(uri, parameters[3].offset);
+    Loc = Types.Location.create(uri, parameters[3].offset);
   }
 
   return GeneralInfo.create(Name, Loc, `The circular tickingarea: "${Name}"; ${Area}`);
@@ -53,13 +53,13 @@ function ProcessBoxCommand(Command: Command, uri: string): GeneralInfo | undefin
 
   const Area = `[${parameters[2].text}, ${parameters[3].text}, ${parameters[4].text}, ${parameters[5].text}, ${parameters[6].text}, ${parameters[7].text}]`;
   let Name = "";
-  let Loc: Location;
+  let Loc: Types.Location;
 
   if (parameters.length > 8) {
     Name = parameters[8].text;
-    Loc = Location.create(uri, parameters[8].offset);
+    Loc = Types.Location.create(uri, parameters[8].offset);
   } else {
-    Loc = Location.create(uri, parameters[2].offset);
+    Loc = Types.Location.create(uri, parameters[2].offset);
   }
 
   return GeneralInfo.create(Name, Loc, `The box tickingarea: "${Name}"; '${Area}'`);
