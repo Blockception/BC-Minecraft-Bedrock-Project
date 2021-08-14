@@ -1,9 +1,6 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { TextDocument } from "../../../../Types/include";
 import { GeneralCollection } from "../../General";
-import { ProcessScoreboardCommand } from "./Scoreboard";
-import { ProcessTagCommand } from "./Tags";
-import { ProcessTickingAreaCommand } from "./TickingArea";
 
 export function ProcessCommand(line: string, doc: TextDocument, edu: boolean, receiver: GeneralCollection): void {
   if (line.startsWith("#")) return;
