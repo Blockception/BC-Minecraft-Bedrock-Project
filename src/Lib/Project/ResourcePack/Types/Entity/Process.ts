@@ -5,8 +5,8 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Entity } from "./include";
 import { DefinedUsing } from "../../../../Types/Defined Using/include";
-("../../../../Types/Documentated/Documentated");
 import { Definition } from "../../../../Internal/Types/Definition";
+import { Documentation } from "../../../../Types/include";
 
 /**
  *
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): Entity | undefined {
   const id = container.description.identifier;
   const out: Entity = {
     id: id,
-    location: Location.create(uri, content.indexOf(id)),
+    location: Types.Location.create(uri, content.indexOf(id)),
     molang: MolangFullSet.harvest(container),
     animations: DefinedUsing.create(),
     documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),

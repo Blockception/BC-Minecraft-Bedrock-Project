@@ -3,7 +3,7 @@ import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Sound } from "./include";
-("../../../../Types/Documentated/Documentated");
+import { Documentation } from "../../../../Types/Documentated/include";
 import { Map } from "../../../../Types/Map/Map";
 
 /**
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): Sound[] | undefined {
   Map.forEach(container, (value, key) => {
     out.push({
       id: key,
-      location: Location.create(uri, content.indexOf(key)),
+      location: Types.Location.create(uri, content.indexOf(key)),
       documentation: Documentation.getDoc(doc, () => `Sound: ${key} with ${value.sounds.length} sounds`),
     });
   });

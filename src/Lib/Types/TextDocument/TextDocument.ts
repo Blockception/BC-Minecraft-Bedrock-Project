@@ -1,5 +1,6 @@
 //Note: this is kept sync with vscode form of textdocument for easy of use
-import { Range } from "../Range/Range";
+
+import { Types } from "bc-minecraft-bedrock-types";
 
 /** */
 export interface TextDocument {
@@ -10,5 +11,5 @@ export interface TextDocument {
    *
    * @param range
    */
-  getText(range?: Range): string;
+  getText(range?: Types.Range): string;
 }

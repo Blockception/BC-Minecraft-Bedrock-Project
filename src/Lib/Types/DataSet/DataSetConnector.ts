@@ -1,11 +1,10 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Types } from "bc-minecraft-bedrock-types";
 import { DataSet } from "./DataSet";
 
 /**
  *
  */
-export class DataSetConnector<T extends Identifiable & Locatable> {
+export class DataSetConnector<T extends Types.Identifiable & Types.Locatable> {
   private _get: (index: number) => DataSet<T> | undefined;
   private _count: () => number;
 

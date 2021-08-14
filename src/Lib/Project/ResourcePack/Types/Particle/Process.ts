@@ -3,7 +3,7 @@ import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Particle } from "./include";
-("../../../../Types/Documentated/Documentated");
+import { Documentation } from "../../../../Types/Documentated/include";
 
 /**
  *
@@ -21,7 +21,7 @@ export function Process(doc: TextDocument): Particle | undefined {
   const id = container.description.identifier;
   const out: Particle = {
     id: id,
-    location: Location.create(uri, content.indexOf(id)),
+    location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Particle: ${id}`),
   };
 
