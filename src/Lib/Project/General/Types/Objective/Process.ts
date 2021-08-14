@@ -1,8 +1,9 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
+import { GeneralCollection } from "../../General";
 import { GeneralInfo } from "../GeneralInfo";
 
-export function Process(command: Command, uri: string): GeneralInfo | undefined {
+export function Process(command: Command, uri: string, receiver: GeneralCollection): void {
   if (command.parameters.length < 3) {
     return;
   }
@@ -11,10 +12,12 @@ export function Process(command: Command, uri: string): GeneralInfo | undefined 
 
   switch (Mode.text) {
     case "players":
-      return CheckPlayer(command, uri);
+      receiver.fakeEntities.set(CheckPlayer(command, uri));
+      return;
 
     case "objectives":
-      return CheckObjective(command, uri);
+      receiver.objectives.set(CheckObjective(command, uri));
+      return;
   }
 
   return undefined;

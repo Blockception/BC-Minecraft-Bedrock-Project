@@ -1,6 +1,11 @@
-import { DataSet } from "../../Types/include";
+import { DataSet, TextDocument } from "../../Types/include";
+import { FileType } from "../BehaviorPack/include";
+import { ProcessMcFunction } from "./Types/Commands/Process";
 import { GeneralInfo } from "./Types/GeneralInfo";
 
+/**
+ *
+ */
 export class GeneralCollection {
   /** */
   readonly fakeEntities: DataSet<GeneralInfo>;
@@ -16,5 +21,17 @@ export class GeneralCollection {
     this.objectives = new DataSet();
     this.tags = new DataSet();
     this.tickingAreas = new DataSet();
+  }
+
+  Process(doc: TextDocument) {
+    const type = FileType.detect(doc.uri);
+
+    switch (type) {
+      case FileType.function:
+        return ProcessMcFunction(doc, this);
+
+      default:
+        return this;
+    }
   }
 }

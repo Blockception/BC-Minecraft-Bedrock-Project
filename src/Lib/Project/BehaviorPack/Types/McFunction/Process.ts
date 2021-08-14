@@ -1,6 +1,7 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { ProcessCommand } from "../../../General/Types/Commands/Process";
 import { Function } from "./Function";
 
 /**
