@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "bc-minecraft-bedrock-command": "^1.0.4",
+    "bc-minecraft-bedrock-types": "^1.1.2",
     "bc-minecraft-project": "^1.0.2",
     "jsonc": "^2.0.0"
   }
