@@ -7,20 +7,19 @@ import { TextDocument } from "../../../../Types/include";
  * @param doc
  * @returns
  */
-export function ProcessScoreboardCommand(Com: Command, doc: TextDocument): void {
+export function ProcessScoreboardCommand(Com: Command, doc: TextDocument, receiver: GeneralCollection): void {
   if (Com.parameters.length < 3) {
     return;
   }
 
-  let Comment = GetComment(doc);
   let Mode = Com.parameters[1];
 
   switch (Mode.text) {
     case "players":
-      return CheckPlayer(Com, Comment);
+      return CheckPlayer(Com);
 
     case "objectives":
-      return CheckObjective(Com, Comment);
+      return CheckObjective(Com);
   }
 }
 
@@ -30,7 +29,7 @@ export function ProcessScoreboardCommand(Com: Command, doc: TextDocument): void 
  * @param Comment
  * @returns
  */
-function CheckObjective(Com: Command, Comment: string): void {
+function CheckObjective(Com: Command): void {
   let ObjectiveMode = Com.parameters[2];
 
   if (Com.parameters.length < 4) {
@@ -60,7 +59,7 @@ function CheckObjective(Com: Command, Comment: string): void {
   }
 }
 
-function CheckPlayer(Com: Command, Comment: string): void {
+function CheckPlayer(Com: Command): void {
   if (Com.parameters.length > 3) {
     let Selector = Com.parameters[3];
 

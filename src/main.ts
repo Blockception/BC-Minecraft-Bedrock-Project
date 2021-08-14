@@ -10,9 +10,6 @@ export {
   Range,
   Container,
   DataSet,
-  DataSetConnected,
-  DataSetSingle,
-  DataSetUnconnected,
   Documentation,
   FileReference,
   Identifiable,
@@ -25,5 +22,4 @@ export {
   Script,
   TextDocument,
   Using,
-  VanillaConnector,
 } from "./Lib/Types/include";

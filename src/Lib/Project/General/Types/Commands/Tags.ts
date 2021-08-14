@@ -4,7 +4,7 @@
  * @param doc
  * @returns
  */
-export function ProcessTagCommand(Com: Command, doc: TextDocument): void {
+export function ProcessTagCommand(Com: Command, doc: TextDocument, receiver: GeneralCollection): void {
   //tag <selector> add <tag>
   if (Com.parameters[2]?.text !== "add") return;
 

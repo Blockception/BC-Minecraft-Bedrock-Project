@@ -13,4 +13,3 @@ export * from "./Position/include";
 export * from "./Range/include";
 export * from "./Script/include";
 export * from "./TextDocument/include";
-export * from "./VanillaConnector/include";

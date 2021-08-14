@@ -40,10 +40,15 @@ export namespace Documentation {
     let index = line.indexOf("\n");
     if (index < 0) index = line.length;
 
+    //Comment
     if (line.startsWith("//")) {
       return line.substring(2, index).trim();
+
+      //Mcfunction comment
     } else if (line.startsWith("#")) {
       return line.substring(1, index).trim();
+
+      //Default generation provided
     } else if (ifDefault) {
       return typeof ifDefault === "string" ? ifDefault : ifDefault();
     }
