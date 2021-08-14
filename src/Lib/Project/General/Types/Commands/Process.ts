@@ -1,8 +1,11 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { TextDocument } from "../../../../Types/include";
 import { GeneralCollection } from "../../General";
+import { ProcessScoreboardCommand } from "./Scoreboard";
+import { ProcessTagCommand } from "./Tags";
+import { ProcessTickingAreaCommand } from "./TickingArea";
 
-export function Processcommand(line: string, doc: TextDocument, receiver: GeneralCollection): void {
+export function ProcessCommand(line: string, doc: TextDocument, edu: boolean, receiver: GeneralCollection): void {
   if (line.startsWith("#")) return;
 
   const offset = doc.getText().indexOf(line);
@@ -11,20 +14,20 @@ export function Processcommand(line: string, doc: TextDocument, receiver: Genera
   while (command) {
     if (command.parameters.length === 0) break;
 
-    switch (command.parameters[0].text) {
+    switch (command != undefined && command.parameters[0].text) {
       case "tag":
-        ProcessTagcommand(command, document);
+        ProcessTagCommand(command, doc);
         break;
 
       case "scoreboard":
-        ProcessScoreboardcommand(command, document);
+        ProcessScoreboardCommand(command, doc);
         break;
 
       case "tickingarea":
-        ProcessTickingAreacommand(command);
+        ProcessTickingAreaCommand(command);
         break;
     }
 
-    command = GetSubcommand(command, document.getConfiguration().settings.Education.Enable);
+    command = command.getSubCommand(edu);
   }
 }

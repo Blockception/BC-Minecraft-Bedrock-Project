@@ -1,7 +1,6 @@
 import { MCProject } from "bc-minecraft-project";
-import { DataSet, DataSetBase, DataSetSingle } from "../../Types/DataSet/include";
+import { DataSet, DataSetBase } from "../../Types/DataSet/include";
 import { Pack } from "../../Types/Pack/Pack";
-import { Edu, Types, Vanilla } from "bc-minecraft-bedrock-vanilla-data";
 
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/include";
@@ -26,27 +25,27 @@ export class ResourcePack implements Container, Pack {
   readonly context: MCProject;
 
   /**The collection of  animations*/
-  readonly animations: DataSet<Animation.Animation, Types.ResourcePack.Animation>;
+  readonly animations: DataSet<Animation.Animation>;
   /**The collection of animations controllers*/
-  readonly animation_controllers: DataSet<AnimationController.AnimationController, Types.ResourcePack.AnimationController>;
+  readonly animation_controllers: DataSet<AnimationController.AnimationController>;
   /**The collection of animations controllers*/
-  readonly attachables: DataSetSingle<Attachable.Attachable>;
+  readonly attachables: DataSet<Attachable.Attachable>;
   /**The collection of blocks*/
-  readonly blocks: DataSetSingle<Block.Block>;
+  readonly blocks: DataSet<Block.Block>;
   /**The collection of entities*/
-  readonly entities: DataSet<Entity.Entity, Types.ResourcePack.Entity>;
+  readonly entities: DataSet<Entity.Entity>;
   /**The collection of fogs*/
-  readonly fogs: DataSet<Fog.Fog, Types.ResourcePack.Fog>;
+  readonly fogs: DataSet<Fog.Fog>;
   /**The collection of materials*/
-  readonly materials: DataSet<Material.Material, Types.ResourcePack.Material>;
+  readonly materials: DataSet<Material.Material>;
   /**The collection of models*/
-  readonly models: DataSet<Model.Model, Types.ResourcePack.Model>;
+  readonly models: DataSet<Model.Model>;
   /**The collection of models*/
-  readonly particles: DataSet<Particle.Particle, Types.ResourcePack.Particle>;
+  readonly particles: DataSet<Particle.Particle>;
   /**The collection of sounds*/
-  readonly sounds: DataSet<Sound.Sound, Types.ResourcePack.Sound>;
+  readonly sounds: DataSet<Sound.Sound>;
   /**The collection of textures*/
-  readonly textures: DataSet<Texture.Texture, Types.ResourcePack.Texture>;
+  readonly textures: DataSet<Texture.Texture>;
 
   /**
    *
@@ -56,17 +55,17 @@ export class ResourcePack implements Container, Pack {
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
-    this.animation_controllers = DataSet.createString(Vanilla.ResourcePack.AnimationControllers, Edu.ResourcePack.AnimationControllers, this);
-    this.animations = DataSet.createString(Vanilla.ResourcePack.Animations, Edu.ResourcePack.Animations, this);
-    this.attachables = DataSet.create();
-    this.blocks = DataSet.create();
-    this.entities = DataSet.createID(Vanilla.ResourcePack.Entities, Edu.ResourcePack.Entities, this);
-    this.fogs = DataSet.createString(Vanilla.ResourcePack.Fogs, Edu.ResourcePack.Fogs, this);
-    this.materials = DataSet.createString(Vanilla.ResourcePack.Materials, Edu.ResourcePack.Materials, this);
-    this.models = DataSet.createString(Vanilla.ResourcePack.Models, Edu.ResourcePack.Models, this);
-    this.particles = DataSet.createString(Vanilla.ResourcePack.Particles, Edu.ResourcePack.Particles, this);
-    this.sounds = DataSet.createString(Vanilla.ResourcePack.Sounds, Edu.ResourcePack.Sounds, this);
-    this.textures = DataSet.createString(Vanilla.ResourcePack.Textures, Edu.ResourcePack.Textures, this);
+    this.animation_controllers = new DataSet();
+    this.animations = new DataSet();
+    this.attachables = new DataSet();
+    this.blocks = new DataSet();
+    this.entities = new DataSet();
+    this.fogs = new DataSet();
+    this.materials = new DataSet();
+    this.models = new DataSet();
+    this.particles = new DataSet();
+    this.sounds = new DataSet();
+    this.textures = new DataSet();
   }
 
   /**
