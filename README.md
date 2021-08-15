@@ -6,3 +6,15 @@
 ![npm](https://img.shields.io/npm/v/bc-minecraft-project)
 
 A project that deals with caching, summarizing minecraft bedrock data
+
+```ts
+const Data = new ProjectData();
+
+const ProjectFolder = "c:\\project";
+const manifests = ["c:\\project\\bp\\manifest.json", "c:\\project\\rp\\manifest.json", "c:\\project\\world\\manifest.json"];
+
+Data.addPack(manifests, ProjectFolder);
+
+//Process documents into the pacts
+Data.Process();
+```

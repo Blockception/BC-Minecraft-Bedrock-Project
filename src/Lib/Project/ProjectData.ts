@@ -1,3 +1,6 @@
+import { MCProject } from "bc-minecraft-project";
+import path = require("path/posix");
+import { Manifest } from "../Internal/Types/Manifest";
 import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
@@ -73,5 +76,88 @@ export class ProjectData {
     if (this.BehaviorPacks.items.has(id)) return true;
 
     return false;
+  }
+
+  /**
+   *
+   * @param manifesturi
+   * @param Context
+   */
+  addPack(manifesturi: string | string[], Context: string | MCProject): void {
+    ProjectData.Add(manifesturi, this, Context);
+  }
+}
+
+/**
+ *
+ */
+export namespace ProjectData {
+  /**
+   *
+   * @param folder
+   */
+  export function Open(folder: string): ProjectData {
+    const out = new ProjectData();
+    const project = MCProject.load(folder);
+
+    return out;
+  }
+
+  /** */
+  export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): void {
+    if (!Array.isArray(manifestPath)) {
+      manifestPath = [manifestPath];
+    }
+
+    for (var I = 0; I < manifestPath.length; I++) {
+      Process(manifestPath[I], projectData, Context);
+    }
+  }
+}
+
+/**
+ *
+ * @param files
+ * @param PF
+ */
+function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): void {
+  const Type = PackType.detect(manifestUri);
+  const parent = path.join(manifestUri, "..");
+
+  switch (Type) {
+    case PackType.behavior_pack:
+      projectData.BehaviorPacks.add(parent, Context);
+      return;
+
+    case PackType.resource_pack:
+      projectData.ResourcePacks.add(parent, Context);
+      return;
+
+    case PackType.skin_pack:
+    case PackType.world:
+      break;
+
+    case PackType.unknown:
+    default:
+      const manifest = Manifest.GetManifestSync(manifestUri);
+      if (!manifest) break;
+
+      const SubType = Manifest.DetectType(manifest);
+
+      switch (SubType) {
+        case PackType.behavior_pack:
+          projectData.BehaviorPacks.add(parent, Context);
+          return;
+
+        case PackType.resource_pack:
+          projectData.ResourcePacks.add(parent, Context);
+          return;
+
+        case PackType.skin_pack:
+        case PackType.world:
+        case PackType.unknown:
+        case PackType.world:
+          break;
+      }
   }
 }
