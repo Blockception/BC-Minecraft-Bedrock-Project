@@ -1,4 +1,4 @@
-import { Types } from "bc-minecraft-bedrock-types";
+import { Minecraft, Types } from "bc-minecraft-bedrock-types";
 import { MolangSet } from "../../../../Molang/MolangSet";
 
 /** */
@@ -10,36 +10,13 @@ export interface Block extends Types.Identifiable, Types.Documentated, Types.Loc
 }
 
 /** */
-export type BlockState = BlockStateString | BlockStateNumber | BlockStateBoolean;
-
-/** */
-export interface BlockStateString {
+export interface BlockState {
   /** */
   name: string;
   /** */
-  type: "string";
+  type: "byte" | "int" | "string";
   /** */
   values: string[];
-}
-
-/** */
-export interface BlockStateNumber {
-  /** */
-  name: string;
-  /** */
-  type: "number";
-  /** */
-  values: number[];
-}
-
-/** */
-export interface BlockStateBoolean {
-  /** */
-  name: string;
-  /** */
-  type: "boolean";
-  /** */
-  values: boolean[];
 }
 
 /** */
@@ -51,7 +28,7 @@ export namespace BlockState {
    */
   export function is(value: any): value is BlockState {
     if (value && typeof value.name === "string" && typeof value.type === "string") {
-      if (value.type === "string" || value.type === "boolean" || value.type === "number") {
+      if (value.type === "byte" || value.type === "int" || value.type === "string") {
         if (Array.isArray(value.values)) return true;
       }
     }
@@ -66,19 +43,31 @@ export namespace BlockState {
    * @returns
    */
   export function create(name: string, values: string[] | number[] | boolean[]): BlockState | undefined {
-    const f = values[0];
+    const out: BlockState = {
+      name: name,
+      type: "string",
+      values: [],
+    };
 
-    switch (typeof f) {
+    const f = typeof values[0];
+
+    switch (f) {
+      case "boolean":
+        out.type = "byte";
+        out.values = values.map((x) => (x === true ? "1" : "0"));
+        break;
+
       case "string":
-        return { name: name, type: "string", values: <string[]>(<unknown[]>values) };
+        out.type = "string";
+        out.values = values.map((x) => x.toString());
+        break;
 
       case "number":
-        return { name: name, type: "number", values: <number[]>(<unknown[]>values) };
-
-      case "boolean":
-        return { name: name, type: "boolean", values: <boolean[]>(<unknown[]>values) };
+        out.type = "int";
+        out.values = values.map((x) => x.toString());
+        break;
     }
 
-    return undefined;
+    return out;
   }
 }
