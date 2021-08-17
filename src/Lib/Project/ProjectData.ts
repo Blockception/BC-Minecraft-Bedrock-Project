@@ -87,6 +87,35 @@ export class ProjectData {
   addPack(manifesturi: string | string[], Context: string | MCProject): Pack[] {
     return ProjectData.Add(manifesturi, this, Context);
   }
+
+  /**
+   *
+   * @param uri
+   */
+  deleteFile(uri: string): boolean {
+    let out = false;
+
+    out ||= this.BehaviorPacks.deleteFile(uri);
+    out ||= this.General.deleteFile(uri);
+    out ||= this.ResourcePacks.deleteFile(uri);
+
+    return out;
+  }
+
+  /**
+   *
+   * @param uri
+   * @returns
+   */
+  deleteFolder(uri: string): boolean {
+    let out = false;
+
+    out ||= this.BehaviorPacks.deleteFolder(uri);
+    out ||= this.General.deleteFolder(uri);
+    out ||= this.ResourcePacks.deleteFolder(uri);
+
+    return out;
+  }
 }
 
 /**
@@ -95,16 +124,11 @@ export class ProjectData {
 export namespace ProjectData {
   /**
    *
-   * @param folder
+   * @param manifestPath
+   * @param projectData
+   * @param Context
+   * @returns
    */
-  export function Open(folder: string): ProjectData {
-    const out = new ProjectData();
-    const project = MCProject.load(folder);
-
-    return out;
-  }
-
-  /** */
   export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): Pack[] {
     if (!Array.isArray(manifestPath)) {
       manifestPath = [manifestPath];

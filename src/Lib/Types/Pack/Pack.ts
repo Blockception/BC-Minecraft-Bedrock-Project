@@ -12,7 +12,19 @@ export interface Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument): void;
+  process(doc: TextDocument): any;
+
+  /**
+   *
+   * @param uri
+   */
+  deleteFile(uri: string): boolean;
+
+  /**
+   *
+   * @param uri
+   */
+  deleteFolder(uri: string): boolean;
 }
 
 /** */

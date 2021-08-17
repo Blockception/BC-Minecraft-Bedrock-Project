@@ -15,6 +15,11 @@ export interface DataSetBase {
    * @returns `true` or `false` wheter or not deletion was succesfull*/
   deleteFile(uri: string): boolean;
 
+  /**Delete the items that come from the specified file
+   * @param uri The filepath uri
+   * @returns `true` or `false` wheter or not deletion was succesfull*/
+  deleteFolder(uri: string): boolean;
+
   /**Checks if an object with the given id exists
    * @param key The objects identify key
    * @returns `true` or `false` wheter or not deletion was succesfull*/
@@ -58,6 +63,24 @@ export class DataSet<T extends Types.Identifiable & Types.Locatable> implements 
 
     this._data.forEach((item, key) => {
       if (item.location.uri === uri) {
+        this._data.delete(key);
+        out = true;
+      }
+    });
+
+    return out;
+  }
+
+  /**
+   *
+   * @param uri
+   * @returns
+   */
+  deleteFolder(uri: string): boolean {
+    let out = false;
+
+    this._data.forEach((item, key) => {
+      if (item.location.uri.startsWith(uri)) {
         this._data.delete(key);
         out = true;
       }

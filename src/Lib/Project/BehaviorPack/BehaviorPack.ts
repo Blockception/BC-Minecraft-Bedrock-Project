@@ -68,7 +68,7 @@ export class BehaviorPack implements Container, Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument) {
+  process(doc: TextDocument): any {
     const Type = FileType.detect(doc.uri);
 
     //If extended, also extend the delete
@@ -149,7 +149,39 @@ export class BehaviorPack implements Container, Pack {
    * @returns
    */
   deleteFile(uri: string): boolean {
-    return this.getDataset(uri)?.deleteFile(uri) ?? false;
+    let out = false;
+
+    out ||= this.animations.deleteFile(uri);
+    out ||= this.animation_controllers.deleteFile(uri);
+    out ||= this.blocks.deleteFile(uri);
+    out ||= this.entities.deleteFile(uri);
+    out ||= this.functions.deleteFile(uri);
+    out ||= this.items.deleteFile(uri);
+    out ||= this.loot_tables.deleteFile(uri);
+    out ||= this.structures.deleteFile(uri);
+    out ||= this.trading.deleteFile(uri);
+
+    return out;
+  }
+
+  /**
+   *
+   * @param uri
+   */
+  deleteFolder(uri: string): boolean {
+    let out = false;
+
+    out ||= this.animations.deleteFolder(uri);
+    out ||= this.animation_controllers.deleteFolder(uri);
+    out ||= this.blocks.deleteFolder(uri);
+    out ||= this.entities.deleteFolder(uri);
+    out ||= this.functions.deleteFolder(uri);
+    out ||= this.items.deleteFolder(uri);
+    out ||= this.loot_tables.deleteFolder(uri);
+    out ||= this.structures.deleteFolder(uri);
+    out ||= this.trading.deleteFolder(uri);
+
+    return out;
   }
 }
 

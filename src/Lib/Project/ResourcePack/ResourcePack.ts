@@ -157,14 +157,58 @@ export class ResourcePack implements Container, Pack {
   /**
    *
    * @param uri
+   */
+  deleteFolder(uri: string): boolean {
+    let out = false;
+
+    out ||= this.animations.deleteFolder(uri);
+    out ||= this.animation_controllers.deleteFolder(uri);
+    out ||= this.attachables.deleteFolder(uri);
+    out ||= this.blocks.deleteFolder(uri);
+    out ||= this.entities.deleteFolder(uri);
+    out ||= this.fogs.deleteFolder(uri);
+    out ||= this.materials.deleteFolder(uri);
+    out ||= this.models.deleteFolder(uri);
+    out ||= this.particles.deleteFolder(uri);
+    out ||= this.sounds.deleteFolder(uri);
+    out ||= this.textures.deleteFolder(uri);
+
+    return out;
+  }
+
+  /**
+   *
+   * @param uri
    * @returns
    */
   deleteFile(uri: string): boolean {
-    return this.getDataset(uri)?.deleteFile(uri) ?? false;
+    let out = false;
+
+    out ||= this.animations.deleteFile(uri);
+    out ||= this.animation_controllers.deleteFile(uri);
+    out ||= this.attachables.deleteFile(uri);
+    out ||= this.blocks.deleteFile(uri);
+    out ||= this.entities.deleteFile(uri);
+    out ||= this.fogs.deleteFile(uri);
+    out ||= this.materials.deleteFile(uri);
+    out ||= this.models.deleteFile(uri);
+    out ||= this.particles.deleteFile(uri);
+    out ||= this.sounds.deleteFile(uri);
+    out ||= this.textures.deleteFile(uri);
+
+    return out;
   }
 }
 
+/**
+ *
+ */
 export namespace ResourcePack {
+  /**
+   *
+   * @param value
+   * @returns
+   */
   export function is(value: any): value is ResourcePack {
     if (typeof value === "object") {
       //Order is determined buy likely / unlikely it is that it missing

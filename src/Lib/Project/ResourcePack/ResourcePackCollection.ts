@@ -14,55 +14,51 @@ import * as Material from "./Types/Material/include";
 import * as Model from "./Types/Model/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
+import { PackCollection } from "../../Types/Pack/PackCollection";
 
 /** */
-export class ResourcePackCollection {
-  /** */
-  public packs: ResourcePack[];
-
+export class ResourcePackCollection extends PackCollection<ResourcePack> {
   /**The collection of  animations*/
-  readonly animations: DataSetConnector<Animation.Animation>;
+  readonly animations: DataSetConnector<Animation.Animation, ResourcePack>;
   /**The collection of animations controllers*/
-  readonly animation_controllers: DataSetConnector<AnimationController.AnimationController>;
+  readonly animation_controllers: DataSetConnector<AnimationController.AnimationController, ResourcePack>;
   /**The collection of animations controllers*/
-  readonly attachables: DataSetConnector<Attachable.Attachable>;
+  readonly attachables: DataSetConnector<Attachable.Attachable, ResourcePack>;
   /**The collection of blocks*/
-  readonly blocks: DataSetConnector<Block.Block>;
+  readonly blocks: DataSetConnector<Block.Block, ResourcePack>;
   /**The collection of entities*/
-  readonly entities: DataSetConnector<Entity.Entity>;
+  readonly entities: DataSetConnector<Entity.Entity, ResourcePack>;
   /**The collection of fogs*/
-  readonly fogs: DataSetConnector<Fog.Fog>;
+  readonly fogs: DataSetConnector<Fog.Fog, ResourcePack>;
   /**The collection of materials*/
-  readonly materials: DataSetConnector<Material.Material>;
+  readonly materials: DataSetConnector<Material.Material, ResourcePack>;
   /**The collection of models*/
-  readonly models: DataSetConnector<Model.Model>;
+  readonly models: DataSetConnector<Model.Model, ResourcePack>;
   /**The collection of models*/
-  readonly particles: DataSetConnector<Particle.Particle>;
+  readonly particles: DataSetConnector<Particle.Particle, ResourcePack>;
   /**The collection of sounds*/
-  readonly sounds: DataSetConnector<Sound.Sound>;
+  readonly sounds: DataSetConnector<Sound.Sound, ResourcePack>;
   /**The collection of textures*/
-  readonly textures: DataSetConnector<Texture.Texture>;
+  readonly textures: DataSetConnector<Texture.Texture, ResourcePack>;
 
   /**
    *
    */
   constructor() {
-    this.packs = [];
-
-    const count = () => this.packs.length;
+    super();
 
     //Connections
-    this.animations = new DataSetConnector(count, (index) => this.packs[index].animations);
-    this.animation_controllers = new DataSetConnector(count, (index) => this.packs[index].animation_controllers);
-    this.attachables = new DataSetConnector(count, (index) => this.packs[index].attachables);
-    this.blocks = new DataSetConnector(count, (index) => this.packs[index].blocks);
-    this.entities = new DataSetConnector(count, (index) => this.packs[index].entities);
-    this.fogs = new DataSetConnector(count, (index) => this.packs[index].fogs);
-    this.materials = new DataSetConnector(count, (index) => this.packs[index].materials);
-    this.models = new DataSetConnector(count, (index) => this.packs[index].models);
-    this.particles = new DataSetConnector(count, (index) => this.packs[index].particles);
-    this.sounds = new DataSetConnector(count, (index) => this.packs[index].sounds);
-    this.textures = new DataSetConnector(count, (index) => this.packs[index].textures);
+    this.animations = new DataSetConnector(this, (pack) => pack.animations);
+    this.animation_controllers = new DataSetConnector(this, (pack) => pack.animation_controllers);
+    this.attachables = new DataSetConnector(this, (pack) => pack.attachables);
+    this.blocks = new DataSetConnector(this, (pack) => pack.blocks);
+    this.entities = new DataSetConnector(this, (pack) => pack.entities);
+    this.fogs = new DataSetConnector(this, (pack) => pack.fogs);
+    this.materials = new DataSetConnector(this, (pack) => pack.materials);
+    this.models = new DataSetConnector(this, (pack) => pack.models);
+    this.particles = new DataSetConnector(this, (pack) => pack.particles);
+    this.sounds = new DataSetConnector(this, (pack) => pack.sounds);
+    this.textures = new DataSetConnector(this, (pack) => pack.textures);
   }
 
   /**

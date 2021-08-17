@@ -1,21 +1,23 @@
 import { Types } from "bc-minecraft-bedrock-types";
+import { Pack } from "../Pack/Pack";
+import { PackCollection } from "../Pack/PackCollection";
 import { DataSet } from "./DataSet";
 
 /**
  *
  */
-export class DataSetConnector<T extends Types.Identifiable & Types.Locatable> {
-  private _get: (index: number) => DataSet<T> | undefined;
-  private _count: () => number;
+export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U extends Pack> {
+  private _collection: PackCollection<U>;
+  private _getDataset: (pack: U) => DataSet<T> | undefined;
 
   /**
    *
    * @param get
    * @param count
    */
-  constructor(count: () => number, get: (index: number) => DataSet<T> | undefined) {
-    this._count = count;
-    this._get = get;
+  constructor(collection: PackCollection<U>, getDataset: (pack: U) => DataSet<T> | undefined) {
+    this._collection = collection;
+    this._getDataset = getDataset;
   }
 
   /**
@@ -24,12 +26,13 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable> {
    * @returns
    */
   get(id: string): T | undefined {
-    const max = this._count();
+    const packs = this._collection.packs;
+    if (!packs) return undefined;
 
-    for (let I = 0; I < max; I++) {
-      const p = this._get(I);
+    for (let I = 0; I < packs.length; I++) {
+      const p = packs[I];
 
-      const item = p?.get(id);
+      const item = this._getDataset(p)?.get(id);
       if (item) return item;
     }
 
@@ -49,11 +52,13 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable> {
    * @param callbackfn The function to call for each item
    * @param thisArg The this argument*/
   forEach(callbackfn: (value: T) => void, thisArg?: any): void {
-    const max = this._count();
+    const packs = this._collection.packs;
+    if (!packs) return undefined;
 
-    for (let I = 0; I < max; I++) {
-      const p = this._get(I);
-      p?.forEach(callbackfn, thisArg);
+    for (let I = 0; I < packs.length; I++) {
+      const p = packs[I];
+      const dataset = this._getDataset(p);
+      dataset?.forEach(callbackfn, thisArg);
     }
   }
 }

@@ -1,7 +1,5 @@
 import { MCProject } from "bc-minecraft-project";
 import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
-import { DataSet } from "../../Types/include";
-import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack";
 
 import * as AnimationController from "./Types/AnimationController/include";
@@ -13,96 +11,42 @@ import * as Item from "./Types/Item/include";
 import * as LootTable from "./Types/LootTable/include";
 import * as Structure from "./Types/Structure/include";
 import * as Trading from "./Types/Trading/include";
+import { PackCollection } from "../../Types/Pack/PackCollection";
 
 /** */
-export class BehaviorPackCollection {
-  /** */
-  public packs: BehaviorPack[];
-
+export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
   /**The collection of animations*/
-  readonly animations: DataSetConnector<Animation.Animation>;
+  readonly animations: DataSetConnector<Animation.Animation, BehaviorPack>;
   /**The collection of animations controllers*/
-  readonly animation_controllers: DataSetConnector<AnimationController.AnimationController>;
+  readonly animation_controllers: DataSetConnector<AnimationController.AnimationController, BehaviorPack>;
   /**The collection of blocks*/
-  readonly blocks: DataSetConnector<Block.Block>;
+  readonly blocks: DataSetConnector<Block.Block, BehaviorPack>;
   /**The collection of entities*/
-  readonly entities: DataSetConnector<Entity.Entity>;
+  readonly entities: DataSetConnector<Entity.Entity, BehaviorPack>;
   /**The collection of mcfunctions*/
-  readonly functions: DataSetConnector<Function.Function>;
+  readonly functions: DataSetConnector<Function.Function, BehaviorPack>;
   /**The collection of items*/
-  readonly items: DataSetConnector<Item.Item>;
+  readonly items: DataSetConnector<Item.Item, BehaviorPack>;
   /**The collection of loot tables*/
-  readonly loot_tables: DataSetConnector<LootTable.LootTable>;
+  readonly loot_tables: DataSetConnector<LootTable.LootTable, BehaviorPack>;
   /**The collection of structures*/
-  readonly structures: DataSetConnector<Structure.Structure>;
+  readonly structures: DataSetConnector<Structure.Structure, BehaviorPack>;
   /**The collection of trading tables*/
-  readonly trading: DataSetConnector<Trading.Trading>;
+  readonly trading: DataSetConnector<Trading.Trading, BehaviorPack>;
 
   constructor() {
-    this.packs = [];
-
-    const count = () => this.packs.length;
+    super();
 
     //Connections
-    this.animations = new DataSetConnector(count, (index) => this.packs[index].animations);
-    this.animation_controllers = new DataSetConnector(count, (index) => this.packs[index].animation_controllers);
-    this.blocks = new DataSetConnector(count, (index) => this.packs[index].blocks);
-    this.entities = new DataSetConnector(count, (index) => this.packs[index].entities);
-    this.functions = new DataSetConnector(count, (index) => this.packs[index].functions);
-    this.items = new DataSetConnector(count, (index) => this.packs[index].items);
-    this.loot_tables = new DataSetConnector(count, (index) => this.packs[index].loot_tables);
-    this.structures = new DataSetConnector(count, (index) => this.packs[index].structures);
-    this.trading = new DataSetConnector(count, (index) => this.packs[index].trading);
-  }
-
-  /**
-   *
-   * @param doc
-   */
-  process(doc: TextDocument): boolean {
-    const uri = doc.uri;
-
-    for (var I = 0; I < this.packs.length; I++) {
-      const current = this.packs[I];
-      if (uri.startsWith(current.folder)) {
-        current.deleteFile(doc.uri);
-        current.process(doc);
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  /**
-   *
-   * @param doc
-   * @returns
-   */
-  get(doc: TextDocument | string): BehaviorPack | undefined {
-    const uri = typeof doc === "string" ? doc : doc.uri;
-
-    for (var I = 0; I < this.packs.length; I++) {
-      const current = this.packs[I];
-      if (uri.startsWith(current.folder)) {
-        return current;
-      }
-    }
-
-    return undefined;
-  }
-
-  /**
-   *
-   * @param folder
-   * @returns
-   */
-  delete(folder: string): boolean {
-    const old = this.packs.length;
-
-    this.packs = this.packs.filter((value) => value.folder !== folder);
-
-    return old !== this.packs.length;
+    this.animations = new DataSetConnector(this, (pack) => pack.animations);
+    this.animation_controllers = new DataSetConnector(this, (pack) => pack.animation_controllers);
+    this.blocks = new DataSetConnector(this, (pack) => pack.blocks);
+    this.entities = new DataSetConnector(this, (pack) => pack.entities);
+    this.functions = new DataSetConnector(this, (pack) => pack.functions);
+    this.items = new DataSetConnector(this, (pack) => pack.items);
+    this.loot_tables = new DataSetConnector(this, (pack) => pack.loot_tables);
+    this.structures = new DataSetConnector(this, (pack) => pack.structures);
+    this.trading = new DataSetConnector(this, (pack) => pack.trading);
   }
 
   /**
