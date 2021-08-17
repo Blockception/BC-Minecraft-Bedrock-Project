@@ -45,6 +45,14 @@ export class DataSet<T extends Types.Identifiable & Types.Locatable> implements 
 
   /**
    *
+   * @returns
+   */
+  count(): number {
+    return this._data.size;
+  }
+
+  /**
+   *
    * @param key
    * @returns
    */

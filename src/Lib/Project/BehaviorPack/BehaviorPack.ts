@@ -49,17 +49,13 @@ export class BehaviorPack implements Container, Pack {
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
-    this.animation_controllers = new DataSet();
     this.animations = new DataSet();
-
+    this.animation_controllers = new DataSet();
     this.blocks = new DataSet();
     this.entities = new DataSet();
-
     this.functions = new DataSet();
-
     this.items = new DataSet();
     this.loot_tables = new DataSet();
-
     this.structures = new DataSet();
     this.trading = new DataSet();
   }
@@ -188,19 +184,23 @@ export class BehaviorPack implements Container, Pack {
 export namespace BehaviorPack {
   export function is(value: any): value is BehaviorPack {
     if (typeof value === "object") {
+      const temp = <BehaviorPack>value;
       //Order is determined buy likely / unlikely it is that it missing
-      if (!value.functions) return false;
-      if (!value.items) return false;
-      if (!value.loot_tables) return false;
-      if (!value.structures) return false;
-      if (!value.trading) return false;
+      if (typeof temp.functions !== "object") return false;
+      if (typeof temp.items !== "object") return false;
+      if (typeof temp.loot_tables !== "object") return false;
+      if (typeof temp.structures !== "object") return false;
+      if (typeof temp.trading !== "object") return false;
 
-      if (!value.animations) return false;
-      if (!value.animation_controllers) return false;
-      if (!value.blocks) return false;
-      if (!value.context) return false;
-      if (!value.entities) return false;
-      if (!value.folder) return false;
+      if (typeof temp.animations !== "object") return false;
+      if (typeof temp.animation_controllers !== "object") return false;
+      if (typeof temp.blocks !== "object") return false;
+      if (typeof temp.entities !== "object") return false;
+
+      if (typeof temp.context !== "object") return false;
+      if (typeof temp.folder !== "string") return false;
+
+      return true;
     }
 
     return false;

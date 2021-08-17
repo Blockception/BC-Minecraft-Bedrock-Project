@@ -211,21 +211,25 @@ export namespace ResourcePack {
    */
   export function is(value: any): value is ResourcePack {
     if (typeof value === "object") {
+      const temp = <ResourcePack>value;
       //Order is determined buy likely / unlikely it is that it missing
-      if (!value.attachables) return false;
-      if (!value.fogs) return false;
-      if (!value.materials) return false;
-      if (!value.models) return false;
-      if (!value.particles) return false;
-      if (!value.sounds) return false;
-      if (!value.textures) return false;
+      if (typeof temp.attachables !== "object") return false;
+      if (typeof temp.fogs !== "object") return false;
+      if (typeof temp.materials !== "object") return false;
+      if (typeof temp.models !== "object") return false;
+      if (typeof temp.particles !== "object") return false;
+      if (typeof temp.sounds !== "object") return false;
+      if (typeof temp.textures !== "object") return false;
 
-      if (!value.animations) return false;
-      if (!value.animation_controllers) return false;
-      if (!value.blocks) return false;
-      if (!value.context) return false;
-      if (!value.entities) return false;
-      if (!value.folder) return false;
+      if (typeof temp.animations !== "object") return false;
+      if (typeof temp.animation_controllers !== "object") return false;
+      if (typeof temp.blocks !== "object") return false;
+      if (typeof temp.entities !== "object") return false;
+
+      if (typeof temp.context !== "object") return false;
+      if (typeof temp.folder !== "string") return false;
+
+      return true;
     }
 
     return false;

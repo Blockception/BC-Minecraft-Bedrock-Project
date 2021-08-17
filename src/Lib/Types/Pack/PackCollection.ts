@@ -39,7 +39,7 @@ export class PackCollection<T extends Pack> {
   get(doc: TextDocument | string): T | undefined {
     const uri = typeof doc === "string" ? doc : doc.uri;
 
-    for (var I = 0; I < this.packs.length; I++) {
+    for (let I = 0; I < this.packs.length; I++) {
       const current = this.packs[I];
       if (uri.startsWith(current.folder)) {
         return current;
