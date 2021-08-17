@@ -1,6 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import path = require("path");
 import { Manifest } from "../Internal/Types/Manifest";
+import { Pack } from "../Types/Pack/include";
 import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
@@ -44,7 +45,7 @@ export class ProjectData {
   /**Returns the specific pack that belongs the document, returns undefined if nothing is found
    * @param doc The document to process*/
   get(doc: TextDocument | string): BehaviorPack | ResourcePack | undefined {
-    let out = this.BehaviorPacks.get(doc);
+    const out = this.BehaviorPacks.get(doc);
 
     if (out) return out;
 
@@ -83,8 +84,8 @@ export class ProjectData {
    * @param manifesturi
    * @param Context
    */
-  addPack(manifesturi: string | string[], Context: string | MCProject): void {
-    ProjectData.Add(manifesturi, this, Context);
+  addPack(manifesturi: string | string[], Context: string | MCProject): Pack[] {
+    return ProjectData.Add(manifesturi, this, Context);
   }
 }
 
@@ -104,14 +105,20 @@ export namespace ProjectData {
   }
 
   /** */
-  export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): void {
+  export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): Pack[] {
     if (!Array.isArray(manifestPath)) {
       manifestPath = [manifestPath];
     }
 
+    const out: Pack[] = [];
+
     for (var I = 0; I < manifestPath.length; I++) {
-      Process(manifestPath[I], projectData, Context);
+      const Pack = Process(manifestPath[I], projectData, Context);
+
+      if (Pack) out.push(Pack);
     }
+
+    return out;
   }
 }
 
@@ -120,18 +127,16 @@ export namespace ProjectData {
  * @param files
  * @param PF
  */
-function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): void {
+function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): Pack | undefined {
   const Type = PackType.detect(manifestUri);
   const parent = path.join(manifestUri, "..");
 
   switch (Type) {
     case PackType.behavior_pack:
-      projectData.BehaviorPacks.add(parent, Context);
-      return;
+      return projectData.BehaviorPacks.add(parent, Context);
 
     case PackType.resource_pack:
-      projectData.ResourcePacks.add(parent, Context);
-      return;
+      return projectData.ResourcePacks.add(parent, Context);
 
     case PackType.skin_pack:
     case PackType.world:
@@ -146,12 +151,10 @@ function Process(manifestUri: string, projectData: ProjectData, Context: string 
 
       switch (SubType) {
         case PackType.behavior_pack:
-          projectData.BehaviorPacks.add(parent, Context);
-          return;
+          return projectData.BehaviorPacks.add(parent, Context);
 
         case PackType.resource_pack:
-          projectData.ResourcePacks.add(parent, Context);
-          return;
+          return projectData.ResourcePacks.add(parent, Context);
 
         case PackType.skin_pack:
         case PackType.world:
@@ -160,4 +163,6 @@ function Process(manifestUri: string, projectData: ProjectData, Context: string 
           break;
       }
   }
+
+  return undefined;
 }
