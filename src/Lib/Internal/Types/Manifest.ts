@@ -1,41 +1,84 @@
-import { fstat, fsync, promises, readFileSync } from "fs";
+import { promises, readFileSync } from "fs";
 import { jsonc } from "jsonc";
 import { PackType } from "../../Project/include";
+import { TextDocument } from "../../Types/include";
+import { Json } from "../Json";
 
+/**
+ *
+ */
 export interface Manifest {
+  /**
+   *
+   */
   format_verison: string;
+  /**
+   *
+   */
   header: ManifestHeader;
+  /**
+   *
+   */
   modules: ManifestModule[];
+  /**
+   *
+   */
   metadata: ManifestMetadata;
 }
 
+/**
+ *
+ */
 export interface ManifestHeader {
+  /** */
   name: string;
+  /** */
   description: string;
+  /** */
   uuid: string;
+  /** */
   version: number[];
+  /** */
   lock_template_options: boolean;
+  /** */
   base_game_version: number[];
 }
 
+/** */
 export interface ManifestModule {
+  /** */
   type: string;
+  /** */
   uuid: string;
+  /** */
   version: number[];
 }
 
+/** */
 export namespace ManifestModule {
+  /** */
   export const TypeResource = "resources";
+  /** */
   export const TypeData = "data";
+  /** */
   export const TypeWorld = "world_template";
+  /** */
   export const TypeSkinPack = "skin_pack";
 }
 
+/** */
 export interface ManifestMetadata {
+  /** */
   authors: string[];
 }
 
+/** */
 export namespace Manifest {
+  /**
+   *
+   * @param m
+   * @returns
+   */
   export function IsWorldManifest(m: Manifest): boolean {
     let modules = m.modules;
 
@@ -48,6 +91,11 @@ export namespace Manifest {
     return false;
   }
 
+  /**
+   *
+   * @param m
+   * @returns
+   */
   export function IsResourceManifest(m: Manifest): boolean {
     let modules = m.modules;
 
@@ -60,6 +108,11 @@ export namespace Manifest {
     return false;
   }
 
+  /**
+   *
+   * @param m
+   * @returns
+   */
   export function IsBehaviorManifest(m: Manifest): boolean {
     let modules = m.modules;
 
@@ -72,6 +125,11 @@ export namespace Manifest {
     return false;
   }
 
+  /**
+   *
+   * @param m
+   * @returns
+   */
   export function IsSkinpackManifest(m: Manifest): boolean {
     let modules = m.modules;
 
@@ -84,6 +142,11 @@ export namespace Manifest {
     return false;
   }
 
+  /**
+   *
+   * @param m
+   * @returns
+   */
   export function DetectType(m: Manifest): PackType {
     if (!m.modules) return PackType.unknown;
 
@@ -108,36 +171,34 @@ export namespace Manifest {
     return PackType.unknown;
   }
 
+  /**
+   *
+   * @param uri
+   * @returns
+   */
   export function GetManifestSync(uri: string): Manifest | undefined {
-    let manifest: Manifest | undefined = undefined;
-    try {
-      //Load data
-      const data = readFileSync(uri).toString();
-      const obj = jsonc.parse(data);
-      manifest = <Manifest>obj;
-    } catch (err) {
-      console.error(JSON.stringify(err));
-    }
+    const doc: TextDocument = {
+      uri: uri,
+      getText(): string {
+        return readFileSync(this.uri).toString();
+      },
+    };
 
-    return manifest;
+    return Json.To<Manifest>(doc);
   }
 
+  /**
+   *
+   * @param uri
+   * @returns
+   */
   export async function GetManifest(uri: string): Promise<Manifest | undefined> {
     const readFile = promises.readFile(uri);
 
     return readFile.then((buffer) => {
-      let manifest: Manifest | undefined = undefined;
+      const data = buffer.toString();
 
-      try {
-        //Load data
-        const data = buffer.toString();
-        const obj = jsonc.parse(data);
-        manifest = <Manifest>obj;
-      } catch (err) {
-        console.error(JSON.stringify(err));
-      }
-
-      return manifest;
+      return Json.To<Manifest>(data);
     });
   }
 }

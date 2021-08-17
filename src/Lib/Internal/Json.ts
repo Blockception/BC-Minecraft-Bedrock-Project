@@ -13,8 +13,13 @@ export namespace Json {
   export function To<T>(doc: TextDocument | string): T | undefined {
     let out: T | undefined = undefined;
 
-    const content = typeof doc === "object" ? doc.getText() : doc;
-    if (content !== "") out = jsonc.parse(content);
+    try {
+      const content = typeof doc === "object" ? doc.getText() : doc;
+
+      if (content !== "") out = <T>jsonc.parse(content);
+    } catch (err) {
+      console.error(JSON.stringify(err));
+    }
 
     return out;
   }
