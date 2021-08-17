@@ -10,7 +10,7 @@ A project that deals with caching, summarizing minecraft bedrock data
 ```ts
 const Data = new ProjectData();
 
-const ProjectFolder = "c:\\project";
+const ProjectFolder = "c:\\project\\";
 const manifests = ["c:\\project\\bp\\manifest.json", "c:\\project\\rp\\manifest.json", "c:\\project\\world\\manifest.json"];
 
 Data.addPack(manifests, ProjectFolder);
