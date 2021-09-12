@@ -64,7 +64,8 @@ export class BehaviorPack implements Container, Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument): any {
+  process(doc: TextDocument): DataSetBase | undefined {
+    this.deleteFile(doc.uri);
     const Type = FileType.detect(doc.uri);
 
     //If extended, also extend the delete
@@ -96,6 +97,8 @@ export class BehaviorPack implements Container, Pack {
       case FileType.trading:
         return this.trading.set(Trading.Process(doc));
     }
+
+    return undefined;
   }
 
   /**

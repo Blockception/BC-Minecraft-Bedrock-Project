@@ -1,4 +1,5 @@
 import { MCProject } from "bc-minecraft-project";
+import { DataSetBase } from "../include";
 import { TextDocument } from "../TextDocument/TextDocument";
 
 /** */
@@ -12,7 +13,7 @@ export interface Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument): any;
+  process(doc: TextDocument): DataSetBase | undefined;
 
   /**
    *

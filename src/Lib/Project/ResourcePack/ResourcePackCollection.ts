@@ -12,9 +12,11 @@ import * as Fog from "./Types/Fog/include";
 import * as Particle from "./Types/Particle/include";
 import * as Material from "./Types/Material/include";
 import * as Model from "./Types/Model/include";
+import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
 import { PackCollection } from "../../Types/Pack/PackCollection";
+import { DataSetBase } from "../../Types/include";
 
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {
@@ -37,6 +39,8 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
   /**The collection of models*/
   readonly particles: DataSetConnector<Particle.Particle, ResourcePack>;
   /**The collection of sounds*/
+  readonly render_controllers: DataSetConnector<RenderController.RenderController, ResourcePack>;
+  /**The collection of sounds*/
   readonly sounds: DataSetConnector<Sound.Sound, ResourcePack>;
   /**The collection of textures*/
   readonly textures: DataSetConnector<Texture.Texture, ResourcePack>;
@@ -57,58 +61,9 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
     this.materials = new DataSetConnector(this, (pack) => pack.materials);
     this.models = new DataSetConnector(this, (pack) => pack.models);
     this.particles = new DataSetConnector(this, (pack) => pack.particles);
+    this.render_controllers = new DataSetConnector(this, (pack) => pack.render_controllers);
     this.sounds = new DataSetConnector(this, (pack) => pack.sounds);
     this.textures = new DataSetConnector(this, (pack) => pack.textures);
-  }
-
-  /**
-   *
-   * @param doc
-   */
-  process(doc: TextDocument): boolean {
-    const uri = doc.uri;
-
-    for (var I = 0; I < this.packs.length; I++) {
-      const current = this.packs[I];
-      if (uri.startsWith(current.folder)) {
-        current.deleteFile(doc.uri);
-        current.process(doc);
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  /**
-   *
-   * @param doc
-   * @returns
-   */
-  get(doc: TextDocument | string): ResourcePack | undefined {
-    const uri = typeof doc === "string" ? doc : doc.uri;
-
-    for (var I = 0; I < this.packs.length; I++) {
-      const current = this.packs[I];
-      if (uri.startsWith(current.folder)) {
-        return current;
-      }
-    }
-
-    return undefined;
-  }
-
-  /**
-   *
-   * @param folder
-   * @returns
-   */
-  delete(folder: string): boolean {
-    const old = this.packs.length;
-
-    this.packs = this.packs.filter((value) => value.folder !== folder);
-
-    return old !== this.packs.length;
   }
 
   /**

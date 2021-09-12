@@ -15,6 +15,7 @@ import * as Fog from "./Types/Fog/include";
 import * as Particle from "./Types/Particle/include";
 import * as Material from "./Types/Material/include";
 import * as Model from "./Types/Model/include";
+import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
 
@@ -44,6 +45,8 @@ export class ResourcePack implements Container, Pack {
   readonly particles: DataSet<Particle.Particle>;
   /**The collection of sounds*/
   readonly sounds: DataSet<Sound.Sound>;
+  /**The collection of sounds*/
+  readonly render_controllers: DataSet<RenderController.RenderController>;
   /**The collection of textures*/
   readonly textures: DataSet<Texture.Texture>;
 
@@ -64,6 +67,7 @@ export class ResourcePack implements Container, Pack {
     this.materials = new DataSet();
     this.models = new DataSet();
     this.particles = new DataSet();
+    this.render_controllers = new DataSet();
     this.sounds = new DataSet();
     this.textures = new DataSet();
   }
@@ -72,7 +76,8 @@ export class ResourcePack implements Container, Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument) {
+  process(doc: TextDocument): DataSetBase | undefined {
+    this.deleteFile(doc.uri);
     const Type = FileType.detect(doc.uri);
 
     switch (Type) {
@@ -97,6 +102,9 @@ export class ResourcePack implements Container, Pack {
       case FileType.model:
         return this.models.set(Model.Process(doc));
 
+      case FileType.render_controller:
+        return this.render_controllers.set(RenderController.Process(doc));
+
       case FileType.particle:
         return this.particles.set(Particle.Process(doc));
 
@@ -107,6 +115,8 @@ export class ResourcePack implements Container, Pack {
       case FileType.texture_terrain_atlas:
         return this.textures.set(Texture.ProcessTextureAtlas(doc));
     }
+
+    return undefined;
   }
 
   /**
@@ -140,6 +150,9 @@ export class ResourcePack implements Container, Pack {
         return this.models;
 
       case FileType.particle:
+        return this.particles;
+
+      case FileType.render_controller:
         return this.particles;
 
       case FileType.sounds_definitions:
@@ -218,6 +231,7 @@ export namespace ResourcePack {
       if (typeof temp.materials !== "object") return false;
       if (typeof temp.models !== "object") return false;
       if (typeof temp.particles !== "object") return false;
+      if (typeof temp.render_controllers !== "object") return false;
       if (typeof temp.sounds !== "object") return false;
       if (typeof temp.textures !== "object") return false;
 

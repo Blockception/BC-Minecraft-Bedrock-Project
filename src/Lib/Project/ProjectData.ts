@@ -1,6 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import path = require("path");
 import { Manifest } from "../Internal/Types/Manifest";
+import { DataSetBase } from "../Types/include";
 import { Pack } from "../Types/Pack/include";
 import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
@@ -27,8 +28,8 @@ export class ProjectData {
 
   /**Processes the given textdocument into the bacp
    * @param doc The document to process
-   * @returns Returns true or false if it was succesfull processed*/
-  process(doc: TextDocument): boolean {
+   * @returns Returns the possible data the document was added to*/
+  process(doc: TextDocument): DataSetBase | undefined {
     const type = PackType.detect(doc.uri);
 
     switch (type) {
@@ -39,7 +40,7 @@ export class ProjectData {
         return this.ResourcePacks.process(doc);
     }
 
-    return false;
+    return undefined;
   }
 
   /**Returns the specific pack that belongs the document, returns undefined if nothing is found

@@ -2,11 +2,12 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { Pack } from "../Pack/Pack";
 import { PackCollection } from "../Pack/PackCollection";
 import { DataSet } from "./DataSet";
+import { IDataSet } from "./IDataSet";
 
 /**
  *
  */
-export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U extends Pack> {
+export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U extends Pack> implements IDataSet<T> {
   private _collection: PackCollection<U>;
   private _getDataset: (pack: U) => DataSet<T> | undefined;
 
@@ -25,7 +26,9 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
    * @param id
    * @returns
    */
-  get(id: string): T | undefined {
+  get(id: string | Types.Identifiable): T | undefined {
+    id = Types.Identifiable.getId(id);
+
     const packs = this._collection.packs;
     if (!packs) return undefined;
 
@@ -44,7 +47,7 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
    * @param id
    * @returns
    */
-  has(id: string): boolean {
+  has(id: string | Types.Identifiable): boolean {
     return this.get(id) !== undefined;
   }
 

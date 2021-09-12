@@ -6,5 +6,6 @@ export * from "./Fog";
 export * from "./Material";
 export * from "./Model";
 export * from "./Particle";
+export * from "./RenderController";
 export * from "./SoundDefinitions";
 export * from "./TextureAtlas";

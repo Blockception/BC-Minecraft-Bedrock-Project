@@ -1,4 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
+import { IDataSet } from "./IDataSet";
 
 /**The base of any dataset*/
 export interface DataSetBase {
@@ -27,7 +28,7 @@ export interface DataSetBase {
 }
 
 /** */
-export class DataSet<T extends Types.Identifiable & Types.Locatable> implements DataSetBase {
+export class DataSet<T extends Types.Identifiable & Types.Locatable> implements DataSetBase, IDataSet<T> {
   private _data: Map<string, T>;
 
   /**

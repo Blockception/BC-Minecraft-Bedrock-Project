@@ -1,3 +1,4 @@
+import { DataSetBase } from "../include";
 import { TextDocument } from "../TextDocument/include";
 import { Pack } from "./Pack";
 
@@ -16,14 +17,14 @@ export class PackCollection<T extends Pack> {
    *
    * @param doc
    */
-  process(doc: TextDocument): any {
+  process(doc: TextDocument): DataSetBase | undefined {
     const pack = this.get(doc);
 
     if (pack) {
       return pack.process(doc);
     }
 
-    return false;
+    return undefined;
   }
 
   /** */
