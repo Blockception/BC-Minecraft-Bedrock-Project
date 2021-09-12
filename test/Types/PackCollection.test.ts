@@ -22,6 +22,8 @@ class TestPack implements Pack {
 
   process(doc: TextDocument) {
     if (this.docFilter?.test(doc.uri) ?? true) this.docs.push(doc);
+
+    return undefined;
   }
 
   deleteFile(uri: string): boolean {
