@@ -13,8 +13,10 @@ const Data = new ProjectData();
 const ProjectFolder = "c:\\project\\";
 const manifests = ["c:\\project\\bp\\manifest.json", "c:\\project\\rp\\manifest.json", "c:\\project\\world\\manifest.json"];
 
-Data.addPack(manifests, ProjectFolder);
+const packs = Data.addPack(manifests, ProjectFolder);
 
 //Process documents into the pacts
-Data.Process();
+Data.Process(...);
+//OR
+packs[0].process(...)
 ```
