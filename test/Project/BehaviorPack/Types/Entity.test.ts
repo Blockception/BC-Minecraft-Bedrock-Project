@@ -91,6 +91,6 @@ describe("Entity", () => {
     expect(data).to.not.be.undefined;
 
     if (!data) return;
-    expect(data.id).has.members(["blockception:sheep"]);
+    expect(data.id).to.equal("blockception:sheep");
   });
 });
