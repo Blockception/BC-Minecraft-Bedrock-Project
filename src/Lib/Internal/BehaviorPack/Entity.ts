@@ -40,7 +40,7 @@ export interface Entity {
   /** */
   format_version: string;
   /** */
-  "minecraf:entity": {
+  "minecraft:entity": {
     /** */
     description: EntityDescription;
     /** */
@@ -59,8 +59,8 @@ export namespace Entity {
    * @param value
    */
   export function is(value: any): value is Entity {
-    if (value && typeof value.format_version === "string" && typeof value["minecraf:entity"] === "object") {
-      const b = value["minecraf:entity"];
+    if (typeof value === "object" && typeof value.format_version === "string" && typeof value["minecraft:entity"] === "object") {
+      const b = value["minecraft:entity"];
 
       if (typeof b.description === "object" && typeof b.description.identifier === "string" && typeof b.components === "object") {
         return true;

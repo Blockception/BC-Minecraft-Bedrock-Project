@@ -16,7 +16,7 @@ export namespace Map {
 
     keys.forEach((k) => {
       const elem = map[k];
-      if (typeof elem === "string") callbackfn(elem, k, map);
+      callbackfn(elem, k, map);
     });
   }
 }

@@ -7,6 +7,7 @@ import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Entity } from "./include";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
+import { EntityComponentContainer } from "../../../../Internal/BehaviorPack/Entity";
 
 /**
  *
@@ -20,7 +21,7 @@ export function Process(doc: TextDocument): Entity | undefined {
 
   if (!internal.Entity.is(imp)) return undefined;
 
-  const container = imp["minecraf:entity"];
+  const container = imp["minecraft:entity"];
   const id = container.description.identifier;
 
   const out: Entity = {
@@ -29,11 +30,17 @@ export function Process(doc: TextDocument): Entity | undefined {
     documentation: Documentation.getDoc(doc, () => `BP Entity: ${id}`),
     animations: DefinedUsing.empty(),
     events: [],
+    families: [],
     groups: [],
     molang: MolangSet.harvest(container),
   };
 
-  if (container.component_groups) Map.forEach(container.component_groups, (group, name) => out.groups.push(name));
+  if (container.component_groups) {
+    Map.forEach(container.component_groups, (group, name) => {
+      out.groups.push(name);
+      getFamilies(group, out.families);
+    });
+  }
   if (container.events) Map.forEach(container.events, (event, name) => out.events.push(name));
   if (container.description.animations) {
     Map.forEach(container.description.animations, (anim, name) => {
@@ -42,5 +49,29 @@ export function Process(doc: TextDocument): Entity | undefined {
     });
   }
 
+  getFamilies(container.components, out.families);
+
   return out;
+}
+
+function getFamilies(components: EntityComponentContainer, receiver: string[]) {
+  const families = components["minecraft:type_family"];
+
+  if (type_family.is(families)) {
+    receiver.push(...families.family);
+  }
+}
+
+interface type_family {
+  family: string[];
+}
+
+namespace type_family {
+  export function is(value: any): value is type_family {
+    if (typeof value === "object" && Array.isArray(value.family)) {
+      return true;
+    }
+
+    return false;
+  }
 }
