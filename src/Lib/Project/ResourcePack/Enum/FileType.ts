@@ -61,11 +61,7 @@ export namespace FileType {
     if (/[\\\/]particles[\\\/]/.test(uri)) return FileType.particle;
     if (/[\\\/]render_controllers[\\\/]/.test(uri)) return FileType.render_controller;
 
-    const index = uri.lastIndexOf(path.sep);
-    const filename = uri.substring(index + 1, uri.length);
-
-    console.log(path.sep);
-    console.log(filename);
+    const filename = path.basename(uri);
 
     switch (filename) {
       case "biomes_client.json":
