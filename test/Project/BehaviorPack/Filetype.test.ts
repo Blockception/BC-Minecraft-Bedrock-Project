@@ -32,8 +32,10 @@ describe("BP Filetype", () => {
 
     DetectTests.forEach((item) => {
       it(<string>item[0], () => {
-        const filepath = <string>item[0];
+        let filepath = <string>item[0];
         const expected = <BehaviorPack.FileType>item[1];
+
+        if (path.sep !== "\\") filepath = filepath.replace(/\\/gi, "/");
 
         const test = BehaviorPack.FileType.detect(path.normalize(filepath));
 
