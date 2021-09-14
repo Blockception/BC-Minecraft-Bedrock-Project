@@ -64,6 +64,7 @@ export namespace FileType {
     const index = uri.lastIndexOf(path.sep);
     const filename = uri.substring(index + 1, uri.length);
 
+    console.log(path.sep);
     console.log(filename);
 
     switch (filename) {
