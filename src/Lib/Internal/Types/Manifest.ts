@@ -1,7 +1,5 @@
-import { promises, readFileSync } from "fs";
-import { jsonc } from "jsonc";
 import { PackType } from "../../Project/include";
-import { TextDocument } from "../../Types/include";
+import { ProjectContext } from "../../Types/include";
 import { Json } from "../Json";
 
 /**
@@ -176,29 +174,11 @@ export namespace Manifest {
    * @param uri
    * @returns
    */
-  export function GetManifestSync(uri: string): Manifest | undefined {
-    const doc: TextDocument = {
-      uri: uri,
-      getText(): string {
-        return readFileSync(this.uri).toString();
-      },
-    };
+  export function GetManifest(uri: string, ProjectContext: ProjectContext): Manifest | undefined {
+    const doc = ProjectContext.getDocument(uri);
 
-    return Json.To<Manifest>(doc);
-  }
+    if (doc) return Json.To<Manifest>(doc);
 
-  /**
-   *
-   * @param uri
-   * @returns
-   */
-  export async function GetManifest(uri: string): Promise<Manifest | undefined> {
-    const readFile = promises.readFile(uri);
-
-    return readFile.then((buffer) => {
-      const data = buffer.toString();
-
-      return Json.To<Manifest>(data);
-    });
+    return undefined;
   }
 }

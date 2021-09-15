@@ -173,7 +173,7 @@ function Process(manifestUri: string, projectData: ProjectData, Context: string 
 
     case PackType.unknown:
     default:
-      const manifest = Manifest.GetManifestSync(manifestUri);
+      const manifest = Manifest.GetManifest(manifestUri, projectData.Context);
       if (!manifest) break;
 
       const SubType = Manifest.DetectType(manifest);

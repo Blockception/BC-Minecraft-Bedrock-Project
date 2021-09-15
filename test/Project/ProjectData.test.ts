@@ -4,10 +4,11 @@ import { expect } from "chai";
 import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack/include";
 import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
 import { ProjectData } from "../../src/main";
+import { TextProjectContext } from "../Uttility";
 
 describe("ProjectData", () => {
   it("Sanity Check", () => {
-    const P = new ProjectData();
+    const P = new ProjectData(new TextProjectContext());
 
     expect(P).to.not.be.undefined;
     expect(P.BehaviorPacks).to.not.be.undefined;
@@ -25,14 +26,14 @@ describe("ProjectData", () => {
 
   describe("Behaviourpack", () => {
     it("add", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
 
       expect(P.BehaviorPacks.count()).to.equal(1);
     });
 
     it("get", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
       const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
 
@@ -55,7 +56,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove File", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
 
       const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
@@ -75,7 +76,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove Folder", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
 
       const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
@@ -93,7 +94,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove Folder - Entire Pack", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
 
       const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
@@ -114,14 +115,14 @@ describe("ProjectData", () => {
 
   describe("Resourcepack", () => {
     it("add", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.ResourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
 
       expect(P.ResourcePacks.count()).to.equal(1);
     });
 
     it("get", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.ResourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
       const uri = "c:\\temp\\rp\\sounds\\sound_definitions.json";
       const id = "random.pop";
@@ -145,7 +146,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove File", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.ResourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
 
       const uri = "c:\\temp\\rp\\sounds\\sound_definitions.json";
@@ -163,7 +164,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove Folder", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.ResourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
       const uri = "c:\\temp\\rp\\sounds\\sound_definitions.json";
       const id = "random.pop";
@@ -180,7 +181,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove Folder - Entire Pack", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const pack = P.ResourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
 
       const uri = "c:\\temp\\rp\\sounds\\sound_definitions.json";
@@ -202,7 +203,7 @@ describe("ProjectData", () => {
 
   describe("General", () => {
     it("Remove File", () => {
-      const P = new ProjectData();
+      const P = new ProjectData(new TextProjectContext());
       const uri = "c:\\temp\\rp\\sounds\\sound_definitions.json";
       const id = "init";
 
