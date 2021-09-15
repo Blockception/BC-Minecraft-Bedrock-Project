@@ -10,6 +10,7 @@ import { PackType } from "./Enum/PackType";
 import { GeneralCollection } from "./General/General";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
+import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -19,11 +20,14 @@ export class ProjectData {
   ResourcePacks: ResourcePackCollection;
   /**The collection of general items*/
   General: GeneralCollection;
+  /**The context needed to run this project data collection*/
+  Context: ProjectContext;
 
-  constructor() {
+  constructor(Context: ProjectContext) {
     this.BehaviorPacks = new BehaviorPackCollection();
     this.ResourcePacks = new ResourcePackCollection();
     this.General = new GeneralCollection();
+    this.Context = Context;
   }
 
   /**Processes the given textdocument into the bacp
