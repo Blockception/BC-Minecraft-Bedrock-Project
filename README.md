@@ -8,7 +8,12 @@
 A project that deals with caching, summarizing minecraft bedrock data
 
 ```ts
-const Data = new ProjectData();
+const context: ProjectContext = {
+  getDocument: (uri: string) => { ... },
+  getFiles: (folder: string, ignores: MCIgnore) => { ... },
+};
+
+const Data = new ProjectData(context);
 
 const ProjectFolder = "c:\\project\\";
 const manifests = ["c:\\project\\bp\\manifest.json", "c:\\project\\rp\\manifest.json", "c:\\project\\world\\manifest.json"];
