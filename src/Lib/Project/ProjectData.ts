@@ -158,7 +158,7 @@ export namespace ProjectData {
  */
 function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): Pack | undefined {
   const Type = PackType.detect(manifestUri);
-  const parent = path.join(manifestUri, "..");
+  const parent = manifestUri.replace(/[\\\/]manifest.json/gi, "");
 
   switch (Type) {
     case PackType.behavior_pack:
