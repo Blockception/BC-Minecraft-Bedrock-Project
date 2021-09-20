@@ -2,13 +2,12 @@ import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
 import { Pack } from "./Pack";
 
+/**The class PackCollection description*/
 export class PackCollection<T extends Pack> {
   /** */
   public packs: T[];
 
-  /**
-   *
-   */
+  /**Creates a new instances of the class*/
   constructor() {
     this.packs = [];
   }

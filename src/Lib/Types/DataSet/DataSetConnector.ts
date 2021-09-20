@@ -4,9 +4,7 @@ import { PackCollection } from "../Pack/PackCollection";
 import { DataSet } from "./DataSet";
 import { IDataSet } from "./IDataSet";
 
-/**
- *
- */
+/**The class DataSetConnector description*/
 export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U extends Pack> implements IDataSet<T> {
   private _collection: PackCollection<U>;
   private _getDataset: (pack: U) => DataSet<T> | undefined;

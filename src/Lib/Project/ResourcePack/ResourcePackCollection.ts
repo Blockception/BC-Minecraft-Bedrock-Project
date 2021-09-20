@@ -43,9 +43,7 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
   /**The collection of textures*/
   readonly textures: DataSetConnector<Texture.Texture, ResourcePack>;
 
-  /**
-   *
-   */
+  /**Creates a new instances of the class*/
   constructor() {
     super();
 

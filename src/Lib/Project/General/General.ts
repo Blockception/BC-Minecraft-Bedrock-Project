@@ -4,9 +4,7 @@ import { FileType } from "../BehaviorPack/include";
 import { ProcessMcFunction } from "./Types/Commands/Process";
 import { GeneralInfo } from "./Types/GeneralInfo";
 
-/**
- *
- */
+/**The class GeneralCollection description*/
 export class GeneralCollection {
   /** */
   readonly fakeEntities: DataSet<GeneralInfo>;
