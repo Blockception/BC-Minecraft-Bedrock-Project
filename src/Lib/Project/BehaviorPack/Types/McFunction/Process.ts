@@ -11,6 +11,8 @@ import { Function } from "./Function";
  */
 export function Process(doc: TextDocument): Function | undefined {
   const uri = doc.uri;
+  if (uri.endsWith(".json")) return undefined;
+
   let index = uri.indexOf("functions");
 
   if (index < 0) return undefined;
