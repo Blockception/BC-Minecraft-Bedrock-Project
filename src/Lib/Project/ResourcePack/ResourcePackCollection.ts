@@ -1,5 +1,4 @@
 import { MCProject } from "bc-minecraft-project";
-import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { ResourcePack } from "./ResourcePack";
 import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 
@@ -16,7 +15,6 @@ import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
 import { PackCollection } from "../../Types/Pack/PackCollection";
-import { DataSetBase } from "../../Types/include";
 
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {

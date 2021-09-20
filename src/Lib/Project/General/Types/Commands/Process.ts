@@ -1,5 +1,5 @@
 import { Command } from "bc-minecraft-bedrock-command";
-import { TextDocument } from "../../../../Types/include";
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { GeneralCollection } from "../../General";
 import * as Tag from "../Tag/Process";
 import * as Objective from "../Objective/Process";

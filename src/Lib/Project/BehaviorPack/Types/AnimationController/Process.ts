@@ -8,7 +8,7 @@ import { Using } from "../../../../Types/Defined Using/include";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { AnimationController } from "./include";
+import { AnimationController } from "./AnimationController";
 
 /**
  *

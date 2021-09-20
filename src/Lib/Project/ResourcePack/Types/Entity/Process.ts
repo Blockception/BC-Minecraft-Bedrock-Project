@@ -3,10 +3,10 @@ import { Json } from "../../../../Internal/Json";
 import { MolangFullSet } from "../../../../Molang/MolangSet";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Entity } from "./include";
+import { Entity } from "./Entity";
 import { DefinedUsing } from "../../../../Types/Defined Using/include";
 import { Definition } from "../../../../Internal/Types/Definition";
-import { Documentation } from "../../../../Types/include";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /**
  *

@@ -2,11 +2,11 @@ import * as internal from "../../../../Internal/ResourcePack/Animation";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Animation } from "./include";
+import { Animation } from "./Animation";
 import { Map } from "../../../../Types/Map/Map";
 import { Using } from "../../../../Types/Defined Using/include";
-import { Documentation } from "../../../../Types/include";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {

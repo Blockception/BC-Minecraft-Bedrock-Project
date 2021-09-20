@@ -1,8 +1,6 @@
 import { MCProject } from "bc-minecraft-project";
 import path = require("path");
 import { Manifest } from "../Internal/Types/Manifest";
-import { DataSetBase } from "../Types/include";
-import { Pack } from "../Types/Pack/include";
 import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
@@ -11,6 +9,8 @@ import { GeneralCollection } from "./General/General";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
+import { DataSetBase } from "../Types/DataSet/include";
+import { Pack } from "../Types/Pack/Pack";
 
 /**The project cache for minecraft*/
 export class ProjectData {

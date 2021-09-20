@@ -1,5 +1,5 @@
 import { MCProject } from "bc-minecraft-project";
-import { DataSetBase } from "../include";
+import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
 
 /** */

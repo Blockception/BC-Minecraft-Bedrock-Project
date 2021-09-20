@@ -5,7 +5,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { BlockState } from "./Block";
-import { Block } from "./include";
+import { Block } from "./Block";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /**

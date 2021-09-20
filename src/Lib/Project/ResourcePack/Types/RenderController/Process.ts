@@ -2,9 +2,9 @@ import * as internal from "../../../../Internal/ResourcePack/RenderController";
 import { Json } from "../../../../Internal/Json";
 import { MolangFullSet } from "../../../../Molang/MolangSet";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { RenderController } from "./include";
-import { Documentation } from "../../../../Types/include";
+import { RenderController } from "./RenderController";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /** */
 export function Process(doc: TextDocument): RenderController[] | undefined {

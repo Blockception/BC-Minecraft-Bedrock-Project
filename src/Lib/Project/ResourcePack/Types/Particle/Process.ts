@@ -2,8 +2,8 @@ import * as internal from "../../../../Internal/ResourcePack/Particle";
 import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Particle } from "./include";
-import { Documentation } from "../../../../Types/Documentated/include";
+import { Particle } from "./Particle";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /**
  *

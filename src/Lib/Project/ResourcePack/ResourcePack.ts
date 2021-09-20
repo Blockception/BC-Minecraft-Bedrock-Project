@@ -4,7 +4,7 @@ import { Pack } from "../../Types/Pack/Pack";
 
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/include";
-import { Container } from "../../Types/Container/include";
+import { Container } from "../../Types/Container/Container";
 
 import * as Animation from "./Types/Animation/include";
 import * as AnimationController from "./Types/AnimationController/include";

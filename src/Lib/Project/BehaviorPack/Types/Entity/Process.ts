@@ -5,7 +5,7 @@ import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
 import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Entity } from "./include";
+import { Entity } from "./Entity";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { EntityComponentContainer } from "../../../../Internal/BehaviorPack/Entity";
 

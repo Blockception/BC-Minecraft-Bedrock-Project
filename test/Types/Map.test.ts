@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Map } from "../../src/Lib/Types/include";
+import { Map } from "../../src/Lib/Types/Map/Map";
 
 interface Variant {
   "minecraft:variant": {

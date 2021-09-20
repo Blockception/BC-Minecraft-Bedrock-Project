@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../Types/include";
+import { TextDocument } from "../../Types/TextDocument/TextDocument";
 
 export function GetComment(doc: TextDocument, lineIndex: number): string {
   const line = doc.getText(Types.Range.createR(lineIndex, 0, lineIndex, Number.MAX_SAFE_INTEGER));

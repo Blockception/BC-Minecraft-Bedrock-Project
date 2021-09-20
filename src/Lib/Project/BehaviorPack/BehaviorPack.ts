@@ -1,5 +1,5 @@
 import { MCProject } from "bc-minecraft-project";
-import { Container } from "../../Types/Container/include";
+import { Container } from "../../Types/Container/Container";
 import { DataSet, DataSetBase } from "../../Types/DataSet/include";
 
 import * as AnimationController from "./Types/AnimationController/include";

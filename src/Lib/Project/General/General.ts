@@ -1,4 +1,5 @@
-import { DataSet, TextDocument } from "../../Types/include";
+import { DataSet } from "../../Types/DataSet/include";
+import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "../BehaviorPack/include";
 import { ProcessMcFunction } from "./Types/Commands/Process";
 import { GeneralInfo } from "./Types/GeneralInfo";

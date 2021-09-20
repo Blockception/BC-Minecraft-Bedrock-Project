@@ -1,5 +1,5 @@
-import { DataSetBase } from "../include";
-import { TextDocument } from "../TextDocument/include";
+import { DataSetBase } from "../DataSet/include";
+import { TextDocument } from "../TextDocument/TextDocument";
 import { Pack } from "./Pack";
 
 export class PackCollection<T extends Pack> {

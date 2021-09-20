@@ -2,9 +2,9 @@ import { Types } from "bc-minecraft-bedrock-types";
 import * as internal from "../../../../Internal/BehaviorPack/Animation";
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
-import { Documentation } from "../../../../Types/include";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Animation } from "./include";
+import { Animation } from "./Animation";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {

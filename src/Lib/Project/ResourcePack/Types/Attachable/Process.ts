@@ -2,7 +2,7 @@ import * as internal from "../../../../Internal/ResourcePack/Attachable";
 import { Json } from "../../../../Internal/Json";
 import { MolangFullSet } from "../../../../Molang/MolangSet";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Attachable } from "./include";
+import { Attachable } from "./Attachable";
 import { DefinedUsing } from "../../../../Types/Defined Using/include";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Definition } from "../../../../Internal/Types/Definition";

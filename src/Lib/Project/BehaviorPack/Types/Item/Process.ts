@@ -3,9 +3,8 @@ import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { Types } from "bc-minecraft-bedrock-types";
 import { Documentation } from "../../../../Types/Documentated/Documentated";
-import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Item } from "./include";
+import { Item } from "./Item";
 
 /**
  *

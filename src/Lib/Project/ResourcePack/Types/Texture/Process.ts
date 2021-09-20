@@ -2,8 +2,8 @@ import * as internal from "../../../../Internal/ResourcePack/TextureAtlas";
 import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Texture } from "./include";
-import { Documentation } from "../../../../Types/Documentated/include";
+import { Texture } from "./Texture";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 import { Map } from "../../../../Types/Map/Map";
 
 /**

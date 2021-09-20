@@ -2,8 +2,8 @@ import * as internal from "../../../../Internal/ResourcePack/Fog";
 import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Fog } from "./include";
-import { Documentation } from "../../../../Types/Documentated/include";
+import { Fog } from "./Fog";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /**
  *

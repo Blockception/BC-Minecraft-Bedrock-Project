@@ -2,12 +2,12 @@ import * as internal from "../../../../Internal/ResourcePack/AnimationController
 import { Json } from "../../../../Internal/Json";
 import { MolangSet } from "../../../../Molang/MolangSet";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { AnimationController } from "./include";
+import { AnimationController } from "./AnimationController";
 import { Map } from "../../../../Types/Map/Map";
 import { Conditional } from "../../../../Internal/Types/Conditional";
 import { Using } from "../../../../Types/Defined Using/include";
-import { Documentation } from "../../../../Types/include";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from "../../../../Types/Documentated/Documentated";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
