@@ -10,8 +10,8 @@ export namespace Definition {
    * @param map
    * @param callbackfn
    */
-  export function forEach(map: Definition, callbackfn: (value: string, key: string, map: Definition) => void): void {
-    Map.forEach(map, callbackfn);
+  export function forEach(map: Definition | undefined, callbackfn: (value: string, key: string, map: Definition) => void): void {
+    if (map) Map.forEach(map, callbackfn);
   }
 
   /**
