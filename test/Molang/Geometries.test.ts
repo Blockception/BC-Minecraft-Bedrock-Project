@@ -11,5 +11,13 @@ describe("molang", () => {
 
       expect(receiver).to.contain.members(["humanoid.custom", "cape"]);
     });
+
+    it("using obj", () => {
+      let receiver: string[] = [];
+
+      Molang.Geometries.getUsing(VanillaPlayer.DataOBject, receiver);
+
+      expect(receiver).to.contain.members(["humanoid.custom", "cape"]);
+    });
   });
 });

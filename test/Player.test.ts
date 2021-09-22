@@ -1,5 +1,28 @@
+import { expect } from "chai";
+import { jsonc } from "jsonc";
+import { DefinedUsing, Internal } from "../src/main";
+
 export namespace VanillaPlayer {
   export const Goes: string[] = ["cape", "humanoid.custom"];
+  export const Variables: DefinedUsing<string> = {
+    defined: [
+      "is_holding_right",
+      "is_blinking",
+      "last_blink_time",
+      "hand_bob",
+      "helmet_layer_visible",
+      "leg_layer_visible",
+      "boot_layer_visible",
+      "chest_layer_visible",
+      "attack_body_rot_y",
+      "tcos0",
+      "first_person_rotation_factor",
+      "hand_bob",
+      "map_angle",
+      "item_use_normalized",
+    ],
+    using: ["attack_time", "gliding_speed_value", "hand_bob", "player_x_rotation"],
+  };
 
   export const Data = `{
   "format_version": "1.10.0",
@@ -103,4 +126,22 @@ export namespace VanillaPlayer {
     }
   }
 }`;
+
+  export const DataOBject = jsonc.parse(Data);
 }
+
+describe("data test", () => {
+  it("object", () => {
+    const obj = VanillaPlayer.DataOBject;
+
+    expect(obj).to.not.be.undefined;
+
+    const temp = <Internal.ResourcePack.Entity>obj;
+
+    expect(temp.format_version).to.not.be.undefined;
+    expect(temp["minecraft:client_entity"].description).to.not.be.undefined;
+    expect(temp["minecraft:client_entity"].description.identifier).to.not.be.undefined;
+
+    expect(Internal.ResourcePack.Entity.is(temp)).to.be.true;
+  });
+});

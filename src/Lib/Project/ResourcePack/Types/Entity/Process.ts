@@ -20,8 +20,8 @@ export function Process(doc: TextDocument): Entity | undefined {
 
   if (!internal.Entity.is(imp)) return undefined;
 
-  const container = imp["minecraft:entity"];
-  const id = container.description.identifier;
+  const container = imp["minecraft:client_entity"].description;
+  const id = container.identifier;
   const out: Entity = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),

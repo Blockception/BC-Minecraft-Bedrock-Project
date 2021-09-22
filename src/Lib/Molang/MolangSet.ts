@@ -38,46 +38,14 @@ export namespace MolangSet {
    * @param object
    * @returns
    */
-  export function harvest(object: object | string): MolangSet {
+  export function harvest(object: any): MolangSet {
     const out = create();
 
-    internalHarvest(object, out);
+    Molang.Queries.getUsing(object, out.queries.using);
+    Molang.Variables.getUsing(object, out.variables.using);
+    Molang.Variables.getDefined(object, out.variables.defined);
 
     return out;
-  }
-
-  /**
-   *
-   * @param object
-   * @param receiver
-   */
-  function internalHarvest(object: any, receiver: MolangSet): void {
-    switch (typeof object) {
-      case "string":
-        Molang.Queries.getUsing(object, receiver.queries.using);
-        Molang.Variables.getUsing(object, receiver.variables.using);
-        Molang.Variables.getDefined(object, receiver.variables.defined);
-        break;
-
-      case "object":
-        if (Array.isArray(object)) {
-          for (let I = 0; I < object.length; I++) {
-            const elemt = object[I];
-            internalHarvest(elemt, receiver);
-          }
-        } else {
-          const keys = Object.getOwnPropertyNames(object);
-
-          for (let I = 0; I < keys.length; I++) {
-            const elemt = object[I];
-            internalHarvest(elemt, receiver);
-          }
-        }
-        break;
-
-      default:
-        break;
-    }
   }
 }
 
@@ -119,47 +87,15 @@ export namespace MolangFullSet {
   export function harvest(object: object | string): MolangFullSet {
     const out = create();
 
-    internalHarvest(object, out);
+    Molang.Queries.getUsing(object, out.queries.using);
+    Molang.Variables.getUsing(object, out.variables.using);
+    Molang.Variables.getDefined(object, out.variables.defined);
+
+    Molang.Textures.getUsing(object, out.textures.using);
+    Molang.Geometries.getUsing(object, out.textures.using);
+    Molang.Materials.getUsing(object, out.textures.using);
 
     return out;
-  }
-
-  /**
-   *
-   * @param object
-   * @param receiver
-   */
-  function internalHarvest(object: any, receiver: MolangFullSet): void {
-    switch (typeof object) {
-      case "string":
-        Molang.Queries.getUsing(object, receiver.queries.using);
-        Molang.Variables.getUsing(object, receiver.variables.using);
-        Molang.Variables.getDefined(object, receiver.variables.defined);
-
-        Molang.Textures.getUsing(object, receiver.textures.using);
-        Molang.Geometries.getUsing(object, receiver.textures.using);
-        Molang.Materials.getUsing(object, receiver.textures.using);
-        break;
-
-      case "object":
-        if (Array.isArray(object)) {
-          for (let I = 0; I < object.length; I++) {
-            const elemt = object[I];
-            internalHarvest(elemt, receiver);
-          }
-        } else {
-          const keys = Object.getOwnPropertyNames(object);
-
-          for (let I = 0; I < keys.length; I++) {
-            const elemt = object[I];
-            internalHarvest(elemt, receiver);
-          }
-        }
-        break;
-
-      default:
-        break;
-    }
   }
 
   /**

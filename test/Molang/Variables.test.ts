@@ -12,6 +12,22 @@ describe("molang", () => {
       expect(receiver).to.have.members(["foo1", "foo2", "foo3"]);
     });
 
+    it("defined2", () => {
+      let receiver: string[] = [];
+
+      Molang.Variables.getDefined(VanillaPlayer.DataOBject, receiver);
+
+      expect(receiver).to.contain.members(VanillaPlayer.Variables.defined);
+    });
+
+    it("defined3", () => {
+      let receiver: string[] = [];
+
+      Molang.Variables.getDefined(VanillaPlayer.Data, receiver);
+
+      expect(receiver).to.contain.members(VanillaPlayer.Variables.defined);
+    });
+
     it("duplicate check", () => {
       let receiver: string[] = [];
 
@@ -29,7 +45,15 @@ describe("molang", () => {
 
       Molang.Variables.getUsing(VanillaPlayer.Data, receiver);
 
-      expect(receiver).to.contain.members(["player_x_rotation", "attack_time", "is_first_person"]);
+      expect(receiver).to.contain.members(VanillaPlayer.Variables.using);
+    });
+
+    it("using2", () => {
+      let receiver: string[] = [];
+
+      Molang.Variables.getUsing(VanillaPlayer.DataOBject, receiver);
+
+      expect(receiver).to.contain.members(VanillaPlayer.Variables.using);
     });
   });
 });

@@ -6,13 +6,21 @@ export interface Entity extends FormatVersion {
   /** */
   readonly format_version: string;
   /** */
-  "minecraft:entity": EntityContainer;
+  "minecraft:client_entity": EntityContainer;
 }
 
 /** */
-export interface EntityContainer extends ScriptContainer {
+export interface EntityContainer {
   /** */
   description: EntityDescription;
+}
+
+/** */
+export interface EntityDescription extends ScriptContainer {
+  /** */
+  identifier: string;
+  /** */
+  materials?: Definition;
   /** */
   animations?: Definition;
   /** */
@@ -30,19 +38,6 @@ export interface EntityContainer extends ScriptContainer {
 }
 
 /** */
-export interface EntityDescription {
-  /** */
-  identifier: string;
-  /** */
-  materials?: {
-    /** */
-    default?: string;
-    /** */
-    enchanted?: string;
-  };
-}
-
-/** */
 export namespace Entity {
   /**
    *
@@ -50,8 +45,9 @@ export namespace Entity {
    * @returns
    */
   export function is(value: any): value is Entity {
-    if (value && typeof value === "object" && typeof value.format_version === "string" && typeof value["minecraft:entity"] === "object") {
-      const desc = value["minecraft:entity"].description;
+    const temp = <Entity>value;
+    if (typeof temp === "object" && typeof temp.format_version === "string" && typeof temp["minecraft:client_entity"] === "object") {
+      const desc = temp["minecraft:client_entity"].description;
 
       if (typeof desc === "object" && typeof desc.identifier === "string") return true;
     }

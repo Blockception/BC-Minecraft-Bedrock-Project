@@ -11,5 +11,13 @@ describe("molang", () => {
 
       expect(receiver).to.contain.members(["modified_distance_moved", "life_time", "main_hand_item_use_duration", "main_hand_item_max_duration", "is_alive"]);
     });
+
+    it("using obj", () => {
+      let receiver: string[] = [];
+
+      Molang.Queries.getUsing(VanillaPlayer.DataOBject, receiver);
+
+      expect(receiver).to.contain.members(["modified_distance_moved", "life_time", "main_hand_item_use_duration", "main_hand_item_max_duration", "is_alive"]);
+    });
   });
 });

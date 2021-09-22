@@ -1,5 +1,3 @@
-import { DataContent } from "./DataContent";
-
 /** */
 export namespace RegularExpression {
   /**
@@ -8,7 +6,7 @@ export namespace RegularExpression {
    * @param regexp
    * @param receiver
    */
-  export function harvest(data: DataContent, regexp: RegExp, receiver: string[]): void {
+  export function harvest(data: any, regexp: RegExp, receiver: string[]): void {
     if (typeof data === "string") data = [data];
 
     if (Array.isArray(data)) {
@@ -24,14 +22,18 @@ export namespace RegularExpression {
    * @param regexp
    * @param receiver
    */
-  export function harvestArray(data: string[] | { [key: string]: string }[], regexp: RegExp, receiver: string[]): void {
+  export function harvestArray(data: string[] | any[], regexp: RegExp, receiver: string[]): void {
     for (let I = 0; I < data.length; I++) {
       const elem = data[I];
 
-      if (typeof elem === "string") {
-        harvestString(elem, regexp, receiver);
-      } else {
-        harvestObject(elem, regexp, receiver);
+      switch (typeof elem) {
+        case "string":
+          harvestString(elem, regexp, receiver);
+          break;
+
+        case "object":
+          harvest(elem, regexp, receiver);
+          break;
       }
     }
   }
@@ -42,12 +44,21 @@ export namespace RegularExpression {
    * @param regexp
    * @param receiver
    */
-  export function harvestObject(data: { [key: string]: string }, regexp: RegExp, receiver: string[]): void {
+  export function harvestObject(data: any, regexp: RegExp, receiver: string[]): void {
     const keys = Object.getOwnPropertyNames(data);
-    for (let I = 0; I < keys.length; I++) {
-      const elem = data[I];
 
-      if (typeof elem === "string") harvestString(elem, regexp, receiver);
+    for (let I = 0; I < keys.length; I++) {
+      const k = keys[I];
+      const elem = data[k];
+
+      switch (typeof elem) {
+        case "string":
+          harvestString(elem, regexp, receiver);
+          break;
+
+        case "object":
+          harvest(elem, regexp, receiver);
+      }
     }
   }
 

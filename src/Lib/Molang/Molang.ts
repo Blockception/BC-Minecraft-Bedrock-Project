@@ -1,4 +1,3 @@
-import { DataContent } from "./DataContent";
 import { RegularExpression } from "./RegExp";
 
 /**The namespace that governs molang data*/
@@ -6,7 +5,7 @@ export namespace Molang {
   /**The namespace that governs molang variables*/
   export namespace Variables {
     /**The pattern used to find the defintions of variables*/
-    export const getDefinedPatt: RegExp = /(?:^|;[ \t]*)(?:v|variable)\.([a-z0-9_]*)[ \t]*\=/gim;
+    export const getDefinedPatt: RegExp = /(?:^|;[ \t]*|"[ \t]*)(?:v|variable)\.([a-z0-9_]*)[ \t]*\=/gim;
 
     /**The pattern used to find the variables*/
     export const getUsedPatt: RegExp = /(?:v|variable)\.([a-z0-9_]+)\b(?![ \t]+=)/gim;
@@ -14,14 +13,14 @@ export namespace Molang {
     /**Spits through all the provided strings searching for all instances of defining variables.
      * @param data The string(s)/container to look through
      * @param receiver The receiving array*/
-    export function getDefined(data: DataContent, receiver: string[]): void {
+    export function getDefined(data: any, receiver: string[]): void {
       RegularExpression.harvest(data, getDefinedPatt, receiver);
     }
 
     /**Spits through all the provided strings searching for all instances of using variables
      * @param data The string(s)/container to look through
      * @param receiver The receiving array*/
-    export function getUsing(data: DataContent | { [key: string]: string }, receiver: string[]): void {
+    export function getUsing(data: any, receiver: string[]): void {
       RegularExpression.harvest(data, getUsedPatt, receiver);
     }
   }
@@ -34,7 +33,7 @@ export namespace Molang {
     /**Spits through all the provided strings searching for all instances of using queries
      * @param data The string(s)/container to look through
      * @param receiver The receiving array*/
-    export function getUsing(data: DataContent, receiver: string[]): void {
+    export function getUsing(data: any, receiver: string[]): void {
       RegularExpression.harvest(data, getUsedPatt, receiver);
     }
   }
@@ -47,7 +46,7 @@ export namespace Molang {
     /**Spits through all the provided strings searching for all instances of using materials
      * @param data The string(s)/container to look through
      * @param receiver The receiving array*/
-    export function getUsing(data: DataContent, receiver: string[]): void {
+    export function getUsing(data: any, receiver: string[]): void {
       RegularExpression.harvest(data, getUsedPatt, receiver);
     }
   }
@@ -60,7 +59,7 @@ export namespace Molang {
     /**Spits through all the provided strings searching for all instances of using geometries
      * @param data The string(s)/container to look through
      * @param receiver The receiving array*/
-    export function getUsing(data: DataContent, receiver: string[]): void {
+    export function getUsing(data: any, receiver: string[]): void {
       RegularExpression.harvest(data, getUsedPatt, receiver);
     }
   }
@@ -73,7 +72,7 @@ export namespace Molang {
     /**Spits through all the provided strings searching for all instances of using textures
      * @param data The string(s)/container to look through
      * @param receiver The receiving array*/
-    export function getUsing(data: DataContent, receiver: string[]): void {
+    export function getUsing(data: any, receiver: string[]): void {
       RegularExpression.harvest(data, getUsedPatt, receiver);
     }
 
@@ -85,7 +84,7 @@ export namespace Molang {
       /**Spits through all the provided strings searching for all instances of using arrays
        * @param data The string(s)/container to look through
        * @param receiver The receiving array*/
-      export function getUsing(data: DataContent, receiver: string[]): void {
+      export function getUsing(data: any, receiver: string[]): void {
         RegularExpression.harvest(data, getUsedPatt, receiver);
       }
     }
