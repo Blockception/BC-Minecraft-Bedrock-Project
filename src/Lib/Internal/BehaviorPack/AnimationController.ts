@@ -43,7 +43,7 @@ export namespace AnimationController {
    * @returns
    */
   export function is(value: any): value is AnimationController {
-    if (typeof value === "object" && typeof value.states === "string") return true;
+    if (typeof value === "object" && typeof value.states === "object") return true;
 
     return false;
   }
