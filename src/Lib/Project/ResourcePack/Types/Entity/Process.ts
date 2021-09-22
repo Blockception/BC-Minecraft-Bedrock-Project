@@ -36,7 +36,22 @@ export function Process(doc: TextDocument): Entity | undefined {
       out.animations.using.push(value);
     });
 
-  if (container.animation_controllers) container.animation_controllers.forEach((item) => out.animations.using.push(item));
+  //Animation controller
+  if (container.animation_controllers)
+    container.animation_controllers.forEach((item) => {
+      const temp = flatten(item);
+      if (temp) out.animations.using.push(temp);
+    });
 
   return out;
+}
+
+function flatten(data: string | Definition): string | undefined {
+  if (typeof data === "string") return data;
+
+  const key = Object.getOwnPropertyNames(data)[0];
+
+  if (key) return data[key];
+
+  return undefined;
 }

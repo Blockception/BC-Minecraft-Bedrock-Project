@@ -24,7 +24,7 @@ export interface EntityDescription extends ScriptContainer {
   /** */
   animations?: Definition;
   /** */
-  animation_controllers?: string[];
+  animation_controllers?: (string | Definition)[];
   /** */
   particle_effects?: Definition;
   /** */
