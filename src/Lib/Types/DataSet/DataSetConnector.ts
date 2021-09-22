@@ -25,8 +25,6 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
    * @returns
    */
   get(id: string | Types.Identifiable): T | undefined {
-    id = Types.Identifiable.getId(id);
-
     const packs = this._collection.packs;
     if (!packs) return undefined;
 
