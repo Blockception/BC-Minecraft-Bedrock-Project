@@ -22,6 +22,8 @@ export interface EntityContainer extends ScriptContainer {
   /** */
   geometry?: Definition;
   /** */
+  render_controller?: (string | Definition)[];
+  /** */
   sound_effects?: Definition;
   /** */
   textures?: Definition;
