@@ -5,10 +5,10 @@ export namespace Molang {
   /**The namespace that governs molang variables*/
   export namespace Variables {
     /**The pattern used to find the defintions of variables*/
-    export const getDefinedPatt: RegExp = /(?:^|;[ \t]*|"[ \t]*)(?:v|variable)\.([a-z0-9_]*)[ \t]*\=/gim;
+    export const getDefinedPatt: RegExp = /(?:^|;[ \t]*|"[ \t]*)\b(?:v|variable)\.([a-z0-9_]*)[ \t]*\=/gim;
 
     /**The pattern used to find the variables*/
-    export const getUsedPatt: RegExp = /(?:v|variable)\.([a-z0-9_]+)\b(?![ \t]+=)/gim;
+    export const getUsedPatt: RegExp = /\b(?:v|variable)\.([a-z0-9_]+)\b(?![ \t]+=)/gim;
 
     /**Spits through all the provided strings searching for all instances of defining variables.
      * @param data The string(s)/container to look through
@@ -28,7 +28,7 @@ export namespace Molang {
   /**The namespace that governs molang queries*/
   export namespace Queries {
     /**The pattern used to find the used queries*/
-    export const getUsedPatt: RegExp = /(?:q|query)\.([a-z0-9_]+)/gim;
+    export const getUsedPatt: RegExp = /\b(?:q|query)\.([a-z0-9_]+)/gim;
 
     /**Spits through all the provided strings searching for all instances of using queries
      * @param data The string(s)/container to look through
@@ -41,7 +41,7 @@ export namespace Molang {
   /**The namespace that governs molang materials*/
   export namespace Materials {
     /**The pattern used to find the used materials*/
-    export const getUsedPatt: RegExp = /(?:m|material)\.([a-z0-9_]+)/gim;
+    export const getUsedPatt: RegExp = /\b(?:m|material)\.([a-z0-9_]+)/gim;
 
     /**Spits through all the provided strings searching for all instances of using materials
      * @param data The string(s)/container to look through
@@ -54,7 +54,7 @@ export namespace Molang {
   /**The namespace that governs molang geometries*/
   export namespace Geometries {
     /**The pattern used to find the used geometries*/
-    export const getUsedPatt: RegExp = /(?:geometry)\.([a-z0-9_\.]+)/gim;
+    export const getUsedPatt: RegExp = /\b(?:geometry)\.([a-z0-9_\.]+)/gim;
 
     /**Spits through all the provided strings searching for all instances of using geometries
      * @param data The string(s)/container to look through
@@ -67,7 +67,7 @@ export namespace Molang {
   /**The namespace that governs molang textures*/
   export namespace Textures {
     /**The pattern used to find the used textures*/
-    export const getUsedPatt: RegExp = /(?:texture)\.([a-z0-9_]+)/gim;
+    export const getUsedPatt: RegExp = /\b(?:texture)\.([a-z0-9_]+)/gim;
 
     /**Spits through all the provided strings searching for all instances of using textures
      * @param data The string(s)/container to look through
@@ -79,7 +79,7 @@ export namespace Molang {
     /**The namespace that governs molang arrays*/
     export namespace Arrays {
       /**The pattern used to find the used arrays*/
-      export const getUsedPatt: RegExp = /(?:array)\.([a-z0-9_]+)/gim;
+      export const getUsedPatt: RegExp = /\b(?:array)\.([a-z0-9_]+)/gim;
 
       /**Spits through all the provided strings searching for all instances of using arrays
        * @param data The string(s)/container to look through
