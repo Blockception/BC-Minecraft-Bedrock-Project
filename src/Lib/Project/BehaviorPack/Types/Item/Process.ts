@@ -1,8 +1,8 @@
 import * as internal from "../../../../Internal/BehaviorPack/Item";
 import { Json } from "../../../../Internal/Json";
-import { MolangSet } from "../../../../Molang/MolangSet";
+import { MolangSet } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentated/Documentated";
+import { Documentation } from "../../../../Types/Documentation/Documentation";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Item } from "./Item";
 

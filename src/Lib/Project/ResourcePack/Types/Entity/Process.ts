@@ -1,12 +1,11 @@
 import * as internal from "../../../../Internal/ResourcePack/Entity";
 import { Json } from "../../../../Internal/Json";
-import { MolangFullSet } from "../../../../Molang/MolangSet";
+import { MolangFullSet } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Entity } from "./Entity";
-import { DefinedUsing } from "../../../../Types/Defined Using/include";
-import { Definition } from "../../../../Internal/Types/Definition";
-import { Documentation } from "../../../../Types/Documentated/Documentated";
+import { DefinedUsing } from "bc-minecraft-molang";
+import { Documentation } from "../../../../Types/Documentation/Documentation";
 
 /**
  *
@@ -31,7 +30,7 @@ export function Process(doc: TextDocument): Entity | undefined {
   };
 
   if (container.animations)
-    Definition.forEach(container.animations, (value, key) => {
+    Types.Definition.forEach(container.animations, (value, key) => {
       out.animations.defined.push(key);
       out.animations.using.push(value);
     });
@@ -46,7 +45,7 @@ export function Process(doc: TextDocument): Entity | undefined {
   return out;
 }
 
-function flatten(data: string | Definition): string | undefined {
+function flatten(data: string | Types.Definition): string | undefined {
   if (typeof data === "string") return data;
 
   const key = Object.getOwnPropertyNames(data)[0];

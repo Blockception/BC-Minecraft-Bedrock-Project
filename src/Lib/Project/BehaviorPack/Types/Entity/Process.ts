@@ -1,12 +1,12 @@
 import * as internal from "../../../../Internal/BehaviorPack/Entity";
 import { Json } from "../../../../Internal/Json";
-import { MolangSet } from "../../../../Molang/MolangSet";
-import { DefinedUsing } from "../../../../Types/Defined Using/DefinedUsing";
+import { MolangSet } from "bc-minecraft-molang";
+import { DefinedUsing } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../../../Types/Map/Map";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Entity } from "./Entity";
-import { Documentation } from "../../../../Types/Documentated/Documentated";
+import { Documentation } from "../../../../Types/Documentation/Documentation";
 import { EntityComponentContainer } from "../../../../Internal/BehaviorPack/Entity";
 
 /**

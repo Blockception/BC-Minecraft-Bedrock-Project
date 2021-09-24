@@ -1,5 +1,5 @@
+import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../Types/Map/Map";
-import { Conditional } from "../Types/Conditional";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
@@ -52,13 +52,13 @@ export namespace AnimationController {
 /** */
 export interface State {
   /** */
-  animations?: Conditional[];
+  animations?: Types.Conditional[];
   /** */
   on_entry?: string[];
   /** */
   on_exit?: string[];
   /** */
-  transitions?: Conditional[];
+  transitions?: Types.Conditional[];
 }
 
 /** */

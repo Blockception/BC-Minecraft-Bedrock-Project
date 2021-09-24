@@ -1,5 +1,5 @@
 import { MCIgnore } from "bc-minecraft-project";
-import { TextDocument } from "../../../main";
+import { TextDocument } from "../TextDocument/TextDocument";
 
 /**The context of a project, used to retrieve files*/
 export interface ProjectContext {

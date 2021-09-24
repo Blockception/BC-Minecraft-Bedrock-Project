@@ -1,5 +1,6 @@
+import { Types } from "bc-minecraft-bedrock-types";
 import { FormatVersion } from "../Types/FormatVersion";
-import { Definition, ScriptContainer } from "../Types/include";
+import { ScriptContainer } from "../Types/include";
 
 /** */
 export interface Attachable extends FormatVersion {
@@ -14,17 +15,17 @@ export interface AttachableContainer extends ScriptContainer {
   /** */
   description: AttachableDescription;
   /** */
-  animations?: Definition;
+  animations?: Types.Definition;
   /** */
   animation_controllers?: string[];
   /** */
-  particle_effects?: Definition;
+  particle_effects?: Types.Definition;
   /** */
-  geometry?: Definition;
+  geometry?: Types.Definition;
   /** */
-  sound_effects?: Definition;
+  sound_effects?: Types.Definition;
   /** */
-  textures?: Definition;
+  textures?: Types.Definition;
 }
 
 /** */

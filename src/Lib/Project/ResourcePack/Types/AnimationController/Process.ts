@@ -1,13 +1,12 @@
 import * as internal from "../../../../Internal/ResourcePack/AnimationController";
 import { Json } from "../../../../Internal/Json";
-import { MolangSet } from "../../../../Molang/MolangSet";
+import { MolangSet } from "bc-minecraft-molang";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { AnimationController } from "./AnimationController";
 import { Map } from "../../../../Types/Map/Map";
-import { Conditional } from "../../../../Internal/Types/Conditional";
-import { Using } from "../../../../Types/Defined Using/include";
+import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentated/Documentated";
+import { Documentation } from "../../../../Types/Documentation/Documentation";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
@@ -38,8 +37,8 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
 
       Map.forEach(controller.states, (State) => {
         if (State.animations)
-          Conditional.forEach(State.animations, (value, key) => {
-            item.animations.using.push(key);
+          Types.Conditional.forEach(State.animations, (reference, value) => {
+            item.animations.using.push(reference);
           });
 
         if (State.particle_effects) harvest(State.particle_effects, item.particles);

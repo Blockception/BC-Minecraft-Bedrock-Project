@@ -1,5 +1,5 @@
-import { MolangSet } from "../../../../Molang/MolangSet";
-import { Using } from "../../../../Types/Defined Using/include";
+import { MolangSet } from "bc-minecraft-molang";
+import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
 
 /** */

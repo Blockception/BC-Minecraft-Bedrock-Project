@@ -3,7 +3,7 @@ import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Fog } from "./Fog";
-import { Documentation } from "../../../../Types/Documentated/Documentated";
+import { Documentation } from "../../../../Types/Documentation/Documentation";
 
 /**
  *

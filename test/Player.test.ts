@@ -1,6 +1,7 @@
+import { DefinedUsing } from "bc-minecraft-molang";
 import { expect } from "chai";
 import { jsonc } from "jsonc";
-import { DefinedUsing, Internal } from "../src/main";
+import { Internal } from "../src/main";
 
 export namespace VanillaPlayer {
   export const Goes: string[] = ["cape", "humanoid.custom"];

@@ -1,6 +1,5 @@
+import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../Types/Map/Map";
-import { Conditional } from "../Types/Conditional";
-import { Definition } from "../Types/Definition";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
@@ -53,7 +52,7 @@ export namespace AnimationController {
 /** */
 export interface State {
   /** */
-  animations?: Conditional[];
+  animations?: Types.Conditional[];
   /** */
   blend_transition?: number;
   /** */
@@ -67,9 +66,9 @@ export interface State {
   /** */
   sound_effects?: { effect?: string }[];
   /** */
-  transitions?: Conditional[];
+  transitions?: Types.Conditional[];
   /** */
-  variables?: Definition;
+  variables?: Types.Definition;
 }
 
 /** */

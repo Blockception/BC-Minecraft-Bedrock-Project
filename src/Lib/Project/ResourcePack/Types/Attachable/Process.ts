@@ -1,11 +1,10 @@
 import * as internal from "../../../../Internal/ResourcePack/Attachable";
 import { Json } from "../../../../Internal/Json";
-import { MolangFullSet } from "../../../../Molang/MolangSet";
+import { MolangFullSet } from "bc-minecraft-molang";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Attachable } from "./Attachable";
-import { DefinedUsing } from "../../../../Types/Defined Using/include";
-import { Documentation } from "../../../../Types/Documentated/Documentated";
-import { Definition } from "../../../../Internal/Types/Definition";
+import { DefinedUsing } from "bc-minecraft-molang";
+import { Documentation } from "../../../../Types/Documentation/Documentation";
 import { Types } from "bc-minecraft-bedrock-types";
 
 /**
@@ -31,7 +30,7 @@ export function Process(doc: TextDocument): Attachable | undefined {
   };
 
   if (container.animations)
-    Definition.forEach(container.animations, (value, key) => {
+    Types.Definition.forEach(container.animations, (value, key) => {
       out.animations.defined.push(key);
       out.animations.using.push(value);
     });

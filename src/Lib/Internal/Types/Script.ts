@@ -1,16 +1,15 @@
-import { Conditional } from "./Conditional";
-import { Definition } from "./Definition";
+import { Types } from "bc-minecraft-bedrock-types";
 
 /**A universal script component for RP and BP scripts*/
 export interface Script {
   /**What animation / controllers to animate*/
-  animate?: Conditional[];
+  animate?: Types.Conditional[];
   /**Initialization of variables once*/
   initialize?: string[];
   /**Initialization of before animations*/
   pre_animation?: string[];
   /**Variables and their settings*/
-  variables?: Definition;
+  variables?: Types.Definition;
 }
 
 /** */
@@ -34,7 +33,7 @@ export interface ScriptContainer {
   /** */
   scripts?: Script;
   /** */
-  animations?: Definition;
+  animations?: Types.Definition;
 }
 
 /** */

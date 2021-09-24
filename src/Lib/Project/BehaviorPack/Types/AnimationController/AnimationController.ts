@@ -1,6 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { MolangSet } from "../../../../Molang/MolangSet";
-import { DefinedUsing } from "../../../../Types/Defined Using/include";
+import { DefinedUsing, MolangSet } from "bc-minecraft-molang";
 
 /** */
 export interface AnimationController extends Types.Identifiable, Types.Documentated, Types.Locatable {
