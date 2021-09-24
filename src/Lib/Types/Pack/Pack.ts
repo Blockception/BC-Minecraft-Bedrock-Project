@@ -1,3 +1,4 @@
+import { Types } from 'bc-minecraft-bedrock-types';
 import { MCProject } from "bc-minecraft-project";
 import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
@@ -26,6 +27,13 @@ export interface Pack {
    * @param uri
    */
   deleteFolder(uri: string): boolean;
+  
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+   find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key : string) => boolean) : (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined;
 }
 
 /** */

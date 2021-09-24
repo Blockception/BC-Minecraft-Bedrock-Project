@@ -15,6 +15,7 @@ import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
 import { PackCollection } from "../../Types/Pack/PackCollection";
+import { Types } from 'bc-minecraft-bedrock-types';
 
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {

@@ -18,6 +18,7 @@ import * as Model from "./Types/Model/include";
 import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
+import { Types } from 'bc-minecraft-bedrock-types';
 
 export class ResourcePack implements Container, Pack {
   /**The folder path of the pack*/
@@ -210,6 +211,30 @@ export class ResourcePack implements Container, Pack {
     out ||= this.textures.deleteFile(uri);
 
     return out;
+  }
+
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key: string) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+    let value = undefined;
+
+    if (value = this.animation_controllers.find(predicate)) return value;
+    if (value = this.animations.find(predicate)) return value;
+    if (value = this.attachables.find(predicate)) return value;
+    if (value = this.blocks.find(predicate)) return value;
+    if (value = this.entities.find(predicate)) return value;
+    if (value = this.fogs.find(predicate)) return value;
+    if (value = this.materials.find(predicate)) return value;
+    if (value = this.models.find(predicate)) return value;
+    if (value = this.particles.find(predicate)) return value;
+    if (value = this.render_controllers.find(predicate)) return value;
+    if (value = this.sounds.find(predicate)) return value;
+    if (value = this.textures.find(predicate)) return value;
+
+    return value;
   }
 }
 

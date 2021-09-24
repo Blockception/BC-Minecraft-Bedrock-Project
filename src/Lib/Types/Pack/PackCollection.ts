@@ -1,3 +1,4 @@
+import { Types } from 'bc-minecraft-bedrock-types';
 import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
 import { Pack } from "./Pack";
@@ -91,5 +92,20 @@ export class PackCollection<T extends Pack> {
     if (p) out ||= p.deleteFolder(uri);
 
     return out;
+  }
+
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key: string) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+    let value = undefined;
+
+    for (let I = 0; I < this.packs.length; I++) {
+      if (value = this.packs[I].find(predicate)) return value;
+    }
+
+    return value;
   }
 }

@@ -15,6 +15,7 @@ import * as Trading from "./Types/Trading/include";
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/FileType";
+import { Types } from 'bc-minecraft-bedrock-types';
 
 /** */
 export class BehaviorPack implements Container, Pack {
@@ -182,9 +183,38 @@ export class BehaviorPack implements Container, Pack {
 
     return out;
   }
+
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key: string) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+    let value = undefined;
+
+    if (value = this.animations.find(predicate)) return value;
+    if (value = this.animation_controllers.find(predicate)) return value;
+    if (value = this.blocks.find(predicate)) return value;
+    if (value = this.entities.find(predicate)) return value;
+    if (value = this.functions.find(predicate)) return value;
+    if (value = this.items.find(predicate)) return value;
+    if (value = this.loot_tables.find(predicate)) return value;
+    if (value = this.structures.find(predicate)) return value;
+    if (value = this.trading.find(predicate)) return value;
+
+    return value;
+  }
 }
 
+/**
+ * 
+ */
 export namespace BehaviorPack {
+  /**
+   * 
+   * @param value 
+   * @returns 
+   */
   export function is(value: any): value is BehaviorPack {
     if (typeof value === "object") {
       const temp = <BehaviorPack>value;

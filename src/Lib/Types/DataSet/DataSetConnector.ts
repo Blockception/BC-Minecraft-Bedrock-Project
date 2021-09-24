@@ -60,4 +60,24 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
       dataset?.forEach(callbackfn, thisArg);
     }
   }
+  
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+   find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key : string) => boolean) : (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {    
+    const packs = this._collection.packs;
+    if (!packs) return undefined;
+
+    for (let I = 0; I < packs.length; I++) {
+      const p = packs[I];
+      const dataset = this._getDataset(p);
+      const out = dataset?.find(predicate);
+
+      if (out) return out;
+    }
+
+    return undefined;
+  }
 }
