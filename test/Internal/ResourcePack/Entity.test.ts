@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { Json } from "../../../../src/Lib/Internal/Json";
-import { Internal } from "../../../../src/main";
+import { Json } from "../../../src/Lib/Internal/Json";
+import { Internal } from "../../../src/main";
 
 describe("RP Entity", () => {
   it("is", () => {
