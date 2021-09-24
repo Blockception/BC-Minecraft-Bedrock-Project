@@ -28,14 +28,7 @@ export namespace Animation {
    * @returns
    */
   export function is(value: any): value is Animation {
-    if (value) {
-      if (typeof value.timeline === "object") return true;
-      if (typeof value.animation_length === "number") return true;
-      if (typeof value.loop === "boolean") return true;
-      if (value.loop === "hold_on_last_frame") return true;
-    }
-
-    return false;
+    return typeof value === "object"
   }
 }
 
