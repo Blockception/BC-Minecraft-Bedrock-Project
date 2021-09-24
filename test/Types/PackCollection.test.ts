@@ -1,3 +1,4 @@
+import { Types } from 'bc-minecraft-bedrock-types';
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { PackCollection } from "../../src/Lib/Types/Pack/PackCollection";
@@ -38,6 +39,19 @@ class TestPack implements Pack {
     this.docs = this.docs.filter((d) => !d.uri.startsWith(uri));
 
     return this.docs.length !== old;
+  }
+
+  
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+   find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key: string) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+    let value = undefined;
+
+
+    return value;
   }
 }
 

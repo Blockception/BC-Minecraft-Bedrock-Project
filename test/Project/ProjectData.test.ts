@@ -1,4 +1,5 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
+import { DefinedUsing, MolangFullSet, MolangSet } from 'bc-minecraft-molang';
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack/include";
@@ -216,4 +217,48 @@ describe("ProjectData", () => {
       expect(P.General.tags.has(id)).to.be.false;
     });
   });
+
+  describe("find", () => {
+    const data = new ProjectData(new TextProjectContext());
+
+    const bp = data.BehaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    const rp = data.ResourcePacks.add("c:\\rp", MCProject.createEmpty());
+
+    const loc = { uri: "", position: 0 };
+    const molang = MolangFullSet.create();
+    const doc = "Documentation";
+    const emptyDefinedUsing = DefinedUsing.create<string>();
+
+    bp.animation_controllers.set({ animations: emptyDefinedUsing, id: "bp.animation_controller", location: loc, molang: molang, documentation: doc });
+    bp.animations.set({ id: "bp.animation", location: loc, molang: molang, documentation: doc });
+    bp.blocks.set({ id: "bp.block", location: loc, molang: molang, documentation: doc, states: [] });
+    bp.entities.set({ id: "bp.entity", location: loc, molang: molang, documentation: doc, animations: emptyDefinedUsing, events: [], families: [], groups: [] });
+    bp.functions.set({ id: "bp.function", location: loc, documentation: doc });
+    bp.items.set({ id: "bp.item", location: loc, molang: molang, documentation: doc });
+    bp.loot_tables.set({ id: "bp.loot_table", location: loc, documentation: doc });
+    bp.structures.set({ id: "bp.structure", location: loc, documentation: doc });
+    bp.trading.set({ id: "bp.trading", location: loc, documentation: doc });
+
+
+    rp.animation_controllers.set({ animations: emptyDefinedUsing, id: "rp.animation_controller", location: loc, molang: molang, documentation: doc, particles: emptyDefinedUsing, sounds: emptyDefinedUsing });
+    rp.animations.set({ id: "rp.animation", location: loc, molang: molang, documentation: doc, particles: emptyDefinedUsing, sounds: emptyDefinedUsing });
+    rp.attachables.set({ animations: emptyDefinedUsing, id: "rp.attachable", location: loc, molang: molang, documentation: doc });
+    rp.blocks.set({ id: "rp.block", location: loc, documentation: doc });
+    rp.entities.set({ animations: emptyDefinedUsing, id: "rp.entity", location: loc, molang: molang, documentation: doc });
+    rp.fogs.set({ id: "rp.fog", location: loc, documentation: doc });
+    rp.materials.set({ id: "rp.material", location: loc, documentation: doc });
+    rp.models.set({ id: "rp.model", location: loc, documentation: doc });
+    rp.particles.set({ id: "rp.particle", location: loc, documentation: doc });
+    rp.render_controllers.set({ id: "rp.render_controller", location: loc, documentation: doc, molang: molang });
+    rp.sounds.set({ id: "rp.sound", location: loc, documentation: doc });
+    rp.textures.set({ id: "rp.texture", location: loc, documentation: doc });
+
+    const ids = [
+      "bp.animation_controller", "bp.animation", "bp.block", "bp.entity", "bp.function", "bp.item", "bp.loot_table", "bp.structure", "bp.trading",
+      "rp.animation_controller", "rp.animation", "rp.attachable", "rp.block", "rp.entity", "rp.fog", "rp.material", "rp.model", "rp.particle", "rp.render_controller",
+      "rp.sound", "rp.texture"
+    ];
+
+    ids.forEach(id => it("find id: " + id, () => expect(data.find((item) => item.id === id) !== undefined)));
+  })
 });
