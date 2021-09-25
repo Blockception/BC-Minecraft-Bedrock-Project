@@ -1,10 +1,10 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
-import { DefinedUsing, MolangFullSet, MolangSet } from 'bc-minecraft-molang';
+import { DefinedUsing, MolangFullSet } from 'bc-minecraft-molang';
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack/include";
 import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
-import { ProjectData } from "../../src/main";
+import { ProjectData } from "../../src/Lib/Project/ProjectData";
 import { TextProjectContext } from "../Uttility";
 
 describe("ProjectData", () => {

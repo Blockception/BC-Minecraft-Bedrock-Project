@@ -4,6 +4,8 @@ import { GeneralCollection } from "../../General";
 import * as Tag from "../Tag/Process";
 import * as Objective from "../Objective/Process";
 import * as TickingArea from "../TickingArea/Process";
+import { Internal, Map } from '../../../../../main';
+import { Json } from '../../../../Internal/Json';
 
 /**
  *
@@ -17,6 +19,60 @@ export function ProcessMcFunction(doc: TextDocument, receiver: GeneralCollection
 
   for (var I = 0; I < lines.length; I++) {
     ProcessCommand(lines[I], doc, receiver);
+  }
+}
+
+/**
+ *
+ * @param doc
+ * @param edu
+ * @param receiver
+ */
+export function ProcessAnimationCommands(doc: TextDocument, receiver: GeneralCollection): void {
+  const imp = Json.To<Internal.BehaviorPack.Animations>(doc);
+
+  if (!Internal.BehaviorPack.Animations.is(imp)) return;
+
+  //For each animation
+  Map.forEach(imp.animations, (anim)=>{
+    //For each timeline object
+    Map.forEach(anim.timeline, (time)=>{
+      if (typeof time === "string") {
+        InternalJsonValue(time, doc, receiver);
+      }
+      else {
+        time.forEach(t=>InternalJsonValue(t, doc, receiver));
+      }
+    })
+  })
+}
+
+/**
+ *
+ * @param doc
+ * @param edu
+ * @param receiver
+ */
+export function ProcessAnimationControllerCommands(doc: TextDocument, receiver: GeneralCollection): void {
+  const imp = Json.To<Internal.BehaviorPack.AnimationControllers>(doc);
+
+  if (!Internal.BehaviorPack.AnimationControllers.is(imp)) return;
+
+  //for each controller
+  Map.forEach(imp.animation_controllers, (anim)=>{
+    //for each state
+    Map.forEach(anim.states, (state)=>{
+      state.on_entry?.forEach((p)=>InternalJsonValue(p, doc, receiver));
+      state.on_exit?.forEach((p)=>InternalJsonValue(p, doc, receiver));
+    })
+  })
+}
+
+function InternalJsonValue(prop : string, doc : TextDocument, receiver: GeneralCollection) {
+  if (prop.startsWith("/")) {
+    const offset = doc.getText().indexOf(prop);
+
+    ProcessCommandAt(prop, offset, doc, receiver);
   }
 }
 

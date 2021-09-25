@@ -23,7 +23,6 @@ describe("BP Animation", () => {
     
         if (!obj) return;
         expect(Internal.BehaviorPack.Animation.is(obj)).to.be.true;
-
       })
     })
 

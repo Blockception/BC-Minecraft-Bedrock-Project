@@ -11,7 +11,9 @@ export namespace Map {
    * @param map
    * @param callbackfn
    */
-  export function forEach<T>(map: { [key: string]: T }, callbackfn: (value: T, key: string, map: { [key: string]: T }) => void): void {
+  export function forEach<T>(map: { [key: string]: T } | undefined, callbackfn: (value: T, key: string, map: { [key: string]: T }) => void): void {
+    if (!map) return;
+
     const keys = Object.getOwnPropertyNames(map);
 
     keys.forEach((k) => {

@@ -12,6 +12,8 @@ import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
 import { DataSetBase } from "../Types/DataSet/include";
 import { Pack } from "../Types/Pack/Pack";
 import { Types } from 'bc-minecraft-bedrock-types';
+import { FileType } from './BehaviorPack/include';
+import { ProcessAnimationCommands, ProcessAnimationControllerCommands, ProcessMcFunction } from './General/Types/Commands/Process';
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -39,7 +41,24 @@ export class ProjectData {
 
     switch (type) {
       case PackType.behavior_pack:
-        return this.BehaviorPacks.process(doc);
+        const out =  this.BehaviorPacks.process(doc);
+
+        //Commands
+        switch (FileType.detect(doc.uri)) {
+          case FileType.function:
+            ProcessMcFunction(doc, this.General);
+            break;
+
+          case FileType.animation:
+            ProcessAnimationCommands(doc, this.General);
+            break;
+
+          case FileType.animation_controller:
+            ProcessAnimationControllerCommands(doc, this.General);
+            break;
+        }
+
+        return out;
 
       case PackType.resource_pack:
         return this.ResourcePacks.process(doc);
