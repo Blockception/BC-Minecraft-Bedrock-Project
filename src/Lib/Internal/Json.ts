@@ -13,8 +13,12 @@ export namespace Json {
       const content = typeof doc === "object" ? doc.getText() : doc;
 
       if (content !== "") out = <T>jsonc.parse(content);
-    } catch (err) {
-      console.error(JSON.stringify(err));
+    } catch (err: any) {
+      if (err.message && err.stack) {
+        console.error(`${err.message}\n${err.stack}`);
+      } else {
+        console.error(JSON.stringify(err));
+      }
     }
 
     return out;

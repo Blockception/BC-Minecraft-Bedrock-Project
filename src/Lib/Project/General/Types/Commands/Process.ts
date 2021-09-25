@@ -18,7 +18,7 @@ export function ProcessMcFunction(doc: TextDocument, receiver: GeneralCollection
   const lines = text.split("\n");
 
   for (var I = 0; I < lines.length; I++) {
-    ProcessCommand(lines[I], doc, receiver);
+    ProcessCommand(lines[I].trim(), doc, receiver);
   }
 }
 
@@ -85,7 +85,7 @@ function InternalJsonValue(prop : string, doc : TextDocument, receiver: GeneralC
  * @returns
  */
 export function ProcessCommand(line: string, doc: TextDocument, receiver: GeneralCollection): void {
-  if (line.startsWith("#")) return;
+  if (line.startsWith("#") || line.length < 3) return;
 
   const offset = doc.getText().indexOf(line);
 
@@ -103,6 +103,8 @@ export function ProcessCommand(line: string, doc: TextDocument, receiver: Genera
  */
 export function ProcessCommandAt(line: string, offset: number, doc: TextDocument, receiver: GeneralCollection): void {
   if (line.startsWith("#")) return;
+  if (line.startsWith("/")) line = line.substring(1);
+  
   let command: Command | undefined = Command.parse(line, offset);
 
   while (command) {

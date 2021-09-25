@@ -11,9 +11,9 @@ import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
 import { DataSetBase } from "../Types/DataSet/include";
 import { Pack } from "../Types/Pack/Pack";
-import { Types } from 'bc-minecraft-bedrock-types';
-import { FileType } from './BehaviorPack/include';
-import { ProcessAnimationCommands, ProcessAnimationControllerCommands, ProcessMcFunction } from './General/Types/Commands/Process';
+import { Types } from "bc-minecraft-bedrock-types";
+import { FileType } from "./BehaviorPack/include";
+import { ProcessAnimationCommands, ProcessAnimationControllerCommands, ProcessMcFunction } from "./General/Types/Commands/Process";
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -41,7 +41,7 @@ export class ProjectData {
 
     switch (type) {
       case PackType.behavior_pack:
-        const out =  this.BehaviorPacks.process(doc);
+        const out = this.BehaviorPacks.process(doc);
 
         //Commands
         switch (FileType.detect(doc.uri)) {
@@ -78,11 +78,11 @@ export class ProjectData {
   }
 
   /** */
-  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable) => boolean) : (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
     let value = undefined;
 
-    if (value = this.BehaviorPacks.find(predicate)) return value;
-    if (value = this.ResourcePacks.find(predicate)) return value;    
+    if ((value = this.BehaviorPacks.find(predicate))) return value;
+    if ((value = this.ResourcePacks.find(predicate))) return value;
 
     return undefined;
   }

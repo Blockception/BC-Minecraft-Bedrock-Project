@@ -16,7 +16,7 @@
       "isBackground": false,
       "group": "build",
       "label": "npm test 'bc-minecraft-bedrock-project'",
-      "problemMatcher": ["$tsc"]
+      "problemMatcher": ["$tsc", "$tsc-watch"]
     }
   ]
 }
