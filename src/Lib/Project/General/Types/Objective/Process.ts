@@ -56,6 +56,7 @@ function CheckPlayer(Com: Command, uri: string): GeneralInfo | undefined {
     const Selector = Com.parameters[3];
 
     if (!Selector.text.startsWith("@")) {
+
       return GeneralInfo.create(Selector.text, Types.Location.create(uri, Selector.offset), "The fake player: " + Selector.text);
     }
   }
