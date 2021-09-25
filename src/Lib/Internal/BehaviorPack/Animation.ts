@@ -2,7 +2,7 @@ import { Map } from "../../Types/Map/Map";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface Animation extends FormatVersion {
+export interface Animation{
   /** */
   animation_length?: number;
   /** */
@@ -24,7 +24,7 @@ export namespace Animation {
 }
 
 /** */
-export interface Animations {
+export interface Animations extends FormatVersion  {
   /** */
   format_version: string;
 
