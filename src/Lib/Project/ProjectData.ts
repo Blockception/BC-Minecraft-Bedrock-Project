@@ -83,6 +83,7 @@ export class ProjectData {
 
     if ((value = this.BehaviorPacks.find(predicate))) return value;
     if ((value = this.ResourcePacks.find(predicate))) return value;
+    if ((value = this.General.find(predicate))) return value;
 
     return undefined;
   }

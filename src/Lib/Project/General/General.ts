@@ -1,3 +1,4 @@
+import { Types } from 'bc-minecraft-bedrock-types';
 import { DataSet } from "../../Types/DataSet/include";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "../BehaviorPack/include";
@@ -11,6 +12,8 @@ export class GeneralCollection {
   /** */
   readonly objectives: DataSet<GeneralInfo>;
   /** */
+  readonly structures: DataSet<GeneralInfo>;
+  /** */
   readonly tags: DataSet<GeneralInfo>;
   /** */
   readonly tickingAreas: DataSet<GeneralInfo>;
@@ -18,6 +21,7 @@ export class GeneralCollection {
   constructor() {
     this.fakeEntities = new DataSet();
     this.objectives = new DataSet();
+    this.structures = new DataSet();
     this.tags = new DataSet();
     this.tickingAreas = new DataSet();
   }
@@ -67,5 +71,22 @@ export class GeneralCollection {
     out ||= this.tickingAreas.deleteFolder(uri);
 
     return out;
+  }
+
+  /**
+   * 
+   * @param predicate 
+   * @returns 
+   */
+  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key: string) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+    let value = undefined;
+
+    if ((value = this.fakeEntities.find(predicate))) return value
+    if ((value = this.objectives.find(predicate))) return value
+    if ((value = this.structures.find(predicate))) return value
+    if ((value = this.tags.find(predicate))) return value
+    if ((value = this.tickingAreas.find(predicate))) return value
+
+    return value;
   }
 }

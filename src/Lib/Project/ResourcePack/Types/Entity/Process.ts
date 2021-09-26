@@ -30,9 +30,9 @@ export function Process(doc: TextDocument): Entity | undefined {
   };
 
   if (container.animations)
-    Types.Definition.forEach(container.animations, (value, key) => {
-      out.animations.defined.push(key);
-      out.animations.using.push(value);
+    Types.Definition.forEach(container.animations, (reference, id) => {
+      out.animations.defined.push(reference);
+      out.animations.using.push(id);
     });
 
   //Animation controller
