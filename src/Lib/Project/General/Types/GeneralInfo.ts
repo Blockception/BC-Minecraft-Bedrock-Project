@@ -1,4 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
+import { Text } from '../../../../Lib/Types/Text/Text';
 
 /**
  *
@@ -17,7 +18,7 @@ export namespace GeneralInfo {
    * @returns
    */
   export function create(id: string, location: Types.Location, documentation: string | undefined = undefined): GeneralInfo {
-    if (id.startsWith('"') && id.endsWith('"')) id = id.substring(1, id.length - 1);
+    id = Text.UnQuote(id);
 
     return {
       id: id,
