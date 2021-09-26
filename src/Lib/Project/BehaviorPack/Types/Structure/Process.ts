@@ -22,7 +22,7 @@ export function Process(doc: TextDocument): Structure | undefined {
   const out: Structure = {
     id: id,
     location: Types.Location.create(uri, 0),
-    documentation: Documentation.getDoc(doc, () => `McStructure: ${id}`),
+    documentation: `McStructure: ${id}`,
   };
 
   return out;
