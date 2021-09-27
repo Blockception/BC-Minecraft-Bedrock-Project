@@ -31,7 +31,7 @@ export interface EntityDescription extends ScriptContainer {
   /** */
   geometry?: Types.Definition;
   /** */
-  render_controller?: (string | Types.Definition)[];
+  render_controllers?: (string | Types.Definition)[];
   /** */
   sound_effects?: Types.Definition;
   /** */
