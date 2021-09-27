@@ -22,17 +22,15 @@ export function Process(doc: TextDocument): RenderController[] | undefined {
     const id = keys[I];
     const controller = container[id];
 
-    if (internal.RenderControllers.is(controller)) {
-      const item: RenderController = {
-        id: id,
-        location: Types.Location.create(uri, content.indexOf(id)),
-        molang: MolangFullSet.harvest(controller),
-        documentation: Documentation.getDoc(doc, () => `Render Controller: \`${id}\``),
-      };
+    const item: RenderController = {
+      id: id,
+      location: Types.Location.create(uri, content.indexOf(id)),
+      molang: MolangFullSet.harvest(controller),
+      documentation: Documentation.getDoc(doc, () => `Render Controller: \`${id}\``),
+    };
 
-      out.push(item);
-    }
-  }
+    out.push(item);
+}
 
-  return out;
+return out;
 }
