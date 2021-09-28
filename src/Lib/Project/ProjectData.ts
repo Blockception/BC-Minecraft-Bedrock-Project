@@ -14,6 +14,7 @@ import { Pack } from "../Types/Pack/Pack";
 import { Types } from "bc-minecraft-bedrock-types";
 import { FileType } from "./BehaviorPack/include";
 import { ProcessAnimationCommands, ProcessAnimationControllerCommands, ProcessMcFunction } from "./General/Types/Commands/Process";
+import { WorldPackCollection } from './World/include';
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -21,6 +22,8 @@ export class ProjectData {
   BehaviorPacks: BehaviorPackCollection;
   /**The collection of resource packs*/
   ResourcePacks: ResourcePackCollection;
+  /**The collection of worlds*/
+  Worlds: WorldPackCollection;
   /**The collection of general items*/
   General: GeneralCollection;
   /**The context needed to run this project data collection*/
@@ -30,6 +33,7 @@ export class ProjectData {
     this.BehaviorPacks = new BehaviorPackCollection();
     this.ResourcePacks = new ResourcePackCollection();
     this.General = new GeneralCollection();
+    this.Worlds = new WorldPackCollection();
     this.Context = Context;
   }
 
@@ -62,6 +66,9 @@ export class ProjectData {
 
       case PackType.resource_pack:
         return this.ResourcePacks.process(doc);
+
+      case PackType.world:
+        return this.Worlds.process(doc);
     }
 
     return undefined;
@@ -84,6 +91,7 @@ export class ProjectData {
     if ((value = this.BehaviorPacks.find(predicate))) return value;
     if ((value = this.ResourcePacks.find(predicate))) return value;
     if ((value = this.General.find(predicate))) return value;
+    if ((value = this.Worlds.find(predicate))) return value;
 
     return undefined;
   }
@@ -199,8 +207,10 @@ function Process(manifestUri: string, projectData: ProjectData, Context: string 
       return projectData.ResourcePacks.add(parent, Context);
 
     case PackType.skin_pack:
-    case PackType.world:
       break;
+
+    case PackType.world:
+      return projectData.Worlds.add(parent, Context);
 
     case PackType.unknown:
     default:
@@ -216,10 +226,11 @@ function Process(manifestUri: string, projectData: ProjectData, Context: string 
         case PackType.resource_pack:
           return projectData.ResourcePacks.add(parent, Context);
 
+        case PackType.world:
+          return projectData.Worlds.add(parent, Context);
+
         case PackType.skin_pack:
-        case PackType.world:
         case PackType.unknown:
-        case PackType.world:
           break;
       }
   }
