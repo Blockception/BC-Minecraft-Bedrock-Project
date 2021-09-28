@@ -4,7 +4,7 @@ import { expect } from "chai";
 import { Test } from "mocha";
 import { DataSet } from "../../src/main";
 
-interface TestObject extends Types.Identifiable, Types.Documentated, Types.Locatable {}
+interface TestObject extends Types.BaseObject {}
 
 namespace TestObject {
   export function create(id: string, uri: string, position: Types.DocumentLocation | undefined = undefined): TestObject {

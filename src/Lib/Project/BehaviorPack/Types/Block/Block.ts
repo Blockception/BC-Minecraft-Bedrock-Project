@@ -2,7 +2,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { MolangSet } from "bc-minecraft-molang";
 
 /** */
-export interface Block extends Types.Identifiable, Types.Documentated, Types.Locatable {
+export interface Block extends Types.BaseObject {
   /** */
   molang: MolangSet;
   /** */

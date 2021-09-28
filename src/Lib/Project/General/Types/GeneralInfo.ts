@@ -4,7 +4,7 @@ import { Text } from '../../../../Lib/Types/Text/Text';
 /**
  *
  */
-export interface GeneralInfo extends Types.Locatable, Types.Identifiable, Types.Documentated {}
+export interface GeneralInfo extends Types.BaseObject {}
 
 /**
  *
