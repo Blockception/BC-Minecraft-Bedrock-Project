@@ -1,6 +1,7 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../Types/Map/Map";
 import { FormatVersion } from "../Types/FormatVersion";
+import * as General from '../General/Controllers/State';
 
 /** */
 export interface AnimationControllers extends FormatVersion {
@@ -50,23 +51,15 @@ export namespace AnimationController {
 }
 
 /** */
-export interface State {
-  /** */
-  animations?: Types.Conditional[];
+export interface State extends General.State {
   /** */
   blend_transition?: number;
   /** */
   blend_via_shortest_path?: boolean;
   /** */
-  on_entry?: string[];
-  /** */
-  on_exit?: string[];
-  /** */
   particle_effects?: { effect?: string; locator?: string }[];
   /** */
   sound_effects?: { effect?: string }[];
-  /** */
-  transitions?: Types.Conditional[];
   /** */
   variables?: Types.Definition;
 }

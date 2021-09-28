@@ -1,6 +1,6 @@
-import { Types } from "bc-minecraft-bedrock-types";
 import { Map } from "../../Types/Map/Map";
 import { FormatVersion } from "../Types/FormatVersion";
+import * as General from '../General/Controllers/State';
 
 /** */
 export interface AnimationControllers extends FormatVersion {
@@ -49,16 +49,8 @@ export namespace AnimationController {
   }
 }
 
-/** */
-export interface State {
-  /** */
-  animations?: Types.Conditional[];
-  /** */
-  on_entry?: string[];
-  /** */
-  on_exit?: string[];
-  /** */
-  transitions?: Types.Conditional[];
+
+export interface State extends General.State {
 }
 
 /** */
