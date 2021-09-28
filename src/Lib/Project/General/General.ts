@@ -78,7 +78,7 @@ export class GeneralCollection {
    * @param predicate 
    * @returns 
    */
-  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key: string) => boolean): (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
     let value = undefined;
 
     if ((value = this.fakeEntities.find(predicate))) return value

@@ -110,7 +110,7 @@ export class DataSet<T extends Types.Identifiable & Types.Locatable> implements 
    * @param predicate 
    * @returns 
    */
-  find(predicate: (value: Types.Identifiable & Types.Documentated & Types.Locatable, key : string) => boolean) : (Types.Identifiable & Types.Documentated & Types.Locatable) | undefined {    
+  find(predicate: (value: Types.BaseObject, key : string) => boolean) : (Types.BaseObject) | undefined {    
     for (let item of this._data.entries()) {
       if (predicate(item[1], item[0])) return item[1];
     }

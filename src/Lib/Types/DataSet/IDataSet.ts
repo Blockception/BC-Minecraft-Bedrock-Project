@@ -3,7 +3,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 /**
  *
  */
-export interface IDataSet<T extends Types.Identifiable & Types.Documentated & Types.Locatable> {
+export interface IDataSet<T extends Types.BaseObject> {
   /**
    *
    * @param key
