@@ -45,6 +45,7 @@ function CheckObjective(Com: Command, uri: string): GeneralInfo | undefined {
       Doc += " " + Com.parameters[5].text.replace(/"/g, "");
     }
 
+      //TODO comments to documentation?
     return GeneralInfo.create(ID.text, Types.Location.create(uri, ID.offset), Doc);
   }
 
@@ -55,8 +56,8 @@ function CheckPlayer(Com: Command, uri: string): GeneralInfo | undefined {
   if (Com.parameters.length > 3) {
     const Selector = Com.parameters[3];
 
-    if (!Selector.text.startsWith("@")) {
-
+    if (!Selector.text.startsWith("@") && Selector.text !== "*") {
+      //TODO comments to documentation?
       return GeneralInfo.create(Selector.text, Types.Location.create(uri, Selector.offset), "The fake player: " + Selector.text);
     }
   }
