@@ -8,7 +8,7 @@ export enum FileType {
   animation_controller,
   /** */
   attachable,
-  /** */
+  /**The file biomes_client */
   biomes_client,
   /** */
   block,
@@ -32,15 +32,15 @@ export enum FileType {
   render_controller,
   /** */
   sounds,
-  /** */
+  /**The file sound_definitions*/
   sounds_definitions,
   /** */
   texture,
   /** */
   texture_flipbook_atlas,
-  /** */
+  /**The file texture_item_atlas*/
   texture_item_atlas,
-  /** */
+  /**The file terrain_texture.json */
   texture_terrain_atlas,
   /** */
   unknown,
