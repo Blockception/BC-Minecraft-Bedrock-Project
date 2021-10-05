@@ -11,7 +11,7 @@ export class TextProjectContext implements ProjectContext {
     };
   }
 
-  getFiles(folder: string, ignores: MCIgnore): string[] {
+  getFiles(folder: string, pattern : string[], ignores: MCIgnore): string[] {
     return [];
   }
 }
