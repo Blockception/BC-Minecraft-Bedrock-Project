@@ -9,6 +9,7 @@ export interface ProjectContext {
 
   /**Returns all files in the given directory and sub directories.
    * @param folder The folder to start the search from
+   * @param patterns The glob patterns that need to match
    * @param ignores The project settings for ignores or includements*/
-  getFiles(folder: string, ignores: MCIgnore): string[];
+  getFiles(folder: string, patterns: string[], ignores: MCIgnore): string[];
 }
