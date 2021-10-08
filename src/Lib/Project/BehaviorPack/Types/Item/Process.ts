@@ -14,7 +14,7 @@ import { Item } from "./Item";
 export function Process(doc: TextDocument): Item | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Item>(content);
+  const imp = Json.To<internal.Item>(doc);
 
   if (!internal.Item.is(imp)) return undefined;
 

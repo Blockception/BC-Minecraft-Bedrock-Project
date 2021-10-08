@@ -14,7 +14,7 @@ import { Map } from "../../../../Types/Map/Map";
 export function Process(doc: TextDocument): Sound[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.SoundDefinitions>(content);
+  const imp = Json.To<internal.SoundDefinitions>(doc);
 
   if (!internal.SoundDefinitions.is(imp)) return undefined;
 

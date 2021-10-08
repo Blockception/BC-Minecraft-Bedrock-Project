@@ -14,7 +14,7 @@ import { Map } from "../../../../Types/Map/Map";
 export function Process(doc: TextDocument): Model[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Model>(content);
+  const imp = Json.To<internal.Model>(doc);
 
   if (!internal.Model.is(imp)) return undefined;
 

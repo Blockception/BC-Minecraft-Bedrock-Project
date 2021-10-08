@@ -15,7 +15,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): Entity | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Entity>(content);
+  const imp = Json.To<internal.Entity>(doc);
 
   if (!internal.Entity.is(imp)) return undefined;
 

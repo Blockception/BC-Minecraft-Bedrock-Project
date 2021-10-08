@@ -14,7 +14,7 @@ import { Map } from "../../../../Types/Map/Map";
 export function Process(doc: TextDocument): Material[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Material>(content);
+  const imp = Json.To<internal.Material>(doc);
 
   if (!internal.Material.is(imp)) return undefined;
 

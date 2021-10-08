@@ -10,7 +10,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): Animation[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Animations>(content);
+  const imp = Json.To<internal.Animations>(doc);
 
   if (!internal.Animations.is(imp)) return undefined;
 

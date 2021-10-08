@@ -12,7 +12,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): AnimationController[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.AnimationControllers>(content);
+  const imp = Json.To<internal.AnimationControllers>(doc);
 
   if (!internal.AnimationControllers.is(imp)) return undefined;
 

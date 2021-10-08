@@ -15,7 +15,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 export function Process(doc: TextDocument): Attachable | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Attachable>(content);
+  const imp = Json.To<internal.Attachable>(doc);
 
   if (!internal.Attachable.is(imp)) return undefined;
 

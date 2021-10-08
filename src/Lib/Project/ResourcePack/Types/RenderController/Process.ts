@@ -10,7 +10,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): RenderController[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.RenderControllers>(content);
+  const imp = Json.To<internal.RenderControllers>(doc);
 
   if (!internal.RenderControllers.is(imp)) return undefined;
 

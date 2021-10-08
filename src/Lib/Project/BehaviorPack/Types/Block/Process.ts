@@ -16,7 +16,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): Block | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Block>(content);
+  const imp = Json.To<internal.Block>(doc);
 
   if (!internal.Block.is(imp)) return undefined;
 

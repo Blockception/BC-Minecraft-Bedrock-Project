@@ -13,7 +13,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): Fog | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Fog>(content);
+  const imp = Json.To<internal.Fog>(doc);
 
   if (!internal.Fog.is(imp)) return undefined;
 

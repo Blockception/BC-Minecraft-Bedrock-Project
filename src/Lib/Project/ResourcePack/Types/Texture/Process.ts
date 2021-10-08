@@ -14,7 +14,7 @@ import { Map } from "../../../../Types/Map/Map";
 export function ProcessTextureAtlas(doc: TextDocument): Texture[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.TextureAtlas>(content);
+  const imp = Json.To<internal.TextureAtlas>(doc);
 
   if (!internal.TextureAtlas.is(imp)) return undefined;
 

@@ -13,7 +13,7 @@ import { Documentation } from "../../../../Types/Documentation/Documentation";
 export function Process(doc: TextDocument): Particle | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Particle>(content);
+  const imp = Json.To<internal.Particle>(doc);
 
   if (!internal.Particle.is(imp)) return undefined;
 
