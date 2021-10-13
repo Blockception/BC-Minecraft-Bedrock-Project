@@ -26,7 +26,7 @@ export namespace Json {
       let message = "";
 
       if (file) {
-        message = "Cannot cast file to json: ${file}\n";
+        message = `Cannot cast file to json: ${file}\n`;
       }
 
       if (err.message) {
