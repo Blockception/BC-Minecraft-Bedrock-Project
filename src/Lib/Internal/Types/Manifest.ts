@@ -9,7 +9,7 @@ export interface Manifest {
   /**
    *
    */
-  format_verison: string;
+  format_version: string;
   /**
    *
    */
@@ -79,11 +79,9 @@ export interface ManifestMetadata {
 export namespace Manifest {
 
   export function is(value: any): value is Manifest {
-    const temp = <Manifest>value;
-
     if (typeof value === "object") {
-      if (typeof temp.format_verison !== "number") return false;
-      if (typeof temp.header !== "object") return false;
+      if (typeof value.format_version !== "number") return false;
+      if (typeof value.header !== "object") return false;
 
       return true;
     }
