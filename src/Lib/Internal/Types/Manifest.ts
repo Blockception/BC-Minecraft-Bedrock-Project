@@ -17,11 +17,11 @@ export interface Manifest {
   /**
    *
    */
-  modules: ManifestModule[];
+  modules?: ManifestModule[];
   /**
    *
    */
-  metadata: ManifestMetadata;
+  metadata?: ManifestMetadata;
 }
 
 /**
@@ -67,18 +67,38 @@ export namespace ManifestModule {
 /** */
 export interface ManifestMetadata {
   /** */
-  authors: string[];
+  authors?: string[];
+  license?: string;
+  url?: string;
+  generated_with?: {
+    [tool_name: string]: string[]
+  }
 }
 
 /** */
 export namespace Manifest {
+
+  export function is(value: any): value is Manifest {
+    const temp = <Manifest>value;
+
+    if (typeof value === "object") {
+      if (typeof temp.format_verison !== "number") return false;
+      if (typeof temp.header !== "object") return false;
+
+      return true;
+    }
+
+    return false;
+  }
+
   /**
    *
    * @param m
    * @returns
    */
   export function IsWorldManifest(m: Manifest): boolean {
-    let modules = m.modules;
+    const modules = m.modules;
+    if (modules === undefined) return false;
 
     for (let index = 0; index < modules.length; index++) {
       const mod = modules[index];
@@ -95,7 +115,8 @@ export namespace Manifest {
    * @returns
    */
   export function IsResourceManifest(m: Manifest): boolean {
-    let modules = m.modules;
+    const modules = m.modules;
+    if (modules === undefined) return false;
 
     for (let index = 0; index < modules.length; index++) {
       const mod = modules[index];
@@ -112,7 +133,8 @@ export namespace Manifest {
    * @returns
    */
   export function IsBehaviorManifest(m: Manifest): boolean {
-    let modules = m.modules;
+    const modules = m.modules;
+    if (modules === undefined) return false;
 
     for (let index = 0; index < modules.length; index++) {
       const mod = modules[index];
@@ -129,7 +151,8 @@ export namespace Manifest {
    * @returns
    */
   export function IsSkinpackManifest(m: Manifest): boolean {
-    let modules = m.modules;
+    const modules = m.modules;
+    if (modules === undefined) return false;
 
     for (let index = 0; index < modules.length; index++) {
       const mod = modules[index];
