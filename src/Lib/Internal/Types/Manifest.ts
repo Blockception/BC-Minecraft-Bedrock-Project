@@ -1,3 +1,4 @@
+import { TextDocument } from '../../../main';
 import { PackType } from "../../Project/include";
 import { ProjectContext } from "../../Types/ProjectContext/ProjectContext";
 import { Json } from "../Json";
@@ -195,11 +196,33 @@ export namespace Manifest {
    * @param uri
    * @returns
    */
-  export function GetManifest(uri: string, ProjectContext: ProjectContext): Manifest | undefined {
-    const doc = ProjectContext.getDocument(uri);
+  export function GetManifest(uri: string, getDocument: (uri: string) => TextDocument | undefined): Manifest | undefined {
+    const doc = getDocument(uri);
 
     if (doc) return Json.To<Manifest>(doc);
 
     return undefined;
+  }
+
+  export function DetectTypeUri(manifestUri: string, getDocument: (uri: string) => TextDocument | undefined): PackType {
+    const Type = PackType.detect(manifestUri);
+
+    switch (Type) {
+      case PackType.behavior_pack:
+      case PackType.resource_pack:
+      case PackType.skin_pack:
+      case PackType.world:
+        return Type;
+
+      case PackType.unknown:
+      default:
+        const manifest = Manifest.GetManifest(manifestUri, getDocument);
+        if (!manifest) break;
+
+        const SubType = Manifest.DetectType(manifest);
+        return SubType;
+    }
+
+    return PackType.unknown;
   }
 }

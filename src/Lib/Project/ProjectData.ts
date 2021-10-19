@@ -191,12 +191,14 @@ export namespace ProjectData {
 }
 
 /**
- *
- * @param files
- * @param PF
+ * 
+ * @param manifestUri 
+ * @param projectData 
+ * @param Context 
+ * @returns 
  */
 function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): Pack | undefined {
-  const Type = PackType.detect(manifestUri);
+  const Type = Manifest.DetectTypeUri(manifestUri, projectData.Context.getDocument);
   const parent = manifestUri.replace(/[\\\/]manifest.json/gi, "");
 
   switch (Type) {
@@ -214,25 +216,7 @@ function Process(manifestUri: string, projectData: ProjectData, Context: string 
 
     case PackType.unknown:
     default:
-      const manifest = Manifest.GetManifest(manifestUri, projectData.Context);
-      if (!manifest) break;
-
-      const SubType = Manifest.DetectType(manifest);
-
-      switch (SubType) {
-        case PackType.behavior_pack:
-          return projectData.BehaviorPacks.add(parent, Context);
-
-        case PackType.resource_pack:
-          return projectData.ResourcePacks.add(parent, Context);
-
-        case PackType.world:
-          return projectData.Worlds.add(parent, Context);
-
-        case PackType.skin_pack:
-        case PackType.unknown:
-          break;
-      }
+      return undefined;
   }
 
   return undefined;
