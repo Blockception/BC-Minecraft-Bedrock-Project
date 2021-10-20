@@ -25,3 +25,14 @@ Data.Process(...);
 //OR
 packs[0].process(...)
 ```
+
+## Contributing
+
+First, read the [contributing guide](./CONTRIBUTING.md). fork the project, clone it and run the following commands:
+
+**Installation**
+
+```cmd
+  npm ci
+  npm update
+```
