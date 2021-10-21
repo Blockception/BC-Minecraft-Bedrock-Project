@@ -26,6 +26,7 @@ export namespace SoundDefinitions {
    */
   export function is(value: any): value is SoundDefinitions {
     if (typeof value === "object" && typeof value.format_version === "string" && typeof value.sound_definitions === "object") {
+      return true;
     }
 
     return false;
