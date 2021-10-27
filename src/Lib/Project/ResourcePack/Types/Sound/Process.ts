@@ -25,7 +25,7 @@ export function Process(doc: TextDocument): Sound[] | undefined {
     out.push({
       id: key,
       location: Types.Location.create(uri, content.indexOf(key)),
-      documentation: Documentation.getDoc(doc, () => `Sound: ${key} with ${value.sounds.length} sounds`),
+      documentation: Documentation.getDoc(doc, () => `Sound: ${key} with ${value.sounds?.length ?? 0} sounds`),
     });
   });
 
