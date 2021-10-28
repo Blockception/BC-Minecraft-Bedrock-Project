@@ -1,6 +1,6 @@
 import * as internal from "../../../../Internal/ResourcePack/Attachable";
 import { Json } from "../../../../Internal/Json";
-import { MolangFullSet } from "bc-minecraft-molang";
+import { Molang } from "bc-minecraft-molang";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Attachable } from "./Attachable";
 import { DefinedUsing } from "bc-minecraft-molang";
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): Attachable | undefined {
   const out: Attachable = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: MolangFullSet.harvest(container),
+    molang: Molang.MolangFullSet.harvest(container),
     animations: DefinedUsing.create(),
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };

@@ -1,6 +1,6 @@
 import * as internal from "../../../../Internal/ResourcePack/RenderController";
 import { Json } from "../../../../Internal/Json";
-import { MolangFullSet } from "bc-minecraft-molang";
+import { Molang } from "bc-minecraft-molang";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { RenderController } from "./RenderController";
 import { Types } from "bc-minecraft-bedrock-types";
@@ -25,7 +25,7 @@ export function Process(doc: TextDocument): RenderController[] | undefined {
     const item: RenderController = {
       id: id,
       location: Types.Location.create(uri, content.indexOf(id)),
-      molang: MolangFullSet.harvest(controller),
+      molang: Molang.MolangFullSet.harvest(controller),
       documentation: Documentation.getDoc(doc, () => `Render Controller: \`${id}\``),
     };
 

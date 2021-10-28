@@ -3,7 +3,7 @@ import * as internal from "../../../../Internal/BehaviorPack/Animation";
 import { Json } from "../../../../Internal/Json";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./Animation";
-import { MolangSet } from "bc-minecraft-molang";
+import { Molang } from "bc-minecraft-molang";
 import { Documentation } from "../../../../Types/Documentation/Documentation";
 
 /** */
@@ -26,7 +26,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
       out.push({
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: MolangSet.harvest(anim),
+        molang: Molang.MolangSet.harvest(anim),
         documentation: Documentation.getDoc(doc, () => `BP Animation: \`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
       });
     }

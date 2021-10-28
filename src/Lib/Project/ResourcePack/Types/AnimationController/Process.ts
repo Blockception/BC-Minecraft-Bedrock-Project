@@ -1,6 +1,6 @@
 import * as internal from "../../../../Internal/ResourcePack/AnimationController";
 import { Json } from "../../../../Internal/Json";
-import { MolangSet } from "bc-minecraft-molang";
+import { Molang } from "bc-minecraft-molang";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { AnimationController } from "./AnimationController";
 import { Map } from "../../../../Types/Map/Map";
@@ -28,7 +28,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
       const item: AnimationController = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: MolangSet.harvest(controller),
+        molang: Molang.MolangSet.harvest(controller),
         documentation: Documentation.getDoc(doc, () => `RP Animation Controller: \`${id}\``),
         animations: Using.empty(),
         particles: Using.empty(),

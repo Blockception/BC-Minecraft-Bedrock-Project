@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { DefinedUsing, MolangSet } from "bc-minecraft-molang";
+import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { AnimationCarrier } from '../../../../Types/Carrier/Carrier';
 
 //TODO add events
@@ -7,7 +7,7 @@ import { AnimationCarrier } from '../../../../Types/Carrier/Carrier';
 /** */
 export interface AnimationController extends Types.BaseObject, AnimationCarrier<DefinedUsing<string>> {
   /** */
-  molang: MolangSet;
+  molang: Molang.MolangSet;
   /** */
   animations: DefinedUsing<string>;
 }

@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { DefinedUsing, MolangSet, Using } from "bc-minecraft-molang";
+import { DefinedUsing, Molang, Using } from "bc-minecraft-molang";
 import * as internal from "../../../../Internal/BehaviorPack/AnimationController";
 import { Json } from "../../../../Internal/Json";
 import { Documentation } from "../../../../Types/Documentation/Documentation";
@@ -33,7 +33,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
         animations: DefinedUsing.empty(),
-        molang: MolangSet.harvest(controller),
+        molang: Molang.MolangSet.harvest(controller),
         documentation: Documentation.getDoc(doc, () => `BP Animation Controller: ${id}`),
       };
 

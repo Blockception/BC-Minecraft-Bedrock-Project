@@ -1,5 +1,5 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
-import { DefinedUsing, MolangFullSet } from 'bc-minecraft-molang';
+import { DefinedUsing, Molang } from 'bc-minecraft-molang';
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack/include";
@@ -225,7 +225,7 @@ describe("ProjectData", () => {
     const rp = data.ResourcePacks.add("c:\\rp", MCProject.createEmpty());
 
     const loc = { uri: "", position: 0 };
-    const molang = MolangFullSet.create();
+    const molang = Molang.MolangFullSet.create();
     const doc = "Documentation";
     const emptyDefinedUsing = DefinedUsing.create<string>();
 

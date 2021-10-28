@@ -1,6 +1,6 @@
 import * as internal from "../../../../Internal/ResourcePack/Animation";
 import { Json } from "../../../../Internal/Json";
-import { MolangSet, Using } from "bc-minecraft-molang";
+import { Molang, Using } from "bc-minecraft-molang";
 import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { Animation } from "./Animation";
 import { Map } from "../../../../Types/Map/Map";
@@ -27,7 +27,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
       const item: Animation = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: MolangSet.harvest(anim),
+        molang: Molang.MolangSet.harvest(anim),
         documentation: Documentation.getDoc(doc, () => `RP Animation\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
         particles: Using.empty(),
         sounds: Using.empty(),
