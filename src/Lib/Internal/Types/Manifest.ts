@@ -41,7 +41,7 @@ export interface ManifestHeader {
   /**This is the version of the base game your world template requires, specified as [majorVersion, minorVersion, revision]. We use this to determine what version of the base game resource and behavior packs to apply when your content is used.*/
   base_game_version?: number[];
   /**This is the minimum version of the game that this pack was written for. This is a required field for resource and behavior packs. This helps the game identify whether any backwards compatibility is needed for your pack. You should always use the highest version currently available when creating packs.*/
-  min_engine_version?: string;
+  min_engine_version?: number[];
 }
 
 /** */
