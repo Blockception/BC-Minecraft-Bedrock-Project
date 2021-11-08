@@ -1,12 +1,18 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Documentation } from '../../../../Types/Documentation/Documentation';
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
 import { GeneralInfo } from "../GeneralInfo";
 
-export function Process(command: Command, uri: string): GeneralInfo | undefined {
+export function Process(command: Command, doc: TextDocument): GeneralInfo | undefined {
   //tag <selector> add <tag>
   if (command.parameters[2]?.text !== "add") return undefined;
 
   const tag = command.parameters[3];
 
-  return GeneralInfo.create(tag.text, Types.Location.create(uri, tag.offset), "The tag: " + tag.text);
+  return GeneralInfo.create(
+    tag.text,
+    Types.Location.create(doc.uri, tag.offset),
+    Documentation.getDoc(doc, () => `The tag: ${tag.text}`, command.parameters[0].offset)
+  );
 }

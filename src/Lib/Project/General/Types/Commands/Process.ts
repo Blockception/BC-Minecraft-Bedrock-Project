@@ -5,7 +5,8 @@ import * as Tag from "../Tag/Process";
 import * as Objective from "../Objective/Process";
 import * as TickingArea from "../TickingArea/Process";
 import * as Structure from "../Structures/Process";
-import { Internal, Map } from '../../../../../main';
+import * as Internal from '../../../../Internal/include';
+import { Map } from '../../../../Types/Map/Map';
 import { Json } from '../../../../Internal/Json';
 
 /**
@@ -113,19 +114,19 @@ export function ProcessCommandAt(line: string, offset: number, doc: TextDocument
 
     switch (command != undefined && command.parameters[0].text) {
       case "tag":
-        receiver.tags.set(Tag.Process(command, doc.uri));
+        receiver.tags.set(Tag.Process(command, doc));
         break;
 
       case "scoreboard":
-        Objective.Process(command, doc.uri, receiver);
+        Objective.Process(command, doc, receiver);
         break;
 
       case "structure":
-        receiver.structures.set(Structure.Process(command, doc.uri));
+        receiver.structures.set(Structure.Process(command, doc));
         break;
 
       case "tickingarea":
-        receiver.tickingAreas.set(TickingArea.Process(command, doc.uri));
+        receiver.tickingAreas.set(TickingArea.Process(command, doc));
         break;
     }
 

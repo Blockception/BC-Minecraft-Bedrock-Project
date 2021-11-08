@@ -1,17 +1,19 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
 import { GeneralInfo } from "../GeneralInfo";
+import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { Documentation } from '../../../../Types/Documentation/Documentation';
 
-export function Process(Command: Command, uri: string): GeneralInfo | undefined {
+export function Process(Command: Command, doc: TextDocument): GeneralInfo | undefined {
   //tickingarea add
   if (Command.parameters[1]?.text !== "add") return;
 
   //tickingarea add circle
   if (Command.parameters[2]?.text === "circle") {
-    return ProcessCircleCommand(Command, uri);
+    return ProcessCircleCommand(Command, doc);
   }
 
-  return ProcessBoxCommand(Command, uri);
+  return ProcessBoxCommand(Command, doc);
 }
 
 /**
@@ -19,25 +21,32 @@ export function Process(Command: Command, uri: string): GeneralInfo | undefined 
  * @param Command
  * @returns
  */
-function ProcessCircleCommand(Command: Command, uri: string): GeneralInfo | undefined {
+function ProcessCircleCommand(Command: Command, doc: TextDocument): GeneralInfo | undefined {
   //Tickingarea add circle <x> <y> <z> <r> [name]
   const parameters = Command.parameters;
 
   if (parameters.length < 7) return;
 
-  const Area = `x: ${parameters[3].text}, y: ${parameters[4].text}, z: ${parameters[5].text}, radius: ${parameters[6].text}`;
   let Name = "";
-
-  let Loc: Types.Location;
+  let offset: number = 0;
 
   if (parameters.length > 7) {
     Name = parameters[7].text;
-    Loc = Types.Location.create(uri, parameters[7].offset);
+    offset = parameters[7].offset;
   } else {
-    Loc = Types.Location.create(uri, parameters[3].offset);
+    offset = parameters[3].offset;
   }
 
-  return GeneralInfo.create(Name, Loc, `The circular tickingarea: "${Name}"; ${Area}`);
+  return GeneralInfo.create(
+    Name,
+    Types.Location.create(doc.uri, parameters[3].offset),
+    Documentation.getDoc(
+      doc, () => {
+        const Area = `x: ${parameters[3].text}, y: ${parameters[4].text}, z: ${parameters[5].text}, radius: ${parameters[6].text}`;
+        return `The circular tickingarea: "${Name}"; ${Area}`
+      },
+      offset
+    ));
 }
 
 /**
@@ -45,22 +54,29 @@ function ProcessCircleCommand(Command: Command, uri: string): GeneralInfo | unde
  * @param Command
  * @returns
  */
-function ProcessBoxCommand(Command: Command, uri: string): GeneralInfo | undefined {
+function ProcessBoxCommand(Command: Command, doc: TextDocument): GeneralInfo | undefined {
   //Tickingarea add <x> <y> <z> <x> <y> <z> [name]
   const parameters = Command.parameters;
-
   if (parameters.length < 8) return undefined;
 
-  const Area = `[${parameters[2].text}, ${parameters[3].text}, ${parameters[4].text}, ${parameters[5].text}, ${parameters[6].text}, ${parameters[7].text}]`;
   let Name = "";
-  let Loc: Types.Location;
+  let offset: number = 0;
 
-  if (parameters.length > 8) {
-    Name = parameters[8].text;
-    Loc = Types.Location.create(uri, parameters[8].offset);
+  if (parameters.length > 7) {
+    Name = parameters[7].text;
+    offset = parameters[7].offset;
   } else {
-    Loc = Types.Location.create(uri, parameters[2].offset);
+    offset = parameters[3].offset;
   }
 
-  return GeneralInfo.create(Name, Loc, `The box tickingarea: "${Name}"; '${Area}'`);
+  return GeneralInfo.create(
+    Name,
+    Types.Location.create(doc.uri, parameters[3].offset),
+    Documentation.getDoc(
+      doc, () => {
+        const Area = `[${parameters[2].text}, ${parameters[3].text}, ${parameters[4].text}, ${parameters[5].text}, ${parameters[6].text}, ${parameters[7].text}]`;
+        return `The box tickingarea: "${Name}"; ${Area}`
+      },
+      offset
+    ));
 }
