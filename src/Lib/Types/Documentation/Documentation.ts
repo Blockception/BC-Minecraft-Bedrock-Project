@@ -39,13 +39,16 @@ export namespace Documentation {
     let index = text.indexOf("\n", startoffset + 1);
     if (index < 0) index = text.length;
 
-    const line = text.slice(startoffset, index);
+    let line = text.slice(startoffset, index);
+    let length = line.length;
+    line = line.trimStart();
+    startoffset += length - line.length;
 
     //Comment
     if (doc.uri.endsWith('.mcfunction') || doc.uri.endsWith('.lang')) {
       //Mcfunction comment  
       index = line.indexOf("#");
-      if (validIndex(index, startoffset, maxDist)) {
+      if (validIndex(index, maxDist)) {
         let comment = line.slice(index + 1).trim();
 
         while (comment.startsWith('#')) {
@@ -59,7 +62,7 @@ export namespace Documentation {
     //Json comments
     if (doc.uri.endsWith('.json')) {
       index = line.indexOf("//");
-      if (validIndex(index, startoffset, maxDist)) {
+      if (validIndex(index, maxDist)) {
         return line.slice(index + 2).trim();
       }
     }
@@ -68,8 +71,8 @@ export namespace Documentation {
   }
 }
 
-function validIndex(index: number, startoffset: number, maxDist?: number): boolean {
-  return index > -1 && (maxDist ? Math.abs(startoffset - index) <= maxDist : true)
+function validIndex(index: number, maxDist?: number): boolean {
+  return index > -1 && (maxDist ? index <= maxDist : true)
 }
 
 function findPreviousLine(doc: TextDocument, offset: number): number {

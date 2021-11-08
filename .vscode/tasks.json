@@ -16,7 +16,16 @@
       "isBackground": false,
       "group": "build",
       "label": "npm test 'bc-minecraft-bedrock-project'",
-      "problemMatcher": ["$tsc", "$tsc-watch"]
+      "problemMatcher": ["$tsc", "$tsc-watch",
+        {
+          "pattern": {
+            "regexp": "^[ \t]*at .*\\(([\\w\\\\\\.]+):(\\d+):(\\d+)\\)[ \t]*$",
+            "file": 1,
+            "line": 2,
+            "column": 3
+          }
+        }
+      ]
     }
   ]
 }
