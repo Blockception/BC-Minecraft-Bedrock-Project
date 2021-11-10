@@ -29,7 +29,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
         molang: Molang.MolangSet.harvest(controller),
-        documentation: Documentation.getDoc(doc, () => `RP Animation Controller: \`${id}\``),
+        documentation: Documentation.getDoc(doc, () => `RP Animation Controller: '${id}'`),
         animations: Using.empty(),
         particles: Using.empty(),
         sounds: Using.empty(),

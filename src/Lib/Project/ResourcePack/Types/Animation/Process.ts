@@ -28,17 +28,30 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
         molang: Molang.MolangSet.harvest(anim),
-        documentation: Documentation.getDoc(doc, () => `RP Animation\`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
+        documentation: Documentation.getDoc(doc, () => `RP Animation: '${id}', loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
         particles: Using.empty(),
         sounds: Using.empty(),
       };
 
-      if (anim.particle_effects) Map.forEach(anim.particle_effects, (value, key) => item.particles.using.push(key));
-      if (anim.sound_effects) Map.forEach(anim.sound_effects, (value, key) => item.sounds.using.push(key));
+      if (anim.particle_effects) Map.forEach(anim.particle_effects, (value, key) => processEffect(value, item.particles.using));
+      if (anim.sound_effects) Map.forEach(anim.sound_effects, (value, key) => processEffect(value, item.sounds.using));
 
       out.push(item);
     }
   }
 
   return out;
+}
+
+type effect_carrier = { effect?: string }
+
+function processEffect(item: effect_carrier | effect_carrier[], receiver: string[]): void {
+  const process = (item: effect_carrier) => { if (item.effect) receiver.push(item.effect); };
+
+  if (Array.isArray(item)) {
+    item.forEach(process);
+  }
+  else {
+    process(item);
+  }
 }
