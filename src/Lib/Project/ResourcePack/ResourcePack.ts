@@ -19,8 +19,12 @@ import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
 import { Types } from 'bc-minecraft-bedrock-types';
+import { PackType } from '../include';
 
+/** */
 export class ResourcePack implements Container, Pack {
+  /**@inheritdoc */
+  readonly type: PackType = PackType.resource_pack;
   /**The folder path of the pack*/
   readonly folder: string;
   /**The context of the project*/
@@ -112,6 +116,7 @@ export class ResourcePack implements Container, Pack {
       case FileType.sounds_definitions:
         return this.sounds.set(Sound.Process(doc));
 
+      case FileType.texture:
       case FileType.texture_item_atlas:
       case FileType.texture_terrain_atlas:
         return this.textures.set(Texture.ProcessTextureAtlas(doc));
@@ -159,6 +164,7 @@ export class ResourcePack implements Container, Pack {
       case FileType.sounds_definitions:
         return this.sounds;
 
+      case FileType.texture:
       case FileType.texture_item_atlas:
       case FileType.texture_terrain_atlas:
         return this.textures;

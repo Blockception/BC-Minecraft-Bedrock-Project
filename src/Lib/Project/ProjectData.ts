@@ -1,5 +1,4 @@
 import { MCProject } from "bc-minecraft-project";
-import path = require("path");
 import { Manifest } from "../Internal/Types/Manifest";
 import { TextDocument } from "../Types/TextDocument/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";

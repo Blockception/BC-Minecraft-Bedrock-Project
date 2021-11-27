@@ -16,9 +16,13 @@ import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/FileType";
 import { Types } from 'bc-minecraft-bedrock-types';
+import { PackType } from '../Enum/PackType';
 
 /** */
 export class BehaviorPack implements Container, Pack {
+  /**@inheritdoc */
+  readonly type: PackType = PackType.behavior_pack;
+
   /**The folder path of the pack*/
   readonly folder: string;
   /**The context of the project*/

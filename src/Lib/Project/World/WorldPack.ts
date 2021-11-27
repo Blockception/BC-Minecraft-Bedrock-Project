@@ -5,9 +5,12 @@ import { DataSetBase } from "../../Types/DataSet/include";
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { Types } from 'bc-minecraft-bedrock-types';
+import { PackType } from '../Enum/PackType';
 
 /** */
-export class WorldPack implements Container, Pack {
+export class WorldPack implements Container, Pack {  
+  /**@inheritdoc */
+  readonly type: PackType = PackType.world;
   /**The folder path of the pack*/
   readonly folder: string;
   /**The context of the project*/

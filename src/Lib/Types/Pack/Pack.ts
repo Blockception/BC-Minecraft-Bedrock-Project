@@ -1,10 +1,13 @@
 import { Types } from 'bc-minecraft-bedrock-types';
 import { MCProject } from "bc-minecraft-project";
+import { PackType } from '../../Project/include';
 import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
 
 /** */
 export interface Pack {
+  /** */
+  readonly type : PackType;
   /**The folder path of the pack*/
   readonly folder: string;
   /**The context of the project*/

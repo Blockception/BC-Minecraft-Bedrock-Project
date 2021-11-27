@@ -1,6 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import { ResourcePack } from "./ResourcePack";
 import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
+import { PackCollection } from "../../Types/Pack/PackCollection";
 
 import * as Animation from "./Types/Animation/include";
 import * as AnimationController from "./Types/AnimationController/include";
@@ -14,11 +15,10 @@ import * as Model from "./Types/Model/include";
 import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
-import { PackCollection } from "../../Types/Pack/PackCollection";
-import { Types } from 'bc-minecraft-bedrock-types';
 
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {
+
   /**The collection of  animations*/
   readonly animations: DataSetConnector<Animation.Animation, ResourcePack>;
   /**The collection of animations controllers*/
