@@ -14,6 +14,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { FileType } from "./BehaviorPack/include";
 import { ProcessAnimationCommands, ProcessAnimationControllerCommands, ProcessMcFunction } from "./General/Types/Commands/Process";
 import { WorldPackCollection } from './World/include';
+import { WorldPack } from './World/WorldPack';
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -75,12 +76,13 @@ export class ProjectData {
 
   /**Returns the specific pack that belongs the document, returns undefined if nothing is found
    * @param doc The document to process*/
-  get(doc: TextDocument | string): BehaviorPack | ResourcePack | undefined {
-    const out = this.BehaviorPacks.get(doc);
+  get(doc: TextDocument | string): BehaviorPack | ResourcePack | WorldPack | undefined {
+    let out: BehaviorPack | ResourcePack | WorldPack | undefined;
+    if (out = this.BehaviorPacks.get(doc)) return out;
+    if (out = this.ResourcePacks.get(doc)) return out;
+    if (out = this.Worlds.get(doc)) return out;
 
-    if (out) return out;
-
-    return this.ResourcePacks.get(doc);
+    return undefined;
   }
 
   /** */
