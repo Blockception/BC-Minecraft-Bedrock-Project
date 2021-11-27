@@ -2,12 +2,13 @@ import { Types } from 'bc-minecraft-bedrock-types';
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { PackCollection } from "../../src/Lib/Types/Pack/PackCollection";
-import { Pack, TextDocument } from "../../src/main";
+import { Pack, PackType, TextDocument } from "../../src/main";
 
 const defaultFolder = "c:\\project\\bp";
 const defaultContext = MCProject.createEmpty();
 
 class TestPack implements Pack {
+  type: PackType = PackType.unknown;
   folder: string;
   context: MCProject;
   docs: TextDocument[];
@@ -41,13 +42,13 @@ class TestPack implements Pack {
     return this.docs.length !== old;
   }
 
-  
+
   /**
    * 
    * @param predicate 
    * @returns 
    */
-   find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
     let value = undefined;
 
 
