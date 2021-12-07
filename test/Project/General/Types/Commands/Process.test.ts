@@ -27,6 +27,10 @@ scoreboard players set global id 0`,
     expect(P.General.objectives.count()).to.equal(1);
     expect(P.General.fakeEntities.count()).to.equal(1);
     expect(P.General.tickingAreas.count()).to.equal(2);
+    
+
+    expect(P.General.tickingAreas.has("main"), "main tickingarea").to.be.true;
+    expect(P.General.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
   });
 
   it("animation", () => {
@@ -61,6 +65,9 @@ scoreboard players set global id 0`,
     expect(P.General.objectives.count()).to.equal(1);
     expect(P.General.fakeEntities.count()).to.equal(1);
     expect(P.General.tickingAreas.count()).to.equal(2);
+
+    expect(P.General.tickingAreas.has("main"), "main tickingarea").to.be.true;
+    expect(P.General.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
   });
 
   it("animation_controller", () => {
@@ -104,5 +111,8 @@ scoreboard players set global id 0`,
     expect(P.General.objectives.count()).to.equal(1);
     expect(P.General.fakeEntities.count()).to.equal(1);
     expect(P.General.tickingAreas.count()).to.equal(2);
+
+    expect(P.General.tickingAreas.has("main"), "main tickingarea").to.be.true;
+    expect(P.General.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
   });
 });
