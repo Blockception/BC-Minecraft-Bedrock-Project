@@ -30,7 +30,7 @@ function ProcessCircleCommand(Command: Command, doc: TextDocument): GeneralInfo 
   let Name = "";
   let offset: number = 0;
 
-  if (parameters.length > 7) {
+  if (parameters.length > 8) {
     Name = parameters[8].text;
     offset = parameters[8].offset;
   } else {
