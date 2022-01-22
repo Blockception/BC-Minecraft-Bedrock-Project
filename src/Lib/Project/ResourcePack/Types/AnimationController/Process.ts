@@ -42,7 +42,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
           });
 
         if (State.particle_effects) harvest(State.particle_effects, item.particles);
-        if (State.sound_effects) harvest(State.sound_effects, item.particles);
+        if (State.sound_effects) harvest(State.sound_effects, item.sounds);
       });
 
       out.push(item);
