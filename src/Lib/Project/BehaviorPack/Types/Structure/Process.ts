@@ -18,6 +18,10 @@ export function Process(doc: TextDocument): Structure | undefined {
   id = id.replace("/", ":");
   id = id.replace(".mcstructure", "");
 
+  if (id.includes('/')) {
+    id = '"' + id + '"';
+  }
+
   const out: Structure = {
     id: id,
     location: Types.Location.create(uri, 0),

@@ -29,6 +29,6 @@ describe("Structure", () => {
 
     if (!out) expect.fail();
 
-    expect(out.id).to.equal("empty:temp/air_1");
+    expect(out.id).to.equal('"empty:temp/air_1"');
   });
 });
