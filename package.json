@@ -52,7 +52,7 @@
   "dependencies": {
     "bc-minecraft-bedrock-command": "^1.2.24",
     "bc-minecraft-bedrock-types": "^1.2.25",
-    "bc-minecraft-molang": "^1.2.12",
+    "bc-minecraft-molang": "^1.2.13",
     "bc-minecraft-project": "^1.0.18",
     "jsonc": "^2.0.0"
   }
