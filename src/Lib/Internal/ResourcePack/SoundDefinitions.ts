@@ -6,15 +6,27 @@ export interface SoundDefinitions extends FormatVersion {
   /** */
   format_version: string;
   /** */
-  sound_definitions: Map<SoundSpec>;
+  sound_definitions: Map<SoundDefinition>;
+}
+
+/** */
+export interface SoundDefinition {
+  /** */
+  category: string;
+  /** */
+  sounds: (string | SoundSpec)[];
 }
 
 /** */
 export interface SoundSpec {
+  /**The relative path to the file */
+  name?: string;
+
   /** */
-  category: string;
+  load_on_low_memory?: boolean;
+
   /** */
-  sounds: (string | {})[];
+  stream?: boolean;
 }
 
 /** */
