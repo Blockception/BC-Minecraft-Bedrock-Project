@@ -1,4 +1,4 @@
-import { Types } from 'bc-minecraft-bedrock-types';
+import { Types } from "bc-minecraft-bedrock-types";
 import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
 import { Pack } from "./Pack";
@@ -85,25 +85,27 @@ export class PackCollection<T extends Pack> {
     let out = false;
 
     //If the folder that has been deleted is a pack, then the pack will have been removed
-    out ||= this.delete(uri);
+    out = this.delete(uri) || out;
 
     //Checks if the folder is inside the pack
     const p = this.get(uri);
-    if (p) out ||= p.deleteFolder(uri);
+    if (p) out = p.deleteFolder(uri) || out;
 
     return out;
   }
 
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
 
     for (let I = 0; I < this.packs.length; I++) {
-      if (value = this.packs[I].find(predicate)) return value;
+      if ((value = this.packs[I].find(predicate))) return value;
     }
 
     return value;

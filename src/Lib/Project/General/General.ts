@@ -1,4 +1,4 @@
-import { Types } from 'bc-minecraft-bedrock-types';
+import { Types } from "bc-minecraft-bedrock-types";
 import { DataSet } from "../../Types/DataSet/include";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "../BehaviorPack/include";
@@ -50,10 +50,10 @@ export class GeneralCollection {
    */
   deleteFile(uri: string) {
     let out = false;
-    out ||= this.fakeEntities.deleteFile(uri);
-    out ||= this.objectives.deleteFile(uri);
-    out ||= this.tags.deleteFile(uri);
-    out ||= this.tickingAreas.deleteFile(uri);
+    out = this.fakeEntities.deleteFile(uri) || out;
+    out = this.objectives.deleteFile(uri) || out;
+    out = this.tags.deleteFile(uri) || out;
+    out = this.tickingAreas.deleteFile(uri) || out;
 
     return out;
   }
@@ -65,27 +65,29 @@ export class GeneralCollection {
    */
   deleteFolder(uri: string): boolean {
     let out = false;
-    out ||= this.fakeEntities.deleteFolder(uri);
-    out ||= this.objectives.deleteFolder(uri);
-    out ||= this.tags.deleteFolder(uri);
-    out ||= this.tickingAreas.deleteFolder(uri);
+    out = this.fakeEntities.deleteFolder(uri) || out;
+    out = this.objectives.deleteFolder(uri) || out;
+    out = this.tags.deleteFolder(uri) || out;
+    out = this.tickingAreas.deleteFolder(uri) || out;
 
     return out;
   }
 
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
 
-    if ((value = this.fakeEntities.find(predicate))) return value
-    if ((value = this.objectives.find(predicate))) return value
-    if ((value = this.structures.find(predicate))) return value
-    if ((value = this.tags.find(predicate))) return value
-    if ((value = this.tickingAreas.find(predicate))) return value
+    if ((value = this.fakeEntities.find(predicate))) return value;
+    if ((value = this.objectives.find(predicate))) return value;
+    if ((value = this.structures.find(predicate))) return value;
+    if ((value = this.tags.find(predicate))) return value;
+    if ((value = this.tickingAreas.find(predicate))) return value;
 
     return value;
   }

@@ -12,9 +12,13 @@ import { DataSetBase } from "../Types/DataSet/include";
 import { Pack } from "../Types/Pack/Pack";
 import { Types } from "bc-minecraft-bedrock-types";
 import { FileType } from "./BehaviorPack/include";
-import { ProcessAnimationCommands, ProcessAnimationControllerCommands, ProcessMcFunction } from "./General/Types/Commands/Process";
-import { WorldPackCollection } from './World/include';
-import { WorldPack } from './World/WorldPack';
+import {
+  ProcessAnimationCommands,
+  ProcessAnimationControllerCommands,
+  ProcessMcFunction,
+} from "./General/Types/Commands/Process";
+import { WorldPackCollection } from "./World/include";
+import { WorldPack } from "./World/WorldPack";
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -76,17 +80,21 @@ export class ProjectData {
 
   /**Returns the specific pack that belongs the document, returns undefined if nothing is found
    * @param doc The document to process*/
-  get(doc: TextDocument | string): BehaviorPack | ResourcePack | WorldPack | undefined {
+  get(
+    doc: TextDocument | string
+  ): BehaviorPack | ResourcePack | WorldPack | undefined {
     let out: BehaviorPack | ResourcePack | WorldPack | undefined;
-    if (out = this.BehaviorPacks.get(doc)) return out;
-    if (out = this.ResourcePacks.get(doc)) return out;
-    if (out = this.Worlds.get(doc)) return out;
+    if ((out = this.BehaviorPacks.get(doc))) return out;
+    if ((out = this.ResourcePacks.get(doc))) return out;
+    if ((out = this.Worlds.get(doc))) return out;
 
     return undefined;
   }
 
   /** */
-  find(predicate: (value: Types.BaseObject) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
 
     if ((value = this.BehaviorPacks.find(predicate))) return value;
@@ -101,7 +109,11 @@ export class ProjectData {
    * @param id The idenfitication of the entity
    * @returns true when it exists, false when it does not*/
   hasEntity(id: string): boolean {
-    if (this.BehaviorPacks.entities.has(id) || this.ResourcePacks.entities.has(id)) return true;
+    if (
+      this.BehaviorPacks.entities.has(id) ||
+      this.ResourcePacks.entities.has(id)
+    )
+      return true;
 
     return false;
   }
@@ -110,7 +122,8 @@ export class ProjectData {
    * @param id The idenfitication of the block
    * @returns true when it exists, false when it does not*/
   hasBlock(id: string): boolean {
-    if (this.BehaviorPacks.blocks.has(id) || this.ResourcePacks.blocks.has(id)) return true;
+    if (this.BehaviorPacks.blocks.has(id) || this.ResourcePacks.blocks.has(id))
+      return true;
 
     return false;
   }
@@ -140,9 +153,9 @@ export class ProjectData {
   deleteFile(uri: string): boolean {
     let out = false;
 
-    out ||= this.BehaviorPacks.deleteFile(uri);
-    out ||= this.General.deleteFile(uri);
-    out ||= this.ResourcePacks.deleteFile(uri);
+    out = this.BehaviorPacks.deleteFile(uri) || out;
+    out = this.General.deleteFile(uri) || out;
+    out = this.ResourcePacks.deleteFile(uri) || out;
 
     return out;
   }
@@ -155,9 +168,9 @@ export class ProjectData {
   deleteFolder(uri: string): boolean {
     let out = false;
 
-    out ||= this.BehaviorPacks.deleteFolder(uri);
-    out ||= this.General.deleteFolder(uri);
-    out ||= this.ResourcePacks.deleteFolder(uri);
+    out = this.BehaviorPacks.deleteFolder(uri) || out;
+    out = this.General.deleteFolder(uri) || out;
+    out = this.ResourcePacks.deleteFolder(uri) || out;
 
     return out;
   }
@@ -174,7 +187,11 @@ export namespace ProjectData {
    * @param Context
    * @returns
    */
-  export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): Pack[] {
+  export function Add(
+    manifestPath: string | string[],
+    projectData: ProjectData,
+    Context: string | MCProject
+  ): Pack[] {
     if (!Array.isArray(manifestPath)) {
       manifestPath = [manifestPath];
     }
@@ -192,14 +209,21 @@ export namespace ProjectData {
 }
 
 /**
- * 
- * @param manifestUri 
- * @param projectData 
- * @param Context 
- * @returns 
+ *
+ * @param manifestUri
+ * @param projectData
+ * @param Context
+ * @returns
  */
-function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): Pack | undefined {
-  const Type = Manifest.DetectTypeUri(manifestUri, projectData.Context.getDocument);
+function Process(
+  manifestUri: string,
+  projectData: ProjectData,
+  Context: string | MCProject
+): Pack | undefined {
+  const Type = Manifest.DetectTypeUri(
+    manifestUri,
+    projectData.Context.getDocument
+  );
   const parent = manifestUri.replace(/[\\\/]manifest.json/gi, "");
 
   switch (Type) {

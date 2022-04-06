@@ -15,8 +15,8 @@ import * as Trading from "./Types/Trading/include";
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
 import { FileType } from "./Enum/FileType";
-import { Types } from 'bc-minecraft-bedrock-types';
-import { PackType } from '../Enum/PackType';
+import { Types } from "bc-minecraft-bedrock-types";
+import { PackType } from "../Enum/PackType";
 
 /** */
 export class BehaviorPack implements Container, Pack {
@@ -52,7 +52,8 @@ export class BehaviorPack implements Container, Pack {
    * @param Context The Mcproject data or the filepath to read from.*/
   constructor(folder: string, Context: MCProject | string) {
     this.folder = folder;
-    this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
+    this.context =
+      typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
     this.animations = new DataSet();
     this.animation_controllers = new DataSet();
@@ -155,15 +156,15 @@ export class BehaviorPack implements Container, Pack {
   deleteFile(uri: string): boolean {
     let out = false;
 
-    out ||= this.animations.deleteFile(uri);
-    out ||= this.animation_controllers.deleteFile(uri);
-    out ||= this.blocks.deleteFile(uri);
-    out ||= this.entities.deleteFile(uri);
-    out ||= this.functions.deleteFile(uri);
-    out ||= this.items.deleteFile(uri);
-    out ||= this.loot_tables.deleteFile(uri);
-    out ||= this.structures.deleteFile(uri);
-    out ||= this.trading.deleteFile(uri);
+    out = this.animations.deleteFile(uri) || out;
+    out = this.animation_controllers.deleteFile(uri) || out;
+    out = this.blocks.deleteFile(uri) || out;
+    out = this.entities.deleteFile(uri) || out;
+    out = this.functions.deleteFile(uri) || out;
+    out = this.items.deleteFile(uri) || out;
+    out = this.loot_tables.deleteFile(uri) || out;
+    out = this.structures.deleteFile(uri) || out;
+    out = this.trading.deleteFile(uri) || out;
 
     return out;
   }
@@ -175,49 +176,51 @@ export class BehaviorPack implements Container, Pack {
   deleteFolder(uri: string): boolean {
     let out = false;
 
-    out ||= this.animations.deleteFolder(uri);
-    out ||= this.animation_controllers.deleteFolder(uri);
-    out ||= this.blocks.deleteFolder(uri);
-    out ||= this.entities.deleteFolder(uri);
-    out ||= this.functions.deleteFolder(uri);
-    out ||= this.items.deleteFolder(uri);
-    out ||= this.loot_tables.deleteFolder(uri);
-    out ||= this.structures.deleteFolder(uri);
-    out ||= this.trading.deleteFolder(uri);
+    out = this.animations.deleteFolder(uri) || out;
+    out = this.animation_controllers.deleteFolder(uri) || out;
+    out = this.blocks.deleteFolder(uri) || out;
+    out = this.entities.deleteFolder(uri) || out;
+    out = this.functions.deleteFolder(uri) || out;
+    out = this.items.deleteFolder(uri) || out;
+    out = this.loot_tables.deleteFolder(uri) || out;
+    out = this.structures.deleteFolder(uri) || out;
+    out = this.trading.deleteFolder(uri) || out;
 
     return out;
   }
 
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
 
-    if (value = this.animations.find(predicate)) return value;
-    if (value = this.animation_controllers.find(predicate)) return value;
-    if (value = this.blocks.find(predicate)) return value;
-    if (value = this.entities.find(predicate)) return value;
-    if (value = this.functions.find(predicate)) return value;
-    if (value = this.items.find(predicate)) return value;
-    if (value = this.loot_tables.find(predicate)) return value;
-    if (value = this.structures.find(predicate)) return value;
-    if (value = this.trading.find(predicate)) return value;
+    if ((value = this.animations.find(predicate))) return value;
+    if ((value = this.animation_controllers.find(predicate))) return value;
+    if ((value = this.blocks.find(predicate))) return value;
+    if ((value = this.entities.find(predicate))) return value;
+    if ((value = this.functions.find(predicate))) return value;
+    if ((value = this.items.find(predicate))) return value;
+    if ((value = this.loot_tables.find(predicate))) return value;
+    if ((value = this.structures.find(predicate))) return value;
+    if ((value = this.trading.find(predicate))) return value;
 
     return value;
   }
 }
 
 /**
- * 
+ *
  */
 export namespace BehaviorPack {
   /**
-   * 
-   * @param value 
-   * @returns 
+   *
+   * @param value
+   * @returns
    */
   export function is(value: any): value is BehaviorPack {
     if (typeof value === "object") {

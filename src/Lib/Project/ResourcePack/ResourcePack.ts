@@ -18,8 +18,8 @@ import * as Model from "./Types/Model/include";
 import * as RenderController from "./Types/RenderController/include";
 import * as Sound from "./Types/Sound/include";
 import * as Texture from "./Types/Texture/include";
-import { Types } from 'bc-minecraft-bedrock-types';
-import { PackType } from '../include';
+import { Types } from "bc-minecraft-bedrock-types";
+import { PackType } from "../include";
 
 /** */
 export class ResourcePack implements Container, Pack {
@@ -61,7 +61,8 @@ export class ResourcePack implements Container, Pack {
    * @param Context The Mcproject data or the filepath to read from*/
   constructor(folder: string, Context: MCProject | string) {
     this.folder = folder;
-    this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
+    this.context =
+      typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
     this.animation_controllers = new DataSet();
     this.animations = new DataSet();
@@ -181,17 +182,17 @@ export class ResourcePack implements Container, Pack {
   deleteFolder(uri: string): boolean {
     let out = false;
 
-    out ||= this.animations.deleteFolder(uri);
-    out ||= this.animation_controllers.deleteFolder(uri);
-    out ||= this.attachables.deleteFolder(uri);
-    out ||= this.blocks.deleteFolder(uri);
-    out ||= this.entities.deleteFolder(uri);
-    out ||= this.fogs.deleteFolder(uri);
-    out ||= this.materials.deleteFolder(uri);
-    out ||= this.models.deleteFolder(uri);
-    out ||= this.particles.deleteFolder(uri);
-    out ||= this.sounds.deleteFolder(uri);
-    out ||= this.textures.deleteFolder(uri);
+    out = this.animations.deleteFolder(uri) || out;
+    out = this.animation_controllers.deleteFolder(uri) || out;
+    out = this.attachables.deleteFolder(uri) || out;
+    out = this.blocks.deleteFolder(uri) || out;
+    out = this.entities.deleteFolder(uri) || out;
+    out = this.fogs.deleteFolder(uri) || out;
+    out = this.materials.deleteFolder(uri) || out;
+    out = this.models.deleteFolder(uri) || out;
+    out = this.particles.deleteFolder(uri) || out;
+    out = this.sounds.deleteFolder(uri) || out;
+    out = this.textures.deleteFolder(uri) || out;
 
     return out;
   }
@@ -204,41 +205,43 @@ export class ResourcePack implements Container, Pack {
   deleteFile(uri: string): boolean {
     let out = false;
 
-    out ||= this.animations.deleteFile(uri);
-    out ||= this.animation_controllers.deleteFile(uri);
-    out ||= this.attachables.deleteFile(uri);
-    out ||= this.blocks.deleteFile(uri);
-    out ||= this.entities.deleteFile(uri);
-    out ||= this.fogs.deleteFile(uri);
-    out ||= this.materials.deleteFile(uri);
-    out ||= this.models.deleteFile(uri);
-    out ||= this.particles.deleteFile(uri);
-    out ||= this.sounds.deleteFile(uri);
-    out ||= this.textures.deleteFile(uri);
+    out = this.animations.deleteFile(uri) || out;
+    out = this.animation_controllers.deleteFile(uri) || out;
+    out = this.attachables.deleteFile(uri) || out;
+    out = this.blocks.deleteFile(uri) || out;
+    out = this.entities.deleteFile(uri) || out;
+    out = this.fogs.deleteFile(uri) || out;
+    out = this.materials.deleteFile(uri) || out;
+    out = this.models.deleteFile(uri) || out;
+    out = this.particles.deleteFile(uri) || out;
+    out = this.sounds.deleteFile(uri) || out;
+    out = this.textures.deleteFile(uri) || out;
 
     return out;
   }
 
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
 
-    if (value = this.animation_controllers.find(predicate)) return value;
-    if (value = this.animations.find(predicate)) return value;
-    if (value = this.attachables.find(predicate)) return value;
-    if (value = this.blocks.find(predicate)) return value;
-    if (value = this.entities.find(predicate)) return value;
-    if (value = this.fogs.find(predicate)) return value;
-    if (value = this.materials.find(predicate)) return value;
-    if (value = this.models.find(predicate)) return value;
-    if (value = this.particles.find(predicate)) return value;
-    if (value = this.render_controllers.find(predicate)) return value;
-    if (value = this.sounds.find(predicate)) return value;
-    if (value = this.textures.find(predicate)) return value;
+    if ((value = this.animation_controllers.find(predicate))) return value;
+    if ((value = this.animations.find(predicate))) return value;
+    if ((value = this.attachables.find(predicate))) return value;
+    if ((value = this.blocks.find(predicate))) return value;
+    if ((value = this.entities.find(predicate))) return value;
+    if ((value = this.fogs.find(predicate))) return value;
+    if ((value = this.materials.find(predicate))) return value;
+    if ((value = this.models.find(predicate))) return value;
+    if ((value = this.particles.find(predicate))) return value;
+    if ((value = this.render_controllers.find(predicate))) return value;
+    if ((value = this.sounds.find(predicate))) return value;
+    if ((value = this.textures.find(predicate))) return value;
 
     return value;
   }
