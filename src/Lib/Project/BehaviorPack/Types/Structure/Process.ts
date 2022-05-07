@@ -15,7 +15,6 @@ export function Process(doc: TextDocument): Structure | undefined {
   index += 11;
 
   let id = uri.substring(index, uri.length).replace(/\\/g, "/");
-  id = id.replace("/", ":");
   id = id.replace(".mcstructure", "");
 
   if (id.includes('/')) {
