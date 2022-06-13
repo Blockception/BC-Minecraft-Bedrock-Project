@@ -10,14 +10,21 @@ describe("BehaviorPack", () => {
       }
     }`;
 
-    it("Process", () => {
-      const controllers = BehaviorPack.AnimationController.Process({ getText: () => data, uri: "example" });
+    describe("Process", () => {
+      const controllers = BehaviorPack.AnimationController.Process({
+        getText: () => data,
+        uri: "example",
+      });
 
-      expect(controllers).to.not.be.undefined;
+      it("Not Undefined", () => {
+        expect(controllers).to.not.be.undefined;
+      });
 
       if (!controllers) return;
 
-      expect(controllers.length).to.equal(1);
+      it("Has controller", ()=>{
+        expect(controllers.length).to.equal(1);
+      })
     });
   });
 });

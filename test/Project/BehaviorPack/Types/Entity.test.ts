@@ -38,59 +38,102 @@ const EntityJson: string = `{
   }
 }`;
 
-const EntityDoc: TextDocument = { uri: "C:\\temp.json", getText: (range) => EntityJson };
+const EntityDoc: TextDocument = {
+  uri: "C:\\temp.json",
+  getText: (range) => EntityJson,
+};
 
 describe("Entity", () => {
   it("Data", () => {
     const imp = Json.To<internal.Entity>(EntityJson);
 
-    expect(internal.Entity.is(imp)).to.be.true;
+    it("Not Undefined", () => {
+      expect(imp).to.not.be.undefined;
+    });
+
+    it("Is entity", () => {
+      expect(internal.Entity.is(imp)).to.be.true;
+    });
   });
 
-  it("Families", () => {
+  describe("Families", () => {
     const data = Entity.Process(EntityDoc);
 
-    expect(data).to.not.be.undefined;
+    it("Not Undefined", () => {
+      expect(data).to.not.be.undefined;
+    });
 
     if (!data) return;
-    expect(data.families).has.members(["animal", "mob"]);
-    expect(data.families.length).to.equal(2);
+
+    it("Has specific families", () => {
+      expect(data.families).has.members(["animal", "mob"]);
+    });
+
+    it("Has 2 families", () => {
+      expect(data.families.length).to.equal(2);
+    });
   });
 
-  it("Animations", () => {
+  describe("Animations", () => {
     const data = Entity.Process(EntityDoc);
 
-    expect(data).to.not.be.undefined;
+    it("Not Undefined", () => {
+      expect(data).to.not.be.undefined;
+    });
 
     if (!data) return;
-    expect(data.animations.using).has.members(["controller.animation.chicken", "controller.i.dont.exist"]);
-    expect(data.animations.defined).has.members(["controller", "something"]);
+
+    it("Has specific usings", () => {
+      expect(data.animations.using).has.members([
+        "controller.animation.chicken",
+        "controller.i.dont.exist",
+      ]);
+    });
+
+    it("Has specific defined", () => {
+      expect(data.animations.defined).has.members(["controller", "something"]);
+    });
   });
 
-  it("Events", () => {
+  describe("Events", () => {
     const data = Entity.Process(EntityDoc);
 
-    expect(data).to.not.be.undefined;
+    it("Not Undefined", () => {
+      expect(data).to.not.be.undefined;
+    });
 
     if (!data) return;
-    expect(data.events).has.members(["self:to"]);
+
+    it("has specific member", () => {
+      expect(data.events).has.members(["self:to"]);
+    });
   });
 
   it("Groups", () => {
     const data = Entity.Process(EntityDoc);
 
-    expect(data).to.not.be.undefined;
+    it("Not Undefined", () => {
+      expect(data).to.not.be.undefined;
+    });
 
     if (!data) return;
-    expect(data.groups).has.members(["self:group1"]);
+
+    it("has specific member", () => {
+      expect(data.groups).has.members(["self:group1"]);
+    });
   });
 
   it("ID", () => {
     const data = Entity.Process(EntityDoc);
 
-    expect(data).to.not.be.undefined;
+    it("Not Undefined", () => {
+      expect(data).to.not.be.undefined;
+    });
 
     if (!data) return;
-    expect(data.id).to.equal("blockception:sheep");
+
+    it("has sheep identifier", ()=>{
+      expect(data.id).to.equal("blockception:sheep");
+    })
   });
 });

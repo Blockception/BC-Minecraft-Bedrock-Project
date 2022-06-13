@@ -10,14 +10,18 @@ describe("Resourcepack", () => {
       }
     }`;
 
-    it("Process", () => {
+    describe("Process", () => {
       const controllers = ResourcePack.AnimationController.Process({ getText: () => data, uri: "example" });
 
+      it("not undefined", () => {
       expect(controllers).to.not.be.undefined;
+      })
 
       if (!controllers) return;
 
-      expect(controllers.length).to.equal(1);
+      it("has specific length", ()=>{
+        expect(controllers.length).to.equal(1);
+      })
     });
   });
 });

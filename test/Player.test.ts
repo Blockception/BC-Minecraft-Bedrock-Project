@@ -22,7 +22,12 @@ export namespace VanillaPlayer {
       "map_angle",
       "item_use_normalized",
     ],
-    using: ["attack_time", "gliding_speed_value", "hand_bob", "player_x_rotation"],
+    using: [
+      "attack_time",
+      "gliding_speed_value",
+      "hand_bob",
+      "player_x_rotation",
+    ],
   };
 
   export const Data = `{
@@ -132,17 +137,28 @@ export namespace VanillaPlayer {
 }
 
 describe("data test", () => {
-  it("object", () => {
+  describe("VanillaPlayer", () => {
     const obj = VanillaPlayer.DataOBject;
 
-    expect(obj).to.not.be.undefined;
+    it("Not undefined", () => {
+      expect(obj).to.not.be.undefined;
+    });
 
     const temp = <Internal.ResourcePack.Entity>obj;
 
-    expect(temp.format_version).to.not.be.undefined;
-    expect(temp["minecraft:client_entity"].description).to.not.be.undefined;
-    expect(temp["minecraft:client_entity"].description.identifier).to.not.be.undefined;
+    it("Has format version", () => {
+      expect(temp.format_version).to.not.be.undefined;
+    });
 
-    expect(Internal.ResourcePack.Entity.is(temp)).to.be.true;
+    it("Has description", () => {
+      const desc = temp["minecraft:client_entity"].description;
+
+      expect(desc).to.not.be.undefined;
+      expect(desc.identifier).to.not.be.undefined;
+    });
+
+    it("Is resourpack entity", () => {
+      expect(Internal.ResourcePack.Entity.is(temp)).to.be.true;
+    });
   });
 });
