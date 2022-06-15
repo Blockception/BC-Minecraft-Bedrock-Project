@@ -211,6 +211,23 @@ export class BehaviorPack implements Container, Pack {
 
     return value;
   }
+
+  /**
+   *
+   * @param predicate
+   * @returns
+   */
+  forEach(callbackfn: (value: Types.BaseObject) => void): void {
+    this.animations.forEach(callbackfn);
+    this.animation_controllers.forEach(callbackfn);
+    this.blocks.forEach(callbackfn);
+    this.entities.forEach(callbackfn);
+    this.functions.forEach(callbackfn);
+    this.items.forEach(callbackfn);
+    this.loot_tables.forEach(callbackfn);
+    this.structures.forEach(callbackfn);
+    this.trading.forEach(callbackfn);
+  }
 }
 
 /**

@@ -4,11 +4,11 @@ import { DataSetBase } from "../../Types/DataSet/include";
 
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
-import { Types } from 'bc-minecraft-bedrock-types';
-import { PackType } from '../Enum/PackType';
+import { Types } from "bc-minecraft-bedrock-types";
+import { PackType } from "../Enum/PackType";
 
 /** */
-export class WorldPack implements Container, Pack {  
+export class WorldPack implements Container, Pack {
   /**@inheritdoc */
   readonly type: PackType = PackType.world;
   /**The folder path of the pack*/
@@ -21,7 +21,8 @@ export class WorldPack implements Container, Pack {
    * @param Context The Mcproject data or the filepath to read from.*/
   constructor(folder: string, Context: MCProject | string) {
     this.folder = folder;
-    this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
+    this.context =
+      typeof Context === "object" ? Context : MCProject.loadSync(Context);
   }
 
   /**
@@ -61,25 +62,34 @@ export class WorldPack implements Container, Pack {
   }
 
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
 
     return value;
   }
+
+  /**
+   *
+   * @param predicate
+   * @returns
+   */
+  forEach(callbackfn: (value: Types.BaseObject) => void): void {}
 }
 
 /**
- * 
+ *
  */
 export namespace WorldPack {
   /**
-   * 
-   * @param value 
-   * @returns 
+   *
+   * @param value
+   * @returns
    */
   export function is(value: any): value is WorldPack {
     if (typeof value === "object") {

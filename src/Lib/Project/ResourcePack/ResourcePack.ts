@@ -245,6 +245,29 @@ export class ResourcePack implements Container, Pack {
 
     return value;
   }
+
+  /**
+   *
+   * @param predicate
+   * @returns
+   */
+  forEach(
+    callbackfn: (value: Types.BaseObject) => void
+  ): void {
+
+    this.animation_controllers.forEach(callbackfn);
+    this.animations.forEach(callbackfn);
+    this.attachables.forEach(callbackfn);
+    this.blocks.forEach(callbackfn);
+    this.entities.forEach(callbackfn);
+    this.fogs.forEach(callbackfn);
+    this.materials.forEach(callbackfn);
+    this.models.forEach(callbackfn);
+    this.particles.forEach(callbackfn);
+    this.render_controllers.forEach(callbackfn);
+    this.sounds.forEach(callbackfn);
+    this.textures.forEach(callbackfn);
+  }
 }
 
 /**

@@ -1,13 +1,13 @@
-import { Types } from 'bc-minecraft-bedrock-types';
+import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
-import { PackType } from '../../Project/include';
+import { PackType } from "../../Project/include";
 import { DataSetBase } from "../DataSet/include";
 import { TextDocument } from "../TextDocument/TextDocument";
 
 /** */
 export interface Pack {
   /** */
-  readonly type : PackType;
+  readonly type: PackType;
   /**The folder path of the pack*/
   readonly folder: string;
   /**The context of the project*/
@@ -30,13 +30,22 @@ export interface Pack {
    * @param uri
    */
   deleteFolder(uri: string): boolean;
-  
+
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-   find(predicate: (value: Types.BaseObject, key : string) => boolean) : (Types.BaseObject) | undefined;
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined;
+
+  /**
+   *
+   * @param callbackfn
+   * @returns
+   */
+  forEach(callbackfn: (value: Types.BaseObject) => boolean): void;
 }
 
 /** */
@@ -47,7 +56,11 @@ export namespace Pack {
    * @returns
    */
   export function is(value: any): value is Pack {
-    if (typeof value === "object" && typeof value.folder === "string" && typeof value.process === "function") {
+    if (
+      typeof value === "object" &&
+      typeof value.folder === "string" &&
+      typeof value.process === "function"
+    ) {
       return true;
     }
 

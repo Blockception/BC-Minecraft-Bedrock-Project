@@ -91,4 +91,17 @@ export class GeneralCollection {
 
     return value;
   }
+
+  /**
+   *
+   * @param predicate
+   * @returns
+   */
+  forEach(callbackfn: (value: Types.BaseObject) => void): void {
+    this.fakeEntities.forEach(callbackfn);
+    this.objectives.forEach(callbackfn);
+    this.structures.forEach(callbackfn);
+    this.tags.forEach(callbackfn);
+    this.tickingAreas.forEach(callbackfn);
+  }
 }
