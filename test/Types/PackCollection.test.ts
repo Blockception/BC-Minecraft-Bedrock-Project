@@ -1,4 +1,4 @@
-import { Types } from 'bc-minecraft-bedrock-types';
+import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { PackCollection } from "../../src/Lib/Types/Pack/PackCollection";
@@ -14,7 +14,11 @@ class TestPack implements Pack {
   docs: TextDocument[];
   docFilter: RegExp | undefined;
 
-  constructor(docFilter: RegExp | undefined = undefined, folder: string | undefined = undefined, context: MCProject | undefined = undefined) {
+  constructor(
+    docFilter: RegExp | undefined = undefined,
+    folder: string | undefined = undefined,
+    context: MCProject | undefined = undefined
+  ) {
     this.folder = folder ?? defaultFolder;
     this.context = context ?? defaultContext;
 
@@ -42,18 +46,25 @@ class TestPack implements Pack {
     return this.docs.length !== old;
   }
 
-
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): (Types.BaseObject) | undefined {
+  find(
+    predicate: (value: Types.BaseObject, key: string) => boolean
+  ): Types.BaseObject | undefined {
     let value = undefined;
-
 
     return value;
   }
+
+  /**
+   *
+   * @param callbackfn
+   * @returns
+   */
+  forEach(callbackfn: (value: Types.BaseObject) => boolean): void {}
 }
 
 class TestPackCollection extends PackCollection<TestPack> {
@@ -137,7 +148,10 @@ describe("PackCollectionTest", () => {
     const pack2 = new TestPack(undefined, "c:\\project2\\");
     pc.packs.push(pack1, pack2);
 
-    const doc: TextDocument = { uri: "c:\\project2\\loot\\example.json", getText: () => "" };
+    const doc: TextDocument = {
+      uri: "c:\\project2\\loot\\example.json",
+      getText: () => "",
+    };
 
     expect(pack1.docs.length).to.equal(0);
     expect(pack2.docs.length).to.equal(0);
@@ -155,7 +169,10 @@ describe("PackCollectionTest", () => {
     const pack2 = new TestPack(undefined, "c:\\project2\\");
     pc.packs.push(pack1, pack2);
 
-    const doc: TextDocument = { uri: "c:\\project2\\bp\\loot\\example.json", getText: () => "" };
+    const doc: TextDocument = {
+      uri: "c:\\project2\\bp\\loot\\example.json",
+      getText: () => "",
+    };
 
     expect(doc.uri.startsWith(pack2.folder)).to.true;
 
@@ -175,7 +192,10 @@ describe("PackCollectionTest", () => {
     const pack2 = new TestPack(undefined, "c:\\project2\\");
     pc.packs.push(pack1, pack2);
 
-    const doc: TextDocument = { uri: "c:\\project2\\loot\\example.json", getText: () => "" };
+    const doc: TextDocument = {
+      uri: "c:\\project2\\loot\\example.json",
+      getText: () => "",
+    };
 
     expect(doc.uri.startsWith(pack2.folder)).to.true;
 
@@ -203,7 +223,10 @@ describe("PackCollectionTest", () => {
     const pack2 = new TestPack(undefined, "c:\\project2\\");
     pc.packs.push(pack1, pack2);
 
-    const doc: TextDocument = { uri: "c:\\project2\\loot\\example.json", getText: () => "" };
+    const doc: TextDocument = {
+      uri: "c:\\project2\\loot\\example.json",
+      getText: () => "",
+    };
 
     pc.process(doc);
     expect(pack2.docs.length).to.equal(1);
@@ -222,7 +245,10 @@ describe("PackCollectionTest", () => {
     const pack2 = new TestPack(undefined, "c:\\project2\\");
     pc.packs.push(pack1, pack2);
 
-    const doc: TextDocument = { uri: "c:\\project2\\loot\\example.json", getText: () => "" };
+    const doc: TextDocument = {
+      uri: "c:\\project2\\loot\\example.json",
+      getText: () => "",
+    };
 
     pc.process(doc);
     expect(pack2.docs.length).to.equal(1);
@@ -241,7 +267,10 @@ describe("PackCollectionTest", () => {
     const pack2 = new TestPack(undefined, "c:\\project2\\");
     pc.packs.push(pack1, pack2);
 
-    const doc: TextDocument = { uri: "c:\\project2\\loot\\example.json", getText: () => "" };
+    const doc: TextDocument = {
+      uri: "c:\\project2\\loot\\example.json",
+      getText: () => "",
+    };
 
     pc.process(doc);
     expect(pack2.docs.length).to.equal(1);

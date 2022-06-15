@@ -26,15 +26,19 @@ const entity = `{
 }`;
 
 describe("JsonPath", () => {
-  it("offset 1", () => {
-    expect(JsonPath.resolve(entity, "minecraft:entity")).to.equal(entity.indexOf("minecraft:entity"));
-    expect(JsonPath.resolve(entity, "minecraft:entity/description")).to.equal(entity.indexOf("description"));
-    expect(JsonPath.resolve(entity, "minecraft:entity/description/identifier")).to.equal(entity.indexOf("identifier"));
-  });
+  const paths: { path: string; result: string }[] = [
+    { path: "minecraft:entity", result: "minecraft:entity" },
+    { path: "minecraft:entity/description", result: "description" },
+    { path: "minecraft:entity/description/identifier", result: "identifier" },
+    { path: "minecraft:entity\\description", result: "description" },
+    { path: "minecraft:entity\\description/identifier", result: "identifier" },
+  ];
 
-  it("offset 2", () => {
-    expect(JsonPath.resolve(entity, "minecraft:entity")).to.equal(entity.indexOf("minecraft:entity"));
-    expect(JsonPath.resolve(entity, "minecraft:entity\\description")).to.equal(entity.indexOf("description"));
-    expect(JsonPath.resolve(entity, "minecraft:entity\\description/identifier")).to.equal(entity.indexOf("identifier"));
-  });
+  paths.forEach(item=>{
+    it(`should parse ${item.path} to location of ${item.result}`, () => {
+      const offset = JsonPath.resolve(entity, item.path);
+      const actual = entity.indexOf(item.result);
+      expect(offset).to.be.equal(actual);
+    });
+  })
 });
