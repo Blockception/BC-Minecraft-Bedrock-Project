@@ -2,7 +2,7 @@ import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
-import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack/include";
+import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack";
 import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
 import { ProjectData } from "../../src/Lib/Project/ProjectData";
 import { TextProjectContext } from "../Uttility";

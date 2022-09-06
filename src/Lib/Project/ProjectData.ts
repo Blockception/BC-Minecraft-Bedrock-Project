@@ -8,16 +8,16 @@ import { GeneralCollection } from "./General/General";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
 import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
-import { DataSetBase } from "../Types/DataSet/include";
+import { DataSetBase } from "../Types/DataSet";
 import { Pack } from "../Types/Pack/Pack";
 import { Types } from "bc-minecraft-bedrock-types";
-import { FileType } from "./BehaviorPack/include";
+import { FileType } from "./BehaviorPack";
 import {
   ProcessAnimationCommands,
   ProcessAnimationControllerCommands,
   ProcessMcFunction,
 } from "./General/Types/Commands/Process";
-import { WorldPackCollection } from "./World/include";
+import { WorldPackCollection } from "./World";
 import { WorldPack } from "./World/WorldPack";
 
 /**The project cache for minecraft*/

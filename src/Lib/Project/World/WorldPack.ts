@@ -1,6 +1,6 @@
 import { MCProject } from "bc-minecraft-project";
 import { Container } from "../../Types/Container/Container";
-import { DataSetBase } from "../../Types/DataSet/include";
+import { DataSetBase } from "../../Types/DataSet";
 
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";

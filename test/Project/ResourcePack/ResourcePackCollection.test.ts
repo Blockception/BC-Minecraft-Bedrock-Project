@@ -1,6 +1,6 @@
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
-import { ResourcePackCollection } from "../../../src/Lib/Project/ResourcePack/include";
+import { ResourcePackCollection } from "../../../src/Lib/Project/ResourcePack";
 
 describe("ResourcePackCollection", () => {
   it("sanity check", () => {

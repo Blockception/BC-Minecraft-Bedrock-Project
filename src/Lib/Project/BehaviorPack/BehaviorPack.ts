@@ -1,16 +1,16 @@
 import { MCProject } from "bc-minecraft-project";
 import { Container } from "../../Types/Container/Container";
-import { DataSet, DataSetBase } from "../../Types/DataSet/include";
+import { DataSet, DataSetBase } from "../../Types/DataSet";
 
-import * as AnimationController from "./Types/AnimationController/include";
-import * as Animation from "./Types/Animation/include";
-import * as Block from "./Types/Block/include";
-import * as Entity from "./Types/Entity/include";
-import * as Function from "./Types/McFunction/include";
-import * as Item from "./Types/Item/include";
-import * as LootTable from "./Types/LootTable/include";
-import * as Structure from "./Types/Structure/include";
-import * as Trading from "./Types/Trading/include";
+import * as AnimationController from "./Types/AnimationController";
+import * as Animation from "./Types/Animation";
+import * as Block from "./Types/Block";
+import * as Entity from "./Types/Entity";
+import * as Function from "./Types/McFunction";
+import * as Item from "./Types/Item";
+import * as LootTable from "./Types/LootTable";
+import * as Structure from "./Types/Structure";
+import * as Trading from "./Types/Trading";
 
 import { Pack } from "../../Types/Pack/Pack";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";

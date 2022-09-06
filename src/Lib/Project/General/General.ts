@@ -1,7 +1,7 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { DataSet } from "../../Types/DataSet/include";
+import { DataSet } from "../../Types/DataSet";
 import { TextDocument } from "../../Types/TextDocument/TextDocument";
-import { FileType } from "../BehaviorPack/include";
+import { FileType } from "../BehaviorPack";
 import { ProcessMcFunction } from "./Types/Commands/Process";
 import { GeneralInfo } from "./Types/GeneralInfo";
 

@@ -1,7 +1,7 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
-import { BehaviorPackCollection } from "../../../src/Lib/Project/BehaviorPack/include";
+import { BehaviorPackCollection } from "../../../src/Lib/Project/BehaviorPack";
 
 describe("BehaviorPackCollection", () => {
   it("sanity check", () => {

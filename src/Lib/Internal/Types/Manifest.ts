@@ -1,5 +1,5 @@
 import { TextDocument } from '../../../main';
-import { PackType } from "../../Project/include";
+import { PackType } from "../../Project";
 import { Json } from "../Json";
 
 /**

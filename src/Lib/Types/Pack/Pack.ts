@@ -1,7 +1,7 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
-import { PackType } from "../../Project/include";
-import { DataSetBase } from "../DataSet/include";
+import { PackType } from "../../Project";
+import { DataSetBase } from "../DataSet";
 import { TextDocument } from "../TextDocument/TextDocument";
 
 /** */

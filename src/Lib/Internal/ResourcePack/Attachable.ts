@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { FormatVersion } from "../Types/FormatVersion";
-import { ScriptContainer } from "../Types/include";
+import { ScriptContainer } from "../Types";
 
 /** */
 export interface Attachable extends FormatVersion {

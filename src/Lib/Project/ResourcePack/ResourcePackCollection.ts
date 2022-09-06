@@ -3,18 +3,18 @@ import { ResourcePack } from "./ResourcePack";
 import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 import { PackCollection } from "../../Types/Pack/PackCollection";
 
-import * as Animation from "./Types/Animation/include";
-import * as AnimationController from "./Types/AnimationController/include";
-import * as Attachable from "./Types/Attachable/include";
-import * as Block from "./Types/Block/include";
-import * as Entity from "./Types/Entity/include";
-import * as Fog from "./Types/Fog/include";
-import * as Particle from "./Types/Particle/include";
-import * as Material from "./Types/Material/include";
-import * as Model from "./Types/Model/include";
-import * as RenderController from "./Types/RenderController/include";
-import * as Sound from "./Types/Sound/include";
-import * as Texture from "./Types/Texture/include";
+import * as Animation from "./Types/Animation";
+import * as AnimationController from "./Types/AnimationController";
+import * as Attachable from "./Types/Attachable";
+import * as Block from "./Types/Block";
+import * as Entity from "./Types/Entity";
+import * as Fog from "./Types/Fog";
+import * as Particle from "./Types/Particle";
+import * as Material from "./Types/Material";
+import * as Model from "./Types/Model";
+import * as RenderController from "./Types/RenderController";
+import * as Sound from "./Types/Sound";
+import * as Texture from "./Types/Texture";
 
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {

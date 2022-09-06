@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { DataSetBase } from "../DataSet/include";
+import { DataSetBase } from "../DataSet";
 import { TextDocument } from "../TextDocument/TextDocument";
 import { Pack } from "./Pack";
 
