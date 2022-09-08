@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Text } from '../../../../Lib/Types/Text/Text';
+import { Text } from '../../../Types/Text';
 
 /**
  *

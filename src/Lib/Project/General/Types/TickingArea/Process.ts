@@ -1,8 +1,8 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
 import { GeneralInfo } from "../GeneralInfo";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
-import { Documentation } from '../../../../Types/Documentation/Documentation';
+import { TextDocument } from "../../../../Types/TextDocument";
+import { Documentation } from '../../../../Types/Documentation';
 
 export function Process(Command: Command, doc: TextDocument): GeneralInfo | undefined {
   //tickingarea add

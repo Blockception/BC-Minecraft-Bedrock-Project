@@ -1,5 +1,5 @@
 import { PackType } from '../../Project/Enum/PackType';
-import { TextDocument } from '../../Types/TextDocument/TextDocument';
+import { TextDocument } from '../../Types/TextDocument';
 import { Json } from '../Json';
 
 /**

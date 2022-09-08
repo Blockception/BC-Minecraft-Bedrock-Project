@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { Documentation } from "../../../../Types/Documentation";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { LootTable } from "./LootTable";
 
 /**

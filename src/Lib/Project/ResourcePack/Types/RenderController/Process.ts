@@ -1,10 +1,10 @@
 import * as internal from "../../../../Internal/ResourcePack/RenderController";
 import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { RenderController } from "./RenderController";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
+import { Documentation } from "../../../../Types/Documentation";
 
 /** */
 export function Process(doc: TextDocument): RenderController[] | undefined {

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Text } from '../../src/Lib/Types/Text/Text';
+import { Text } from '../../src/Lib/Types/Text';
 
 describe("Text", () => {
   it("UnQuote1", ()=>expect(Text.UnQuote('"example"')).to.equal("example"));

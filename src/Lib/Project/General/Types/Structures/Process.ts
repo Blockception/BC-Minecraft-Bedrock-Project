@@ -1,7 +1,7 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from '../../../../../Lib/Types/TextDocument/TextDocument';
-import { Documentation } from '../../../../Types/Documentation/Documentation';
+import { TextDocument } from '../../../../Types/TextDocument';
+import { Documentation } from '../../../../Types/Documentation';
 import { GeneralInfo } from "../GeneralInfo";
 
 export function Process(command: Command, doc: TextDocument): GeneralInfo | undefined {

@@ -1,7 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { ProjectData } from "../../../../../src/Lib/Project/ProjectData";
-import { TextDocument } from "../../../../../src/Lib/Types/TextDocument/TextDocument";
+import { TextDocument } from "../../../../../src/Lib/Types/TextDocument";
 import { TextProjectContext } from "../../../../Uttility";
 
 describe("Commands", () => {

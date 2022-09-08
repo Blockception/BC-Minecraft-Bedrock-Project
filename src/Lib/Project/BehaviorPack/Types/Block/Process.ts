@@ -2,11 +2,11 @@ import * as internal from "../../../../Internal/BehaviorPack/Block";
 import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Map } from "../../../../Types/Map/Map";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { Map } from "../../../../Types/Map";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { BlockState } from "./Block";
 import { Block } from "./Block";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
+import { Documentation } from "../../../../Types/Documentation";
 
 /**
  *

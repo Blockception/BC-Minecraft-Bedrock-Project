@@ -2,9 +2,9 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { DefinedUsing, Molang, Using } from "bc-minecraft-molang";
 import * as internal from "../../../../Internal/BehaviorPack/AnimationController";
 import { Json } from "../../../../Internal/Json";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
-import { Map } from "../../../../Types/Map/Map";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { Documentation } from "../../../../Types/Documentation";
+import { Map } from "../../../../Types/Map";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { AnimationController } from "./AnimationController";
 
 /**

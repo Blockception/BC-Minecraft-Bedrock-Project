@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Map } from "../../Types/Map/Map";
+import { Map } from "../../Types/Map";
 import { FormatVersion } from "../Types/FormatVersion";
 import * as General from '../General/Controllers/State';
 

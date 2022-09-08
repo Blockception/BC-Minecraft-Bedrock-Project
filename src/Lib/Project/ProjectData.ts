@@ -1,15 +1,15 @@
 import { MCProject } from "bc-minecraft-project";
 import { Manifest } from "../Internal/Types/Manifest";
-import { TextDocument } from "../Types/TextDocument/TextDocument";
+import { TextDocument } from "../Types/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
 import { PackType } from "./Enum/PackType";
 import { GeneralCollection } from "./General/General";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
-import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
+import { ProjectContext } from "../Types/ProjectContext";
 import { DataSetBase } from "../Types/DataSet";
-import { Pack } from "../Types/Pack/Pack";
+import { Pack } from "../Types/Pack";
 import { Types } from "bc-minecraft-bedrock-types";
 import {
   ProcessAnimationCommands,

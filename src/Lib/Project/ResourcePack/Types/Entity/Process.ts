@@ -2,10 +2,10 @@ import * as internal from "../../../../Internal/ResourcePack/Entity";
 import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { Entity } from "./Entity";
 import { DefinedUsing } from "bc-minecraft-molang";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
+import { Documentation } from "../../../../Types/Documentation";
 
 /**
  *

@@ -1,12 +1,12 @@
 import * as internal from "../../../../Internal/ResourcePack/AnimationController";
 import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { AnimationController } from "./AnimationController";
-import { Map } from "../../../../Types/Map/Map";
+import { Map } from "../../../../Types/Map";
 import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
+import { Documentation } from "../../../../Types/Documentation";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {

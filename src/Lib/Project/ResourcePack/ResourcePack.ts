@@ -1,10 +1,10 @@
 import { MCProject } from "bc-minecraft-project";
 import { DataSet, DataSetBase } from "../../Types/DataSet";
-import { Pack } from "../../Types/Pack/Pack";
+import { Pack } from "../../Types/Pack";
 
-import { TextDocument } from "../../Types/TextDocument/TextDocument";
+import { TextDocument } from "../../Types/TextDocument";
 import { FileType } from "./Enum";
-import { Container } from "../../Types/Container/Container";
+import { Container } from "../../Types/Container";
 
 import * as Animation from "./Types/Animation";
 import * as AnimationController from "./Types/AnimationController";

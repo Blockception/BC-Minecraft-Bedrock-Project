@@ -3,10 +3,10 @@ import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
 import { DefinedUsing } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Map } from "../../../../Types/Map/Map";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { Map } from "../../../../Types/Map";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { Entity } from "./Entity";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
+import { Documentation } from "../../../../Types/Documentation";
 import { EntityComponentContainer } from "../../../../Internal/BehaviorPack/Entity";
 
 /**

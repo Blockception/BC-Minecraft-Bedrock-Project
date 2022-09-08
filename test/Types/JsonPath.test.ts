@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { JsonPath } from "../../src/Lib/Types/Json/JsonPath";
+import { JsonPath } from "../../src/Lib/Types/JsonPath";
 
 const entity = `{
   "format_version": "1.16.0",

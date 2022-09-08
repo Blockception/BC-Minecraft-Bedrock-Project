@@ -1,9 +1,9 @@
 import { MCProject } from "bc-minecraft-project";
-import { Container } from "../../Types/Container/Container";
+import { Container } from "../../Types/Container";
 import { DataSetBase } from "../../Types/DataSet";
 
-import { Pack } from "../../Types/Pack/Pack";
-import { TextDocument } from "../../Types/TextDocument/TextDocument";
+import { Pack } from "../../Types/Pack";
+import { TextDocument } from "../../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
 import { PackType } from "../Enum/PackType";
 

@@ -1,4 +1,4 @@
-import { Pack } from "../Types/Pack/Pack";
+import { Pack } from "../Types/Pack";
 import { PackType } from "./Enum";
 import { BehaviorPack, ResourcePack } from "./index";
 import { WorldPack } from "./World/WorldPack";

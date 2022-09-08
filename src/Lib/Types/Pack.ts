@@ -1,8 +1,8 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
-import { PackType } from '../../Project/Enum/PackType';
-import { DataSetBase } from "../DataSet";
-import { TextDocument } from "../TextDocument/TextDocument";
+import { PackType } from '../Project/Enum/PackType';
+import { DataSetBase } from "./DataSet";
+import { TextDocument } from "./TextDocument";
 
 /** */
 export interface Pack {

@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Molang } from "bc-minecraft-molang";
-import { MolangCarrier } from '../../../../Types/Carrier/Carrier';
+import { MolangCarrier } from '../../../../Types/Carrier';
 
 //TODO add events
 

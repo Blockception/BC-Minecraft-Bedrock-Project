@@ -1,10 +1,10 @@
 import * as internal from "../../../../Internal/ResourcePack/Attachable";
 import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { TextDocument } from "../../../../Types/TextDocument";
 import { Attachable } from "./Attachable";
 import { DefinedUsing } from "bc-minecraft-molang";
-import { Documentation } from "../../../../Types/Documentation/Documentation";
+import { Documentation } from "../../../../Types/Documentation";
 import { Types } from "bc-minecraft-bedrock-types";
 
 /**

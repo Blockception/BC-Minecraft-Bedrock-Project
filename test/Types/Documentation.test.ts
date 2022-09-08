@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { Documentation } from "../../src/Lib/Types/Documentation";
-import { TextDocument } from "../../src/Lib/Types/TextDocument/TextDocument";
+import { TextDocument } from "../../src/Lib/Types/TextDocument";
 
 describe("Documentation", () => {
   describe("Json", () => {

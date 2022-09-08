@@ -1,4 +1,4 @@
-import { TextDocument } from "../TextDocument/TextDocument";
+import { TextDocument } from "./TextDocument";
 
 /** */
 export type JsonPath = string;

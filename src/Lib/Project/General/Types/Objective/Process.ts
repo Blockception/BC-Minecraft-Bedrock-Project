@@ -1,9 +1,9 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from '../../../../Types/Documentation/Documentation';
+import { Documentation } from '../../../../Types/Documentation';
 import { GeneralCollection } from "../../General";
 import { GeneralInfo } from "../GeneralInfo";
-import { TextDocument } from "../../../../Types/TextDocument/TextDocument";
+import { TextDocument } from "../../../../Types/TextDocument";
 
 export function Process(command: Command, doc: TextDocument, receiver: GeneralCollection): void {
   if (command.parameters.length < 3) {

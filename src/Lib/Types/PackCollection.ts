@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { DataSetBase } from "../DataSet";
-import { TextDocument } from "../TextDocument/TextDocument";
+import { TextDocument } from "../TextDocument";
 import { Pack } from "./Pack";
 
 /**The class PackCollection description*/

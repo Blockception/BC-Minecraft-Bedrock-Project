@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Molang } from "bc-minecraft-molang";
-import { MolangCarrier } from '../../../../Types/Carrier/Carrier';
+import { MolangCarrier } from '../../../../Types/Carrier';
 
 /** */
 export interface Block extends Types.BaseObject, MolangCarrier<Molang.MolangSet> {
