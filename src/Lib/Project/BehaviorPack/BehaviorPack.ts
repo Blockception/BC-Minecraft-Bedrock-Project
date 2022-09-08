@@ -3,14 +3,14 @@ import { Container } from "../../Types/Container";
 import { DataSet, DataSetBase } from "../../Types/DataSet";
 
 import * as AnimationController from "./AnimationController";
-import * as Animation from "./Types/Animation";
-import * as Block from "./Types/Block";
-import * as Entity from "./Types/Entity";
-import * as Function from "./Types/McFunction";
-import * as Item from "./Types/Item";
-import * as LootTable from "./Types/LootTable";
-import * as Structure from "./Types/Structure";
-import * as Trading from "./Types/Trading";
+import * as Animation from "./Animation";
+import * as Block from "./Block";
+import * as Entity from "./Entity";
+import * as Function from "./McFunction";
+import * as Item from "./Item";
+import * as LootTable from "./LootTable";
+import * as Structure from "./Structure";
+import * as Trading from "./Trading";
 
 import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";

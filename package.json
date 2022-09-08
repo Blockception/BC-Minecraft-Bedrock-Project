@@ -50,10 +50,10 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "bc-minecraft-bedrock-command": "^1.2.31",
+    "bc-minecraft-bedrock-command": "^1.2.32",
     "bc-minecraft-bedrock-types": "^1.3.10",
-    "bc-minecraft-molang": "^1.3.2",
-    "bc-minecraft-project": "^1.0.19",
+    "bc-minecraft-molang": "^1.3.3",
+    "bc-minecraft-project": "^1.0.20",
     "jsonc": "^2.0.0"
   }
 }

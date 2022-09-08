@@ -1,18 +1,17 @@
-import * as internal from "../../../../Internal/ResourcePack/RenderController";
-import { Json } from "../../../../Internal/Json";
+import * as Internal from "../../../Internal/ResourcePack/RenderController";
+import { Documentation } from "../../../Types/Documentation";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../../Types/TextDocument";
 import { RenderController } from "./RenderController";
+import { TextDocument } from "../../../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentation";
 
 /** */
 export function Process(doc: TextDocument): RenderController[] | undefined {
+  const imp = TextDocument.toObject(doc, Internal.RenderControllers.is);
+  if (!imp) return undefined;
+
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.RenderControllers>(doc);
-
-  if (!internal.RenderControllers.is(imp)) return undefined;
 
   const out: RenderController[] = [];
   const container = imp.render_controllers;
@@ -30,7 +29,7 @@ export function Process(doc: TextDocument): RenderController[] | undefined {
     };
 
     out.push(item);
-}
+  }
 
-return out;
+  return out;
 }

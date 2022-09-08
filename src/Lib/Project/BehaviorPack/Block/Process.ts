@@ -1,12 +1,11 @@
-import * as internal from "../../../../Internal/BehaviorPack/Block";
-import { Json } from "../../../../Internal/Json";
-import { Molang } from "bc-minecraft-molang";
-import { Types } from "bc-minecraft-bedrock-types";
-import { Map } from "../../../../Types/Map";
-import { TextDocument } from "../../../../Types/TextDocument";
-import { BlockState } from "./Block";
 import { Block } from "./Block";
-import { Documentation } from "../../../../Types/Documentation";
+import { BlockState } from "./Block";
+import { Json } from "../../../Internal";
+import { Molang } from "bc-minecraft-molang";
+import { Documentation, SMap, TextDocument } from "../../../Types";
+import { Types } from "bc-minecraft-bedrock-types";
+
+import * as Internal from "../../../Internal/BehaviorPack";
 
 /**
  *
@@ -16,9 +15,9 @@ import { Documentation } from "../../../../Types/Documentation";
 export function Process(doc: TextDocument): Block | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Block>(doc);
+  const imp = Json.To<Internal.Block>(doc);
 
-  if (!internal.Block.is(imp)) return undefined;
+  if (!Internal.Block.is(imp)) return undefined;
 
   const container = imp["minecraft:block"];
   const id = container.description.identifier;
@@ -33,7 +32,7 @@ export function Process(doc: TextDocument): Block | undefined {
 
   const props = container.description.properties;
   if (props)
-    Map.forEach(props, (values, prop) => {
+  SMap.forEach(props, (values, prop) => {
       const s = BlockState.create(prop, values);
 
       if (s) out.states.push(s);

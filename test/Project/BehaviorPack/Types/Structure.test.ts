@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Process } from "../../../../src/Lib/Project/BehaviorPack/Types/Structure/Process";
+import { Process } from "../../../../src/Lib/Project/BehaviorPack/Structure/Process";
 
 describe("Structure", () => {
   const data: { uri: string; result: string }[] = [

@@ -1,10 +1,9 @@
 import { MCProject } from "bc-minecraft-project";
+import { PackCollection } from "../../Types";
 import { WorldPack } from "./WorldPack";
-import { PackCollection } from "../../Types/Pack/PackCollection";
 
 /** */
 export class WorldPackCollection extends PackCollection<WorldPack> {
-
   constructor() {
     super();
   }

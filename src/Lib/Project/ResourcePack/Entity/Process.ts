@@ -1,11 +1,10 @@
-import * as internal from "../../../../Internal/ResourcePack/Entity";
-import { Json } from "../../../../Internal/Json";
+import * as Internal from "../../../Internal/ResourcePack";
+import { Json } from "../../../Internal";
 import { Molang } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { TextDocument, Documentation } from "../../../Types";
 import { Entity } from "./Entity";
 import { DefinedUsing } from "bc-minecraft-molang";
-import { Documentation } from "../../../../Types/Documentation";
 
 /**
  *
@@ -15,9 +14,9 @@ import { Documentation } from "../../../../Types/Documentation";
 export function Process(doc: TextDocument): Entity | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Entity>(doc);
+  const imp = Json.To<Internal.Entity>(doc);
 
-  if (!internal.Entity.is(imp)) return undefined;
+  if (!Internal.Entity.is(imp)) return undefined;
 
   const container = imp["minecraft:client_entity"].description;
   const id = container.identifier;
@@ -72,8 +71,8 @@ function flatten(data: string | Types.Definition): string | undefined {
   return undefined;
 }
 
-function removePrefix(id : string) : string {
-  const index = id.indexOf('.');
+function removePrefix(id: string): string {
+  const index = id.indexOf(".");
 
   if (index > -1) return id.slice(index + 1);
 

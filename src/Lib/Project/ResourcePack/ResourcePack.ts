@@ -1,25 +1,24 @@
-import { MCProject } from "bc-minecraft-project";
-import { DataSet, DataSetBase } from "../../Types/DataSet";
-import { Pack } from "../../Types/Pack";
-
-import { TextDocument } from "../../Types/TextDocument";
-import { FileType } from "./Enum";
 import { Container } from "../../Types/Container";
+import { DataSet, DataSetBase } from "../../Types/DataSet";
+import { FileType } from "./Enum";
+import { MCProject } from "bc-minecraft-project";
+import { Pack } from "../../Types/Pack";
+import { PackType } from '../PackType';
+import { TextDocument } from "../../Types/TextDocument";
+import { Types } from "bc-minecraft-bedrock-types";
 
 import * as Animation from "./Animation";
-import * as AnimationController from "./Types/AnimationController";
-import * as Attachable from "./Types/Attachable";
-import * as Block from "./Types/Block";
-import * as Entity from "./Types/Entity";
-import * as Fog from "./Types/Fog";
-import * as Particle from "./Types/Particle";
-import * as Material from "./Types/Material";
-import * as Model from "./Types/Model";
-import * as RenderController from "./Types/RenderController";
-import * as Sound from "./Types/Sound";
-import * as Texture from "./Types/Texture";
-import { Types } from "bc-minecraft-bedrock-types";
-import { PackType } from '../PackType';
+import * as AnimationController from "./AnimationController";
+import * as Attachable from "./Attachable";
+import * as Block from "./Block";
+import * as Entity from "./Entity";
+import * as Fog from "./Fog";
+import * as Particle from "./Particle";
+import * as Material from "./Material";
+import * as Model from "./Model";
+import * as RenderController from "./RenderController";
+import * as Sound from "./Sound";
+import * as Texture from "./Texture";
 
 /** */
 export class ResourcePack implements Container, Pack {

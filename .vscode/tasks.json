@@ -6,7 +6,7 @@
       "script": "build",
       "isBackground": false,
       "group": "build",
-      "label": "npm build 'bc-minecraft-bedrock-project'",
+      "label": "npm compile 'bc-minecraft-bedrock-project'",
       "presentation": { "reveal": "always", "panel": "dedicated" },
       "problemMatcher": ["$tsc"]
     },

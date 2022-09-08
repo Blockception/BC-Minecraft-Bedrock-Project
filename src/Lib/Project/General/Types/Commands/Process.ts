@@ -1,12 +1,12 @@
 import { Command } from "bc-minecraft-bedrock-command";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { TextDocument } from "../../../Types/TextDocument";
 import { GeneralCollection } from "../../General";
 import * as Tag from "../Tag/Process";
 import * as Objective from "../Objective/Process";
 import * as TickingArea from "../TickingArea/Process";
 import * as Structure from "../Structures/Process";
 import * as Internal from "../../../../Internal";
-import { Map } from "../../../../Types/Map";
+import { SMap } from "../../../Types/SMap";
 import { Json } from "../../../../Internal/Json";
 
 /**
@@ -36,9 +36,9 @@ export function ProcessAnimationCommands(doc: TextDocument, receiver: GeneralCol
   if (!Internal.BehaviorPack.Animations.is(imp)) return;
 
   //For each animation
-  Map.forEach(imp.animations, (anim) => {
+  SMap.forEach(imp.animations, (anim) => {
     //For each timeline object
-    Map.forEach(anim.timeline, (time) => {
+    SMap.forEach(anim.timeline, (time) => {
       if (typeof time === "string") {
         InternalJsonValue(time, doc, receiver);
       } else {
@@ -60,9 +60,9 @@ export function ProcessAnimationControllerCommands(doc: TextDocument, receiver: 
   if (!Internal.BehaviorPack.AnimationControllers.is(imp)) return;
 
   //for each controller
-  Map.forEach(imp.animation_controllers, (anim) => {
+  SMap.forEach(imp.animation_controllers, (anim) => {
     //for each state
-    Map.forEach(anim.states, (state) => {
+    SMap.forEach(anim.states, (state) => {
       state.on_entry?.forEach((p) => InternalJsonValue(p, doc, receiver));
       state.on_exit?.forEach((p) => InternalJsonValue(p, doc, receiver));
     });

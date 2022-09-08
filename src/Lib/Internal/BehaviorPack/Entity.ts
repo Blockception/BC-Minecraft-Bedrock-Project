@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { SMap } from "../../Types/SMap";
 import { ScriptContainer } from "../Types/Script";
 
 /**The interface that deals with entity events that add or remove component groups*/
@@ -44,11 +44,11 @@ export interface Entity {
     /** */
     description: EntityDescription;
     /** */
-    component_groups?: Map<EntityComponentContainer>;
+    component_groups?: SMap<EntityComponentContainer>;
     /** */
     components: EntityComponentContainer;
     /** */
-    events?: Map<EntityEvent>;
+    events?: SMap<EntityEvent>;
   };
 }
 
@@ -59,10 +59,18 @@ export namespace Entity {
    * @param value
    */
   export function is(value: any): value is Entity {
-    if (typeof value === "object" && typeof value.format_version === "string" && typeof value["minecraft:entity"] === "object") {
+    if (
+      typeof value === "object" &&
+      typeof value.format_version === "string" &&
+      typeof value["minecraft:entity"] === "object"
+    ) {
       const b = value["minecraft:entity"];
 
-      if (typeof b.description === "object" && typeof b.description.identifier === "string" && typeof b.components === "object") {
+      if (
+        typeof b.description === "object" &&
+        typeof b.description.identifier === "string" &&
+        typeof b.components === "object"
+      ) {
         return true;
       }
     }

@@ -1,20 +1,19 @@
-import * as internal from "../../../Internal/ResourcePack/Animation";
+import * as Internal from "../../../Internal/ResourcePack/Animation";
 import { Json } from "../../../Internal/Json";
 import { Molang, Using } from "bc-minecraft-molang";
 import { TextDocument } from "../../../Types/TextDocument";
 import { Animation } from "./Animation";
-import { Map } from "../../../Types/Map";
+import { SMap } from "../../../Types/SMap";
 import { Types } from "bc-minecraft-bedrock-types";
 import { Documentation } from "../../../Types/Documentation";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {
+  const imp = TextDocument.toObject(doc, Internal.Animations.is);
+  if (!imp) return undefined;
+
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Animations>(doc);
-
-  if (!internal.Animations.is(imp)) return undefined;
-
   const out: Animation[] = [];
   const container = imp.animations;
   const keys = Object.getOwnPropertyNames(container);
@@ -23,7 +22,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
     const id = keys[I];
     const anim = container[id];
 
-    if (internal.Animation.is(anim)) {
+    if (Internal.Animation.is(anim)) {
       const item: Animation = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
@@ -33,8 +32,8 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         sounds: Using.empty(),
       };
 
-      if (anim.particle_effects) Map.forEach(anim.particle_effects, (value, key) => processEffect(value, item.particles.using));
-      if (anim.sound_effects) Map.forEach(anim.sound_effects, (value, key) => processEffect(value, item.sounds.using));
+      if (anim.particle_effects) SMap.forEach(anim.particle_effects, (value, key) => processEffect(value, item.particles.using));
+      if (anim.sound_effects) SMap.forEach(anim.sound_effects, (value, key) => processEffect(value, item.sounds.using));
 
       out.push(item);
     }

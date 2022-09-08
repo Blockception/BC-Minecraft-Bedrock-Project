@@ -3,7 +3,7 @@ import { DefinedUsing, Molang, Using } from "bc-minecraft-molang";
 import * as internal from "../../../Internal/BehaviorPack/AnimationController";
 import { Json } from "../../../Internal/Json";
 import { Documentation } from "../../../Types/Documentation";
-import { Map } from "../../../Types/Map";
+import { SMap } from "../../../Types/SMap";
 import { TextDocument } from "../../../Types/TextDocument";
 import { AnimationController } from "./AnimationController";
 
@@ -37,7 +37,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         documentation: Documentation.getDoc(doc, () => `BP Animation Controller: ${id}`),
       };
 
-      Map.forEach(controller.states, (state) => getAnimations(state, item.animations));
+      SMap.forEach(controller.states, (state) => getAnimations(state, item.animations));
 
       out.push(item);
     }

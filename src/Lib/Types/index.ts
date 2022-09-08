@@ -7,7 +7,7 @@ export * from "./DataSetConnector";
 export * from "./Documentation";
 export * from "./IDataSet";
 export * from "./JsonPath";
-export * from "./Map";
+export * from "./SMap";
 export * from "./Pack";
 export * from "./PackCollection";
 export * from "./ProjectContext";

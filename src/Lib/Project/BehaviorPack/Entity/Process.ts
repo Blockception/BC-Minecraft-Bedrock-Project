@@ -3,10 +3,10 @@ import { Json } from "../../../../Internal/Json";
 import { Molang } from "bc-minecraft-molang";
 import { DefinedUsing } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Map } from "../../../../Types/Map";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { SMap } from "../../../Types/Map";
+import { TextDocument } from "../../../Types/TextDocument";
 import { Entity } from "./Entity";
-import { Documentation } from "../../../../Types/Documentation";
+import { Documentation } from "../../../Types/Documentation";
 import { EntityComponentContainer } from "../../../../Internal/BehaviorPack/Entity";
 
 /**
@@ -36,14 +36,14 @@ export function Process(doc: TextDocument): Entity | undefined {
   };
 
   if (container.component_groups) {
-    Map.forEach(container.component_groups, (group, name) => {
+    SMap.forEach(container.component_groups, (group, name) => {
       out.groups.push(name);
       getFamilies(group, out.families);
     });
   }
-  if (container.events) Map.forEach(container.events, (event, name) => out.events.push(name));
+  if (container.events) SMap.forEach(container.events, (event, name) => out.events.push(name));
   if (container.description.animations) {
-    Map.forEach(container.description.animations, (anim, name) => {
+    SMap.forEach(container.description.animations, (anim, name) => {
       out.animations.defined.push(name);
       out.animations.using.push(anim);
     });

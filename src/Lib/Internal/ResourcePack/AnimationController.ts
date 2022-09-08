@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Map } from "../../Types/Map";
+import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 import * as General from '../General/Controllers/State';
 
@@ -33,7 +33,7 @@ export interface AnimationController {
   /** */
   initial_state?: string;
   /** */
-  states: Map<State>;
+  states: SMap<State>;
 }
 
 /** */

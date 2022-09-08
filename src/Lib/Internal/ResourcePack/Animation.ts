@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
@@ -11,13 +11,13 @@ export interface Animation {
   loop?: boolean | "hold_on_last_frame";
 
   /** */
-  bones?: Map<any>;
+  bones?: SMap<any>;
   /** */
-  particle_effects?: Map<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
+  particle_effects?: SMap<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
   /** */
-  sound_effects?: Map<{ effect?: string } | { effect?: string }[]>;
+  sound_effects?: SMap<{ effect?: string } | { effect?: string }[]>;
   /** */
-  timeline?: Map<string | string[]>;
+  timeline?: SMap<string | string[]>;
 }
 
 /** */

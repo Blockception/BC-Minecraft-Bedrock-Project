@@ -1,17 +1,16 @@
 import { MCProject } from "bc-minecraft-project";
-import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 import { BehaviorPack } from "./BehaviorPack";
+import { DataSetConnector, PackCollection } from "../../Types";
 
 import * as AnimationController from "./AnimationController";
-import * as Animation from "./Types/Animation";
-import * as Block from "./Types/Block";
-import * as Entity from "./Types/Entity";
-import * as Function from "./Types/McFunction";
-import * as Item from "./Types/Item";
-import * as LootTable from "./Types/LootTable";
-import * as Structure from "./Types/Structure";
-import * as Trading from "./Types/Trading";
-import { PackCollection } from "../../Types/Pack/PackCollection";
+import * as Animation from "./Animation";
+import * as Block from "./Block";
+import * as Entity from "./Entity";
+import * as Function from "./McFunction";
+import * as Item from "./Item";
+import * as LootTable from "./LootTable";
+import * as Structure from "./Structure";
+import * as Trading from "./Trading";
 
 /** */
 export class BehaviorPackCollection extends PackCollection<BehaviorPack> {

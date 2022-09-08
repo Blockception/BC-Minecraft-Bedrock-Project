@@ -1,24 +1,22 @@
+import { DataSetConnector, PackCollection } from "../../Types";
 import { MCProject } from "bc-minecraft-project";
 import { ResourcePack } from "./ResourcePack";
-import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
-import { PackCollection } from "../../Types/Pack/PackCollection";
 
 import * as Animation from "./Animation";
-import * as AnimationController from "./Types/AnimationController";
-import * as Attachable from "./Types/Attachable";
-import * as Block from "./Types/Block";
-import * as Entity from "./Types/Entity";
-import * as Fog from "./Types/Fog";
-import * as Particle from "./Types/Particle";
-import * as Material from "./Types/Material";
-import * as Model from "./Types/Model";
-import * as RenderController from "./Types/RenderController";
-import * as Sound from "./Types/Sound";
-import * as Texture from "./Types/Texture";
+import * as AnimationController from "./AnimationController";
+import * as Attachable from "./Attachable";
+import * as Block from "./Block";
+import * as Entity from "./Entity";
+import * as Fog from "./Fog";
+import * as Particle from "./Particle";
+import * as Material from "./Material";
+import * as Model from "./Model";
+import * as RenderController from "./RenderController";
+import * as Sound from "./Sound";
+import * as Texture from "./Texture";
 
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {
-
   /**The collection of  animations*/
   readonly animations: DataSetConnector<Animation.Animation, ResourcePack>;
   /**The collection of animations controllers*/

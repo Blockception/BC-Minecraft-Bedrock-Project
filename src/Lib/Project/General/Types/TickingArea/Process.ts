@@ -1,8 +1,7 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
 import { GeneralInfo } from "../GeneralInfo";
-import { TextDocument } from "../../../../Types/TextDocument";
-import { Documentation } from '../../../../Types/Documentation';
+import { Documentation, TextDocument } from "../../../../Types";
 
 export function Process(Command: Command, doc: TextDocument): GeneralInfo | undefined {
   //tickingarea add
@@ -41,12 +40,14 @@ function ProcessCircleCommand(Command: Command, doc: TextDocument): GeneralInfo 
     Name,
     Types.Location.create(doc.uri, parameters[3].offset),
     Documentation.getDoc(
-      doc, () => {
+      doc,
+      () => {
         const Area = `x: ${parameters[3].text}, y: ${parameters[4].text}, z: ${parameters[5].text}, radius: ${parameters[6].text}`;
-        return `The circular tickingarea: "${Name}"; ${Area}`
+        return `The circular tickingarea: "${Name}"; ${Area}`;
       },
       offset
-    ));
+    )
+  );
 }
 
 /**
@@ -73,10 +74,12 @@ function ProcessBoxCommand(Command: Command, doc: TextDocument): GeneralInfo | u
     Name,
     Types.Location.create(doc.uri, parameters[3].offset),
     Documentation.getDoc(
-      doc, () => {
+      doc,
+      () => {
         const Area = `[${parameters[2].text}, ${parameters[3].text}, ${parameters[4].text}, ${parameters[5].text}, ${parameters[6].text}, ${parameters[7].text}]`;
-        return `The box tickingarea: "${Name}"; ${Area}`
+        return `The box tickingarea: "${Name}"; ${Area}`;
       },
       offset
-    ));
+    )
+  );
 }

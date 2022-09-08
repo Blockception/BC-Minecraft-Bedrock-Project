@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 import * as General from '../General/Controllers/State';
 

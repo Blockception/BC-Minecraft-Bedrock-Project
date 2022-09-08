@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Map } from "../../src/Lib/Types/Map";
+import { SMap } from "../../src/Lib/Types/SMap";
 
 interface Variant {
   "minecraft:variant": {
@@ -22,7 +22,7 @@ describe("Map", () => {
   it("forEach", () => {
     const names: string[] = [];
 
-    Map.forEach(Dataset, (group, name) => {
+    SMap.forEach(Dataset, (group, name) => {
       names.push(name);
     });
 

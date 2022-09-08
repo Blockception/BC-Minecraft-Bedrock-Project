@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { SMap } from "../../Types/SMap";
 
 /** */
 export interface TextureAtlas {

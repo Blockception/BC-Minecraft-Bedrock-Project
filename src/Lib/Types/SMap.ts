@@ -1,17 +1,17 @@
 /** */
-export interface Map<T> {
-  /** */
-  [key: string]: T;
-}
+export type SMap<T> = Record<string, T>;
 
 /** */
-export namespace Map {
+export namespace SMap {
   /**
    *
    * @param map
    * @param callbackfn
    */
-  export function forEach<T>(map: Record<string, T> | undefined, callbackfn: (value: T, key: string, map: Record<string, T>) => void): void {
+  export function forEach<T>(
+    map: SMap<T> | undefined,
+    callbackfn: (value: T, key: string, map: Record<string, T>) => void
+  ): void {
     if (!map) return;
 
     const keys = Object.getOwnPropertyNames(map);

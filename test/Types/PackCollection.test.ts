@@ -1,10 +1,10 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
-import { PackType } from "../../src/Lib/Project/Enum";
-import { Pack } from '../../src/Lib/Types/Pack';
-import { PackCollection } from "../../src/Lib/Types/Pack/PackCollection";
-import { TextDocument } from '../../src/Lib/Types/TextDocument';
+import { PackType } from "../../src/Lib/Project/PackType";
+import { PackCollection } from "../../src/Lib/Types";
+import { Pack } from "../../src/Lib/Types/Pack";
+import { TextDocument } from "../../src/Lib/Types/TextDocument";
 
 const defaultFolder = "c:\\project\\bp";
 const defaultContext = MCProject.createEmpty();

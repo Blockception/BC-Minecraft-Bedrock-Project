@@ -1,10 +1,10 @@
 import * as internal from "../../../../Internal/ResourcePack/Model";
 import { Json } from "../../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { TextDocument } from "../../../Types/TextDocument";
 import { Model } from "./Model";
-import { Documentation } from "../../../../Types/Documentation";
-import { Map } from "../../../../Types/Map";
+import { Documentation } from "../../../Types/Documentation";
+import { SMap } from "../../../Types/Map";
 
 /**
  *
@@ -21,7 +21,7 @@ export function Process(doc: TextDocument): Model[] | undefined {
   const out: Model[] = [];
 
   if (internal.ModelLegacy.is(imp)) {
-    Map.forEach<any>(imp, (value, key) => {
+    SMap.forEach<any>(imp, (value, key) => {
       if (key !== "format_version") {
         out.push({
           id: key,

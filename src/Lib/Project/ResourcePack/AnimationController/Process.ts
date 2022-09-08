@@ -1,21 +1,19 @@
-import * as internal from "../../../../Internal/ResourcePack/AnimationController";
-import { Json } from "../../../../Internal/Json";
+import * as Internal from "../../../Internal/ResourcePack/AnimationController";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../../Types/TextDocument";
+import { TextDocument } from "../../../Types/TextDocument";
 import { AnimationController } from "./AnimationController";
-import { Map } from "../../../../Types/Map";
+import { SMap } from "../../../Types/SMap";
 import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../../Types/Documentation";
+import { Documentation } from "../../../Types/Documentation";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
+  const imp = TextDocument.toObject(doc, Internal.AnimationControllers.is);
+  if (!imp) return undefined;
+
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.AnimationControllers>(doc);
-
-  if (!internal.AnimationControllers.is(imp)) return undefined;
-
   const out: AnimationController[] = [];
   const container = imp.animation_controllers;
   const keys = Object.getOwnPropertyNames(container);
@@ -24,7 +22,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
     const id = keys[I];
     const controller = container[id];
 
-    if (internal.AnimationController.is(controller)) {
+    if (Internal.AnimationController.is(controller)) {
       const item: AnimationController = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
@@ -35,7 +33,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         sounds: Using.empty(),
       };
 
-      Map.forEach(controller.states, (State) => {
+      SMap.forEach(controller.states, (State) => {
         if (State.animations)
           Types.Conditional.forEach(State.animations, (reference, value) => {
             item.animations.using.push(reference);

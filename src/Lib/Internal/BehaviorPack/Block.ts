@@ -1,4 +1,4 @@
-import { Map } from "../../Types/Map";
+import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
 export interface Block extends FormatVersion {
@@ -8,11 +8,11 @@ export interface Block extends FormatVersion {
       identifier: string;
       register_to_creative_menu?: boolean;
       is_experimental?: boolean;
-      properties?: Map<string[] | number[] | boolean[]>;
+      properties?: SMap<string[] | number[] | boolean[]>;
     };
     permutations?: any[];
-    components: Map<any>;
-    events?: Map<any>;
+    components: SMap<any>;
+    events?: SMap<any>;
   };
 }
 

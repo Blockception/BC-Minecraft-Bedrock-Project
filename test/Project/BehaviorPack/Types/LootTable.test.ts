@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Process } from "../../../../src/Lib/Project/BehaviorPack/Types/LootTable/Process";
+import { Process } from "../../../../src/Lib/Project/BehaviorPack/LootTable/Process";
 
 describe("LootTable", () => {
   it("Process 1", () => {

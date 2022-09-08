@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { Json } from "../../../../src/Lib/Internal/Json";
-import { Entity } from "../../../../src/Lib/Project/BehaviorPack/Types";
 import { TextDocument } from "../../../../src/Lib/Types/TextDocument";
-import * as internal from "../../../../src/Lib/Internal/BehaviorPack/Entity";
+import * as Internal from "../../../../src/Lib/Internal/BehaviorPack/Entity";
+import {   } from "../../../../src/Lib/Project/BehaviorPack";
 
 const EntityJson: string = `{
   "format_version": "1.16.0",
@@ -45,14 +45,14 @@ const EntityDoc: TextDocument = {
 
 describe("Entity", () => {
   it("Data", () => {
-    const imp = Json.To<internal.Entity>(EntityJson);
+    const imp = Json.To<Internal.Entity>(EntityJson);
 
     it("Not Undefined", () => {
       expect(imp).to.not.be.undefined;
     });
 
     it("Is entity", () => {
-      expect(internal.Entity.is(imp)).to.be.true;
+      expect(Internal.Entity.is(imp)).to.be.true;
     });
   });
 
@@ -84,10 +84,7 @@ describe("Entity", () => {
     if (!data) return;
 
     it("Has specific usings", () => {
-      expect(data.animations.using).has.members([
-        "controller.animation.chicken",
-        "controller.i.dont.exist",
-      ]);
+      expect(data.animations.using).has.members(["controller.animation.chicken", "controller.i.dont.exist"]);
     });
 
     it("Has specific defined", () => {
@@ -132,8 +129,8 @@ describe("Entity", () => {
 
     if (!data) return;
 
-    it("has sheep identifier", ()=>{
+    it("has sheep identifier", () => {
       expect(data.id).to.equal("blockception:sheep");
-    })
+    });
   });
 });

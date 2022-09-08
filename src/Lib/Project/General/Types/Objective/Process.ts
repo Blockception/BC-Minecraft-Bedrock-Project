@@ -1,11 +1,10 @@
-import { Command } from "bc-minecraft-bedrock-command";
+import { CommandData } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from '../../../../Types/Documentation';
+import { TextDocument, Documentation } from "../../../../Types";
 import { GeneralCollection } from "../../General";
 import { GeneralInfo } from "../GeneralInfo";
-import { TextDocument } from "../../../../Types/TextDocument";
 
-export function Process(command: Command, doc: TextDocument, receiver: GeneralCollection): void {
+export function Process(command: CommandData.Command, doc: TextDocument, receiver: GeneralCollection): void {
   if (command.parameters.length < 3) {
     return;
   }
@@ -31,7 +30,7 @@ export function Process(command: Command, doc: TextDocument, receiver: GeneralCo
  * @param Comment
  * @returns
  */
-function CheckObjective(Com: Command, doc: TextDocument): GeneralInfo | undefined {
+function CheckObjective(Com: CommandData.Command, doc: TextDocument): GeneralInfo | undefined {
   let ObjectiveMode = Com.parameters[2];
 
   if (Com.parameters.length < 4) {
@@ -46,23 +45,26 @@ function CheckObjective(Com: Command, doc: TextDocument): GeneralInfo | undefine
     return GeneralInfo.create(
       ID.text,
       Types.Location.create(doc.uri, offset),
-      Documentation.getDoc(doc, () => {
-        let Doc = `The objective: ${ID.text}: ${Type.text}`;
+      Documentation.getDoc(
+        doc,
+        () => {
+          let Doc = `The objective: ${ID.text}: ${Type.text}`;
 
-        if (Com.parameters.length > 5) {
-          Doc += " " + Com.parameters[5].text.replace(/"/g, "");
-        }
+          if (Com.parameters.length > 5) {
+            Doc += " " + Com.parameters[5].text.replace(/"/g, "");
+          }
 
-        return Doc;
-      },
-        offset)
+          return Doc;
+        },
+        offset
+      )
     );
   }
 
   return undefined;
 }
 
-function CheckPlayer(Com: Command, doc: TextDocument): GeneralInfo | undefined {
+function CheckPlayer(Com: CommandData.Command, doc: TextDocument): GeneralInfo | undefined {
   if (Com.parameters.length > 3) {
     const Selector = Com.parameters[3];
 
