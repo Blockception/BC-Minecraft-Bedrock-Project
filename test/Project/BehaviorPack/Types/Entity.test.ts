@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { Json } from "../../../../src/Lib/Internal/Json";
 import { TextDocument } from "../../../../src/Lib/Types/TextDocument";
 import * as Internal from "../../../../src/Lib/Internal/BehaviorPack/Entity";
-import {   } from "../../../../src/Lib/Project/BehaviorPack";
+import { Entity } from "../../../../src/Lib/Project/BehaviorPack";
 
 const EntityJson: string = `{
   "format_version": "1.16.0",
