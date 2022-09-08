@@ -1,13 +1,16 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
 import { expect } from "chai";
-import { Test } from "mocha";
-import { DataSet } from "../../src/main";
+import { DataSet } from "../../src/Lib/Types/DataSet";
 
 interface TestObject extends Types.BaseObject {}
 
 namespace TestObject {
-  export function create(id: string, uri: string, position: Types.DocumentLocation | undefined = undefined): TestObject {
+  export function create(
+    id: string,
+    uri: string,
+    position: Types.DocumentLocation | undefined = undefined
+  ): TestObject {
     return {
       id: id,
       location: Location.create(uri, position),

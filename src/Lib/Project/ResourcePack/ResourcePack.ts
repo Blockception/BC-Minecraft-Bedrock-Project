@@ -19,7 +19,7 @@ import * as RenderController from "./Types/RenderController";
 import * as Sound from "./Types/Sound";
 import * as Texture from "./Types/Texture";
 import { Types } from "bc-minecraft-bedrock-types";
-import { PackType } from "..";
+import { PackType } from '../Enum/PackType';
 
 /** */
 export class ResourcePack implements Container, Pack {

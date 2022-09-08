@@ -1,8 +1,10 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
+import { PackType } from "../../src/Lib/Project/Enum";
+import { Pack } from '../../src/Lib/Types/Pack';
 import { PackCollection } from "../../src/Lib/Types/Pack/PackCollection";
-import { Pack, PackType, TextDocument } from "../../src/main";
+import { TextDocument } from '../../src/Lib/Types/TextDocument';
 
 const defaultFolder = "c:\\project\\bp";
 const defaultContext = MCProject.createEmpty();
@@ -51,9 +53,7 @@ class TestPack implements Pack {
    * @param predicate
    * @returns
    */
-  find(
-    predicate: (value: Types.BaseObject, key: string) => boolean
-  ): Types.BaseObject | undefined {
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined {
     let value = undefined;
 
     return value;

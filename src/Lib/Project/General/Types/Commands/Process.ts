@@ -5,9 +5,9 @@ import * as Tag from "../Tag/Process";
 import * as Objective from "../Objective/Process";
 import * as TickingArea from "../TickingArea/Process";
 import * as Structure from "../Structures/Process";
-import * as Internal from '../../../../Internal/include';
-import { Map } from '../../../../Types/Map/Map';
-import { Json } from '../../../../Internal/Json';
+import * as Internal from "../../../../Internal";
+import { Map } from "../../../../Types/Map/Map";
+import { Json } from "../../../../Internal/Json";
 
 /**
  *
@@ -41,12 +41,11 @@ export function ProcessAnimationCommands(doc: TextDocument, receiver: GeneralCol
     Map.forEach(anim.timeline, (time) => {
       if (typeof time === "string") {
         InternalJsonValue(time, doc, receiver);
+      } else {
+        time.forEach((t) => InternalJsonValue(t, doc, receiver));
       }
-      else {
-        time.forEach(t => InternalJsonValue(t, doc, receiver));
-      }
-    })
-  })
+    });
+  });
 }
 
 /**
@@ -66,8 +65,8 @@ export function ProcessAnimationControllerCommands(doc: TextDocument, receiver: 
     Map.forEach(anim.states, (state) => {
       state.on_entry?.forEach((p) => InternalJsonValue(p, doc, receiver));
       state.on_exit?.forEach((p) => InternalJsonValue(p, doc, receiver));
-    })
-  })
+    });
+  });
 }
 
 function InternalJsonValue(prop: string, doc: TextDocument, receiver: GeneralCollection) {

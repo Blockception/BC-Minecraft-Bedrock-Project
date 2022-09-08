@@ -12,7 +12,7 @@ export enum PackType {
   unknown,
 }
 
-/**Detects the type of general data from the given uri
+/** Detects the type of general data from the given uri
  * @param uri The filepath to examine, expects slashes to be '/'*/
 export namespace PackType {
   /** */

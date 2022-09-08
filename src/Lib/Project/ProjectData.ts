@@ -11,7 +11,6 @@ import { ProjectContext } from "../Types/ProjectContext/ProjectContext";
 import { DataSetBase } from "../Types/DataSet";
 import { Pack } from "../Types/Pack/Pack";
 import { Types } from "bc-minecraft-bedrock-types";
-import { FileType } from "./BehaviorPack";
 import {
   ProcessAnimationCommands,
   ProcessAnimationControllerCommands,
@@ -19,6 +18,7 @@ import {
 } from "./General/Types/Commands/Process";
 import { WorldPackCollection } from "./World";
 import { WorldPack } from "./World/WorldPack";
+import { FileType } from './BehaviorPack/Enum';
 
 /**The project cache for minecraft*/
 export class ProjectData {

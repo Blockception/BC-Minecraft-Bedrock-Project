@@ -11,7 +11,7 @@ describe("Resourcepack", () => {
     }`;
 
     describe("Process", () => {
-      const controllers = ResourcePack.AnimationController.Process({ getText: () => data, uri: "example" });
+      const controllers = ResourcePack.Types.AnimationController.Process({ getText: () => data, uri: "example" });
 
       it("not undefined", () => {
       expect(controllers).to.not.be.undefined;

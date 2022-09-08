@@ -1,6 +1,6 @@
-import { TextDocument } from '../../../main';
-import { PackType } from "../../Project";
-import { Json } from "../Json";
+import { PackType } from '../../Project/Enum/PackType';
+import { TextDocument } from '../../Types/TextDocument/TextDocument';
+import { Json } from '../Json';
 
 /**
  *
