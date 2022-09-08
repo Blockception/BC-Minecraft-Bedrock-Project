@@ -1,2 +1,3 @@
 /*	Auto generated	*/
-export * as Enum from "./Enum/index";
+
+export * from "./FileType";
