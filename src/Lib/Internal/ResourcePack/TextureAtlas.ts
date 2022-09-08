@@ -5,7 +5,7 @@ export interface TextureAtlas {
   /** */
   resource_pack_name: string;
   /** */
-  texture_data: Map<TextureData>;
+  texture_data: SMap<TextureData>;
   /** */
   texture_name: string;
   /** */

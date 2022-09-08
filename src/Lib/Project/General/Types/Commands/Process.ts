@@ -1,13 +1,13 @@
 import { Command } from "bc-minecraft-bedrock-command";
-import { TextDocument } from "../../../Types/TextDocument";
 import { GeneralCollection } from "../../General";
+import { Json } from "../../../../Internal";
+import { SMap, TextDocument } from "../../../../Types";
+
 import * as Tag from "../Tag/Process";
 import * as Objective from "../Objective/Process";
 import * as TickingArea from "../TickingArea/Process";
 import * as Structure from "../Structures/Process";
 import * as Internal from "../../../../Internal";
-import { SMap } from "../../../Types/SMap";
-import { Json } from "../../../../Internal/Json";
 
 /**
  *

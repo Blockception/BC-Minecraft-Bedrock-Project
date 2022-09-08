@@ -17,9 +17,9 @@ export interface Item extends FormatVersion {
       is_experimental?: boolean;
     };
     /** */
-    components: Map<any>;
+    components: SMap<any>;
     /** */
-    events?: Map<any>;
+    events?: SMap<any>;
   };
 }
 

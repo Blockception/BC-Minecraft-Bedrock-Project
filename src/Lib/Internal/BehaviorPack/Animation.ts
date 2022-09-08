@@ -8,7 +8,7 @@ export interface Animation{
   /** */
   loop?: boolean;
   /** */
-  timeline?: Map<string | string[]>;
+  timeline?: SMap<string | string[]>;
 }
 
 /** */

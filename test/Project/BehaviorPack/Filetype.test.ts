@@ -2,7 +2,7 @@ import { expect } from "chai";
 import path from "path";
 import { BehaviorPack } from "../../../src/main";
 
-const FileType = BehaviorPack.Enum.FileType
+const FileType = BehaviorPack.FileType
 
 describe("BP Filetype", () => {
   describe("Detect", () => {

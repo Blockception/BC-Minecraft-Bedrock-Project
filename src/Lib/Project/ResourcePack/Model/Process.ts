@@ -1,10 +1,10 @@
-import * as internal from "../../../../Internal/ResourcePack/Model";
-import { Json } from "../../../../Internal/Json";
+import * as internal from "../../../Internal/ResourcePack/Model";
+import { Json } from "../../../Internal/Json";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../Types/TextDocument";
 import { Model } from "./Model";
 import { Documentation } from "../../../Types/Documentation";
-import { SMap } from "../../../Types/Map";
+import { SMap } from "../../../Types/SMap";
 
 /**
  *

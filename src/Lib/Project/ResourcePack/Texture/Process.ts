@@ -1,10 +1,9 @@
-import * as internal from "../../../../Internal/ResourcePack/TextureAtlas";
-import { Json } from "../../../../Internal/Json";
+import * as Internal from "../../../Internal/ResourcePack";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../Types/TextDocument";
 import { Texture } from "./Texture";
 import { Documentation } from "../../../Types/Documentation";
-import { SMap } from "../../../Types/Map";
+import { SMap } from "../../../Types";
 
 /**
  *
@@ -12,11 +11,11 @@ import { SMap } from "../../../Types/Map";
  * @returns
  */
 export function ProcessTextureAtlas(doc: TextDocument): Texture[] | undefined {
+  const imp = TextDocument.toObject(doc, Internal.TextureAtlas.is);
+  if (!imp) return undefined;
+
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.TextureAtlas>(doc);
-
-  if (!internal.TextureAtlas.is(imp)) return undefined;
 
   const container = imp.texture_data;
   const out: Texture[] = [];

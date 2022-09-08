@@ -1,8 +1,8 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Pack } from "../Pack";
-import { PackCollection } from "../Pack/PackCollection";
 import { DataSet } from "./DataSet";
 import { IDataSet } from "./IDataSet";
+import { Pack } from "./Pack";
+import { PackCollection } from "./PackCollection";
 
 /**The class DataSetConnector description*/
 export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U extends Pack> implements IDataSet<T> {
@@ -60,13 +60,13 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
       dataset?.forEach(callbackfn, thisArg);
     }
   }
-  
+
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-   find(predicate: (value: Types.BaseObject, key : string) => boolean) : (Types.BaseObject) | undefined {    
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined {
     const packs = this._collection.packs;
     if (!packs) return undefined;
 

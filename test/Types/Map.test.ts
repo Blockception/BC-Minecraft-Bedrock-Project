@@ -7,7 +7,7 @@ interface Variant {
   };
 }
 
-const Dataset: Map<Variant> = {
+const Dataset: SMap<Variant> = {
   "self:variant_0": { "minecraft:variant": { value: 0 } },
   "self:variant_1": { "minecraft:variant": { value: 1 } },
   "self:variant_2": { "minecraft:variant": { value: 2 } },

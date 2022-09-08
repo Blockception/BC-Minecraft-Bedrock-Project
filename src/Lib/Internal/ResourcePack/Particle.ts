@@ -14,9 +14,9 @@ export interface ParticleContainer {
   /** */
   description: ParticleDescription;
   /** */
-  components: Map<any>;
-  events?: Map<any>;
-  curves?: Map<any>;
+  components: SMap<any>;
+  events?: SMap<any>;
+  curves?: SMap<any>;
 }
 
 /** */

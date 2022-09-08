@@ -1,10 +1,10 @@
-import { CommandData } from "bc-minecraft-bedrock-command";
+import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument, Documentation } from "../../../../Types";
 import { GeneralCollection } from "../../General";
 import { GeneralInfo } from "../GeneralInfo";
 
-export function Process(command: CommandData.Command, doc: TextDocument, receiver: GeneralCollection): void {
+export function Process(command: Command, doc: TextDocument, receiver: GeneralCollection): void {
   if (command.parameters.length < 3) {
     return;
   }
@@ -30,7 +30,7 @@ export function Process(command: CommandData.Command, doc: TextDocument, receive
  * @param Comment
  * @returns
  */
-function CheckObjective(Com: CommandData.Command, doc: TextDocument): GeneralInfo | undefined {
+function CheckObjective(Com: Command, doc: TextDocument): GeneralInfo | undefined {
   let ObjectiveMode = Com.parameters[2];
 
   if (Com.parameters.length < 4) {
@@ -64,7 +64,7 @@ function CheckObjective(Com: CommandData.Command, doc: TextDocument): GeneralInf
   return undefined;
 }
 
-function CheckPlayer(Com: CommandData.Command, doc: TextDocument): GeneralInfo | undefined {
+function CheckPlayer(Com: Command, doc: TextDocument): GeneralInfo | undefined {
   if (Com.parameters.length > 3) {
     const Selector = Com.parameters[3];
 

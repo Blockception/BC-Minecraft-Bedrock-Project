@@ -2,7 +2,7 @@ import { expect } from "chai";
 import path from "path";
 import { ResourcePack } from "../../../src/main";
 
-const FileType = ResourcePack.Enum.FileType;
+const FileType = ResourcePack.FileType;
 
 describe("RP Filetype", () => {
   describe("Detect", () => {

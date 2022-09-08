@@ -6,7 +6,7 @@ export interface SoundDefinitions extends FormatVersion {
   /** */
   format_version: string;
   /** */
-  sound_definitions: Map<SoundDefinition>;
+  sound_definitions: SMap<SoundDefinition>;
 }
 
 /** */

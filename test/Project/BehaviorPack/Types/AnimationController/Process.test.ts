@@ -11,7 +11,7 @@ describe("BehaviorPack", () => {
     }`;
 
     describe("Process", () => {
-      const controllers = BehaviorPack.Types.AnimationController.Process({
+      const controllers = BehaviorPack.AnimationController.Process({
         getText: () => data,
         uri: "example",
       });

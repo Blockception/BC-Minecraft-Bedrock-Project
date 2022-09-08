@@ -32,7 +32,7 @@ export interface AnimationController {
   /** */
   initial_state?: string;
   /** */
-  states: Map<State>;
+  states: SMap<State>;
 }
 
 /** */
