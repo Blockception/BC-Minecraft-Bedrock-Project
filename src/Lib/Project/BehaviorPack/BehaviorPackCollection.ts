@@ -2,7 +2,7 @@ import { MCProject } from "bc-minecraft-project";
 import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 import { BehaviorPack } from "./BehaviorPack";
 
-import * as AnimationController from "./Types/AnimationController";
+import * as AnimationController from "./AnimationController";
 import * as Animation from "./Types/Animation";
 import * as Block from "./Types/Block";
 import * as Entity from "./Types/Entity";

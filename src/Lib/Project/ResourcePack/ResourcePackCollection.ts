@@ -3,7 +3,7 @@ import { ResourcePack } from "./ResourcePack";
 import { DataSetConnector } from "../../Types/DataSet/DataSetConnector";
 import { PackCollection } from "../../Types/Pack/PackCollection";
 
-import * as Animation from "./Types/Animation";
+import * as Animation from "./Animation";
 import * as AnimationController from "./Types/AnimationController";
 import * as Attachable from "./Types/Attachable";
 import * as Block from "./Types/Block";

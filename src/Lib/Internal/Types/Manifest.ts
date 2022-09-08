@@ -1,4 +1,4 @@
-import { PackType } from '../../Project/Enum/PackType';
+import { PackType } from '../../Project/PackType';
 import { TextDocument } from '../../Types/TextDocument';
 import { Json } from '../Json';
 

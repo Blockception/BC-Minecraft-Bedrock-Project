@@ -3,7 +3,7 @@ import { Manifest } from "../Internal/Types/Manifest";
 import { TextDocument } from "../Types/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
-import { PackType } from "./Enum/PackType";
+import { PackType } from "./PackType";
 import { GeneralCollection } from "./General/General";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";

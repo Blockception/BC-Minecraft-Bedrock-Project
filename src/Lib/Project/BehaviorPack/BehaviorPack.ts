@@ -2,7 +2,7 @@ import { MCProject } from "bc-minecraft-project";
 import { Container } from "../../Types/Container";
 import { DataSet, DataSetBase } from "../../Types/DataSet";
 
-import * as AnimationController from "./Types/AnimationController";
+import * as AnimationController from "./AnimationController";
 import * as Animation from "./Types/Animation";
 import * as Block from "./Types/Block";
 import * as Entity from "./Types/Entity";
@@ -14,9 +14,9 @@ import * as Trading from "./Types/Trading";
 
 import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
-import { FileType } from "./Enum/FileType";
+import { FileType } from "./FileType";
 import { Types } from "bc-minecraft-bedrock-types";
-import { PackType } from "../Enum/PackType";
+import { PackType } from "../PackType";
 
 /** */
 export class BehaviorPack implements Container, Pack {

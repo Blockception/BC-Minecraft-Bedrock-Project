@@ -5,7 +5,7 @@ import { DataSetBase } from "../../Types/DataSet";
 import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
-import { PackType } from "../Enum/PackType";
+import { PackType } from "../PackType";
 
 /** */
 export class WorldPack implements Container, Pack {

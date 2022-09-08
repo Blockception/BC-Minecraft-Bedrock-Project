@@ -6,7 +6,7 @@ import { TextDocument } from "../../Types/TextDocument";
 import { FileType } from "./Enum";
 import { Container } from "../../Types/Container";
 
-import * as Animation from "./Types/Animation";
+import * as Animation from "./Animation";
 import * as AnimationController from "./Types/AnimationController";
 import * as Attachable from "./Types/Attachable";
 import * as Block from "./Types/Block";
@@ -19,7 +19,7 @@ import * as RenderController from "./Types/RenderController";
 import * as Sound from "./Types/Sound";
 import * as Texture from "./Types/Texture";
 import { Types } from "bc-minecraft-bedrock-types";
-import { PackType } from '../Enum/PackType';
+import { PackType } from '../PackType';
 
 /** */
 export class ResourcePack implements Container, Pack {

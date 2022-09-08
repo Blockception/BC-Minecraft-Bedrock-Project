@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import path = require("path");
-import { PackType } from "../../src/Lib/Project/Enum/PackType";
+import { PackType } from "../../src/Lib/Project/PackType";
 
 describe("PackType", () => {
   const data : {path:string,type:PackType}[] = [
