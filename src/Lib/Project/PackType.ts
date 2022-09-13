@@ -36,4 +36,46 @@ export namespace PackType {
 
     return PackType.unknown;
   }
+
+  /**
+   *
+   * @param pack
+   * @returns
+   */
+  export function toString(pack?: PackType): string {
+    switch (pack) {
+      case PackType.behavior_pack:
+        return "behavior";
+      case PackType.resource_pack:
+        return "resource";
+      case PackType.skin_pack:
+        return "skin";
+      case PackType.world:
+        return "world";
+      case PackType.unknown:
+      default:
+        return "unknown";
+    }
+  }
+
+  /**
+   *
+   * @param pack
+   * @returns
+   */
+  export function toStringShort(pack?: PackType): string {
+    switch (pack) {
+      case PackType.behavior_pack:
+        return "bp";
+      case PackType.resource_pack:
+        return "rp";
+      case PackType.skin_pack:
+        return "sp";
+      case PackType.world:
+        return "wp";
+      case PackType.unknown:
+      default:
+        return "unknown";
+    }
+  }
 }
