@@ -5,7 +5,7 @@ import { expect } from "chai";
 import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack";
 import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
 import { ProjectData } from "../../src/Lib/Project/ProjectData";
-import { TextProjectContext } from "../Uttility";
+import { TextProjectContext } from "../Utility";
 import { describe } from "mocha";
 
 describe("ProjectData", () => {
@@ -111,8 +111,7 @@ describe("ProjectData", () => {
       expect(P.BehaviorPacks.loot_tables).to.not.undefined;
       expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
 
-      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be
-        .true;
+      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
 
       expect(P.BehaviorPacks.packs).to.not.undefined;
       expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
@@ -126,14 +125,10 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      
       expect(P.BehaviorPacks.loot_tables).to.not.undefined;
       expect(P.BehaviorPacks.loot_tables.has("empty.loot.json"), "started with loottable").to.be.true;
 
-      expect(
-        P.deleteFolder("c:\\temp\\bp\\loot_tables"),
-        "Expected operation to be successfull"
-      ).to.be.true;
+      expect(P.deleteFolder("c:\\temp\\bp\\loot_tables"), "Expected operation to be successfull").to.be.true;
 
       expect(P.BehaviorPacks.loot_tables.has("empty.loot.json"), "ended without loottable").to.be.false;
     });
@@ -150,10 +145,7 @@ describe("ProjectData", () => {
 
       expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
 
-      expect(
-        P.deleteFolder("c:\\temp\\bp"),
-        "Expected operation to be successfull"
-      ).to.be.true;
+      expect(P.deleteFolder("c:\\temp\\bp"), "Expected operation to be successfull").to.be.true;
 
       expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
       expect(P.BehaviorPacks.count()).to.be.equal(0);
@@ -206,8 +198,7 @@ describe("ProjectData", () => {
 
       expect(P.ResourcePacks.sounds.has(id)).to.be.true;
 
-      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be
-        .true;
+      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
       expect(P.ResourcePacks.sounds.has(id)).to.be.false;
     });
 
@@ -221,10 +212,7 @@ describe("ProjectData", () => {
       });
 
       expect(P.ResourcePacks.sounds.has(id)).to.be.true;
-      expect(
-        P.deleteFolder("c:\\temp\\rp\\sounds"),
-        "Expected operation to be successfull"
-      ).to.be.true;
+      expect(P.deleteFolder("c:\\temp\\rp\\sounds"), "Expected operation to be successfull").to.be.true;
 
       expect(P.ResourcePacks.sounds.has(id)).to.be.false;
     });
@@ -240,10 +228,7 @@ describe("ProjectData", () => {
 
       expect(P.ResourcePacks.sounds.has(id)).to.be.true;
 
-      expect(
-        P.deleteFolder("c:\\temp\\rp"),
-        "Expected operation to be successfull"
-      ).to.be.true;
+      expect(P.deleteFolder("c:\\temp\\rp"), "Expected operation to be successfull").to.be.true;
 
       expect(P.ResourcePacks.sounds.has(id)).to.be.false;
       expect(P.ResourcePacks.count()).to.be.equal(0);
@@ -265,8 +250,7 @@ describe("ProjectData", () => {
 
       expect(P.General.tags.has(id)).to.be.true;
 
-      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be
-        .true;
+      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
 
       expect(P.General.tags.has(id)).to.be.false;
     });
@@ -401,10 +385,6 @@ describe("ProjectData", () => {
       "rp.texture",
     ];
 
-    ids.forEach((id) =>
-      it("find id: " + id, () =>
-        expect(data.find((item) => item.id === id) !== undefined)
-      )
-    );
+    ids.forEach((id) => it("find id: " + id, () => expect(data.find((item) => item.id === id) !== undefined)));
   });
 });

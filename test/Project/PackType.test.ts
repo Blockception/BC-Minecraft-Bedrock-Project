@@ -3,7 +3,7 @@ import path = require("path");
 import { PackType } from "../../src/Lib/Project/PackType";
 
 describe("PackType", () => {
-  const data : {path:string,type:PackType}[] = [
+  const data: { path: string; type: PackType }[] = [
     { path: "F:/Temp2/1. Behavior Pack/manifest.json", type: PackType.behavior_pack },
     { path: "F:/Temp2/2. Resource Pack/manifest.json", type: PackType.resource_pack },
     { path: "F:/Temp2/skin_pack/skins.json", type: PackType.skin_pack },
@@ -21,14 +21,11 @@ describe("PackType", () => {
     { path: "F:/Temp2/wp/db/000006.log", type: PackType.world },
   ];
 
-  data.forEach(item => {
-    describe(`${item.path}`, ()=>{
+  data.forEach((item) => {
+    it(`${item.type} Should be returned by "${item.path}"`, () => {
       const normal = path.normalize(item.path);
       const t = PackType.detect(normal);
-
-      it(`Should be ${t}`, ()=>{
-        expect(t).to.equal(item.type);
-      })
-    })
+      expect(t).to.equal(item.type);
+    });
   });
 });
