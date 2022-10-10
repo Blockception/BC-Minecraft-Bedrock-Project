@@ -1,3 +1,4 @@
+import { ComponentContainer } from 'bc-minecraft-bedrock-types/lib/src/Minecraft/Components';
 import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
@@ -11,7 +12,7 @@ export interface Block extends FormatVersion {
       properties?: SMap<string[] | number[] | boolean[]>;
     };
     permutations?: any[];
-    components: SMap<any>;
+    components: ComponentContainer;
     events?: SMap<any>;
   };
 }

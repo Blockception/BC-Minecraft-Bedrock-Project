@@ -1,3 +1,4 @@
+import { ComponentContainer, ComponentGroups } from 'bc-minecraft-bedrock-types/lib/src/Minecraft/Components';
 import { SMap } from "../../Types/SMap";
 import { ScriptContainer } from "../Types/Script";
 
@@ -19,11 +20,10 @@ export interface EntityEvent {
   randomize?: (EntityEvent & { weight: number })[];
 }
 
-/** */
-export interface EntityComponentContainer {
-  /** */
-  [key: string]: any;
-}
+/** 
+ * @deprecated Replace with @see {@link ComponentContainer}
+ */
+export type EntityComponentContainer = ComponentContainer
 
 /** */
 export interface EntityDescription extends ScriptContainer {
@@ -44,9 +44,9 @@ export interface Entity {
     /** */
     description: EntityDescription;
     /** */
-    component_groups?: SMap<EntityComponentContainer>;
+    component_groups?: ComponentGroups;
     /** */
-    components: EntityComponentContainer;
+    components: ComponentContainer;
     /** */
     events?: SMap<EntityEvent>;
   };
