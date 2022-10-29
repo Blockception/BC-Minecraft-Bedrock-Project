@@ -11,11 +11,17 @@ export interface Block extends FormatVersion {
       is_experimental?: boolean;
       properties?: SMap<string[] | number[] | boolean[]>;
     };
-    permutations?: any[];
+    permutations?: Permutation[];
     components: ComponentContainer;
     events?: SMap<any>;
   };
 }
+
+export interface Permutation {
+  condition?: string;
+  components?: ComponentContainer;
+}
+
 
 /** */
 export namespace Block {
