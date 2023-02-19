@@ -7,4 +7,3 @@
   "reporter": "mocha-junit-reporter",
   "reporterOptions": ["mochaFile=./reports/junit.xml"]
 }
-
