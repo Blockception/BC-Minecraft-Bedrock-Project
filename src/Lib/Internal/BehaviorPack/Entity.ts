@@ -1,4 +1,4 @@
-import { ComponentContainer, ComponentGroups } from 'bc-minecraft-bedrock-types/lib/src/Minecraft/Components';
+import { ComponentContainer, ComponentGroups } from "bc-minecraft-bedrock-types/lib/src/Minecraft/Components";
 import { SMap } from "../../Types/SMap";
 import { ScriptContainer } from "../Types/Script";
 
@@ -18,12 +18,14 @@ export interface EntityEvent {
   sequence?: EntityEvent[];
   /** */
   randomize?: (EntityEvent & { weight: number })[];
+  /** */
+  set_property?: Record<string, string | number | boolean>;
 }
 
-/** 
+/**
  * @deprecated Replace with @see {@link ComponentContainer}
  */
-export type EntityComponentContainer = ComponentContainer
+export type EntityComponentContainer = ComponentContainer;
 
 /** */
 export interface EntityDescription extends ScriptContainer {
