@@ -296,6 +296,7 @@ describe("ProjectData", () => {
       events: [],
       families: [],
       groups: [],
+      properties: [],
     });
     bp.functions.set({ id: "bp.function", location: loc, documentation: doc });
     bp.items.set({
