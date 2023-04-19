@@ -1,6 +1,7 @@
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
 import { AnimationCarrier, MolangCarrier } from "../../../Types";
+import { EntityProperty } from './Properties';
 
 /** */
 export interface Entity extends Types.BaseObject,
@@ -17,4 +18,6 @@ export interface Entity extends Types.BaseObject,
   families: string[];
   /** */
   animations: DefinedUsing<string>;
+  /** */
+  properties: EntityProperty[];
 }

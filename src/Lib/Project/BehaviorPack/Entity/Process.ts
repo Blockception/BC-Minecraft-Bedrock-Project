@@ -8,6 +8,7 @@ import { TextDocument } from "../../../Types/TextDocument";
 import { Entity } from "./Entity";
 import { Documentation } from "../../../Types/Documentation";
 import { EntityComponentContainer } from "../../../Internal/BehaviorPack/Entity";
+import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/src/Minecraft/Components";
 
 /**
  *
@@ -33,6 +34,7 @@ export function Process(doc: TextDocument): Entity | undefined {
     families: [],
     groups: [],
     molang: Molang.MolangSet.harvest(container),
+    properties: [],
   };
 
   if (container.component_groups) {
@@ -42,6 +44,8 @@ export function Process(doc: TextDocument): Entity | undefined {
     });
   }
   if (container.events) SMap.forEach(container.events, (event, name) => out.events.push(name));
+
+  //Animations
   if (container.description.animations) {
     SMap.forEach(container.description.animations, (anim, name) => {
       out.animations.defined.push(name);
@@ -49,12 +53,18 @@ export function Process(doc: TextDocument): Entity | undefined {
     });
   }
 
+  if (container.description.properties) {
+    for (const [name, value] of Object.entries(container.description.properties)) {
+      out.properties.push({ name, ...value });
+    }
+  }
+
   getFamilies(container.components, out.families);
 
   return out;
 }
 
-function getFamilies(components: EntityComponentContainer, receiver: string[]) {
+function getFamilies(components: ComponentContainer, receiver: string[]) {
   const families = components["minecraft:type_family"];
 
   if (type_family.is(families)) {

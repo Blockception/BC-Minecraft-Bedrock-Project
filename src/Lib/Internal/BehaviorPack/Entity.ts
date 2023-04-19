@@ -30,9 +30,13 @@ export interface EntityDescription extends ScriptContainer {
   /** */
   identifier: string;
   /** */
-  is_spawnable?: true;
+  is_spawnable?: boolean;
   /** */
-  is_summonable?: true;
+  is_summonable?: boolean;
+  /** */
+  is_experimental: boolean;
+  /** */
+  properties?: Record<string, any>;
 }
 
 /** */
