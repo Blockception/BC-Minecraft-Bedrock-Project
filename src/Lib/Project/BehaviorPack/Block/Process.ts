@@ -1,11 +1,11 @@
 import { Block } from "./Block";
-import { BlockState } from "./Block";
 import { Json } from "../../../Internal";
 import { Molang } from "bc-minecraft-molang";
 import { Documentation, SMap, TextDocument } from "../../../Types";
 import { Types } from "bc-minecraft-bedrock-types";
 
 import * as Internal from "../../../Internal/BehaviorPack";
+import { BlockState } from "./BlockState";
 
 /**
  *
@@ -32,7 +32,7 @@ export function Process(doc: TextDocument): Block | undefined {
 
   const props = container.description.properties;
   if (props)
-  SMap.forEach(props, (values, prop) => {
+    SMap.forEach(props, (values, prop) => {
       const s = BlockState.create(prop, values);
 
       if (s) out.states.push(s);
