@@ -42,18 +42,18 @@
   "devDependencies": {
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.4.2",
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
-    "rimraf": "^5.0.0",
+    "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "bc-minecraft-bedrock-command": "^1.19.71-3",
-    "bc-minecraft-bedrock-types": "^1.19.50-0",
-    "bc-minecraft-molang": "^1.19.70-0",
-    "bc-minecraft-project": "^1.19.70-2",
+    "bc-minecraft-bedrock-command": "^1.20.0-0",
+    "bc-minecraft-bedrock-types": "^1.20.0-0",
+    "bc-minecraft-molang": "^1.20.0-0",
+    "bc-minecraft-project": "^1.20.0-0",
     "jsonc": "^2.0.0"
   }
 }
