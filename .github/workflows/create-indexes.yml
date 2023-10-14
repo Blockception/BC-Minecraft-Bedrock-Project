@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     name: 🛠️ Build Indexes
     steps:
-      - name: Checkout Repository
+      - name: 📦 Checkout Repository
         uses: actions/checkout@v4
 
       - uses: DaanV2/Typescript-Action-Create-Indexes@latest
