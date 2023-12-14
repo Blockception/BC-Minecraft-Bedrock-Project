@@ -1,6 +1,7 @@
 import { ComponentContainer, ComponentGroups } from "bc-minecraft-bedrock-types/lib/src/Minecraft/Components";
 import { SMap } from "../../Types/SMap";
 import { ScriptContainer } from "../Types/Script";
+import { CommandContainer } from '../General/Commands';
 
 /**The interface that deals with entity events that add or remove component groups*/
 export interface EntityEventGroup {
@@ -20,6 +21,8 @@ export interface EntityEvent {
   randomize?: (EntityEvent & { weight: number })[];
   /** */
   set_property?: Record<string, string | number | boolean>;
+  /** The command to run when the event is triggered */
+  queue_command: CommandContainer
 }
 
 /**
