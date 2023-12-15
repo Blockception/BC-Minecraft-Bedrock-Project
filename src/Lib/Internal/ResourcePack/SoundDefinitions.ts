@@ -22,10 +22,7 @@ export interface SoundSpec {
   /**The relative path to the file */
   name?: string;
 
-  /** */
-  load_on_low_memory?: boolean;
-
-  /** */
+  /** Whenever or not the file needs to be streamed */
   stream?: boolean;
 }
 
