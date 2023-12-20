@@ -18,7 +18,7 @@ import {
 } from "./General/Types/Commands/Process";
 import { WorldPackCollection } from "./World";
 import { WorldPack } from "./World/WorldPack";
-import { FileType } from './BehaviorPack/Enum';
+import { FileType } from "./BehaviorPack/Enum";
 
 /**The project cache for minecraft*/
 export class ProjectData {
@@ -31,14 +31,14 @@ export class ProjectData {
   /**The collection of general items*/
   General: GeneralCollection;
   /**The context needed to run this project data collection*/
-  Context: ProjectContext;
+  Context: ProjectContext<TextDocument>;
 
-  constructor(Context: ProjectContext) {
+  constructor(context: ProjectContext<TextDocument>) {
     this.BehaviorPacks = new BehaviorPackCollection();
     this.ResourcePacks = new ResourcePackCollection();
     this.General = new GeneralCollection();
     this.Worlds = new WorldPackCollection();
-    this.Context = Context;
+    this.Context = context;
   }
 
   /**Processes the given textdocument into the bacp
@@ -80,9 +80,7 @@ export class ProjectData {
 
   /**Returns the specific pack that belongs the document, returns undefined if nothing is found
    * @param doc The document to process*/
-  get(
-    doc: TextDocument | string
-  ): BehaviorPack | ResourcePack | WorldPack | undefined {
+  get(doc: TextDocument | string): BehaviorPack | ResourcePack | WorldPack | undefined {
     let out: BehaviorPack | ResourcePack | WorldPack | undefined;
     if ((out = this.BehaviorPacks.get(doc))) return out;
     if ((out = this.ResourcePacks.get(doc))) return out;
@@ -92,9 +90,7 @@ export class ProjectData {
   }
 
   /** */
-  find(
-    predicate: (value: Types.BaseObject) => boolean
-  ): Types.BaseObject | undefined {
+  find(predicate: (value: Types.BaseObject) => boolean): Types.BaseObject | undefined {
     let value = undefined;
 
     if ((value = this.BehaviorPacks.find(predicate))) return value;
@@ -109,11 +105,7 @@ export class ProjectData {
    * @param id The idenfitication of the entity
    * @returns true when it exists, false when it does not*/
   hasEntity(id: string): boolean {
-    if (
-      this.BehaviorPacks.entities.has(id) ||
-      this.ResourcePacks.entities.has(id)
-    )
-      return true;
+    if (this.BehaviorPacks.entities.has(id) || this.ResourcePacks.entities.has(id)) return true;
 
     return false;
   }
@@ -122,8 +114,7 @@ export class ProjectData {
    * @param id The idenfitication of the block
    * @returns true when it exists, false when it does not*/
   hasBlock(id: string): boolean {
-    if (this.BehaviorPacks.blocks.has(id) || this.ResourcePacks.blocks.has(id))
-      return true;
+    if (this.BehaviorPacks.blocks.has(id) || this.ResourcePacks.blocks.has(id)) return true;
 
     return false;
   }
@@ -187,11 +178,7 @@ export namespace ProjectData {
    * @param Context
    * @returns
    */
-  export function Add(
-    manifestPath: string | string[],
-    projectData: ProjectData,
-    Context: string | MCProject
-  ): Pack[] {
+  export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): Pack[] {
     if (!Array.isArray(manifestPath)) {
       manifestPath = [manifestPath];
     }
@@ -215,15 +202,8 @@ export namespace ProjectData {
  * @param Context
  * @returns
  */
-function Process(
-  manifestUri: string,
-  projectData: ProjectData,
-  Context: string | MCProject
-): Pack | undefined {
-  const Type = Manifest.DetectTypeUri(
-    manifestUri,
-    projectData.Context.getDocument
-  );
+function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): Pack | undefined {
+  const Type = Manifest.DetectTypeUri(manifestUri, projectData.Context.getDocument);
   const parent = manifestUri.replace(/[\\\/]manifest.json/gi, "");
 
   switch (Type) {

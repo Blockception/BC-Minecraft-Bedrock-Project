@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { ProjectContext } from "../src/Lib/Types/ProjectContext";
 import { TextDocument } from "../src/Lib/Types/TextDocument";
 
-export class TextProjectContext implements ProjectContext {
+export class TextProjectContext implements ProjectContext<TextDocument> {
   getDocument(uri: string): TextDocument {
     return {
       getText: (range) => readFileSync(uri).toString(),
