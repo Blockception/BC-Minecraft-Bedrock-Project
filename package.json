@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "bc-minecraft-bedrock-command": "^1.20.71-0",
+    "bc-minecraft-bedrock-project": "^1.20.71-4",
     "bc-minecraft-bedrock-types": "^1.20.71-0",
     "bc-minecraft-molang": "^1.20.71-2",
     "bc-minecraft-project": "^1.20.71-0",
