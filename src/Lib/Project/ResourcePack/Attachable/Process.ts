@@ -20,7 +20,8 @@ export function Process(doc: TextDocument): Attachable | undefined {
   if (!Internal.Attachable.is(imp)) return undefined;
 
   const container = imp["minecraft:attachable"];
-  const id = container.description.identifier;
+  const description = container.description;
+  const id = description.identifier;
   const out: Attachable = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
@@ -29,14 +30,16 @@ export function Process(doc: TextDocument): Attachable | undefined {
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };
 
-  if (container.animations)
-    Types.Definition.forEach(container.animations, (value, key) => {
+  if (description.animations) {
+    Types.Definition.forEach(description.animations, (value, key) => {
       out.animations.defined.push(key);
       out.animations.using.push(value);
     });
+  }
 
-  if (container.animation_controllers)
-    container.animation_controllers.forEach((item) => out.animations.using.push(item));
+  if (description.animation_controllers) {
+    description.animation_controllers.forEach((item) => out.animations.using.push(item));
+  }
 
   return out;
 }
