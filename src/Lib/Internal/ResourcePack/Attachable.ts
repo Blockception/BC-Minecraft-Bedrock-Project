@@ -36,6 +36,8 @@ export interface AttachableDescription extends ScriptContainer {
   /** */
   geometry?: Types.Definition;
   /** */
+  render_controllers?: (string | Types.Definition)[];
+  /** */
   sound_effects?: Types.Definition;
   /** */
   textures?: Types.Definition;
