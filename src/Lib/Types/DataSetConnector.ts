@@ -66,7 +66,7 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
    * @param predicate
    * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined {
+  find(predicate: (value: T, key: string) => boolean): T | undefined {
     const packs = this._collection.packs;
     if (!packs) return undefined;
 
