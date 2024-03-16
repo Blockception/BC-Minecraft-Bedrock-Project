@@ -14,6 +14,19 @@ export interface Attachable extends FormatVersion {
 export interface AttachableContainer extends ScriptContainer {
   /** */
   description: AttachableDescription;
+}
+
+/** */
+export interface AttachableDescription {
+  /** */
+  identifier: string;
+  /** */
+  materials?: {
+    /** */
+    default?: string;
+    /** */
+    enchanted?: string;
+  };
   /** */
   animations?: Types.Definition;
   /** */
@@ -29,19 +42,6 @@ export interface AttachableContainer extends ScriptContainer {
 }
 
 /** */
-export interface AttachableDescription {
-  /** */
-  identifier: string;
-  /** */
-  materials?: {
-    /** */
-    default?: string;
-    /** */
-    enchanted?: string;
-  };
-}
-
-/** */
 export namespace Attachable {
   /**
    *
@@ -49,7 +49,12 @@ export namespace Attachable {
    * @returns
    */
   export function is(value: any): value is Attachable {
-    if (value && typeof value === "object" && typeof value.format_version === "string" && typeof value["minecraft:attachable"] === "object") {
+    if (
+      value &&
+      typeof value === "object" &&
+      typeof value.format_version === "string" &&
+      typeof value["minecraft:attachable"] === "object"
+    ) {
       const desc = value["minecraft:attachable"].description;
 
       if (typeof desc === "object" && typeof desc.identifier === "string") return true;
