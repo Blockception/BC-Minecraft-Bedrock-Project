@@ -11,13 +11,13 @@ export interface Attachable extends FormatVersion {
 }
 
 /** */
-export interface AttachableContainer extends ScriptContainer {
+export interface AttachableContainer {
   /** */
   description: AttachableDescription;
 }
 
 /** */
-export interface AttachableDescription {
+export interface AttachableDescription extends ScriptContainer {
   /** */
   identifier: string;
   /** */
