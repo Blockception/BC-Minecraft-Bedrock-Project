@@ -18,42 +18,42 @@ export function Process(doc: TextDocument): Entity | undefined {
 
   if (!Internal.Entity.is(imp)) return undefined;
 
-  const container = imp["minecraft:client_entity"].description;
-  const id = container.identifier;
+  const description = imp["minecraft:client_entity"].description;
+  const id = description.identifier;
   const out: Entity = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangFullSet.harvest(container),
+    molang: Molang.MolangFullSet.harvest(description),
     animations: DefinedUsing.create(),
     documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),
   };
 
   //Process animations
-  Types.Definition.forEach(container.animations, (reference, id) => {
+  Types.Definition.forEach(description.animations, (reference, id) => {
     out.animations.defined.push(reference);
     out.animations.using.push(id);
   });
 
   //Process Animation controller
-  container.animation_controllers?.forEach((item) => {
+  description.animation_controllers?.forEach((item) => {
     const temp = flatten(item);
     if (temp) out.animations.using.push(temp);
   });
 
   //Process geometries
-  Types.Definition.forEach(container.geometry, (reference, id) => {
+  Types.Definition.forEach(description.geometry, (reference, id) => {
     out.molang.geometries.defined.push(reference);
     out.molang.geometries.using.push(removePrefix(id));
   });
 
   //Process materials
-  Types.Definition.forEach(container.materials, (reference, id) => {
+  Types.Definition.forEach(description.materials, (reference, id) => {
     out.molang.materials.defined.push(reference);
     out.molang.materials.using.push(removePrefix(id));
   });
 
   //Process textures
-  Types.Definition.forEach(container.textures, (reference, id) => {
+  Types.Definition.forEach(description.textures, (reference, id) => {
     out.molang.textures.defined.push(reference);
     out.molang.textures.using.push(id);
   });

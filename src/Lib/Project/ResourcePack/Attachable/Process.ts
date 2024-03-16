@@ -30,16 +30,53 @@ export function Process(doc: TextDocument): Attachable | undefined {
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };
 
-  if (description.animations) {
-    Types.Definition.forEach(description.animations, (value, key) => {
-      out.animations.defined.push(key);
-      out.animations.using.push(value);
-    });
-  }
+  //Process animations
+  Types.Definition.forEach(description.animations, (reference, id) => {
+    out.animations.defined.push(reference);
+    out.animations.using.push(id);
+  });
 
-  if (description.animation_controllers) {
-    description.animation_controllers.forEach((item) => out.animations.using.push(item));
-  }
+  //Process Animation controller
+  description.animation_controllers?.forEach((item) => {
+    const temp = flatten(item);
+    if (temp) out.animations.using.push(temp);
+  });
+
+  //Process geometries
+  Types.Definition.forEach(description.geometry, (reference, id) => {
+    out.molang.geometries.defined.push(reference);
+    out.molang.geometries.using.push(removePrefix(id));
+  });
+
+  //Process materials
+  Types.Definition.forEach(description.materials, (reference, id) => {
+    out.molang.materials.defined.push(reference);
+    out.molang.materials.using.push(removePrefix(id));
+  });
+
+  //Process textures
+  Types.Definition.forEach(description.textures, (reference, id) => {
+    out.molang.textures.defined.push(reference);
+    out.molang.textures.using.push(id);
+  });
 
   return out;
+}
+
+function flatten(data: string | Types.Definition): string | undefined {
+  if (typeof data === "string") return data;
+
+  const key = Object.getOwnPropertyNames(data)[0];
+
+  if (key) return data[key];
+
+  return undefined;
+}
+
+function removePrefix(id: string): string {
+  const index = id.indexOf(".");
+
+  if (index > -1) return id.slice(index + 1);
+
+  return id;
 }
