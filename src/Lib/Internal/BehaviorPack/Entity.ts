@@ -22,7 +22,7 @@ export interface EntityEvent {
   /** */
   set_property?: Record<string, string | number | boolean>;
   /** The command to run when the event is triggered */
-  queue_command: CommandContainer
+  queue_command?: CommandContainer
 }
 
 /**

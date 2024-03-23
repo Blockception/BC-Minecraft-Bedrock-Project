@@ -15,6 +15,7 @@ import {
   ProcessAnimationCommands,
   ProcessAnimationControllerCommands,
   ProcessMcFunction,
+  processEntityCommands,
 } from "./General/Types/Commands/Process";
 import { WorldPackCollection } from "./World";
 import { WorldPack } from "./World/WorldPack";
@@ -51,7 +52,7 @@ export class ProjectData {
       case PackType.behavior_pack:
         const out = this.BehaviorPacks.process(doc);
 
-        //Commands
+        //Pre process Commands
         switch (FileType.detect(doc.uri)) {
           case FileType.function:
             ProcessMcFunction(doc, this.General);
@@ -63,6 +64,10 @@ export class ProjectData {
 
           case FileType.animation_controller:
             ProcessAnimationControllerCommands(doc, this.General);
+            break;
+
+          case FileType.entity:
+            processEntityCommands(doc, this.General);
             break;
         }
 

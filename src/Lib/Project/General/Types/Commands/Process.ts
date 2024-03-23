@@ -69,6 +69,23 @@ export function ProcessAnimationControllerCommands(doc: TextDocument, receiver: 
   });
 }
 
+export function processEntityCommands(doc: TextDocument, receiver: GeneralCollection): void {
+  const imp = Json.To<Internal.BehaviorPack.Entity>(doc);
+
+  if (!Internal.BehaviorPack.Entity.is(imp)) return;
+
+  SMap.forEach(imp["minecraft:entity"]?.events, (event) => {
+    let command = event.queue_command?.command;
+    if (command === undefined) return;
+
+    if (!Array.isArray(command)) {
+      command = [command];
+    }
+
+    command.forEach((c) => InternalJsonValue(c, doc, receiver));
+  });
+}
+
 function InternalJsonValue(prop: string, doc: TextDocument, receiver: GeneralCollection) {
   if (prop.startsWith("/")) {
     const offset = doc.getText().indexOf(prop);
