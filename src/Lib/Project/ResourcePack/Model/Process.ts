@@ -17,32 +17,51 @@ export function Process(doc: TextDocument): Model[] | undefined {
   const imp = Json.To<internal.Model>(doc);
 
   if (!internal.Model.is(imp)) return undefined;
-
   const out: Model[] = [];
 
-  if (internal.ModelLegacy.is(imp)) {
-    SMap.forEach<any>(imp, (value, key) => {
-      if (key !== "format_version") {
-        out.push({
-          id: key,
-          location: Types.Location.create(uri, content.indexOf(key)),
-          documentation: Documentation.getDoc(doc, () => `Model: ${key}`),
-        });
-      }
-    });
-  } else if (internal.ModelModern.is(imp)) {
-    imp["minecraft:geometry"].forEach((model) => {
-      if (internal.ModelModernSpec.is(model)) {
-        const key = model.description.identifier;
+  SMap.forEach<any>(imp, (value, key) => {
+    if (!key.startsWith("geometry.")) {
+      return;
+    }
+    out.push(
+      ...createModel({
+        id: key,
+        location: Types.Location.create(uri, content.indexOf(key)),
+        documentation: Documentation.getDoc(doc, () => `Model: ${key}`),
+      })
+    );
+  });
 
-        out.push({
-          id: key,
-          location: Types.Location.create(uri, content.indexOf(key)),
-          documentation: Documentation.getDoc(doc, () => `Model: ${key}`),
-        });
-      }
-    });
+  const modern = imp["minecraft:geometry"];
+  if (Array.isArray(modern)) {
+    modern
+      .filter((m): m is internal.ModelModernSpec => internal.ModelModernSpec.is(m))
+      .forEach((model) => {
+        out.push(
+          ...createModel({
+            id: model.description.identifier,
+            location: Types.Location.create(uri, content.indexOf(model.description.identifier)),
+            documentation: Documentation.getDoc(doc, () => `Model: ${model.description.identifier}`),
+          })
+        );
+      });
   }
 
   return out;
+}
+
+function createModel(current: Model): Array<Model> {
+  // Might be armor definition, thus split it and return
+  if (current.id.includes(":")) {
+    const keys = current.id.split(":");
+
+    return keys.map((key) => {
+      return {
+        ...current,
+        id: key,
+      };
+    });
+  }
+
+  return [current];
 }
