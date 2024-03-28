@@ -19,18 +19,19 @@ export function Process(doc: TextDocument): Model[] | undefined {
   if (!internal.Model.is(imp)) return undefined;
   const out: Model[] = [];
 
-  SMap.forEach<any>(imp, (value, key) => {
-    if (!key.startsWith("geometry.")) {
-      return;
-    }
+  for (const [key, value] of Object.entries(imp)) {
+    if (!key.startsWith("geometry.")) continue;
+    if (!internal.ModelLegacySpec.is(value)) continue;
+
     out.push(
-      ...createModel({
+      createModel({
         id: key,
         location: Types.Location.create(uri, content.indexOf(key)),
         documentation: Documentation.getDoc(doc, () => `Model: ${key}`),
+        bones: getBones(value),
       })
     );
-  });
+  }
 
   const modern = imp["minecraft:geometry"];
   if (Array.isArray(modern)) {
@@ -38,10 +39,11 @@ export function Process(doc: TextDocument): Model[] | undefined {
       .filter((m): m is internal.ModelModernSpec => internal.ModelModernSpec.is(m))
       .forEach((model) => {
         out.push(
-          ...createModel({
+          createModel({
             id: model.description.identifier,
             location: Types.Location.create(uri, content.indexOf(model.description.identifier)),
             documentation: Documentation.getDoc(doc, () => `Model: ${model.description.identifier}`),
+            bones: getBones(model),
           })
         );
       });
@@ -50,18 +52,26 @@ export function Process(doc: TextDocument): Model[] | undefined {
   return out;
 }
 
-function createModel(current: Model): Array<Model> {
+function getBones(model: Pick<internal.ModelLegacySpec | internal.ModelModernSpec, "bones">): string[] {
+  const out: string[] = [];
+
+  model.bones.forEach((bone) => {
+    const name = bone.name;
+    if (typeof name !== "string" || name === "") return;
+    if (out.includes(bone.name)) return;
+
+    out.push(bone.name);
+  });
+
+  return out;
+}
+
+function createModel(current: Model): Model {
   // Might be armor definition, thus split it and return
-  if (current.id.includes(":")) {
-    const keys = current.id.split(":");
+  const keys = current.id.split(":");
 
-    return keys.map((key) => {
-      return {
-        ...current,
-        id: key,
-      };
-    });
-  }
-
-  return [current];
+  return {
+    ...current,
+    id: keys[0],
+  };
 }

@@ -1,4 +1,4 @@
-import { ComponentContainer } from 'bc-minecraft-bedrock-types/lib/src/Minecraft/Components';
+import { ComponentContainer } from 'bc-minecraft-bedrock-types/lib/src/minecraft/components';
 import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
