@@ -11,7 +11,7 @@ export interface Animation {
   loop?: boolean | "hold_on_last_frame";
 
   /** */
-  bones?: SMap<any>;
+  bones?: Record<"string", any>;
   /** */
   particle_effects?: SMap<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
   /** */
@@ -56,4 +56,13 @@ export namespace Animations {
 
     return false;
   }
+}
+
+// Vector that can be molang
+type Vec3 = [number | string, number | string, number | string];
+
+export interface BoneAnimation {
+  rotation?: Vec3 | Record<string, Vec3 | string> | string;
+  position?: Vec3 | Record<string, Vec3 | string> | string;
+  scale?: Vec3 | Record<string, Vec3 | string> | string;
 }
