@@ -1,25 +1,14 @@
 import { FormatVersion } from "../Types/FormatVersion";
 
-/** */
 export interface RenderControllers extends FormatVersion {
-  /** */
   format_version: string;
-  /** */
+
   render_controllers: {
-    /** */
     [controller: string]: RenderController;
   };
 }
 
-/**
- *
- */
 export namespace RenderControllers {
-  /**
-   *
-   * @param value
-   * @returns
-   */
   export function is(value: any): value is RenderControllers {
     if (typeof value === "object") {
       if (typeof value.format_version === "string" && typeof value.render_controllers === "object") {
@@ -31,33 +20,55 @@ export namespace RenderControllers {
   }
 }
 
-/** */
+/**
+ * Represents a render controller.
+ */
 export interface RenderController {
-  /** */
-  array?: {
-    /** */
+  /**
+   * Arrays used for rendering.
+   */
+  arrays?: {
+    /**
+     * Array specification for materials.
+     */
     materials?: ArraySpec;
-    /** */
+
+    /**
+     * Array specification for geometries.
+     */
     geometries?: ArraySpec;
-    /** */
+
+    /**
+     * Array specification for textures.
+     */
     textures?: ArraySpec;
   };
-  /** */
+
+  /**
+   * The geometry used for rendering.
+   */
   geometry?: string;
-  /** */
+
+  /**
+   * The materials used for rendering.
+   */
   materials?: MaterialSpec[];
-  /** */
+
+  /**
+   * The textures used for rendering.
+   */
   textures?: string[];
+
+  /**
+   * The visibility of different parts.
+   */
+  part_visibility: Record<string, boolean | string>[];
 }
 
-/** */
 export interface MaterialSpec {
-  /** */
   [materialPattern: string]: string;
 }
 
-/** */
 export interface ArraySpec {
-  /** */
   [arrayID: string]: string[];
 }
