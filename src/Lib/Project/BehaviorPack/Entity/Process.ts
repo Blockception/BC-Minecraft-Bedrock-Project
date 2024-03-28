@@ -7,8 +7,7 @@ import { SMap } from "../../../Types/SMap";
 import { TextDocument } from "../../../Types/TextDocument";
 import { Entity } from "./Entity";
 import { Documentation } from "../../../Types/Documentation";
-import { EntityComponentContainer } from "../../../Internal/BehaviorPack/Entity";
-import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/src/Minecraft/Components";
+import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/src/minecraft/components";
 
 /**
  *

@@ -1,4 +1,4 @@
-import { Location } from "bc-minecraft-bedrock-types/lib/src/Types/Location";
+import { Location } from "bc-minecraft-bedrock-types/lib/src/types";
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
@@ -351,7 +351,7 @@ describe("ProjectData", () => {
     });
     rp.fogs.set({ id: "rp.fog", location: loc, documentation: doc });
     rp.materials.set({ id: "rp.material", location: loc, documentation: doc });
-    rp.models.set({ id: "rp.model", location: loc, documentation: doc });
+    rp.models.set({ id: "rp.model", location: loc, documentation: doc, bones: [] });
     rp.particles.set({ id: "rp.particle", location: loc, documentation: doc });
     rp.render_controllers.set({
       id: "rp.render_controller",
