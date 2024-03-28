@@ -13,11 +13,7 @@ export namespace Model {
 }
 
 /** */
-export interface ModelLegacy extends FormatVersion {
-  /** */
-  format_version: "1.8.0" | "1.10.0";
-  [model: string]: ModelLegacySpec;
-}
+export type ModelLegacy = FormatVersion & Record<string, ModelLegacySpec>;
 
 /** */
 export namespace ModelLegacy {
@@ -36,7 +32,25 @@ export namespace ModelLegacy {
 }
 
 /** */
-export interface ModelLegacySpec {}
+export interface ModelLegacySpec {
+  /** */
+  bones: Bone[];
+}
+
+export namespace ModelLegacySpec {
+  /**
+   *
+   * @param value
+   * @returns
+   */
+  export function is(value: any): value is ModelLegacySpec {
+    if (typeof value === "object" && Array.isArray(value.bones)) {
+      return true;
+    }
+
+    return false;
+  }
+}
 
 /** */
 export interface ModelModern extends FormatVersion {
@@ -69,6 +83,8 @@ export interface ModelModernSpec {
     /** */
     identifier: string;
   };
+
+  bones: Bone[];
 }
 
 /** */
@@ -85,4 +101,11 @@ export namespace ModelModernSpec {
 
     return false;
   }
+}
+
+export interface Bone {
+  /** */
+  name: string;
+  /** */
+  parent: string;
 }
