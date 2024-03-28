@@ -11,7 +11,7 @@ export interface Animation {
   loop?: boolean | "hold_on_last_frame";
 
   /** */
-  bones?: Record<"string", any>;
+  bones?: Record<"string", BoneAnimation>;
   /** */
   particle_effects?: SMap<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
   /** */
