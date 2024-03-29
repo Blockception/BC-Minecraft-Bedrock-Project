@@ -8,6 +8,8 @@ export enum FileType {
   animation_controller,
   /** */
   attachable,
+  /** */
+  block_culling_rules,
   /**The file biomes_client */
   biomes_client,
   /** */
@@ -55,6 +57,7 @@ export namespace FileType {
     if (/[\\\/]animation_controllers[\\\/]/.test(uri)) return FileType.animation_controller;
     if (/[\\\/]animations[\\\/]/.test(uri)) return FileType.animation;
     if (/[\\\/]attachables[\\\/]/.test(uri)) return FileType.attachable;
+    if (/[\\\/]block_culling[\\\/]/.test(uri)) return FileType.block_culling_rules;
     if (/[\\\/]models[\\\/]/.test(uri)) return FileType.model;
     if (/[\\\/]models[\\\/]entities[\\\/]/.test(uri)) return FileType.model;
     if (/[\\\/]entity[\\\/]/.test(uri)) return FileType.entity;

@@ -1,7 +1,7 @@
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface Fog extends FormatVersion {
+export interface Fog extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

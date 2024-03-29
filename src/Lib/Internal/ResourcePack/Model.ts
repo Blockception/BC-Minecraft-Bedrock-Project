@@ -53,7 +53,7 @@ export namespace ModelLegacySpec {
 }
 
 /** */
-export interface ModelModern extends FormatVersion {
+export interface ModelModern extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

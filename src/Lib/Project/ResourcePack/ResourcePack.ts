@@ -10,7 +10,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import * as Animation from "./Animation";
 import * as AnimationController from "./AnimationController";
 import * as Attachable from "./Attachable";
-import * as Block from "./Block";
+import * as BlockCulling from "./BlockCulling";
 import * as Entity from "./Entity";
 import * as Fog from "./Fog";
 import * as Particle from "./Particle";
@@ -35,8 +35,8 @@ export class ResourcePack implements Container, Pack {
   readonly animation_controllers: DataSet<AnimationController.AnimationController>;
   /**The collection of animations controllers*/
   readonly attachables: DataSet<Attachable.Attachable>;
-  /**The collection of blocks*/
-  readonly blocks: DataSet<Block.Block>;
+  /**The collection of blocks culling rules*/
+  readonly block_culling_rules: DataSet<BlockCulling.BlockCulling>;
   /**The collection of entities*/
   readonly entities: DataSet<Entity.Entity>;
   /**The collection of fogs*/
@@ -66,7 +66,7 @@ export class ResourcePack implements Container, Pack {
     this.animation_controllers = new DataSet();
     this.animations = new DataSet();
     this.attachables = new DataSet();
-    this.blocks = new DataSet();
+    this.block_culling_rules = new DataSet();
     this.entities = new DataSet();
     this.fogs = new DataSet();
     this.materials = new DataSet();
@@ -91,6 +91,9 @@ export class ResourcePack implements Container, Pack {
 
       case FileType.animation_controller:
         return this.animation_controllers.set(AnimationController.Process(doc));
+
+      case FileType.block_culling_rules:
+        return this.block_culling_rules.set(BlockCulling.Process(doc));
 
       case FileType.attachable:
         return this.attachables.set(Attachable.Process(doc));
@@ -143,6 +146,9 @@ export class ResourcePack implements Container, Pack {
       case FileType.attachable:
         return this.attachables;
 
+      case FileType.block_culling_rules:
+        return this.block_culling_rules;
+
       case FileType.entity:
         return this.entities;
 
@@ -184,7 +190,7 @@ export class ResourcePack implements Container, Pack {
     out = this.animations.deleteFolder(uri) || out;
     out = this.animation_controllers.deleteFolder(uri) || out;
     out = this.attachables.deleteFolder(uri) || out;
-    out = this.blocks.deleteFolder(uri) || out;
+    out = this.block_culling_rules.deleteFolder(uri) || out;
     out = this.entities.deleteFolder(uri) || out;
     out = this.fogs.deleteFolder(uri) || out;
     out = this.materials.deleteFolder(uri) || out;
@@ -207,7 +213,7 @@ export class ResourcePack implements Container, Pack {
     out = this.animations.deleteFile(uri) || out;
     out = this.animation_controllers.deleteFile(uri) || out;
     out = this.attachables.deleteFile(uri) || out;
-    out = this.blocks.deleteFile(uri) || out;
+    out = this.block_culling_rules.deleteFile(uri) || out;
     out = this.entities.deleteFile(uri) || out;
     out = this.fogs.deleteFile(uri) || out;
     out = this.materials.deleteFile(uri) || out;
@@ -232,7 +238,7 @@ export class ResourcePack implements Container, Pack {
     if ((value = this.animation_controllers.find(predicate))) return value;
     if ((value = this.animations.find(predicate))) return value;
     if ((value = this.attachables.find(predicate))) return value;
-    if ((value = this.blocks.find(predicate))) return value;
+    if ((value = this.block_culling_rules.find(predicate))) return value;
     if ((value = this.entities.find(predicate))) return value;
     if ((value = this.fogs.find(predicate))) return value;
     if ((value = this.materials.find(predicate))) return value;
@@ -257,7 +263,6 @@ export class ResourcePack implements Container, Pack {
     this.animation_controllers.forEach(callbackfn);
     this.animations.forEach(callbackfn);
     this.attachables.forEach(callbackfn);
-    this.blocks.forEach(callbackfn);
     this.entities.forEach(callbackfn);
     this.fogs.forEach(callbackfn);
     this.materials.forEach(callbackfn);
@@ -293,7 +298,7 @@ export namespace ResourcePack {
 
       if (typeof temp.animations !== "object") return false;
       if (typeof temp.animation_controllers !== "object") return false;
-      if (typeof temp.blocks !== "object") return false;
+      if (typeof temp.block_culling_rules !== "object") return false;
       if (typeof temp.entities !== "object") return false;
 
       if (typeof temp.context !== "object") return false;

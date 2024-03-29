@@ -2,7 +2,7 @@ import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface SoundDefinitions extends FormatVersion {
+export interface SoundDefinitions extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

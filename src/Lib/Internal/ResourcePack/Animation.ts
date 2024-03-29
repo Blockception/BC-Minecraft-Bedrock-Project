@@ -33,7 +33,7 @@ export namespace Animation {
 }
 
 /** */
-export interface Animations extends FormatVersion {
+export interface Animations extends Readonly<FormatVersion> {
   /** */
   format_version: string;
 

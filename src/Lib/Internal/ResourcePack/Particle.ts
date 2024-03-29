@@ -2,7 +2,7 @@ import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface Particle extends FormatVersion {
+export interface Particle extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

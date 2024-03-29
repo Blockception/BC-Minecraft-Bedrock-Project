@@ -1,7 +1,7 @@
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface Material extends FormatVersion {
+export interface Material extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

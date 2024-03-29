@@ -2,7 +2,7 @@ import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
 /** */
-export interface Item extends FormatVersion {
+export interface Item extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

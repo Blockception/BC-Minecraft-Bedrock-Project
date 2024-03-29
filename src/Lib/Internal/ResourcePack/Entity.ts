@@ -3,7 +3,7 @@ import { FormatVersion } from "../Types/FormatVersion";
 import { ScriptContainer } from "../Types";
 
 /** */
-export interface Entity extends FormatVersion {
+export interface Entity extends Readonly<FormatVersion> {
   /** */
   readonly format_version: string;
   /** */

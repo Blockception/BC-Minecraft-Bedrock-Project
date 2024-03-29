@@ -3,7 +3,7 @@ import { FormatVersion } from "../Types/FormatVersion";
 import * as General from '../General/Controllers/State';
 
 /** */
-export interface AnimationControllers extends FormatVersion {
+export interface AnimationControllers extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */

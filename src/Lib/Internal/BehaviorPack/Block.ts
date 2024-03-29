@@ -2,7 +2,7 @@ import { ComponentContainer } from 'bc-minecraft-bedrock-types/lib/src/minecraft
 import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 
-export interface Block extends FormatVersion {
+export interface Block extends Readonly<FormatVersion> {
   format_version: string;
   "minecraft:block": {
     description: {

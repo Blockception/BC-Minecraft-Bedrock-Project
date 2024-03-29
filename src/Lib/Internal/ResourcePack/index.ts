@@ -3,6 +3,7 @@
 export * from "./Animation";
 export * from "./AnimationController";
 export * from "./Attachable";
+export * from "./BlockCulling";
 export * from "./Entity";
 export * from "./Fog";
 export * from "./Material";

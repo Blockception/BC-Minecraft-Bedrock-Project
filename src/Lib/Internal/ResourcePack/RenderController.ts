@@ -1,6 +1,6 @@
 import { FormatVersion } from "../Types/FormatVersion";
 
-export interface RenderControllers extends FormatVersion {
+export interface RenderControllers extends Readonly<FormatVersion> {
   format_version: string;
 
   render_controllers: {

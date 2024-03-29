@@ -3,9 +3,7 @@ import { FormatVersion } from "../Types/FormatVersion";
 import { ScriptContainer } from "../Types";
 
 /** */
-export interface Attachable extends FormatVersion {
-  /** */
-  readonly format_version: string;
+export interface Attachable extends Readonly<FormatVersion> {
   /** */
   "minecraft:attachable": AttachableContainer;
 }
