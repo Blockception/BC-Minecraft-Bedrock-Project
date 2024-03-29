@@ -119,7 +119,7 @@ export class ProjectData {
    * @param id The idenfitication of the block
    * @returns true when it exists, false when it does not*/
   hasBlock(id: string): boolean {
-    if (this.BehaviorPacks.blocks.has(id) || this.ResourcePacks.blocks.has(id)) return true;
+    if (this.BehaviorPacks.blocks.has(id)) return true;
 
     return false;
   }

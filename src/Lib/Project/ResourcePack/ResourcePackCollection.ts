@@ -5,7 +5,7 @@ import { ResourcePack } from "./ResourcePack";
 import * as Animation from "./Animation";
 import * as AnimationController from "./AnimationController";
 import * as Attachable from "./Attachable";
-import * as Block from "./Block";
+import * as BlockCulling from "./BlockCulling";
 import * as Entity from "./Entity";
 import * as Fog from "./Fog";
 import * as Particle from "./Particle";
@@ -23,8 +23,8 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
   readonly animation_controllers: DataSetConnector<AnimationController.AnimationController, ResourcePack>;
   /**The collection of animations controllers*/
   readonly attachables: DataSetConnector<Attachable.Attachable, ResourcePack>;
-  /**The collection of blocks*/
-  readonly blocks: DataSetConnector<Block.Block, ResourcePack>;
+  /**The collection of block_culling_rules*/
+  readonly block_culling_rules: DataSetConnector<BlockCulling.BlockCulling, ResourcePack>;
   /**The collection of entities*/
   readonly entities: DataSetConnector<Entity.Entity, ResourcePack>;
   /**The collection of fogs*/
@@ -50,7 +50,7 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
     this.animations = new DataSetConnector(this, (pack) => pack.animations);
     this.animation_controllers = new DataSetConnector(this, (pack) => pack.animation_controllers);
     this.attachables = new DataSetConnector(this, (pack) => pack.attachables);
-    this.blocks = new DataSetConnector(this, (pack) => pack.blocks);
+    this.block_culling_rules = new DataSetConnector(this, (pack) => pack.block_culling_rules);
     this.entities = new DataSetConnector(this, (pack) => pack.entities);
     this.fogs = new DataSetConnector(this, (pack) => pack.fogs);
     this.materials = new DataSetConnector(this, (pack) => pack.materials);

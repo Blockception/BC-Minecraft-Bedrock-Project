@@ -22,8 +22,8 @@ describe("Resourcepack", () => {
     it("attachables", () => {
       expect(typeof RP.attachables === "object", "attachables").to.be.true;
     });
-    it("blocks", () => {
-      expect(typeof RP.blocks === "object", "blocks").to.be.true;
+    it("block_culling", () => {
+      expect(typeof RP.block_culling_rules === "object", "block_culling_rules").to.be.true;
     });
     it("context", () => {
       expect(typeof RP.context === "object", "context").to.be.true;

@@ -341,7 +341,7 @@ describe("ProjectData", () => {
       molang: molang,
       documentation: doc,
     });
-    rp.blocks.set({ id: "rp.block", location: loc, documentation: doc });
+    rp.block_culling_rules.set({ id: "rp.block_culling_rules", location: loc, documentation: doc, affected_bones: [] });
     rp.entities.set({
       animations: emptyDefinedUsing,
       id: "rp.entity",
