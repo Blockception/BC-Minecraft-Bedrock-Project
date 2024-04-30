@@ -1,7 +1,7 @@
 import { ComponentContainer, ComponentGroups } from "bc-minecraft-bedrock-types/lib/src/minecraft/components";
 import { SMap } from "../../Types/SMap";
 import { ScriptContainer } from "../Types/Script";
-import { CommandContainer } from '../General/Commands';
+import { CommandContainer } from "../General/Commands";
 
 /**The interface that deals with entity events that add or remove component groups*/
 export interface EntityEventGroup {
@@ -22,8 +22,49 @@ export interface EntityEvent {
   /** */
   set_property?: Record<string, string | number | boolean>;
   /** The command to run when the event is triggered */
-  queue_command?: CommandContainer
+  queue_command?: CommandContainer;
 }
+
+/**
+ *
+ */
+export interface EntityBooleanProperty {
+  /** */
+  type: "bool";
+  /** The default value or molang expression */
+  default: boolean | string;
+}
+
+export interface EntityFloatProperty {
+  /** */
+  type: "float";
+  /** The default value or molang expression */
+  default: number | string;
+  /** */
+  range: [number, number];
+}
+
+export interface EntityEnumProperty {
+  /** */
+  type: "enum";
+  /** The default value or molang expression */
+  values: Array<string>;
+  /** */
+  default: string;
+  /** */
+  client_sync: true;
+}
+
+export interface EntityIntProperty {
+  /** */
+  type: "int";
+  /** The default value or molang expression */
+  default: number | string;
+  /** */
+  range: [number, number];
+}
+
+export type EntityProperty = EntityBooleanProperty | EntityFloatProperty | EntityIntProperty | EntityEnumProperty;
 
 /**
  * @deprecated Replace with @see {@link ComponentContainer}
@@ -43,7 +84,7 @@ export interface EntityDescription extends ScriptContainer {
   /** */
   runtime_identifier: string;
   /** */
-  properties?: Record<string, any>;
+  properties?: Record<string, EntityProperty>;
 }
 
 /** */
