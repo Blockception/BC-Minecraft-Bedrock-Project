@@ -8,6 +8,7 @@ import { TextDocument } from "../../../Types/TextDocument";
 import { Entity } from "./Entity";
 import { Documentation } from "../../../Types/Documentation";
 import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/src/minecraft/components";
+import { EntityProperty } from './Properties';
 
 /**
  *
@@ -53,8 +54,8 @@ export function Process(doc: TextDocument): Entity | undefined {
   }
 
   if (container.description.properties) {
-    for (const [name, value] of Object.entries(container.description.properties)) {
-      out.properties.push({ name, ...value });
+    for (const [name, property] of Object.entries(container.description.properties)) {
+      out.properties.push({ name, ...property } as EntityProperty);
     }
   }
 
