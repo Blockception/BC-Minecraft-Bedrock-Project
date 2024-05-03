@@ -80,9 +80,9 @@ export interface EntityDescription extends ScriptContainer {
   /** */
   is_summonable?: boolean;
   /** */
-  is_experimental: boolean;
+  is_experimental?: boolean;
   /** */
-  runtime_identifier: string;
+  runtime_identifier?: string;
   /** */
   properties?: Record<string, EntityProperty>;
 }
