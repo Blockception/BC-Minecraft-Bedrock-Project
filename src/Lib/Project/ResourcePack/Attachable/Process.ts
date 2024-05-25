@@ -29,6 +29,7 @@ export function Process(doc: TextDocument): Attachable | undefined {
     animations: DefinedUsing.create(),
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };
+  Molang.MolangFullSet.fromScript(description.scripts ?? {}, out.molang);
 
   //Process animations
   Types.Definition.forEach(description.animations, (reference, id) => {

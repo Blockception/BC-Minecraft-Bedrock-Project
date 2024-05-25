@@ -36,6 +36,7 @@ export function Process(doc: TextDocument): Entity | undefined {
     molang: Molang.MolangSet.harvest(container),
     properties: [],
   };
+  Molang.MolangFullSet.fromScript(container.description.scripts ?? {}, out.molang);
 
   if (container.component_groups) {
     SMap.forEach(container.component_groups, (group, name) => {
