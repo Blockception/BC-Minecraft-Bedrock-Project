@@ -5,7 +5,7 @@
 [![tagged-release](https://github.com/Blockception/BC-Minecraft-Bedrock-Project/actions/workflows/tagged-release.yml/badge.svg)](https://github.com/Blockception/BC-Minecraft-Bedrock-Project/actions/workflows/tagged-release.yml)  
 ![npm](https://img.shields.io/npm/v/bc-minecraft-project)
 
-A project that deals with caching, summarizing minecraft bedrock data
+A project that deals with caching, summarizing Minecraft bedrock data
 
 ```ts
 const context: ProjectContext = {
