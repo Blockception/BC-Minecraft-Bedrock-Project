@@ -67,11 +67,11 @@ function getBones(model: Pick<internal.ModelLegacySpec | internal.ModelModernSpe
 }
 
 function createModel(current: Model): Model {
-  // Might be armor definition, thus split it and return
-  const keys = current.id.split(":");
+  // Might be inheriting another geometry, thus split it and return
+  const keys = current.id.includes(':geometry') ? current.id.split(":")[0] : current.id;
 
   return {
     ...current,
-    id: keys[0],
+    id: keys,
   };
 }
