@@ -68,7 +68,7 @@ function getBones(model: Pick<internal.ModelLegacySpec | internal.ModelModernSpe
 
 function createModel(current: Model): Model {
   // Might be inheriting another geometry, thus split it and return
-  const keys = current.id.includes(':geometry') ? current.id.split(":")[0] : current.id;
+  const keys = current.id.includes(':geometry') ? current.id.split(":geometry")[0] : current.id;
 
   return {
     ...current,
