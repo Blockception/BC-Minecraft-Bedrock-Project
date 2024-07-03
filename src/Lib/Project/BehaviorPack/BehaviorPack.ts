@@ -6,6 +6,7 @@ import * as AnimationController from "./AnimationController";
 import * as Animation from "./Animation";
 import * as Block from "./Block";
 import * as Entity from "./Entity";
+import * as Feature from "./Feature";
 import * as Function from "./McFunction";
 import * as Item from "./Item";
 import * as LootTable from "./LootTable";
@@ -36,6 +37,8 @@ export class BehaviorPack implements Container, Pack {
   readonly blocks: DataSet<Block.Block>;
   /**The collection of entities*/
   readonly entities: DataSet<Entity.Entity>;
+  /**The collection of features*/
+  readonly features: DataSet<Feature.Feature>;
   /**The collection of mcfunctions*/
   readonly functions: DataSet<Function.Function>;
   /**The collection of items*/
@@ -64,6 +67,7 @@ export class BehaviorPack implements Container, Pack {
     this.loot_tables = new DataSet();
     this.structures = new DataSet();
     this.trading = new DataSet();
+    this.features = new DataSet();
   }
 
   /**
@@ -102,6 +106,10 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.trading:
         return this.trading.set(Trading.Process(doc));
+
+      case FileType.feature:
+        return this.features.set(Feature.Process(doc))
+
     }
 
     return undefined;

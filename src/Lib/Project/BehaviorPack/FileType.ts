@@ -9,6 +9,8 @@ export enum FileType {
   /***/
   entity,
   /***/
+  feature,
+  /***/
   function,
   /***/
   item,
@@ -24,6 +26,10 @@ export enum FileType {
   structure,
   /***/
   trading,
+  /***/
+  terrain_texture,
+  /***/
+  item_texture,
   /***/
   unknown,
 }
@@ -44,6 +50,7 @@ export namespace FileType {
     if (/[\\\/]spawn_rules[\\\/]/.test(uri)) return FileType.spawn_rule;
     if (/[\\\/]structures[\\\/]/.test(uri)) return FileType.structure;
     if (/[\\\/]trading[\\\/]/.test(uri)) return FileType.trading;
+    if (/[\\\/]features[\\\/]/.test(uri)) return FileType.feature;
     //These can also be subfolders
     if (/[\\\/]blocks[\\\/]/.test(uri)) return FileType.block;
     if (/[\\\/]entities[\\\/]/.test(uri)) return FileType.entity;
@@ -51,6 +58,8 @@ export namespace FileType {
 
     //Files
     if (uri.endsWith("manifest.json")) return FileType.manifest;
+    if (uri.endsWith("terrain_texture.json")) return FileType.terrain_texture;
+    if (uri.endsWith("item_texture.json")) return FileType.item_texture;
 
     return FileType.unknown;
   }
