@@ -15,6 +15,16 @@ import * as RenderController from "./RenderController";
 import * as Sound from "./Sound";
 import * as Texture from "./Texture";
 
+type CollectFieldsOfType<T> = {
+  [K in keyof T]: T[K] extends DataSetConnector<infer U, infer P> ? U : never;
+};
+type CollectionFieldsDataSet<T> = {
+  [K in keyof T]: T[K] extends DataSetConnector<infer U, infer P> ? DataSetConnector<U, P> : never;
+}
+
+type ItemTypes =  CollectFieldsOfType<ResourcePack>[keyof ResourcePack];
+type DataSetTypes = CollectionFieldsDataSet<ResourcePack>[keyof ResourcePack];
+
 /** */
 export class ResourcePackCollection extends PackCollection<ResourcePack> {
   /**The collection of  animations*/

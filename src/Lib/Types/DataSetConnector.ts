@@ -4,26 +4,19 @@ import { IDataSet } from "./IDataSet";
 import { Pack } from "./Pack";
 import { PackCollection } from "./PackCollection";
 
-/**The class DataSetConnector description*/
+/**
+ * The class DataSetConnector description
+ */
 export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U extends Pack> implements IDataSet<T> {
   private _collection: PackCollection<U>;
   private _getDataset: (pack: U) => DataSet<T> | undefined;
 
-  /**
-   *
-   * @param get
-   * @param count
-   */
   constructor(collection: PackCollection<U>, getDataset: (pack: U) => DataSet<T> | undefined) {
     this._collection = collection;
     this._getDataset = getDataset;
   }
 
-  /**
-   *
-   * @param id
-   * @returns
-   */
+  /** @inheritdoc */
   get(id: string | Types.Identifiable): T | undefined {
     const packs = this._collection.packs;
     if (!packs) return undefined;
@@ -38,11 +31,7 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
     return undefined;
   }
 
-  /**
-   *
-   * @param id
-   * @returns
-   */
+  /** @inheritdoc */
   has(id: string | Types.Identifiable): boolean {
     return this.get(id) !== undefined;
   }
@@ -61,11 +50,7 @@ export class DataSetConnector<T extends Types.Identifiable & Types.Locatable, U 
     }
   }
 
-  /**
-   *
-   * @param predicate
-   * @returns
-   */
+  /** @inheritdoc */
   find(predicate: (value: T, key: string) => boolean): T | undefined {
     const packs = this._collection.packs;
     if (!packs) return undefined;

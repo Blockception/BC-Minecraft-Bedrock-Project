@@ -19,6 +19,16 @@ import { FileType } from "./FileType";
 import { Types } from "bc-minecraft-bedrock-types";
 import { PackType } from "../PackType";
 
+type CollectFieldsOfType<T> = {
+  [K in keyof T]: T[K] extends DataSet<infer U> ? U : never;
+};
+type CollectionFieldsDataSet<T> = {
+  [K in keyof T]: T[K] extends DataSet<infer U> ? DataSet<U> : never;
+}
+
+type ItemTypes =  CollectFieldsOfType<BehaviorPack>[keyof BehaviorPack];
+type DataSetTypes = CollectionFieldsDataSet<BehaviorPack>[keyof BehaviorPack];
+
 /** */
 export class BehaviorPack implements Container, Pack {
   /**@inheritdoc */
@@ -74,7 +84,7 @@ export class BehaviorPack implements Container, Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument): DataSetBase | undefined {
+  process(doc: TextDocument): DataSetTypes | undefined {
     this.deleteFile(doc.uri);
     const Type = FileType.detect(doc.uri);
 
@@ -120,7 +130,7 @@ export class BehaviorPack implements Container, Pack {
    * @param uri
    * @returns
    */
-  getDataset(uri: string): DataSetBase | undefined {
+  getDataset(uri: string): DataSetTypes | undefined {
     const Type = FileType.detect(uri);
 
     switch (Type) {
@@ -203,8 +213,8 @@ export class BehaviorPack implements Container, Pack {
    * @returns
    */
   find(
-    predicate: (value: Types.BaseObject, key: string) => boolean
-  ): Types.BaseObject | undefined {
+    predicate: (value: ItemTypes, key: string) => boolean
+  ): ItemTypes | undefined {
     let value = undefined;
 
     if ((value = this.animations.find(predicate))) return value;
@@ -225,7 +235,7 @@ export class BehaviorPack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  forEach(callbackfn: (value: Types.BaseObject) => void): void {
+  forEach(callbackfn: (value: ItemTypes) => void): void {
     this.animations.forEach(callbackfn);
     this.animation_controllers.forEach(callbackfn);
     this.blocks.forEach(callbackfn);

@@ -3,7 +3,7 @@ import { DataSet, DataSetBase } from "../../Types/DataSet";
 import { FileType } from "./Enum";
 import { MCProject } from "bc-minecraft-project";
 import { Pack } from "../../Types/Pack";
-import { PackType } from '../PackType';
+import { PackType } from "../PackType";
 import { TextDocument } from "../../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
 
@@ -19,6 +19,16 @@ import * as Model from "./Model";
 import * as RenderController from "./RenderController";
 import * as Sound from "./Sound";
 import * as Texture from "./Texture";
+
+type CollectFieldsOfType<T> = {
+  [K in keyof T]: T[K] extends DataSet<infer U> ? U : never;
+};
+type CollectionFieldsDataSet<T> = {
+  [K in keyof T]: T[K] extends DataSet<infer U> ? DataSet<U> : never;
+}
+
+type ItemTypes =  CollectFieldsOfType<ResourcePack>[keyof ResourcePack];
+type DataSetTypes = CollectionFieldsDataSet<ResourcePack>[keyof ResourcePack];
 
 /** */
 export class ResourcePack implements Container, Pack {
@@ -55,13 +65,12 @@ export class ResourcePack implements Container, Pack {
   readonly textures: DataSet<Texture.Texture>;
 
   /**
-   *
+   * Creates a new instance of ResourcePack
    * @param folder The folder of the behavior
    * @param Context The Mcproject data or the filepath to read from*/
   constructor(folder: string, Context: MCProject | string) {
     this.folder = folder;
-    this.context =
-      typeof Context === "object" ? Context : MCProject.loadSync(Context);
+    this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 
     this.animation_controllers = new DataSet();
     this.animations = new DataSet();
@@ -81,7 +90,7 @@ export class ResourcePack implements Container, Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument): DataSetBase | undefined {
+  process(doc: TextDocument): DataSetTypes | undefined {
     this.deleteFile(doc.uri);
     const Type = FileType.detect(doc.uri);
 
@@ -133,7 +142,7 @@ export class ResourcePack implements Container, Pack {
    * @param uri
    * @returns
    */
-  getDataset(uri: string): DataSetBase | undefined {
+  getDataset(uri: string): DataSetTypes | undefined {
     const Type = FileType.detect(uri);
 
     switch (Type) {
@@ -230,9 +239,7 @@ export class ResourcePack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  find(
-    predicate: (value: Types.BaseObject, key: string) => boolean
-  ): Types.BaseObject | undefined {
+  find(predicate: (value: ItemTypes, key: string) => boolean): ItemTypes | undefined {
     let value = undefined;
 
     if ((value = this.animation_controllers.find(predicate))) return value;
@@ -256,10 +263,7 @@ export class ResourcePack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  forEach(
-    callbackfn: (value: Types.BaseObject) => void
-  ): void {
-
+  forEach(callbackfn: (value: ItemTypes) => void): void {
     this.animation_controllers.forEach(callbackfn);
     this.animations.forEach(callbackfn);
     this.attachables.forEach(callbackfn);

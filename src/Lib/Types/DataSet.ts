@@ -1,27 +1,31 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { IDataSet } from "./IDataSet";
 
-/**The base of any dataset*/
+/** The base of any dataset */
 export interface DataSetBase {
-  /**Clears the entire dataset*/
+  /** Clears the entire dataset */
   clear(): void;
 
-  /**Delete the given item key from the location
+  /**
+   * Delete the given item key from the location
    * @param key The objects identify key
    * @returns `true` or `false` wheter or not deletion was succesfull*/
   delete(key: string | Types.Identifiable): boolean;
 
-  /**Delete the items that come from the specified file
+  /**
+   * Delete the items that come from the specified file
    * @param uri The filepath uri
    * @returns `true` or `false` wheter or not deletion was succesfull*/
   deleteFile(uri: string): boolean;
 
-  /**Delete the items that come from the specified file
+  /**
+   * Delete the items that come from the specified file
    * @param uri The filepath uri
    * @returns `true` or `false` wheter or not deletion was succesfull*/
   deleteFolder(uri: string): boolean;
 
-  /**Checks if an object with the given id exists
+  /**
+   * Checks if an object with the given id exists
    * @param key The objects identify key
    * @returns `true` or `false` wheter or not deletion was succesfull*/
   has(key: string | Types.Identifiable): boolean;
@@ -31,42 +35,28 @@ export interface DataSetBase {
 export class DataSet<T extends Types.Identifiable & Types.Locatable> implements DataSetBase, IDataSet<T> {
   private _data: Map<string, T>;
 
-  /**
-   *
-   * @param vanilla
-   */
   constructor() {
     this._data = new Map<string, T>();
   }
 
-  /** */
+  /** @inheritdoc */
   clear(): void {
     this._data.clear();
   }
 
-  /**
-   *
-   * @returns
-   */
+  /** @inheritdoc */
   count(): number {
     return this._data.size;
   }
 
-  /**
-   *
-   * @param key
-   * @returns
-   */
+  /** @inheritdoc */
   delete(key: string | Types.Identifiable): boolean {
     if (typeof key !== "string") key = key.id;
 
     return this._data.delete(key);
   }
 
-  /**
-   *
-   * @param uri
-   */
+  /** @inheritdoc */
   deleteFile(uri: string): boolean {
     let out = false;
 
@@ -80,11 +70,7 @@ export class DataSet<T extends Types.Identifiable & Types.Locatable> implements 
     return out;
   }
 
-  /**
-   *
-   * @param uri
-   * @returns
-   */
+  /** @inheritdoc */
   deleteFolder(uri: string): boolean {
     let out = false;
 
@@ -106,11 +92,11 @@ export class DataSet<T extends Types.Identifiable & Types.Locatable> implements 
   }
 
   /**
-   * 
-   * @param predicate 
-   * @returns 
+   *
+   * @param predicate
+   * @returns
    */
-  find(predicate: (value: T, key : string) => boolean) : T | undefined {
+  find(predicate: (value: T, key: string) => boolean): T | undefined {
     for (const item of this._data.entries()) {
       if (predicate(item[1], item[0])) return item[1];
     }
@@ -127,11 +113,7 @@ export class DataSet<T extends Types.Identifiable & Types.Locatable> implements 
     return this._data.get(Types.Identifiable.getId(key));
   }
 
-  /**
-   *
-   * @param key
-   * @returns
-   */
+  /** @inheritdoc */
   has(key: string | Types.Identifiable): boolean {
     return this._data.has(Types.Identifiable.getId(key));
   }
