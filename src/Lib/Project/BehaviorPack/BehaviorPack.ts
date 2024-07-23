@@ -16,7 +16,6 @@ import * as Trading from "./Trading";
 import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
 import { FileType } from "./FileType";
-import { Types } from "bc-minecraft-bedrock-types";
 import { PackType } from "../PackType";
 
 type CollectFieldsOfType<T> = {

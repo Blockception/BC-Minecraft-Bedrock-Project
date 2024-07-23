@@ -1,5 +1,4 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { start } from 'repl';
 import { TextDocument } from "./TextDocument";
 
 /** */
