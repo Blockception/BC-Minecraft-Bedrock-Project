@@ -1,3 +1,6 @@
+
+
+
 export interface CommandContainer {
-  command: string | string[];
+  command: string | string[]
 }
