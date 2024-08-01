@@ -14,15 +14,16 @@ import * as Model from "./Model";
 import * as RenderController from "./RenderController";
 import * as Sound from "./Sound";
 import * as Texture from "./Texture";
+import { Manifest } from "../../Internal/Types";
 
 type CollectFieldsOfType<T> = {
   [K in keyof T]: T[K] extends DataSetConnector<infer U, infer P> ? U : never;
 };
 type CollectionFieldsDataSet<T> = {
   [K in keyof T]: T[K] extends DataSetConnector<infer U, infer P> ? DataSetConnector<U, P> : never;
-}
+};
 
-type ItemTypes =  CollectFieldsOfType<ResourcePack>[keyof ResourcePack];
+type ItemTypes = CollectFieldsOfType<ResourcePack>[keyof ResourcePack];
 type DataSetTypes = CollectionFieldsDataSet<ResourcePack>[keyof ResourcePack];
 
 /** */
@@ -71,14 +72,8 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
     this.textures = new DataSetConnector(this, (pack) => pack.textures);
   }
 
-  /**
-   *
-   * @param folder
-   * @param Context
-   * @returns
-   */
-  add(folder: string, Context: MCProject | string): ResourcePack {
-    const out = new ResourcePack(folder, Context);
+  add(folder: string, context: MCProject | string, manifest: Manifest): ResourcePack {
+    const out = new ResourcePack(folder, context, manifest);
     this.packs.push(out);
 
     return out;

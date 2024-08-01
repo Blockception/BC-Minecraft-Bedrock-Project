@@ -1,45 +1,45 @@
-import { MCProject } from "bc-minecraft-project";
-import { Manifest } from "../Internal/Types/Manifest";
-import { TextDocument } from "../Types/TextDocument";
 import { BehaviorPack } from "./BehaviorPack/BehaviorPack";
 import { BehaviorPackCollection } from "./BehaviorPack/BehaviorPackCollection";
-import { PackType } from "./PackType";
+import { DataSetBase } from "../Types/DataSet";
+import { Documents } from "../Types/ProjectContext";
+import { FileType } from "./BehaviorPack/Enum";
 import { GeneralCollection } from "./General/General";
+import { Manifest } from "../Internal/Types/Manifest";
+import { MCProject } from "bc-minecraft-project";
+import { Pack } from "../Types/Pack";
+import { PackType } from "./PackType";
 import { ResourcePack } from "./ResourcePack/ResourcePack";
 import { ResourcePackCollection } from "./ResourcePack/ResourcePackCollection";
-import { ProjectContext } from "../Types/ProjectContext";
-import { DataSetBase } from "../Types/DataSet";
-import { Pack } from "../Types/Pack";
+import { TextDocument } from "../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
+import { WorldPack } from "./World/WorldPack";
+import { WorldPackCollection } from "./World";
 import {
   ProcessAnimationCommands,
   ProcessAnimationControllerCommands,
   ProcessMcFunction,
   processEntityCommands,
 } from "./General/Types/Commands/Process";
-import { WorldPackCollection } from "./World";
-import { WorldPack } from "./World/WorldPack";
-import { FileType } from "./BehaviorPack/Enum";
 
 /**The project cache for minecraft*/
 export class ProjectData {
   /**The collection of behavior packs*/
-  BehaviorPacks: BehaviorPackCollection;
+  behaviorPacks: BehaviorPackCollection;
   /**The collection of resource packs*/
-  ResourcePacks: ResourcePackCollection;
+  resourcePacks: ResourcePackCollection;
   /**The collection of worlds*/
-  Worlds: WorldPackCollection;
+  worlds: WorldPackCollection;
   /**The collection of general items*/
-  General: GeneralCollection;
+  general: GeneralCollection;
   /**The context needed to run this project data collection*/
-  Context: ProjectContext<TextDocument>;
+  documents: Documents<TextDocument>;
 
-  constructor(context: ProjectContext<TextDocument>) {
-    this.BehaviorPacks = new BehaviorPackCollection();
-    this.ResourcePacks = new ResourcePackCollection();
-    this.General = new GeneralCollection();
-    this.Worlds = new WorldPackCollection();
-    this.Context = context;
+  constructor(context: Documents<TextDocument>) {
+    this.behaviorPacks = new BehaviorPackCollection();
+    this.resourcePacks = new ResourcePackCollection();
+    this.general = new GeneralCollection();
+    this.worlds = new WorldPackCollection();
+    this.documents = context;
   }
 
   /**Processes the given textdocument into the bacp
@@ -50,34 +50,34 @@ export class ProjectData {
 
     switch (type) {
       case PackType.behavior_pack:
-        const out = this.BehaviorPacks.process(doc);
+        const out = this.behaviorPacks.process(doc);
 
         //Pre process Commands
         switch (FileType.detect(doc.uri)) {
           case FileType.function:
-            ProcessMcFunction(doc, this.General);
+            ProcessMcFunction(doc, this.general);
             break;
 
           case FileType.animation:
-            ProcessAnimationCommands(doc, this.General);
+            ProcessAnimationCommands(doc, this.general);
             break;
 
           case FileType.animation_controller:
-            ProcessAnimationControllerCommands(doc, this.General);
+            ProcessAnimationControllerCommands(doc, this.general);
             break;
 
           case FileType.entity:
-            processEntityCommands(doc, this.General);
+            processEntityCommands(doc, this.general);
             break;
         }
 
         return out;
 
       case PackType.resource_pack:
-        return this.ResourcePacks.process(doc);
+        return this.resourcePacks.process(doc);
 
       case PackType.world:
-        return this.Worlds.process(doc);
+        return this.worlds.process(doc);
     }
 
     return undefined;
@@ -87,9 +87,9 @@ export class ProjectData {
    * @param doc The document to process*/
   get(doc: TextDocument | string): BehaviorPack | ResourcePack | WorldPack | undefined {
     let out: BehaviorPack | ResourcePack | WorldPack | undefined;
-    if ((out = this.BehaviorPacks.get(doc))) return out;
-    if ((out = this.ResourcePacks.get(doc))) return out;
-    if ((out = this.Worlds.get(doc))) return out;
+    if ((out = this.behaviorPacks.get(doc))) return out;
+    if ((out = this.resourcePacks.get(doc))) return out;
+    if ((out = this.worlds.get(doc))) return out;
 
     return undefined;
   }
@@ -98,10 +98,10 @@ export class ProjectData {
   find(predicate: (value: Types.BaseObject) => boolean): Types.BaseObject | undefined {
     let value = undefined;
 
-    if ((value = this.BehaviorPacks.find(predicate))) return value;
-    if ((value = this.ResourcePacks.find(predicate))) return value;
-    if ((value = this.General.find(predicate))) return value;
-    if ((value = this.Worlds.find(predicate))) return value;
+    if ((value = this.behaviorPacks.find(predicate))) return value;
+    if ((value = this.resourcePacks.find(predicate))) return value;
+    if ((value = this.general.find(predicate))) return value;
+    if ((value = this.worlds.find(predicate))) return value;
 
     return undefined;
   }
@@ -110,7 +110,7 @@ export class ProjectData {
    * @param id The idenfitication of the entity
    * @returns true when it exists, false when it does not*/
   hasEntity(id: string): boolean {
-    if (this.BehaviorPacks.entities.has(id) || this.ResourcePacks.entities.has(id)) return true;
+    if (this.behaviorPacks.entities.has(id) || this.resourcePacks.entities.has(id)) return true;
 
     return false;
   }
@@ -119,7 +119,7 @@ export class ProjectData {
    * @param id The idenfitication of the block
    * @returns true when it exists, false when it does not*/
   hasBlock(id: string): boolean {
-    if (this.BehaviorPacks.blocks.has(id)) return true;
+    if (this.behaviorPacks.blocks.has(id)) return true;
 
     return false;
   }
@@ -128,18 +128,9 @@ export class ProjectData {
    * @param id The idenfitication of the item
    * @returns true when it exists, false when it does not*/
   hasItem(id: string): boolean {
-    if (this.BehaviorPacks.items.has(id)) return true;
+    if (this.behaviorPacks.items.has(id)) return true;
 
     return false;
-  }
-
-  /**
-   *
-   * @param manifesturi
-   * @param Context
-   */
-  addPack(manifesturi: string | string[], Context: string | MCProject): Pack[] {
-    return ProjectData.Add(manifesturi, this, Context);
   }
 
   /**
@@ -149,9 +140,9 @@ export class ProjectData {
   deleteFile(uri: string): boolean {
     let out = false;
 
-    out = this.BehaviorPacks.deleteFile(uri) || out;
-    out = this.General.deleteFile(uri) || out;
-    out = this.ResourcePacks.deleteFile(uri) || out;
+    out = this.behaviorPacks.deleteFile(uri) || out;
+    out = this.general.deleteFile(uri) || out;
+    out = this.resourcePacks.deleteFile(uri) || out;
 
     return out;
   }
@@ -164,70 +155,42 @@ export class ProjectData {
   deleteFolder(uri: string): boolean {
     let out = false;
 
-    out = this.BehaviorPacks.deleteFolder(uri) || out;
-    out = this.General.deleteFolder(uri) || out;
-    out = this.ResourcePacks.deleteFolder(uri) || out;
+    out = this.behaviorPacks.deleteFolder(uri) || out;
+    out = this.general.deleteFolder(uri) || out;
+    out = this.resourcePacks.deleteFolder(uri) || out;
 
     return out;
   }
-}
 
-/**
- *
- */
-export namespace ProjectData {
   /**
-   *
-   * @param manifestPath
-   * @param projectData
-   * @param Context
-   * @returns
+   * Add the given manifest uri to the pack
+   * @param manifestUri The uri/filepath to the manifest
+   * @param context The path to the context files, or the data itself
+   * @returns The pack if its was determine what it was.
    */
-  export function Add(manifestPath: string | string[], projectData: ProjectData, Context: string | MCProject): Pack[] {
-    if (!Array.isArray(manifestPath)) {
-      manifestPath = [manifestPath];
+  addPack(manifestUri: string, context: string | MCProject): Pack | undefined {
+    const manifest = Manifest.getManifest(manifestUri, this.documents.getDocument);
+    if (!manifest) return;
+
+    const types = Manifest.detectTypeUri(manifestUri, manifest);
+    const parent = manifestUri.replace(/[\\\/]manifest.json/gi, "");
+
+    switch (types) {
+      case PackType.behavior_pack:
+        return this.behaviorPacks.add(parent, context, manifest);
+
+      case PackType.resource_pack:
+        return this.resourcePacks.add(parent, context, manifest);
+
+      case PackType.world:
+        return this.worlds.add(parent, context, manifest);
+
+      case PackType.skin_pack:
+      case PackType.unknown:
+      default:
+        return undefined;
     }
 
-    const out: Pack[] = [];
-
-    for (var I = 0; I < manifestPath.length; I++) {
-      const Pack = Process(manifestPath[I], projectData, Context);
-
-      if (Pack) out.push(Pack);
-    }
-
-    return out;
+    return undefined;
   }
-}
-
-/**
- *
- * @param manifestUri
- * @param projectData
- * @param Context
- * @returns
- */
-function Process(manifestUri: string, projectData: ProjectData, Context: string | MCProject): Pack | undefined {
-  const Type = Manifest.DetectTypeUri(manifestUri, projectData.Context.getDocument);
-  const parent = manifestUri.replace(/[\\\/]manifest.json/gi, "");
-
-  switch (Type) {
-    case PackType.behavior_pack:
-      return projectData.BehaviorPacks.add(parent, Context);
-
-    case PackType.resource_pack:
-      return projectData.ResourcePacks.add(parent, Context);
-
-    case PackType.skin_pack:
-      break;
-
-    case PackType.world:
-      return projectData.Worlds.add(parent, Context);
-
-    case PackType.unknown:
-    default:
-      return undefined;
-  }
-
-  return undefined;
 }

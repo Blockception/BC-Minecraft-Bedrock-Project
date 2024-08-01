@@ -17,26 +17,24 @@ import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
 import { FileType } from "./FileType";
 import { PackType } from "../PackType";
+import { Manifest } from "../../Internal/Types";
 
 type CollectFieldsOfType<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? U : never;
 };
 type CollectionFieldsDataSet<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? DataSet<U> : never;
-}
+};
 
-type ItemTypes =  CollectFieldsOfType<BehaviorPack>[keyof BehaviorPack];
+type ItemTypes = CollectFieldsOfType<BehaviorPack>[keyof BehaviorPack];
 type DataSetTypes = CollectionFieldsDataSet<BehaviorPack>[keyof BehaviorPack];
 
 /** */
 export class BehaviorPack implements Container, Pack {
-  /**@inheritdoc */
   readonly type: PackType = PackType.behavior_pack;
-
-  /**The folder path of the pack*/
   readonly folder: string;
-  /**The context of the project*/
   readonly context: MCProject;
+  readonly manifest: Manifest;
 
   /**The collection of animations*/
   readonly animations: DataSet<Animation.Animation>;
@@ -61,11 +59,11 @@ export class BehaviorPack implements Container, Pack {
 
   /**
    * @param folder The folder of the behavior
-   * @param Context The Mcproject data or the filepath to read from.*/
-  constructor(folder: string, Context: MCProject | string) {
+   * @param context The Mcproject data or the filepath to read from.*/
+  constructor(folder: string, context: MCProject | string, manifest: Manifest) {
     this.folder = folder;
-    this.context =
-      typeof Context === "object" ? Context : MCProject.loadSync(Context);
+    this.manifest = manifest;
+    this.context = typeof context === "object" ? context : MCProject.loadSync(context);
 
     this.animations = new DataSet();
     this.animation_controllers = new DataSet();
@@ -117,8 +115,7 @@ export class BehaviorPack implements Container, Pack {
         return this.trading.set(Trading.Process(doc));
 
       case FileType.feature:
-        return this.features.set(Feature.Process(doc))
-
+        return this.features.set(Feature.Process(doc));
     }
 
     return undefined;
@@ -211,9 +208,7 @@ export class BehaviorPack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  find(
-    predicate: (value: ItemTypes, key: string) => boolean
-  ): ItemTypes | undefined {
+  find(predicate: (value: ItemTypes, key: string) => boolean): ItemTypes | undefined {
     let value = undefined;
 
     if ((value = this.animations.find(predicate))) return value;

@@ -3,6 +3,7 @@ import { MCProject } from "bc-minecraft-project";
 import { PackType } from '../Project/PackType';
 import { DataSetBase } from "./DataSet";
 import { TextDocument } from "./TextDocument";
+import { Manifest } from '../Internal/Types';
 
 /** */
 export interface Pack {
@@ -12,6 +13,8 @@ export interface Pack {
   readonly folder: string;
   /**The context of the project*/
   readonly context: MCProject;
+  /**The manifest of the pack */
+  readonly manifest: Manifest;
 
   /**
    *

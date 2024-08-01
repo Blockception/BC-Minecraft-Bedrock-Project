@@ -8,7 +8,7 @@ describe("Commands", () => {
   it("mcfunction", () => {
     const P = new ProjectData(new TextProjectContext());
 
-    P.BehaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
 
     const doc: TextDocument = {
       uri: "c:\\bp\\functions\\example.mcfunction",
@@ -22,21 +22,21 @@ scoreboard players set global id 0`,
     const out = P.process(doc);
 
     expect(out, "Pack").to.not.be.undefined;
-    expect(P.BehaviorPacks.functions.get("example")).to.not.be.undefined;
-    expect(P.General.tags.count()).to.equal(1);
-    expect(P.General.objectives.count()).to.equal(1);
-    expect(P.General.fakeEntities.count()).to.equal(1);
-    expect(P.General.tickingAreas.count()).to.equal(2);
+    expect(P.behaviorPacks.functions.get("example")).to.not.be.undefined;
+    expect(P.general.tags.count()).to.equal(1);
+    expect(P.general.objectives.count()).to.equal(1);
+    expect(P.general.fakeEntities.count()).to.equal(1);
+    expect(P.general.tickingAreas.count()).to.equal(2);
     
 
-    expect(P.General.tickingAreas.has("main"), "main tickingarea").to.be.true;
-    expect(P.General.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
+    expect(P.general.tickingAreas.has("main"), "main tickingarea").to.be.true;
+    expect(P.general.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
   });
 
   it("animation", () => {
     const P = new ProjectData(new TextProjectContext());
 
-    P.BehaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
 
     const doc: TextDocument = {
       uri: "c:\\bp\\animations\\example.animation.json",
@@ -60,20 +60,20 @@ scoreboard players set global id 0`,
     const out = P.process(doc);
 
     expect(out, "Pack").to.not.be.undefined;
-    expect(P.BehaviorPacks.animations.get("animation.example.foo")).to.not.be.undefined;
-    expect(P.General.tags.count()).to.equal(1);
-    expect(P.General.objectives.count()).to.equal(1);
-    expect(P.General.fakeEntities.count()).to.equal(1);
-    expect(P.General.tickingAreas.count()).to.equal(2);
+    expect(P.behaviorPacks.animations.get("animation.example.foo")).to.not.be.undefined;
+    expect(P.general.tags.count()).to.equal(1);
+    expect(P.general.objectives.count()).to.equal(1);
+    expect(P.general.fakeEntities.count()).to.equal(1);
+    expect(P.general.tickingAreas.count()).to.equal(2);
 
-    expect(P.General.tickingAreas.has("main"), "main tickingarea").to.be.true;
-    expect(P.General.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
+    expect(P.general.tickingAreas.has("main"), "main tickingarea").to.be.true;
+    expect(P.general.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
   });
 
   it("animation_controller", () => {
     const P = new ProjectData(new TextProjectContext());
 
-    P.BehaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
 
     const doc: TextDocument = {
       uri: "c:\\bp\\animation_controllers\\controller.example.json",
@@ -106,13 +106,13 @@ scoreboard players set global id 0`,
     const out = P.process(doc);
 
     expect(out, "Pack").to.not.be.undefined;
-    expect(P.BehaviorPacks.animation_controllers.get("controller.animation.example")).to.not.be.undefined;
-    expect(P.General.tags.count()).to.equal(1);
-    expect(P.General.objectives.count()).to.equal(1);
-    expect(P.General.fakeEntities.count()).to.equal(1);
-    expect(P.General.tickingAreas.count()).to.equal(2);
+    expect(P.behaviorPacks.animation_controllers.get("controller.animation.example")).to.not.be.undefined;
+    expect(P.general.tags.count()).to.equal(1);
+    expect(P.general.objectives.count()).to.equal(1);
+    expect(P.general.fakeEntities.count()).to.equal(1);
+    expect(P.general.tickingAreas.count()).to.equal(2);
 
-    expect(P.General.tickingAreas.has("main"), "main tickingarea").to.be.true;
-    expect(P.General.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
+    expect(P.general.tickingAreas.has("main"), "main tickingarea").to.be.true;
+    expect(P.general.tickingAreas.has("foo"), "foo tickingarea").to.be.true;
   });
 });

@@ -11,6 +11,7 @@ import * as Item from "./Item";
 import * as LootTable from "./LootTable";
 import * as Structure from "./Structure";
 import * as Trading from "./Trading";
+import { Manifest } from "../../Internal/Types";
 
 /** */
 export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
@@ -51,11 +52,12 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
   /**
    *
    * @param folder
-   * @param Context
+   * @param context
+   * @param manifest
    * @returns
    */
-  add(folder: string, Context: MCProject | string): BehaviorPack {
-    const out = new BehaviorPack(folder, Context);
+  add(folder: string, context: MCProject | string, manifest: Manifest): BehaviorPack {
+    const out = new BehaviorPack(folder, context, manifest);
     this.packs.push(out);
 
     return out;

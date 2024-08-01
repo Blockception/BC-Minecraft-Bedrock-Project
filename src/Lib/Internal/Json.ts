@@ -16,8 +16,7 @@ export namespace Json {
       if (typeof doc === "object") {
         file = doc.uri;
         content = doc.getText();
-      }
-      else {
+      } else {
         content = doc;
       }
 

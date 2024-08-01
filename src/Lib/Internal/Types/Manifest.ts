@@ -1,6 +1,6 @@
-import { PackType } from '../../Project/PackType';
-import { TextDocument } from '../../Types/TextDocument';
-import { Json } from '../Json';
+import { PackType } from "../../Project/PackType";
+import { TextDocument } from "../../Types/TextDocument";
+import { Json } from "../Json";
 
 /**
  *
@@ -73,13 +73,12 @@ export interface ManifestMetadata {
   license?: string;
   url?: string;
   generated_with?: {
-    [tool_name: string]: string[]
-  }
+    [tool_name: string]: string[];
+  };
 }
 
 /** */
 export namespace Manifest {
-
   export function is(value: any): value is Manifest {
     if (typeof value === "object") {
       if (typeof value.format_version !== "number") return false;
@@ -96,7 +95,7 @@ export namespace Manifest {
    * @param m
    * @returns
    */
-  export function IsWorldManifest(m: Manifest): boolean {
+  export function isWorldManifest(m: Manifest): boolean {
     const modules = m.modules;
     if (modules === undefined) return false;
 
@@ -114,7 +113,7 @@ export namespace Manifest {
    * @param m
    * @returns
    */
-  export function IsResourceManifest(m: Manifest): boolean {
+  export function isResourceManifest(m: Manifest): boolean {
     const modules = m.modules;
     if (modules === undefined) return false;
 
@@ -132,7 +131,7 @@ export namespace Manifest {
    * @param m
    * @returns
    */
-  export function IsBehaviorManifest(m: Manifest): boolean {
+  export function isBehaviorManifest(m: Manifest): boolean {
     const modules = m.modules;
     if (modules === undefined) return false;
 
@@ -150,7 +149,7 @@ export namespace Manifest {
    * @param m
    * @returns
    */
-  export function IsSkinpackManifest(m: Manifest): boolean {
+  export function isSkinpackManifest(m: Manifest): boolean {
     const modules = m.modules;
     if (modules === undefined) return false;
 
@@ -168,7 +167,7 @@ export namespace Manifest {
    * @param m
    * @returns
    */
-  export function DetectType(m: Manifest): PackType {
+  export function detectType(m: Manifest): PackType {
     if (!m.modules) return PackType.unknown;
 
     for (let I = 0; I < m.modules.length; I++) {
@@ -197,30 +196,29 @@ export namespace Manifest {
    * @param uri
    * @returns
    */
-  export function GetManifest(uri: string, getDocument: (uri: string) => TextDocument | undefined): Manifest | undefined {
+  export function getManifest(
+    uri: string,
+    getDocument: (uri: string) => TextDocument | undefined
+  ): Manifest | undefined {
     const doc = getDocument(uri);
-
     if (doc) return Json.To<Manifest>(doc);
 
     return undefined;
   }
 
-  export function DetectTypeUri(manifestUri: string, getDocument: (uri: string) => TextDocument | undefined): PackType {
-    const Type = PackType.detect(manifestUri);
+  export function detectTypeUri(manifestUri: string, manifest: Manifest): PackType {
+    const type = PackType.detect(manifestUri);
 
-    switch (Type) {
+    switch (type) {
       case PackType.behavior_pack:
       case PackType.resource_pack:
       case PackType.skin_pack:
       case PackType.world:
-        return Type;
+        return type;
 
       case PackType.unknown:
       default:
-        const manifest = Manifest.GetManifest(manifestUri, getDocument);
-        if (!manifest) break;
-
-        const SubType = Manifest.DetectType(manifest);
+        const SubType = Manifest.detectType(manifest);
         return SubType;
     }
 

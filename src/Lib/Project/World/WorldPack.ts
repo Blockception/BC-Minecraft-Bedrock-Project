@@ -6,23 +6,23 @@ import { Pack } from "../../Types/Pack";
 import { TextDocument } from "../../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
 import { PackType } from "../PackType";
+import { Manifest } from "../../Internal/Types";
 
 /** */
 export class WorldPack implements Container, Pack {
-  /**@inheritdoc */
   readonly type: PackType = PackType.world;
-  /**The folder path of the pack*/
   readonly folder: string;
-  /**The context of the project*/
   readonly context: MCProject;
+  readonly manifest: Manifest;
 
   /**
+   * Creates a new instance of WorldPack
    * @param folder The folder of the behavior
    * @param Context The Mcproject data or the filepath to read from.*/
-  constructor(folder: string, Context: MCProject | string) {
+  constructor(folder: string, Context: MCProject | string, manifest: Manifest) {
     this.folder = folder;
-    this.context =
-      typeof Context === "object" ? Context : MCProject.loadSync(Context);
+    this.manifest = manifest;
+    this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
   }
 
   /**
@@ -66,9 +66,7 @@ export class WorldPack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  find(
-    predicate: (value: Types.BaseObject, key: string) => boolean
-  ): Types.BaseObject | undefined {
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined {
     let value = undefined;
 
     return value;

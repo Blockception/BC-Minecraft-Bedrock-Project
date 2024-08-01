@@ -1,9 +1,9 @@
 import { MCIgnore } from "bc-minecraft-project";
 import { readFileSync } from "fs";
-import { ProjectContext } from "../src/Lib/Types/ProjectContext";
+import { Documents } from "../src/Lib/Types/ProjectContext";
 import { TextDocument } from "../src/Lib/Types/TextDocument";
 
-export class TextProjectContext implements ProjectContext<TextDocument> {
+export class TextProjectContext implements Documents<TextDocument> {
   getDocument(uri: string): TextDocument {
     return {
       getText: (range) => readFileSync(uri).toString(),

@@ -19,6 +19,7 @@ import * as Model from "./Model";
 import * as RenderController from "./RenderController";
 import * as Sound from "./Sound";
 import * as Texture from "./Texture";
+import { Manifest } from '../../Internal/Types/Manifest';
 
 type CollectFieldsOfType<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? U : never;
@@ -32,12 +33,10 @@ type DataSetTypes = CollectionFieldsDataSet<ResourcePack>[keyof ResourcePack];
 
 /** */
 export class ResourcePack implements Container, Pack {
-  /**@inheritdoc */
   readonly type: PackType = PackType.resource_pack;
-  /**The folder path of the pack*/
   readonly folder: string;
-  /**The context of the project*/
   readonly context: MCProject;
+  readonly manifest: Manifest;
 
   /**The collection of  animations*/
   readonly animations: DataSet<Animation.Animation>;
@@ -68,7 +67,8 @@ export class ResourcePack implements Container, Pack {
    * Creates a new instance of ResourcePack
    * @param folder The folder of the behavior
    * @param Context The Mcproject data or the filepath to read from*/
-  constructor(folder: string, Context: MCProject | string) {
+  constructor(folder: string, Context: MCProject | string, manifest: Manifest) {
+    this.manifest = manifest;
     this.folder = folder;
     this.context = typeof Context === "object" ? Context : MCProject.loadSync(Context);
 

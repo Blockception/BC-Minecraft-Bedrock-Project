@@ -2,7 +2,7 @@ import { MCIgnore } from "bc-minecraft-project";
 import { TextDocument } from "./TextDocument";
 
 /**The context of a project, used to retrieve files*/
-export interface ProjectContext<T extends TextDocument> {
+export interface Documents<T extends TextDocument> {
   /**Returns a textdocument object or undefined if something went wrong or nothing exists
    * @param uri The document uri to read*/
   getDocument(uri: string): T | undefined;

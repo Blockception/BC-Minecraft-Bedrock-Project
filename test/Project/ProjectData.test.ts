@@ -18,43 +18,43 @@ describe("ProjectData", () => {
 
     describe("BehaviorPacks", () => {
       it("Is not undefined", () => {
-        expect(P.BehaviorPacks).to.not.be.undefined;
+        expect(P.behaviorPacks).to.not.be.undefined;
       });
 
       it("Has packs", () => {
-        expect(P.BehaviorPacks.packs).to.not.be.undefined;
+        expect(P.behaviorPacks.packs).to.not.be.undefined;
       });
     });
 
     describe("ResourcePacks", () => {
       it("Is not undefined", () => {
-        expect(P.ResourcePacks).to.not.be.undefined;
+        expect(P.resourcePacks).to.not.be.undefined;
       });
 
       it("Has packs", () => {
-        expect(P.ResourcePacks.packs).to.not.be.undefined;
+        expect(P.resourcePacks.packs).to.not.be.undefined;
       });
     });
 
     describe("General", () => {
       it("Is not undefined", () => {
-        expect(P.General).to.not.be.undefined;
+        expect(P.general).to.not.be.undefined;
       });
 
       it("has fakeEntities", () => {
-        expect(P.General.fakeEntities).to.not.be.undefined;
+        expect(P.general.fakeEntities).to.not.be.undefined;
       });
 
       it("has objectives", () => {
-        expect(P.General.objectives).to.not.be.undefined;
+        expect(P.general.objectives).to.not.be.undefined;
       });
 
       it("has tags", () => {
-        expect(P.General.tags).to.not.be.undefined;
+        expect(P.general.tags).to.not.be.undefined;
       });
 
       it("has tickingAreas", () => {
-        expect(P.General.tickingAreas).to.not.be.undefined;
+        expect(P.general.tickingAreas).to.not.be.undefined;
       });
     });
   });
@@ -65,11 +65,11 @@ describe("ProjectData", () => {
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
-      pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
+      pack = P.behaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
     });
 
     it("Has 1 bp", () => {
-      expect(P.BehaviorPacks.count()).to.equal(1);
+      expect(P.behaviorPacks.count()).to.equal(1);
     });
 
     describe("get", () => {
@@ -107,14 +107,14 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.BehaviorPacks.packs).to.not.undefined;
-      expect(P.BehaviorPacks.loot_tables).to.not.undefined;
-      expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
+      expect(P.behaviorPacks.packs).to.not.undefined;
+      expect(P.behaviorPacks.loot_tables).to.not.undefined;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
 
       expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
 
-      expect(P.BehaviorPacks.packs).to.not.undefined;
-      expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
+      expect(P.behaviorPacks.packs).to.not.undefined;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
     });
 
     it("Remove Folder", () => {
@@ -125,16 +125,16 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.BehaviorPacks.loot_tables).to.not.undefined;
-      expect(P.BehaviorPacks.loot_tables.has("empty.loot.json"), "started with loottable").to.be.true;
+      expect(P.behaviorPacks.loot_tables).to.not.undefined;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json"), "started with loottable").to.be.true;
 
       expect(P.deleteFolder("c:\\temp\\bp\\loot_tables"), "Expected operation to be successfull").to.be.true;
 
-      expect(P.BehaviorPacks.loot_tables.has("empty.loot.json"), "ended without loottable").to.be.false;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json"), "ended without loottable").to.be.false;
     });
 
     it("Remove Folder - Entire Pack", () => {
-      const pack = P.BehaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
+      const pack = P.behaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
 
       const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
 
@@ -143,12 +143,12 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
 
       expect(P.deleteFolder("c:\\temp\\bp"), "Expected operation to be successfull").to.be.true;
 
-      expect(P.BehaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
-      expect(P.BehaviorPacks.count()).to.be.equal(0);
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
+      expect(P.behaviorPacks.count()).to.be.equal(0);
     });
   });
 
@@ -158,11 +158,11 @@ describe("ProjectData", () => {
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
-      pack = P.ResourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
+      pack = P.resourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
     });
 
     it("add", () => {
-      expect(P.ResourcePacks.count()).to.equal(1);
+      expect(P.resourcePacks.count()).to.equal(1);
     });
 
     it("get", () => {
@@ -196,10 +196,10 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.ResourcePacks.sounds.has(id)).to.be.true;
+      expect(P.resourcePacks.sounds.has(id)).to.be.true;
 
       expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
-      expect(P.ResourcePacks.sounds.has(id)).to.be.false;
+      expect(P.resourcePacks.sounds.has(id)).to.be.false;
     });
 
     it("Remove Folder", () => {
@@ -211,10 +211,10 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.ResourcePacks.sounds.has(id)).to.be.true;
+      expect(P.resourcePacks.sounds.has(id)).to.be.true;
       expect(P.deleteFolder("c:\\temp\\rp\\sounds"), "Expected operation to be successfull").to.be.true;
 
-      expect(P.ResourcePacks.sounds.has(id)).to.be.false;
+      expect(P.resourcePacks.sounds.has(id)).to.be.false;
     });
 
     it("Remove Folder - Entire Pack", () => {
@@ -226,12 +226,12 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.ResourcePacks.sounds.has(id)).to.be.true;
+      expect(P.resourcePacks.sounds.has(id)).to.be.true;
 
       expect(P.deleteFolder("c:\\temp\\rp"), "Expected operation to be successfull").to.be.true;
 
-      expect(P.ResourcePacks.sounds.has(id)).to.be.false;
-      expect(P.ResourcePacks.count()).to.be.equal(0);
+      expect(P.resourcePacks.sounds.has(id)).to.be.false;
+      expect(P.resourcePacks.count()).to.be.equal(0);
     });
   });
 
@@ -246,21 +246,21 @@ describe("ProjectData", () => {
       const uri = "c:\\temp\\rp\\sounds\\sound_definitions.json";
       const id = "init";
 
-      P.General.tags.set({ id: id, location: Location.create(uri) });
+      P.general.tags.set({ id: id, location: Location.create(uri) });
 
-      expect(P.General.tags.has(id)).to.be.true;
+      expect(P.general.tags.has(id)).to.be.true;
 
       expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
 
-      expect(P.General.tags.has(id)).to.be.false;
+      expect(P.general.tags.has(id)).to.be.false;
     });
   });
 
   describe("find", () => {
     const data = new ProjectData(new TextProjectContext());
 
-    const bp = data.BehaviorPacks.add("c:\\bp", MCProject.createEmpty());
-    const rp = data.ResourcePacks.add("c:\\rp", MCProject.createEmpty());
+    const bp = data.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    const rp = data.resourcePacks.add("c:\\rp", MCProject.createEmpty());
 
     const loc = { uri: "", position: 0 };
     const molang = Molang.MolangFullSet.create();
