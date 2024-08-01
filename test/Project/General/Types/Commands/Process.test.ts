@@ -3,12 +3,13 @@ import { expect } from "chai";
 import { ProjectData } from "../../../../../src/Lib/Project/ProjectData";
 import { TextDocument } from "../../../../../src/Lib/Types/TextDocument";
 import { TextProjectContext } from "../../../../Utility";
+import { Manifest } from '../../../../../src/Lib/Internal/Types';
 
 describe("Commands", () => {
   it("mcfunction", () => {
     const P = new ProjectData(new TextProjectContext());
 
-    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty(),{} as Manifest);
 
     const doc: TextDocument = {
       uri: "c:\\bp\\functions\\example.mcfunction",
@@ -36,7 +37,7 @@ scoreboard players set global id 0`,
   it("animation", () => {
     const P = new ProjectData(new TextProjectContext());
 
-    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty(), {} as Manifest);
 
     const doc: TextDocument = {
       uri: "c:\\bp\\animations\\example.animation.json",
@@ -73,7 +74,7 @@ scoreboard players set global id 0`,
   it("animation_controller", () => {
     const P = new ProjectData(new TextProjectContext());
 
-    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
+    P.behaviorPacks.add("c:\\bp", MCProject.createEmpty(), {} as Manifest);
 
     const doc: TextDocument = {
       uri: "c:\\bp\\animation_controllers\\controller.example.json",

@@ -1,21 +1,16 @@
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { BehaviorPack } from "../../../src/main";
+import { Manifest } from "../../../src/Lib/Internal/Types";
 
 describe("BehaviorPack", () => {
   describe("sanity check", () => {
-    const BP = new BehaviorPack.BehaviorPack(
-      "c:\\test",
-      MCProject.createEmpty()
-    );
+    const BP = new BehaviorPack.BehaviorPack("c:\\test", MCProject.createEmpty(), {} as Manifest);
 
     it("animation controllers", () => {
-      expect(
-        typeof BP.animation_controllers === "object",
-        "animation_controllers"
-      ).to.be.true;
+      expect(typeof BP.animation_controllers === "object", "animation_controllers").to.be.true;
     });
-    
+
     it("animations", () => {
       expect(typeof BP.animations === "object", "animations").to.be.true;
     });
@@ -23,7 +18,7 @@ describe("BehaviorPack", () => {
     it("blocks", () => {
       expect(typeof BP.blocks === "object", "blocks").to.be.true;
     });
-    
+
     it("context", () => {
       expect(typeof BP.context === "object", "context").to.be.true;
     });
@@ -58,21 +53,18 @@ describe("BehaviorPack", () => {
   });
 
   describe("is", () => {
-    const BP = new BehaviorPack.BehaviorPack(
-      "c:\\test",
-      MCProject.createEmpty()
-    );
+    const BP = new BehaviorPack.BehaviorPack("c:\\test", MCProject.createEmpty(), {} as Manifest);
 
-    it("Is not undefined", ()=>{
+    it("Is not undefined", () => {
       expect(BP).to.not.be.undefined;
-    })
+    });
 
-    it("Is not an object", ()=>{
+    it("Is not an object", () => {
       expect(typeof BP === "object").to.be.true;
-    })
+    });
 
-    it("Is a BehaviorPack", ()=>{
+    it("Is a BehaviorPack", () => {
       expect(BehaviorPack.BehaviorPack.is(BP)).to.be.true;
-    })
+    });
   });
 });

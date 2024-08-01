@@ -7,6 +7,7 @@ import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
 import { ProjectData } from "../../src/Lib/Project/ProjectData";
 import { TextProjectContext } from "../Utility";
 import { describe } from "mocha";
+import { Manifest } from "../../src/Lib/Internal/Types";
 
 describe("ProjectData", () => {
   describe("Sanity Check", () => {
@@ -65,7 +66,7 @@ describe("ProjectData", () => {
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
-      pack = P.behaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
+      pack = P.behaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty(), {} as Manifest);
     });
 
     it("Has 1 bp", () => {
@@ -134,7 +135,7 @@ describe("ProjectData", () => {
     });
 
     it("Remove Folder - Entire Pack", () => {
-      const pack = P.behaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty());
+      const pack = P.behaviorPacks.add("c:\\temp\\bp", MCProject.createEmpty(), {} as Manifest);
 
       const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
 
@@ -158,7 +159,7 @@ describe("ProjectData", () => {
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
-      pack = P.resourcePacks.add("c:\\temp\\rp", MCProject.createEmpty());
+      pack = P.resourcePacks.add("c:\\temp\\rp", MCProject.createEmpty(), {} as Manifest);
     });
 
     it("add", () => {
@@ -259,8 +260,8 @@ describe("ProjectData", () => {
   describe("find", () => {
     const data = new ProjectData(new TextProjectContext());
 
-    const bp = data.behaviorPacks.add("c:\\bp", MCProject.createEmpty());
-    const rp = data.resourcePacks.add("c:\\rp", MCProject.createEmpty());
+    const bp = data.behaviorPacks.add("c:\\bp", MCProject.createEmpty(), {} as Manifest);
+    const rp = data.resourcePacks.add("c:\\rp", MCProject.createEmpty(), {} as Manifest);
 
     const loc = { uri: "", position: 0 };
     const molang = Molang.MolangFullSet.create();

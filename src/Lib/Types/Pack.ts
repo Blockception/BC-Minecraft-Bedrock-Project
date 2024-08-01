@@ -1,13 +1,13 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
-import { PackType } from '../Project/PackType';
+import { PackType } from "../Project/PackType";
 import { DataSetBase } from "./DataSet";
 import { TextDocument } from "./TextDocument";
-import { Manifest } from '../Internal/Types';
+import { Manifest } from "../Internal/Types";
 
 /** */
 export interface Pack {
-  /** */
+  /**The type of the pack */
   readonly type: PackType;
   /**The folder path of the pack*/
   readonly folder: string;
@@ -39,9 +39,7 @@ export interface Pack {
    * @param predicate
    * @returns
    */
-  find(
-    predicate: (value: Types.BaseObject, key: string) => boolean
-  ): Types.BaseObject | undefined;
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined;
 
   /**
    *
@@ -59,11 +57,7 @@ export namespace Pack {
    * @returns
    */
   export function is(value: any): value is Pack {
-    if (
-      typeof value === "object" &&
-      typeof value.folder === "string" &&
-      typeof value.process === "function"
-    ) {
+    if (typeof value === "object" && typeof value.folder === "string" && typeof value.process === "function") {
       return true;
     }
 

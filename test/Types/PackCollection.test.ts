@@ -5,6 +5,8 @@ import { PackType } from "../../src/Lib/Project/PackType";
 import { PackCollection } from "../../src/Lib/Types";
 import { Pack } from "../../src/Lib/Types/Pack";
 import { TextDocument } from "../../src/Lib/Types/TextDocument";
+import { Manifest } from "../../src/Lib/Internal/Types";
+import { randomUUID } from "crypto";
 
 const defaultFolder = "c:\\project\\bp";
 const defaultContext = MCProject.createEmpty();
@@ -15,16 +17,26 @@ class TestPack implements Pack {
   context: MCProject;
   docs: TextDocument[];
   docFilter: RegExp | undefined;
+  manifest: Manifest;
 
   constructor(
     docFilter: RegExp | undefined = undefined,
     folder: string | undefined = undefined,
-    context: MCProject | undefined = undefined
+    context: MCProject | undefined = undefined,
+    manifest: Manifest | undefined = undefined
   ) {
     this.folder = folder ?? defaultFolder;
     this.context = context ?? defaultContext;
-
     this.docFilter = docFilter;
+    this.manifest = {
+      format_version: "1.0.0",
+      header: {
+        description: "description",
+        name: "test pack",
+        uuid: randomUUID(),
+        version: [1, 0, 0],
+      },
+    };
     this.docs = [];
   }
 

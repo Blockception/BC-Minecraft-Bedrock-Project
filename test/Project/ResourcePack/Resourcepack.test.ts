@@ -2,12 +2,14 @@ import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { describe } from "mocha";
 import { ResourcePack } from '../../../src/Lib/Project';
+import { Manifest } from '../../../src/Lib/Internal/Types';
 
 describe("Resourcepack", () => {
   describe("sanity check", () => {
     const RP = new ResourcePack.ResourcePack(
       "c:\\test",
-      MCProject.createEmpty()
+      MCProject.createEmpty(),
+      {} as Manifest,
     );
 
     it("animation controllers", () => {
@@ -54,7 +56,8 @@ describe("Resourcepack", () => {
   describe("is", () => {
     const RP = new ResourcePack.ResourcePack(
       "c:\\test",
-      MCProject.createEmpty()
+      MCProject.createEmpty(),
+      {} as Manifest,
     );
 
     it("Is object?", ()=>{

@@ -2,6 +2,7 @@ import { Location } from "bc-minecraft-bedrock-types/lib/src/types";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { BehaviorPackCollection } from "../../../src/Lib/Project/BehaviorPack";
+import { Manifest } from "../../../src/Lib/Internal/Types";
 
 describe("BehaviorPackCollection", () => {
   it("sanity check", () => {
@@ -9,7 +10,7 @@ describe("BehaviorPackCollection", () => {
     expect(pc.packs).to.not.be.undefined;
     expect(pc.packs.length).to.be.equal(0);
 
-    pc.add("c:\\project\\", MCProject.createEmpty());
+    pc.add("c:\\project\\", MCProject.createEmpty(), {} as Manifest);
 
     expect(pc.packs).to.not.be.undefined;
     expect(pc.packs.length).to.be.equal(1);
@@ -25,22 +26,22 @@ describe("BehaviorPackCollection", () => {
 
     expect(P.count()).to.equal(0);
 
-    P.add("c:/project/bp", MCProject.createEmpty());
+    P.add("c:/project/bp", MCProject.createEmpty(), {} as Manifest);
 
     expect(P.count()).to.equal(1);
 
-    P.add("c:/project2/bp", MCProject.createEmpty());
+    P.add("c:/project2/bp", MCProject.createEmpty(), {} as Manifest);
     expect(P.count()).to.equal(2);
   });
 
   it("add", () => {
     const P = new BehaviorPackCollection();
-    const pack = P.add("c:/project/bp", MCProject.createEmpty());
+    const pack = P.add("c:/project/bp", MCProject.createEmpty(), {} as Manifest);
 
     expect(pack.folder).to.equal("c:/project/bp");
     expect(P.count()).to.equal(1);
 
-    P.add("c:/project2/bp", MCProject.createEmpty());
+    P.add("c:/project2/bp", MCProject.createEmpty(), {} as Manifest);
     expect(P.count()).to.equal(2);
   });
 
@@ -49,15 +50,15 @@ describe("BehaviorPackCollection", () => {
 
     expect(P.count()).to.equal(0);
 
-    P.add("c:/project/bp", MCProject.createEmpty());
-    P.add("c:/project/bp", MCProject.createEmpty());
+    P.add("c:/project/bp", MCProject.createEmpty(), {} as Manifest);
+    P.add("c:/project/bp", MCProject.createEmpty(), {} as Manifest);
 
     expect(P.count()).to.equal(2);
   });
 
   it("get", () => {
     const P = new BehaviorPackCollection();
-    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty());
+    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty(), {} as Manifest);
 
     const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
     pack.loot_tables.set({
@@ -71,7 +72,7 @@ describe("BehaviorPackCollection", () => {
 
   it("Remove File", () => {
     const P = new BehaviorPackCollection();
-    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty());
+    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty(), {} as Manifest);
 
     const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
 
@@ -91,7 +92,7 @@ describe("BehaviorPackCollection", () => {
 
   it("Remove Folder", () => {
     const P = new BehaviorPackCollection();
-    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty());
+    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty(), {} as Manifest);
 
     const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
 
@@ -109,7 +110,7 @@ describe("BehaviorPackCollection", () => {
 
   it("Remove Folder - Entire Pack", () => {
     const P = new BehaviorPackCollection();
-    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty());
+    const pack = P.add("c:\\temp\\bp", MCProject.createEmpty(), {} as Manifest);
 
     const uri = "c:\\temp\\bp\\loot_tables\\empty.loot.json";
 
