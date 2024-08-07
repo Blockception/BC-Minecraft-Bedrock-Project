@@ -169,7 +169,7 @@ export class ProjectData {
    * @returns The pack if its was determine what it was.
    */
   addPack(manifestUri: string, context: string | MCProject): Pack | undefined {
-    const manifest = Manifest.getManifest(manifestUri, this.documents.getDocument);
+    const manifest = Manifest.getManifest(manifestUri, this.documents.getDocument.bind(this.documents));
     if (!manifest) return;
 
     const types = Manifest.detectTypeUri(manifestUri, manifest);
