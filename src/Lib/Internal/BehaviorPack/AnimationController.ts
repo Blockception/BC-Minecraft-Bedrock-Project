@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { SMap } from "../../Types/SMap";
 import { FormatVersion } from "../Types/FormatVersion";
 import * as General from '../General/Controllers/State';

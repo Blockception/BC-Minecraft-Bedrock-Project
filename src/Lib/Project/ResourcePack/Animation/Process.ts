@@ -1,5 +1,4 @@
 import * as Internal from "../../../Internal/ResourcePack/Animation";
-import { Json } from "../../../Internal/Json";
 import { Molang, Using } from "bc-minecraft-molang";
 import { TextDocument } from "../../../Types/TextDocument";
 import { Animation } from "./Animation";
@@ -18,7 +17,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
   const container = imp.animations;
   const keys = Object.getOwnPropertyNames(container);
 
-  for (var I = 0; I < keys.length; I++) {
+  for (let I = 0; I < keys.length; I++) {
     const id = keys[I];
     const anim = container[id];
 
@@ -32,8 +31,8 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         sounds: Using.empty(),
       };
 
-      if (anim.particle_effects) SMap.forEach(anim.particle_effects, (value, key) => processEffect(value, item.particles.using));
-      if (anim.sound_effects) SMap.forEach(anim.sound_effects, (value, key) => processEffect(value, item.sounds.using));
+      if (anim.particle_effects) SMap.forEach(anim.particle_effects, (value) => processEffect(value, item.particles.using));
+      if (anim.sound_effects) SMap.forEach(anim.sound_effects, (value) => processEffect(value, item.sounds.using));
 
       out.push(item);
     }

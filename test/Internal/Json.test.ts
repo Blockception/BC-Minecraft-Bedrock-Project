@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { Json } from "../../src/Lib/Internal/Json";
 
 describe("Json", () => {
@@ -7,14 +6,14 @@ describe("Json", () => {
     const obj = Json.To<TestInterface>(data);
 
     it("not undefined", () => {
-      expect(obj).to.not.be.undefined;
+      expect(obj).toBeDefined();
     });
 
     if (!obj) return;
 
     it("Validation", () => {
-      expect(obj.documentation).to.equal("example");
-      expect(obj.id).to.equal("controller.example");
+      expect(obj.documentation).toEqual("example");
+      expect(obj.id).toEqual("controller.example");
     });
   });
 
@@ -23,14 +22,14 @@ describe("Json", () => {
     const obj = Json.To<TestInterface>({ getText: () => data, uri: "example" });
 
     it("not undefined", () => {
-      expect(obj).to.not.be.undefined;
+      expect(obj).toBeDefined();
     });
 
     if (!obj) return;
 
     it("Validation", () => {
-      expect(obj.documentation).to.equal("example");
-      expect(obj.id).to.equal("controller.example");
+      expect(obj.documentation).toEqual("example");
+      expect(obj.id).toEqual("controller.example");
     });
   });
 });

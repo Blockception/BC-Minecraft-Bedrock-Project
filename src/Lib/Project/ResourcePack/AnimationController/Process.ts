@@ -18,7 +18,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
   const container = imp.animation_controllers;
   const keys = Object.getOwnPropertyNames(container);
 
-  for (var I = 0; I < keys.length; I++) {
+  for (let I = 0; I < keys.length; I++) {
     const id = keys[I];
     const controller = container[id];
 
@@ -35,9 +35,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
 
       SMap.forEach(controller.states, (State) => {
         if (State.animations)
-          Types.Conditional.forEach(State.animations, (reference, value) => {
-            item.animations.using.push(reference);
-          });
+          Types.Conditional.forEach(State.animations, (reference) => item.animations.using.push(reference));
 
         if (State.particle_effects) harvest(State.particle_effects, item.particles);
         if (State.sound_effects) harvest(State.sound_effects, item.sounds);

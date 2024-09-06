@@ -42,19 +42,19 @@ export namespace FileType {
     if (uri.endsWith(".js")) return FileType.script;
 
     //Folders
-    if (/[\\\/]animation_controllers[\\\/]/.test(uri)) return FileType.animation_controller;
-    if (/[\\\/]animations[\\\/]/.test(uri)) return FileType.animation;
-    if (/[\\\/]functions[\\\/]/.test(uri)) return FileType.function;
-    if (/[\\\/]loot_tables[\\\/]/.test(uri)) return FileType.loot_table;
-    if (/[\\\/]scripts[\\\/]/.test(uri)) return FileType.script;
-    if (/[\\\/]spawn_rules[\\\/]/.test(uri)) return FileType.spawn_rule;
-    if (/[\\\/]structures[\\\/]/.test(uri)) return FileType.structure;
-    if (/[\\\/]trading[\\\/]/.test(uri)) return FileType.trading;
-    if (/[\\\/]features[\\\/]/.test(uri)) return FileType.feature;
+    if (/[\\/]animation_controllers[\\/]/.test(uri)) return FileType.animation_controller;
+    if (/[\\/]animations[\\/]/.test(uri)) return FileType.animation;
+    if (/[\\/]functions[\\/]/.test(uri)) return FileType.function;
+    if (/[\\/]loot_tables[\\/]/.test(uri)) return FileType.loot_table;
+    if (/[\\/]scripts[\\/]/.test(uri)) return FileType.script;
+    if (/[\\/]spawn_rules[\\/]/.test(uri)) return FileType.spawn_rule;
+    if (/[\\/]structures[\\/]/.test(uri)) return FileType.structure;
+    if (/[\\/]trading[\\/]/.test(uri)) return FileType.trading;
+    if (/[\\/]features[\\/]/.test(uri)) return FileType.feature;
     //These can also be subfolders
-    if (/[\\\/]blocks[\\\/]/.test(uri)) return FileType.block;
-    if (/[\\\/]entities[\\\/]/.test(uri)) return FileType.entity;
-    if (/[\\\/]items[\\\/]/.test(uri)) return FileType.item;
+    if (/[\\/]blocks[\\/]/.test(uri)) return FileType.block;
+    if (/[\\/]entities[\\/]/.test(uri)) return FileType.entity;
+    if (/[\\/]items[\\/]/.test(uri)) return FileType.item;
 
     //Files
     if (uri.endsWith("manifest.json")) return FileType.manifest;

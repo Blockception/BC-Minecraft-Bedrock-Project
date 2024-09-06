@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entity Families 1`] = `
+{
+  "animations": {
+    "defined": [
+      "controller",
+      "something",
+    ],
+    "using": [
+      "controller.animation.chicken",
+      "controller.i.dont.exist",
+    ],
+  },
+  "documentation": "BP Entity: blockception:sheep",
+  "events": [
+    "self:to",
+  ],
+  "families": [
+    "animal",
+    "mob",
+  ],
+  "groups": [
+    "self:group1",
+  ],
+  "id": "blockception:sheep",
+  "location": {
+    "position": 98,
+    "uri": "C:\\temp.json",
+  },
+  "molang": {
+    "contexts": {
+      "using": [],
+    },
+    "queries": {
+      "using": [],
+    },
+    "temps": {
+      "defined": [],
+      "using": [],
+    },
+    "variables": {
+      "defined": [],
+      "using": [],
+    },
+  },
+  "properties": [],
+}
+`;

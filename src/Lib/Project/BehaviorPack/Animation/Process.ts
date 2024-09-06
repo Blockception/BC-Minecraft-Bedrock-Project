@@ -17,7 +17,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
   const container = imp.animations;
   const keys = Object.getOwnPropertyNames(container);
 
-  for (var I = 0; I < keys.length; I++) {
+  for (let I = 0; I < keys.length; I++) {
     const id = keys[I];
     const anim = container[id];
 

@@ -18,7 +18,7 @@ export namespace JsonPath {
     const s = path.split(/[\\/]/);
     let index = 0;
 
-    for (var I = 0; I < s.length; I++) {
+    for (let I = 0; I < s.length; I++) {
       const elem = s[I];
 
       if (!Number.isInteger(elem) && elem !== "") {

@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { JsonPath } from "../../src/Lib/Types/JsonPath";
 
 const entity = `{
@@ -38,7 +37,7 @@ describe("JsonPath", () => {
     it(`should parse ${item.path} to location of ${item.result}`, () => {
       const offset = JsonPath.resolve(entity, item.path);
       const actual = entity.indexOf(item.result);
-      expect(offset).to.be.equal(actual);
+      expect(offset).toEqual(actual);
     });
   })
 });
