@@ -19,7 +19,7 @@ export function ProcessMcFunction(doc: TextDocument, receiver: GeneralCollection
   const text = doc.getText();
   const lines = text.split("\n");
 
-  for (var I = 0; I < lines.length; I++) {
+  for (let I = 0; I < lines.length; I++) {
     ProcessCommand(lines[I].trim(), doc, receiver);
   }
 }

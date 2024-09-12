@@ -1,11 +1,11 @@
 import { Container } from "../../Types/Container";
-import { DataSet, DataSetBase } from "../../Types/DataSet";
+import { DataSet } from "../../Types/DataSet";
 import { FileType } from "./Enum";
 import { MCProject } from "bc-minecraft-project";
 import { Pack } from "../../Types/Pack";
 import { PackType } from "../PackType";
 import { TextDocument } from "../../Types/TextDocument";
-import { Types } from "bc-minecraft-bedrock-types";
+import { Manifest } from '../../Internal/Types/Manifest';
 
 import * as Animation from "./Animation";
 import * as AnimationController from "./AnimationController";
@@ -19,7 +19,6 @@ import * as Model from "./Model";
 import * as RenderController from "./RenderController";
 import * as Sound from "./Sound";
 import * as Texture from "./Texture";
-import { Manifest } from '../../Internal/Types/Manifest';
 
 type CollectFieldsOfType<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? U : never;

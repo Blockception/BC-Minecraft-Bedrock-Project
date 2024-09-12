@@ -17,7 +17,7 @@ export function Process(doc: TextDocument): RenderController[] | undefined {
   const container = imp.render_controllers;
   const keys = Object.getOwnPropertyNames(container);
 
-  for (var I = 0; I < keys.length; I++) {
+  for (let I = 0; I < keys.length; I++) {
     const id = keys[I];
     const controller = container[id];
 

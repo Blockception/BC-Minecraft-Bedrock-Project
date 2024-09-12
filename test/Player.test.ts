@@ -1,5 +1,4 @@
 import { DefinedUsing } from "bc-minecraft-molang";
-import { expect } from "chai";
 import { jsonc } from "jsonc";
 import { Internal } from "../src/main";
 
@@ -141,24 +140,24 @@ describe("data test", () => {
     const obj = VanillaPlayer.DataOBject;
 
     it("Not undefined", () => {
-      expect(obj).to.not.be.undefined;
+      expect(obj).toBeDefined();
     });
 
     const temp = <Internal.ResourcePack.Entity>obj;
 
     it("Has format version", () => {
-      expect(temp.format_version).to.not.be.undefined;
+      expect(temp.format_version).toBeDefined();
     });
 
     it("Has description", () => {
       const desc = temp["minecraft:client_entity"].description;
 
-      expect(desc).to.not.be.undefined;
-      expect(desc.identifier).to.not.be.undefined;
+      expect(desc).toBeDefined();
+      expect(desc.identifier).toBeDefined();
     });
 
     it("Is resourpack entity", () => {
-      expect(Internal.ResourcePack.Entity.is(temp)).to.be.true;
+      expect(Internal.ResourcePack.Entity.is(temp)).toBeTruthy();
     });
   });
 });

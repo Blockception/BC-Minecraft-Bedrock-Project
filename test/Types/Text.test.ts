@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { Text } from "../../src/Lib/Types/Text";
 
 describe("Text", () => {
@@ -12,7 +11,7 @@ describe("Text", () => {
     tests.forEach((test) => {
       const [from, to] = test;
       it(`${from} => ${to}`, () => {
-        expect(Text.UnQuote(from)).to.equal(to);
+        expect(Text.UnQuote(from)).toEqual(to);
       });
     });
   });

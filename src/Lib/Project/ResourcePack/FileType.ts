@@ -1,4 +1,4 @@
-import path = require("path");
+import path from "path";
 
 /** */
 export enum FileType {
@@ -54,15 +54,15 @@ export namespace FileType {
    * @param uri the decoded uri, expects slashes to be '/'*/
   export function detect(uri: string): FileType {
     //Folders
-    if (/[\\\/]animation_controllers[\\\/]/.test(uri)) return FileType.animation_controller;
-    if (/[\\\/]animations[\\\/]/.test(uri)) return FileType.animation;
-    if (/[\\\/]attachables[\\\/]/.test(uri)) return FileType.attachable;
-    if (/[\\\/]block_culling[\\\/]/.test(uri)) return FileType.block_culling_rules;
-    if (/[\\\/]models[\\\/]/.test(uri)) return FileType.model;
-    if (/[\\\/]models[\\\/]entities[\\\/]/.test(uri)) return FileType.model;
-    if (/[\\\/]entity[\\\/]/.test(uri)) return FileType.entity;
-    if (/[\\\/]particles[\\\/]/.test(uri)) return FileType.particle;
-    if (/[\\\/]render_controllers[\\\/]/.test(uri)) return FileType.render_controller;
+    if (/[\\/]animation_controllers[\\/]/.test(uri)) return FileType.animation_controller;
+    if (/[\\/]animations[\\/]/.test(uri)) return FileType.animation;
+    if (/[\\/]attachables[\\/]/.test(uri)) return FileType.attachable;
+    if (/[\\/]block_culling[\\/]/.test(uri)) return FileType.block_culling_rules;
+    if (/[\\/]models[\\/]/.test(uri)) return FileType.model;
+    if (/[\\/]models[\\/]entities[\\/]/.test(uri)) return FileType.model;
+    if (/[\\/]entity[\\/]/.test(uri)) return FileType.entity;
+    if (/[\\/]particles[\\/]/.test(uri)) return FileType.particle;
+    if (/[\\/]render_controllers[\\/]/.test(uri)) return FileType.render_controller;
 
     const filename = path.basename(uri);
 
@@ -95,7 +95,7 @@ export namespace FileType {
         return FileType.texture_terrain_atlas;
     }
 
-    if (/[\\\/]textures[\\\/]/.test(uri)) return FileType.texture;
+    if (/[\\/]textures[\\/]/.test(uri)) return FileType.texture;
 
     return FileType.unknown;
   }
