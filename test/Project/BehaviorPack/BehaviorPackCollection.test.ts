@@ -1,4 +1,4 @@
-import { Location } from "bc-minecraft-bedrock-types/lib/src/types";
+import { Location } from "bc-minecraft-bedrock-types/lib/types";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
 import { BehaviorPackCollection } from "../../../src/Lib/Project/BehaviorPack";

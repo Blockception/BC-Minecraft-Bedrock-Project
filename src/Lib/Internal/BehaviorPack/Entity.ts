@@ -1,4 +1,4 @@
-import { ComponentContainer, ComponentGroups } from "bc-minecraft-bedrock-types/lib/src/minecraft/components";
+import { ComponentContainer, ComponentGroups } from "bc-minecraft-bedrock-types/lib/minecraft/components";
 import { SMap } from "../../Types/SMap";
 import { ScriptContainer } from "../Types/Script";
 import { CommandContainer } from "../General/Commands";

@@ -1,13 +1,13 @@
-import { Location } from "bc-minecraft-bedrock-types/lib/src/types";
+import { Location } from "bc-minecraft-bedrock-types/lib/types";
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { MCProject } from "bc-minecraft-project";
 import { expect } from "chai";
-import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack";
-import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
-import { ProjectData } from "../../src/Lib/Project/ProjectData";
-import { TextProjectContext } from "../Utility";
 import { describe } from "mocha";
 import { Manifest } from "../../src/Lib/Internal/Types";
+import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack";
+import { ProjectData } from "../../src/Lib/Project/ProjectData";
+import { ResourcePack } from "../../src/Lib/Project/ResourcePack/ResourcePack";
+import { TextProjectContext } from "../Utility";
 
 describe("ProjectData", () => {
   describe("Sanity Check", () => {
