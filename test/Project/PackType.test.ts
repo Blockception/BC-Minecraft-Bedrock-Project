@@ -1,5 +1,4 @@
-import { expect } from "chai";
-import path = require("path");
+import path from 'path';
 import { PackType } from "../../src/Lib/Project/PackType";
 
 describe("PackType", () => {
@@ -25,7 +24,7 @@ describe("PackType", () => {
     it(`${item.type} Should be returned by "${item.path}"`, () => {
       const normal = path.normalize(item.path);
       const t = PackType.detect(normal);
-      expect(t).to.equal(item.type);
+      expect(t).toEqual(item.type);
     });
   });
 });

@@ -3,7 +3,7 @@ import { Location } from "bc-minecraft-bedrock-types/lib/types";
 import { expect } from "chai";
 import { DataSet } from "../../src/Lib/Types/DataSet";
 
-interface TestObject extends Types.BaseObject {}
+type TestObject = Types.BaseObject;
 
 namespace TestObject {
   export function create(
@@ -30,8 +30,8 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataID)).to.be.true;
-    expect(set.count()).to.equal(1);
+    expect(set.has(dataID)).toBeTruthy();
+    expect(set.count()).toEqual(1);
   });
 
   it("get", () => {
@@ -41,7 +41,7 @@ describe("DataSet", () => {
 
     const d = set.get(dataID);
 
-    expect(d).to.be.equal(dataItem);
+    expect(d).toEqual(dataItem);
   });
 
   it("get duplicate", () => {
@@ -52,8 +52,8 @@ describe("DataSet", () => {
 
     const d = set.get(dataID);
 
-    expect(d).to.not.equal(dataItem);
-    expect(d?.id).to.equal(dataItem.id);
+    expect(d).not.toEqual(dataItem);
+    expect(d?.id).toEqual(dataItem.id);
   });
 
   it("has", () => {
@@ -61,7 +61,7 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataID)).to.be.true;
+    expect(set.has(dataID)).toBeTruthy();
   });
 
   it("duplicate sets", () => {
@@ -69,16 +69,16 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
+    expect(set.has(dataItem)).toBeTruthy();
 
-    expect(set.count()).to.be.equal(1);
+    expect(set.count()).toEqual(1);
 
     //duplicate sets
     set.set(dataItem);
     set.set(dataItem);
     set.set(dataItem);
 
-    expect(set.count()).to.be.equal(1);
+    expect(set.count()).toEqual(1);
   });
 
   it("clear", () => {
@@ -86,12 +86,12 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
+    expect(set.has(dataItem)).toBeTruthy();
 
     set.clear();
 
-    expect(set.count()).to.be.equal(0);
-    expect(set.has(dataID)).to.be.false;
+    expect(set.count()).toEqual(0);
+    expect(set.has(dataID)).toBeFalsy();
   });
 
   it("count", () => {
@@ -99,16 +99,16 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
+    expect(set.has(dataItem)).toBeTruthy();
 
-    expect(set.count()).to.be.equal(1);
+    expect(set.count()).toEqual(1);
 
     //duplicate sets
     set.set(TestObject.create("a", "b"));
     set.set(TestObject.create("c", "b"));
     set.set(TestObject.create("d", "b"));
 
-    expect(set.count()).to.be.equal(4);
+    expect(set.count()).toEqual(4);
   });
 
   it("delete1", () => {
@@ -116,9 +116,9 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
-    expect(set.delete(dataItem)).to.be.true;
-    expect(set.has(dataItem)).to.be.false;
+    expect(set.has(dataItem)).toBeTruthy();
+    expect(set.delete(dataItem)).toBeTruthy();
+    expect(set.has(dataItem)).toBeFalsy();
   });
 
   it("delete2", () => {
@@ -126,9 +126,9 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
-    expect(set.delete(dataID)).to.be.true;
-    expect(set.has(dataItem)).to.be.false;
+    expect(set.has(dataItem)).toBeTruthy();
+    expect(set.delete(dataID)).toBeTruthy();
+    expect(set.has(dataItem)).toBeFalsy();
   });
 
   it("deleteFile", () => {
@@ -136,9 +136,9 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
-    expect(set.deleteFile(dataUri)).to.be.true;
-    expect(set.has(dataItem)).to.be.false;
+    expect(set.has(dataItem)).toBeTruthy();
+    expect(set.deleteFile(dataUri)).toBeTruthy();
+    expect(set.has(dataItem)).toBeFalsy();
   });
 
   it("deleteFolder", () => {
@@ -146,9 +146,9 @@ describe("DataSet", () => {
 
     set.set(dataItem);
 
-    expect(set.has(dataItem)).to.be.true;
-    expect(set.deleteFolder(dataFolder)).to.be.true;
-    expect(set.has(dataItem)).to.be.false;
+    expect(set.has(dataItem)).toBeTruthy();
+    expect(set.deleteFolder(dataFolder)).toBeTruthy();
+    expect(set.has(dataItem)).toBeFalsy();
   });
 
   it("foreach", () => {
@@ -163,9 +163,9 @@ describe("DataSet", () => {
 
     set.forEach((p) => {
       if (p) count++;
-      else expect.fail("Item was undefined");
+      else throw new Error("Item was undefined");
     });
 
-    expect(count).to.equal(4);
+    expect(count).toEqual(4);
   });
 });

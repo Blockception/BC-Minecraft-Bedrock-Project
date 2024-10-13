@@ -31,13 +31,13 @@ export function Process(command: Command, doc: TextDocument, receiver: GeneralCo
  * @returns
  */
 function CheckObjective(Com: Command, doc: TextDocument): GeneralInfo | undefined {
-  let ObjectiveMode = Com.parameters[2];
+  const objectiveMode = Com.parameters[2];
 
   if (Com.parameters.length < 4) {
     return;
   }
 
-  if (ObjectiveMode.text === "add") {
+  if (objectiveMode.text === "add") {
     const ID = Com.parameters[3];
     const Type = Com.parameters[4];
     const offset = ID.offset;
