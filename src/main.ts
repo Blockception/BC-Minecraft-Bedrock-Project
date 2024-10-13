@@ -1,3 +1,3 @@
-export * as Internal from "./Lib/Internal";
-export * from "./Lib/Project";
-export * from "./Lib/Types";
+export * as Internal from "../internal";
+export * from "../project";
+export * from "../types";
