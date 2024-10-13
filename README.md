@@ -20,7 +20,7 @@ const manifests = ["c:\\project\\bp\\manifest.json", "c:\\project\\rp\\manifest.
 
 const packs = Data.addPack(manifests, ProjectFolder);
 
-//Process documents into the pacts
+//process documents into the pacts
 Data.Process(...);
 //OR
 packs[0].process(...)

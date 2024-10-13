@@ -16,7 +16,7 @@
     "preversion": "",
     "postversion": "git push && git push --tags",
     "version": "git add -A src",
-    "watch": "tsc -w -p ./src"
+    "watch": "tsc -b -w"
   },
   "files": [
     "lib/src/**/*.js",
