@@ -1,6 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Location } from "bc-minecraft-bedrock-types/lib/types";
-import { expect } from "chai";
 import { DataSet } from "../../src/Lib/Types/DataSet";
 
 type TestObject = Types.BaseObject;
