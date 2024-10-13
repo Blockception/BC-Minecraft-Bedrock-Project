@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BehaviorPack - Animation Controller Process 1`] = `
+[
+  {
+    "animations": {
+      "defined": [],
+      "using": [
+        "base_pose",
+      ],
+    },
+    "documentation": "BP Animation Controller: controller.animation.example.base_pose",
+    "id": "controller.animation.example.base_pose",
+    "location": {
+      "position": 77,
+      "uri": "example",
+    },
+    "molang": {
+      "contexts": {
+        "using": [],
+      },
+      "queries": {
+        "using": [],
+      },
+      "temps": {
+        "defined": [],
+        "using": [],
+      },
+      "variables": {
+        "defined": [],
+        "using": [],
+      },
+    },
+  },
+]
+`;

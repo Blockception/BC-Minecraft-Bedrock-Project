@@ -1,4 +1,4 @@
-import path = require("path");
+import path from "path";
 
 /** */
 export enum FileType {
@@ -18,7 +18,7 @@ export namespace FileType {
    * @param uri the decoded uri, expects slashes to be '/'*/
   export function detect(uri: string): FileType {
     //Folders
-    if (uri.endsWith('.png')) return FileType.texture;
+    if (uri.endsWith(".png")) return FileType.texture;
 
     const filename = path.basename(uri);
 

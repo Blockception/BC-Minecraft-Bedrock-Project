@@ -16,13 +16,13 @@ export enum PackType {
  * @param uri The filepath to examine, expects slashes to be '/'*/
 export namespace PackType {
   /** */
-  export const BehaviorPackMatch: RegExp = /[\/\\].*(behav(ior|iour)([ _-]|)pack|behav(ior|iour)|bp).*[\/\\]/i;
+  export const BehaviorPackMatch: RegExp = /[/\\].*(behav(ior|iour)([ _-]|)pack|behav(ior|iour)|bp).*[/\\]/i;
   /** */
-  export const ResourcePackMatch: RegExp = /[\/\\].*(resource([ _-]|)pack|resource|rp).*[\/\\]/i;
+  export const ResourcePackMatch: RegExp = /[/\\].*(resource([ _-]|)pack|resource|rp).*[/\\]/i;
   /** */
-  export const WorldMatch: RegExp = /[\/\\].*(world([ _-]|)template|world|wp|db).*[\/\\]/i;
+  export const WorldMatch: RegExp = /[/\\].*(world([ _-]|)template|world|wp|db).*[/\\]/i;
   /** */
-  export const SkinPack: RegExp = /[\/\\].*(skin([ _-]|)pack).*[\/\\]/i;
+  export const SkinPack: RegExp = /[/\\].*(skin([ _-]|)pack).*[/\\]/i;
 
   /**
    *

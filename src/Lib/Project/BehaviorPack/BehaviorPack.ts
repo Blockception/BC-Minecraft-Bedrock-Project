@@ -1,6 +1,11 @@
 import { MCProject } from "bc-minecraft-project";
 import { Container } from "../../Types/Container";
-import { DataSet, DataSetBase } from "../../Types/DataSet";
+import { DataSet } from "../../Types/DataSet";
+import { Pack } from "../../Types/Pack";
+import { TextDocument } from "../../Types/TextDocument";
+import { FileType } from "./FileType";
+import { PackType } from "../PackType";
+import { Manifest } from "../../Internal/Types";
 
 import * as AnimationController from "./AnimationController";
 import * as Animation from "./Animation";
@@ -12,12 +17,6 @@ import * as Item from "./Item";
 import * as LootTable from "./LootTable";
 import * as Structure from "./Structure";
 import * as Trading from "./Trading";
-
-import { Pack } from "../../Types/Pack";
-import { TextDocument } from "../../Types/TextDocument";
-import { FileType } from "./FileType";
-import { PackType } from "../PackType";
-import { Manifest } from "../../Internal/Types";
 
 type CollectFieldsOfType<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? U : never;

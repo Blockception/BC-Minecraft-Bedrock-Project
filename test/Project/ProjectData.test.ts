@@ -1,8 +1,6 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/types";
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { MCProject } from "bc-minecraft-project";
-import { expect } from "chai";
-import { describe } from "mocha";
 import { Manifest } from "../../src/Lib/Internal/Types";
 import { BehaviorPack } from "../../src/Lib/Project/BehaviorPack";
 import { ProjectData } from "../../src/Lib/Project/ProjectData";
@@ -14,55 +12,55 @@ describe("ProjectData", () => {
     const P = new ProjectData(new TextProjectContext());
 
     it("P is not undefined", () => {
-      expect(P).to.not.be.undefined;
+      expect(P).toBeDefined();
     });
 
     describe("BehaviorPacks", () => {
       it("Is not undefined", () => {
-        expect(P.behaviorPacks).to.not.be.undefined;
+        expect(P.behaviorPacks).toBeDefined();
       });
 
       it("Has packs", () => {
-        expect(P.behaviorPacks.packs).to.not.be.undefined;
+        expect(P.behaviorPacks.packs).toBeDefined();
       });
     });
 
     describe("ResourcePacks", () => {
       it("Is not undefined", () => {
-        expect(P.resourcePacks).to.not.be.undefined;
+        expect(P.resourcePacks).toBeDefined();
       });
 
       it("Has packs", () => {
-        expect(P.resourcePacks.packs).to.not.be.undefined;
+        expect(P.resourcePacks.packs).toBeDefined();
       });
     });
 
     describe("General", () => {
       it("Is not undefined", () => {
-        expect(P.general).to.not.be.undefined;
+        expect(P.general).toBeDefined();
       });
 
       it("has fakeEntities", () => {
-        expect(P.general.fakeEntities).to.not.be.undefined;
+        expect(P.general.fakeEntities).toBeDefined();
       });
 
       it("has objectives", () => {
-        expect(P.general.objectives).to.not.be.undefined;
+        expect(P.general.objectives).toBeDefined();
       });
 
       it("has tags", () => {
-        expect(P.general.tags).to.not.be.undefined;
+        expect(P.general.tags).toBeDefined();
       });
 
       it("has tickingAreas", () => {
-        expect(P.general.tickingAreas).to.not.be.undefined;
+        expect(P.general.tickingAreas).toBeDefined();
       });
     });
   });
 
   describe("Behaviourpack", () => {
-    var P: ProjectData;
-    var pack: BehaviorPack;
+    let P: ProjectData;
+    let pack: BehaviorPack;
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
@@ -70,7 +68,7 @@ describe("ProjectData", () => {
     });
 
     it("Has 1 bp", () => {
-      expect(P.behaviorPacks.count()).to.equal(1);
+      expect(P.behaviorPacks.count()).toEqual(1);
     });
 
     describe("get", () => {
@@ -85,18 +83,18 @@ describe("ProjectData", () => {
 
       it("not undefined", () => {
         const data = P.get(uri);
-        expect(data).to.not.undefined;
+        expect(data).toBeDefined();
       });
 
       it("Is behaviorpack", () => {
         const data = P.get(uri);
-        expect(BehaviorPack.is(data)).to.be.true;
+        expect(BehaviorPack.is(data)).toBeTruthy();
       });
 
       it("Has loot_tables", () => {
         const data = P.get(uri);
-        if (!BehaviorPack.is(data)) expect.fail();
-        expect(data.loot_tables.has("empty.loot.json")).to.be.true;
+        if (!BehaviorPack.is(data)) throw new Error();
+        expect(data.loot_tables.has("empty.loot.json")).toBeTruthy();
       });
     });
 
@@ -108,14 +106,14 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.behaviorPacks.packs).to.not.undefined;
-      expect(P.behaviorPacks.loot_tables).to.not.undefined;
-      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
+      expect(P.behaviorPacks.packs).toBeDefined();
+      expect(P.behaviorPacks.loot_tables).toBeDefined();
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).toBeTruthy();
 
-      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
+      expect(P.deleteFile(uri)).toBeTruthy();
 
-      expect(P.behaviorPacks.packs).to.not.undefined;
-      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
+      expect(P.behaviorPacks.packs).toBeDefined();
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).toBeFalsy();
     });
 
     it("Remove Folder", () => {
@@ -126,12 +124,12 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.behaviorPacks.loot_tables).to.not.undefined;
-      expect(P.behaviorPacks.loot_tables.has("empty.loot.json"), "started with loottable").to.be.true;
+      expect(P.behaviorPacks.loot_tables).toBeDefined();
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).toBeTruthy();
 
-      expect(P.deleteFolder("c:\\temp\\bp\\loot_tables"), "Expected operation to be successfull").to.be.true;
+      expect(P.deleteFolder("c:\\temp\\bp\\loot_tables")).toBeTruthy();
 
-      expect(P.behaviorPacks.loot_tables.has("empty.loot.json"), "ended without loottable").to.be.false;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).toBeFalsy();
     });
 
     it("Remove Folder - Entire Pack", () => {
@@ -144,18 +142,18 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.true;
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).toBeTruthy();
 
-      expect(P.deleteFolder("c:\\temp\\bp"), "Expected operation to be successfull").to.be.true;
+      expect(P.deleteFolder("c:\\temp\\bp")).toBeTruthy();
 
-      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).to.be.false;
-      expect(P.behaviorPacks.count()).to.be.equal(0);
+      expect(P.behaviorPacks.loot_tables.has("empty.loot.json")).toBeFalsy();
+      expect(P.behaviorPacks.count()).toEqual(0);
     });
   });
 
   describe("Resourcepack", () => {
-    var P: ProjectData;
-    var pack: ResourcePack;
+    let P: ProjectData;
+    let pack: ResourcePack;
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
@@ -163,7 +161,7 @@ describe("ProjectData", () => {
     });
 
     it("add", () => {
-      expect(P.resourcePacks.count()).to.equal(1);
+      expect(P.resourcePacks.count()).toEqual(1);
     });
 
     it("get", () => {
@@ -178,12 +176,12 @@ describe("ProjectData", () => {
       const data = P.get(uri);
 
       if (!data) {
-        expect.fail("expacted a pack");
+        throw new Error("expacted a pack");
       } else {
         if (ResourcePack.is(data)) {
-          expect(data.sounds.has(id)).to.be.true;
+          expect(data.sounds.has(id)).toBeTruthy();
         } else {
-          expect.fail("expacted a rp pack");
+          throw new Error("expacted a rp pack");
         }
       }
     });
@@ -197,10 +195,10 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.resourcePacks.sounds.has(id)).to.be.true;
+      expect(P.resourcePacks.sounds.has(id)).toBeTruthy();
 
-      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
-      expect(P.resourcePacks.sounds.has(id)).to.be.false;
+      expect(P.deleteFile(uri)).toBeTruthy();
+      expect(P.resourcePacks.sounds.has(id)).toBeFalsy();
     });
 
     it("Remove Folder", () => {
@@ -212,10 +210,10 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.resourcePacks.sounds.has(id)).to.be.true;
-      expect(P.deleteFolder("c:\\temp\\rp\\sounds"), "Expected operation to be successfull").to.be.true;
+      expect(P.resourcePacks.sounds.has(id)).toBeTruthy();
+      expect(P.deleteFolder("c:\\temp\\rp\\sounds")).toBeTruthy();
 
-      expect(P.resourcePacks.sounds.has(id)).to.be.false;
+      expect(P.resourcePacks.sounds.has(id)).toBeFalsy();
     });
 
     it("Remove Folder - Entire Pack", () => {
@@ -227,17 +225,17 @@ describe("ProjectData", () => {
         location: Location.create(uri),
       });
 
-      expect(P.resourcePacks.sounds.has(id)).to.be.true;
+      expect(P.resourcePacks.sounds.has(id)).toBeTruthy();
 
-      expect(P.deleteFolder("c:\\temp\\rp"), "Expected operation to be successfull").to.be.true;
+      expect(P.deleteFolder("c:\\temp\\rp")).toBeTruthy();
 
-      expect(P.resourcePacks.sounds.has(id)).to.be.false;
-      expect(P.resourcePacks.count()).to.be.equal(0);
+      expect(P.resourcePacks.sounds.has(id)).toBeFalsy();
+      expect(P.resourcePacks.count()).toEqual(0);
     });
   });
 
   describe("General", () => {
-    var P: ProjectData;
+    let P: ProjectData;
 
     beforeEach(() => {
       P = new ProjectData(new TextProjectContext());
@@ -249,11 +247,11 @@ describe("ProjectData", () => {
 
       P.general.tags.set({ id: id, location: Location.create(uri) });
 
-      expect(P.general.tags.has(id)).to.be.true;
+      expect(P.general.tags.has(id)).toBeTruthy();
 
-      expect(P.deleteFile(uri), "Expected operation to be successfull").to.be.true;
+      expect(P.deleteFile(uri)).toBeTruthy();
 
-      expect(P.general.tags.has(id)).to.be.false;
+      expect(P.general.tags.has(id)).toBeFalsy();
     });
   });
 
@@ -376,7 +374,6 @@ describe("ProjectData", () => {
       "rp.animation_controller",
       "rp.animation",
       "rp.attachable",
-      "rp.block",
       "rp.entity",
       "rp.fog",
       "rp.material",
@@ -387,6 +384,9 @@ describe("ProjectData", () => {
       "rp.texture",
     ];
 
-    ids.forEach((id) => it("find id: " + id, () => expect(data.find((item) => item.id === id) !== undefined)));
+    test.each(ids)(`find id %s`, (id) => {
+      const item = data.find((item) => item.id === id);
+      expect(item).toBeDefined();
+    });
   });
 });

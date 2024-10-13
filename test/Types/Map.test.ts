@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { SMap } from "../../src/Lib/Types/SMap";
 
 interface Variant {
@@ -26,12 +25,23 @@ describe("Map", () => {
       names.push(name);
     });
 
-    expect(names).to.have.members(["self:variant_0", "self:variant_1", "self:variant_2", "self:variant_3", "self:variant_4", "self:variant_5", "self:variant_6", "self:variant_7"]);
+    expect(names).toEqual(
+      expect.arrayContaining([
+        "self:variant_0",
+        "self:variant_1",
+        "self:variant_2",
+        "self:variant_3",
+        "self:variant_4",
+        "self:variant_5",
+        "self:variant_6",
+        "self:variant_7",
+      ])
+    );
   });
 
   it("property names", () => {
     const keys = Object.getOwnPropertyNames(Dataset);
 
-    expect(keys.length).to.equal(8);
+    expect(keys).toHaveLength(8);
   });
 });

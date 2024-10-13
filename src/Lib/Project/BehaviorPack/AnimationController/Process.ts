@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
   const container = imp.animation_controllers;
   const keys = Object.getOwnPropertyNames(container);
 
-  for (var I = 0; I < keys.length; I++) {
+  for (let I = 0; I < keys.length; I++) {
     const id = keys[I];
     const controller = container[id];
 
@@ -52,5 +52,5 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
  * @param receiver
  */
 function getAnimations(state: internal.State, receiver: Using<string>): void {
-  if (state.animations) Types.Conditional.forEach(state.animations, (reference, value) => receiver.using.push(reference));
+  if (state.animations) Types.Conditional.forEach(state.animations, (reference) => receiver.using.push(reference));
 }

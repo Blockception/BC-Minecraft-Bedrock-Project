@@ -1,5 +1,4 @@
 import * as Internal from "../../../Internal/ResourcePack";
-import { Json } from "../../../Internal";
 import { Types } from "bc-minecraft-bedrock-types";
 import { TextDocument } from "../../../Types/TextDocument";
 import { Fog } from "./Fog";

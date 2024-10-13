@@ -1,9 +1,7 @@
 import { MCProject } from "bc-minecraft-project";
 import { Container } from "../../Types/Container";
 import { DataSetBase } from "../../Types/DataSet";
-
 import { Pack } from "../../Types/Pack";
-import { TextDocument } from "../../Types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
 import { PackType } from "../PackType";
 import { Manifest } from "../../Internal/Types";
@@ -29,8 +27,8 @@ export class WorldPack implements Container, Pack {
    *
    * @param doc
    */
-  process(doc: TextDocument): DataSetBase | undefined {
-    this.deleteFile(doc.uri);
+  process(): DataSetBase | undefined {
+    this.deleteFile();
 
     return undefined;
   }
@@ -40,7 +38,7 @@ export class WorldPack implements Container, Pack {
    * @param uri
    * @returns
    */
-  getDataset(uri: string): DataSetBase | undefined {
+  getDataset(): DataSetBase | undefined {
     return undefined;
   }
 
@@ -49,7 +47,7 @@ export class WorldPack implements Container, Pack {
    * @param uri
    * @returns
    */
-  deleteFile(uri: string): boolean {
+  deleteFile(): boolean {
     return false;
   }
 
@@ -57,7 +55,7 @@ export class WorldPack implements Container, Pack {
    *
    * @param uri
    */
-  deleteFolder(uri: string): boolean {
+  deleteFolder(): boolean {
     return false;
   }
 
@@ -66,8 +64,8 @@ export class WorldPack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined {
-    let value = undefined;
+  find(): Types.BaseObject | undefined {
+    const value = undefined;
 
     return value;
   }
@@ -77,7 +75,7 @@ export class WorldPack implements Container, Pack {
    * @param predicate
    * @returns
    */
-  forEach(callbackfn: (value: Types.BaseObject) => void): void {}
+  forEach(): void {}
 }
 
 /**
