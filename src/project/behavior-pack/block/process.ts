@@ -1,11 +1,11 @@
-import { Block } from "./Block";
-import { Json } from "../../../internal";
-import { Molang } from "bc-minecraft-molang";
-import { Documentation, SMap, TextDocument } from "../../../types";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Molang } from "bc-minecraft-molang";
+import { Json } from "../../../internal";
+import { Documentation, SMap, TextDocument } from "../../../types";
+import { Block } from "./block";
+import { BlockState } from "./block-state";
 
 import * as Internal from "../../../internal/behavior-pack";
-import { BlockState } from "./BlockState";
 
 /**
  *

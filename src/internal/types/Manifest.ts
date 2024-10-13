@@ -1,5 +1,5 @@
-import { PackType } from "../../Project/PackType";
-import { TextDocument } from "../../types/TextDocument";
+import { PackType } from "../../project/pack-type";
+import { TextDocument } from "../../types";
 import { Json } from "../json";
 
 /**

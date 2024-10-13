@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
-import { AnimationCarrier } from '../../../types/Carrier';
+import { AnimationCarrier } from "../../../types";
 
 //TODO add events
 

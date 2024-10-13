@@ -1,5 +1,5 @@
 /*	Auto generated	*/
 
-export * from "./FormatVersion";
-export * from "./Manifest";
-export * from "./Script";
+export * from "./format-version";
+export * from "./manifest";
+export * from "./script";

@@ -1,5 +1,5 @@
-import { Documentation } from "./Documentation";
-import { TextDocument } from "../../src/types/TextDocument";
+import { Documentation } from './documentation';
+import { TextDocument } from './text-document';
 
 describe("Documentation", () => {
   describe("Json", () => {

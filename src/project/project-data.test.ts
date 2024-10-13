@@ -1,11 +1,11 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/types";
 import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { MCProject } from "bc-minecraft-project";
+import { TextProjectContext } from "../../test/utility";
 import { Manifest } from "../internal/types";
 import { BehaviorPack } from "./behavior-pack";
-import { ProjectData } from "../../src/Project/ProjectData";
-import { ResourcePack } from "../../src/project/resource-pack/ResourcePack";
-import { TextProjectContext } from "../../test/utility";
+import { ProjectData } from './project-data';
+import { ResourcePack } from './resource-pack';
 
 describe("ProjectData", () => {
   describe("Sanity Check", () => {

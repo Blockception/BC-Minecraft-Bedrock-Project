@@ -1,6 +1,6 @@
 import { ComponentContainer, ComponentGroups } from "bc-minecraft-bedrock-types/lib/minecraft/components";
 import { SMap } from "../../types";
-import { ScriptContainer } from "../types/Script";
+import { ScriptContainer } from "../types";
 import { CommandContainer } from "../general/commands";
 
 /**The interface that deals with entity events that add or remove component groups*/

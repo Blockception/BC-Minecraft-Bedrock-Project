@@ -1,9 +1,9 @@
-import * as internal from "../../../internal/resource-pack/Model";
+import * as internal from "../../../internal/resource-pack/model";
 import { Json } from "../../../internal/json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { Model } from "./model";
-import { Documentation } from "../../../types/Documentation";
+import { Documentation } from "../../../types";
 
 /**
  *

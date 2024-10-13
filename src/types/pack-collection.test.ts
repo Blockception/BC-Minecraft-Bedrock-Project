@@ -1,9 +1,9 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
-import { PackType } from "../../src/Project/PackType";
+import { PackType } from "../../src/project/pack-type";
 import { PackCollection } from ".";
-import { Pack } from "./Pack";
-import { TextDocument } from "../../src/types/TextDocument";
+import { Pack } from "./pack";
+import { TextDocument } from "../../src/types";
 import { Manifest } from "../internal/types";
 import { randomUUID } from "crypto";
 

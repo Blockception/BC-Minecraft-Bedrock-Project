@@ -1,10 +1,8 @@
-import * as Internal from "../../../internal/resource-pack/Animation";
-import { Molang, Using } from "bc-minecraft-molang";
-import { TextDocument } from "../../../types/TextDocument";
-import { Animation } from "./Animation";
-import { SMap } from "../../../types";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../types/Documentation";
+import { Molang, Using } from "bc-minecraft-molang";
+import * as Internal from "../../../internal/resource-pack";
+import { Documentation, SMap, TextDocument } from "../../../types";
+import { Animation } from "./animation";
 
 /** */
 export function Process(doc: TextDocument): Animation[] | undefined {
@@ -26,12 +24,16 @@ export function Process(doc: TextDocument): Animation[] | undefined {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
         molang: Molang.MolangSet.harvest(anim),
-        documentation: Documentation.getDoc(doc, () => `RP Animation: '${id}', loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`),
+        documentation: Documentation.getDoc(
+          doc,
+          () => `RP Animation: '${id}', loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`
+        ),
         particles: Using.empty(),
         sounds: Using.empty(),
       };
 
-      if (anim.particle_effects) SMap.forEach(anim.particle_effects, (value) => processEffect(value, item.particles.using));
+      if (anim.particle_effects)
+        SMap.forEach(anim.particle_effects, (value) => processEffect(value, item.particles.using));
       if (anim.sound_effects) SMap.forEach(anim.sound_effects, (value) => processEffect(value, item.sounds.using));
 
       out.push(item);
@@ -41,15 +43,16 @@ export function Process(doc: TextDocument): Animation[] | undefined {
   return out;
 }
 
-type effect_carrier = { effect?: string }
+type effect_carrier = { effect?: string };
 
 function processEffect(item: effect_carrier | effect_carrier[], receiver: string[]): void {
-  const process = (item: effect_carrier) => { if (item.effect) receiver.push(item.effect); };
+  const process = (item: effect_carrier) => {
+    if (item.effect) receiver.push(item.effect);
+  };
 
   if (Array.isArray(item)) {
     item.forEach(process);
-  }
-  else {
+  } else {
     process(item);
   }
 }

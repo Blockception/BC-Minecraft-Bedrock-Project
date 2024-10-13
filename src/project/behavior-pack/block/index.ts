@@ -1,5 +1,5 @@
 /*	Auto generated	*/
 
-export * from "./Block";
-export * from "./BlockState";
-export * from "./Process";
+export * from "./block";
+export * from "./block-state";
+export * from "./process";

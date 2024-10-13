@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { Location } from "bc-minecraft-bedrock-types/lib/types";
-import { DataSet } from "../../src/types/DataSet";
+import { DataSet } from "../../src/types";
 
 type TestObject = Types.BaseObject;
 

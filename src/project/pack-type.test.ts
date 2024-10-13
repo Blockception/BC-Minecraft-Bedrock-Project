@@ -1,5 +1,5 @@
 import path from 'path';
-import { PackType } from "../../src/Project/PackType";
+import { PackType } from './pack-type';
 
 describe("PackType", () => {
   const data: { path: string; type: PackType }[] = [

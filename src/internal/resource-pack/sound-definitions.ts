@@ -1,5 +1,5 @@
 import { SMap } from "../../types";
-import { FormatVersion } from "../types/FormatVersion";
+import { FormatVersion } from "../types/format-version";
 
 /** */
 export interface SoundDefinitions extends Readonly<FormatVersion> {

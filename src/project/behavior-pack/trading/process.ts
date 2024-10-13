@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../types/Documentation";
-import { TextDocument } from "../../../types/TextDocument";
+import { Documentation } from "../../../types";
+import { TextDocument } from "../../../types";
 import { Trading } from "./trading";
 
 /**

@@ -1,8 +1,8 @@
-import * as Internal from "../../../internal/resource-pack";
+import { TextureAtlas } from "../../../internal/resource-pack/texture-atlas";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { Texture } from "./texture";
-import { Documentation } from "../../../types/Documentation";
+import { Documentation } from "../../../types";
 import { SMap } from "../../../types";
 
 /**
@@ -11,7 +11,7 @@ import { SMap } from "../../../types";
  * @returns
  */
 export function ProcessTextureAtlas(doc: TextDocument): Texture[] | undefined {
-  const imp = TextDocument.toObject(doc, Internal.TextureAtlas.is);
+  const imp = TextDocument.toObject(doc, TextureAtlas.is);
   if (!imp) return undefined;
 
   const uri = doc.uri;

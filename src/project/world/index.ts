@@ -1,4 +1,4 @@
 /*	Auto generated	*/
 
-export * from "./WorldPack";
-export * from "./WorldPackCollection";
+export * from "./world-pack";
+export * from "./world-pack-collection";

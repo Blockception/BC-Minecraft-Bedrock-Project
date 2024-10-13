@@ -1,4 +1,4 @@
 /*	Auto generated	*/
 
-export * from "./Animation";
-export * from "./Process";
+export * from "./animation";
+export * from "./process";

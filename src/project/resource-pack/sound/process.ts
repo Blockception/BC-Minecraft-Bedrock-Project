@@ -1,9 +1,9 @@
-import * as internal from "../../../internal/resource-pack/SoundDefinitions";
+import * as internal from "../../../internal/resource-pack/sound-definitions";
 import { Json } from "../../../internal/json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { Sound } from "./sound";
-import { Documentation } from "../../../types/Documentation";
+import { Documentation } from "../../../types";
 import { SMap } from "../../../types";
 
 /**

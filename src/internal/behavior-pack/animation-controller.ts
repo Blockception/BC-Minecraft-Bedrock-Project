@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 import { SMap } from "../../types";
-import { FormatVersion } from "../types/FormatVersion";
 import * as General from '../general/controllers/state';
+import { FormatVersion } from "../types";
 
 /** */
 export interface AnimationControllers extends Readonly<FormatVersion> {

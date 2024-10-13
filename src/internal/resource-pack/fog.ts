@@ -1,4 +1,4 @@
-import { FormatVersion } from "../types/FormatVersion";
+import { FormatVersion } from "../types/format-version";
 
 /** */
 export interface Fog extends Readonly<FormatVersion> {

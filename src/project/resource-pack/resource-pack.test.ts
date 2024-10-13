@@ -4,7 +4,7 @@ import { Manifest } from "../../internal/types";
 
 describe("Resourcepack", () => {
   describe("sanity check", () => {
-    const RP = new ResourcePack.ResourcePack("c:\\test", MCProject.createEmpty(), {} as Manifest);
+    const RP = new ResourcePack("c:\\test", MCProject.createEmpty(), {} as Manifest);
 
     it("animation controllers", () => {
       expect(typeof RP.animation_controllers === "object").toBeTruthy();
@@ -45,10 +45,10 @@ describe("Resourcepack", () => {
   });
 
   describe("is", () => {
-    const RP = new ResourcePack.ResourcePack("c:\\test", MCProject.createEmpty(), {} as Manifest);
+    const RP = new ResourcePack("c:\\test", MCProject.createEmpty(), {} as Manifest);
 
     it("Is resourcepack", () => {
-      expect(ResourcePack.ResourcePack.is(RP)).toBeTruthy();
+      expect(ResourcePack.is(RP)).toBeTruthy();
     });
   });
 });

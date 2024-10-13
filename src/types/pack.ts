@@ -1,9 +1,9 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { MCProject } from "bc-minecraft-project";
-import { PackType } from "../Project/PackType";
-import { DataSetBase } from "./DataSet";
-import { TextDocument } from "./TextDocument";
 import { Manifest } from "../internal/types";
+import { PackType } from "../project/pack-type";
+import { DataSetBase } from "./data-set";
+import { TextDocument } from "./text-document";
 
 /** */
 export interface Pack {

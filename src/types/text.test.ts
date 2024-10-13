@@ -1,4 +1,4 @@
-import { Text } from "./Text";
+import { Text } from "./text";
 
 describe("Text", () => {
   const tests = [

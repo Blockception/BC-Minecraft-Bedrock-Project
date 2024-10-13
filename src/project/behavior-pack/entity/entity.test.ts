@@ -1,5 +1,5 @@
 import { Json } from "../../../../src/internal/json";
-import { TextDocument } from "../../../../src/types/TextDocument";
+import { TextDocument } from "../../../../src/types";
 import * as Internal from "../../../../src/internal/behavior-pack/entity";
 import { Entity } from "../../../../src/project/behavior-pack";
 

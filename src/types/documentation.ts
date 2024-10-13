@@ -1,5 +1,5 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "./TextDocument";
+import { TextDocument } from "./text-document";
 
 /** */
 export namespace Documentation {

@@ -1,9 +1,8 @@
-import { BlockCulling } from './culling';
-import { Documentation } from "../../../types/Documentation";
-import { Json } from "../../../internal";
-import { TextDocument } from "../../../types/TextDocument";
 import { Types } from "bc-minecraft-bedrock-types";
-import * as Internal from "../../../internal/resource-pack/BlockCulling";
+import { Json } from "../../../internal";
+import * as Internal from "../../../internal/resource-pack";
+import { Documentation, TextDocument } from "../../../types";
+import { BlockCulling } from "./culling";
 
 export function Process(doc: TextDocument): BlockCulling[] | undefined {
   const uri = doc.uri;
@@ -11,7 +10,7 @@ export function Process(doc: TextDocument): BlockCulling[] | undefined {
   const imp = Json.To<Internal.BlockCulling>(doc);
   if (!Internal.BlockCulling.is(imp)) return undefined;
 
-  const id = imp['minecraft:block_culling_rules'].description.identifier;
+  const id = imp["minecraft:block_culling_rules"].description.identifier;
   if (typeof id !== "string") return undefined;
 
   const result: BlockCulling = {

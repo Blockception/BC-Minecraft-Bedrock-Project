@@ -1,4 +1,4 @@
-import { FormatVersion } from "../types/FormatVersion";
+import { FormatVersion } from "../types/format-version";
 
 const features = [
     'minecraft:weighted_random_feature',

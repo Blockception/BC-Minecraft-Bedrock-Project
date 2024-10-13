@@ -1,4 +1,4 @@
-import { SMap } from "./SMap";
+import { SMap } from "./smap";
 
 interface Variant {
   "minecraft:variant": {

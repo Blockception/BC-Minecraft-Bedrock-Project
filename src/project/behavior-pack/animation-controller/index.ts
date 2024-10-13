@@ -1,4 +1,4 @@
 /*	Auto generated	*/
 
 export * from "./animation-controller";
-export * from "./Process";
+export * from "./process";

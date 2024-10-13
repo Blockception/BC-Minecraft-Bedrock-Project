@@ -1,3 +1,3 @@
 /*	Auto generated	*/
-export * as Controllers from "./controllers/index";
+export * as Controllers from "./controllers";
 export * from "./commands";

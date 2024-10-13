@@ -1,8 +1,8 @@
-import * as Internal from "../../../internal/resource-pack/RenderController";
-import { Documentation } from "../../../types/Documentation";
+import * as Internal from "../../../internal/resource-pack/render-controller";
+import { Documentation } from "../../../types";
 import { Molang } from "bc-minecraft-molang";
 import { RenderController } from "./render-controller";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { Types } from "bc-minecraft-bedrock-types";
 
 /** */

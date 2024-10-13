@@ -1,8 +1,8 @@
 import { MCProject } from "bc-minecraft-project";
-import { ProjectData } from "../../../../src/Project/ProjectData";
-import { TextDocument } from "../../../../src/types/TextDocument";
-import { TextProjectContext } from "../../../Utility";
-import { Manifest } from "../../../../src/internal/types";
+import { TextProjectContext } from '../../../../../test/utility';
+import { Manifest } from '../../../../internal/types';
+import { TextDocument } from '../../../../types';
+import { ProjectData } from '../../../project-data';
 
 describe("Commands", () => {
   it("mcfunction", () => {

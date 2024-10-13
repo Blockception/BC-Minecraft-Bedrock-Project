@@ -1,7 +1,5 @@
 import path from "path";
-import { ResourcePack } from "../../main";
-
-const FileType = ResourcePack.FileType;
+import { FileType } from "./file-type";
 
 describe("RP Filetype", () => {
   describe("Detect", () => {

@@ -1,10 +1,8 @@
-import { MCProject } from "bc-minecraft-project";
-import { Container } from "../../types/Container";
-import { DataSetBase } from "../../types/DataSet";
-import { Pack } from "../../types/Pack";
 import { Types } from "bc-minecraft-bedrock-types";
-import { PackType } from "../PackType";
+import { MCProject } from "bc-minecraft-project";
 import { Manifest } from "../../internal/types";
+import { Container, DataSetBase, Pack } from "../../types";
+import { PackType } from "../pack-type";
 
 /** */
 export class WorldPack implements Container, Pack {

@@ -1,14 +1,11 @@
+import { Types } from "bc-minecraft-bedrock-types";
+import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/minecraft/components";
+import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import * as internal from "../../../internal/behavior-pack/entity";
 import { Json } from "../../../internal/json";
-import { Molang } from "bc-minecraft-molang";
-import { DefinedUsing } from "bc-minecraft-molang";
-import { Types } from "bc-minecraft-bedrock-types";
-import { SMap } from "../../../types";
-import { TextDocument } from "../../../types/TextDocument";
+import { Documentation, SMap, TextDocument } from "../../../types";
 import { Entity } from "./entity";
-import { Documentation } from "../../../types/Documentation";
-import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/minecraft/components";
-import { EntityProperty } from './properties';
+import { EntityProperty } from "./properties";
 
 /**
  *

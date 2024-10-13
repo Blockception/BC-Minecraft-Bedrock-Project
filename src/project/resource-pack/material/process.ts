@@ -1,9 +1,9 @@
-import * as internal from "../../../internal/resource-pack/Material";
+import * as internal from "../../../internal/resource-pack/material";
 import { Json } from "../../../internal/json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { Material } from "./material";
-import { Documentation } from "../../../types/Documentation";
+import { Documentation } from "../../../types";
 import { SMap } from "../../../types";
 
 /**

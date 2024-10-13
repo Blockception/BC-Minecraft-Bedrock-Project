@@ -1,4 +1,4 @@
-import { FormatVersion } from "../types/FormatVersion";
+import { FormatVersion } from "../types/format-version";
 
 /**
  * Represents the interface for Block Culling.

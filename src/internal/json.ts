@@ -1,5 +1,5 @@
 import { jsonc } from "jsonc";
-import { TextDocument } from "../types/TextDocument";
+import { TextDocument } from "../types";
 
 /**The namespace that provided json code*/
 export namespace Json {

@@ -1,8 +1,8 @@
 import { MCProject } from "bc-minecraft-project";
-import { DataSetConnector, PackCollection } from "../../types";
-import { ResourcePack } from "./ResourcePack";
-
 import { Manifest } from "../../internal/types";
+import { DataSetConnector, PackCollection } from "../../types";
+import { ResourcePack } from "./resource-pack";
+
 import * as Animation from "./animation";
 import * as AnimationController from "./animation-controller";
 import * as Attachable from "./attachable";

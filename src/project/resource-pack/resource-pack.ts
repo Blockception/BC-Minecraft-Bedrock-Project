@@ -1,11 +1,8 @@
 import { MCProject } from "bc-minecraft-project";
-import { Manifest } from '../../internal/Types/Manifest';
-import { Container } from "../../types/Container";
-import { DataSet } from "../../types/DataSet";
-import { Pack } from "../../types/Pack";
-import { TextDocument } from "../../types/TextDocument";
-import { PackType } from "../PackType";
-import { FileType } from "./enum";
+import { Manifest } from "../../internal/types/manifest";
+import { Container, DataSet, Pack, TextDocument } from "../../types";
+import { PackType } from "../pack-type";
+import { FileType } from "./file-type";
 
 import * as Animation from "./animation";
 import * as AnimationController from "./animation-controller";
@@ -25,9 +22,9 @@ type CollectFieldsOfType<T> = {
 };
 type CollectionFieldsDataSet<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? DataSet<U> : never;
-}
+};
 
-type ItemTypes =  CollectFieldsOfType<ResourcePack>[keyof ResourcePack];
+type ItemTypes = CollectFieldsOfType<ResourcePack>[keyof ResourcePack];
 type DataSetTypes = CollectionFieldsDataSet<ResourcePack>[keyof ResourcePack];
 
 /** */

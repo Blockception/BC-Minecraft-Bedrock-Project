@@ -1,11 +1,11 @@
 import * as Internal from "../../../internal/resource-pack/AnimationController";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { AnimationController } from "./animation-controller";
 import { SMap } from "../../../types";
 import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../types/Documentation";
+import { Documentation } from "../../../types";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {

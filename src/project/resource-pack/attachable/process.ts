@@ -1,10 +1,10 @@
 import * as Internal from "../../../internal/resource-pack";
 import { Json } from "../../../internal";
 import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../types/TextDocument";
+import { TextDocument } from "../../../types";
 import { Attachable } from "./attachable";
 import { DefinedUsing } from "bc-minecraft-molang";
-import { Documentation } from "../../../types/Documentation";
+import { Documentation } from "../../../types";
 import { Types } from "bc-minecraft-bedrock-types";
 
 /**
@@ -31,31 +31,31 @@ export function Process(doc: TextDocument): Attachable | undefined {
   };
   Molang.MolangFullSet.fromScript(description.scripts ?? {}, out.molang);
 
-  //Process animations
+  //process animations
   Types.Definition.forEach(description.animations, (reference, id) => {
     out.animations.defined.push(reference);
     out.animations.using.push(id);
   });
 
-  //Process Animation controller
+  //process Animation controller
   description.animation_controllers?.forEach((item) => {
     const temp = flatten(item);
     if (temp) out.animations.using.push(temp);
   });
 
-  //Process geometries
+  //process geometries
   Types.Definition.forEach(description.geometry, (reference, id) => {
     out.molang.geometries.defined.push(reference);
     out.molang.geometries.using.push(removePrefix(id));
   });
 
-  //Process materials
+  //process materials
   Types.Definition.forEach(description.materials, (reference, id) => {
     out.molang.materials.defined.push(reference);
     out.molang.materials.using.push(removePrefix(id));
   });
 
-  //Process textures
+  //process textures
   Types.Definition.forEach(description.textures, (reference, id) => {
     out.molang.textures.defined.push(reference);
     out.molang.textures.using.push(id);

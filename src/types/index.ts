@@ -7,7 +7,7 @@ export * from "./data-set-connector";
 export * from "./documentation";
 export * from "./i-data-set";
 export * from "./json-path";
-export * from "./Pack";
+export * from "./pack";
 export * from "./pack-collection";
 export * from "./project-context";
 export * from "./smap";

@@ -1,8 +1,7 @@
-import * as internal from "../../../internal/behavior-pack/Feature";
-import { Json } from "../../../internal/json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../types/Documentation";
-import { TextDocument } from "../../../types/TextDocument";
+import * as Internal from "../../../internal/behavior-pack/feature";
+import { Json } from "../../../internal/json";
+import { Documentation, TextDocument } from "../../../types";
 import { Feature } from "./feature";
 
 /**
@@ -13,13 +12,13 @@ import { Feature } from "./feature";
 export function Process(doc: TextDocument): Feature | undefined {
   const uri = doc.uri;
   const content = doc.getText();
-  const imp = Json.To<internal.Feature>(doc);
+  const imp = Json.To<Internal.Feature>(doc);
 
-  if (!internal.Feature.is(imp)) return undefined;
+  if (!Internal.Feature.is(imp)) return undefined;
 
   const key = Object.keys(imp).find((x) => !x.startsWith("format_version"));
   if (key === undefined) return;
-  const container = imp[key as keyof internal.Feature];
+  const container = imp[key as keyof Internal.Feature];
   if (container === undefined || typeof container === "string") return;
 
   const id = container.description.identifier;

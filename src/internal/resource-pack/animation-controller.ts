@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { SMap } from "../../types";
-import { FormatVersion } from "../types/FormatVersion";
+import { FormatVersion } from "../types/format-version";
 import * as General from '../general/controllers/state';
 
 /** */
