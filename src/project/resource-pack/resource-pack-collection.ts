@@ -42,6 +42,10 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
   readonly sounds: DataSetConnector<Sound.Sound, ResourcePack>;
   /**The collection of textures*/
   readonly textures: DataSetConnector<Texture.Texture, ResourcePack>;
+  /**The collection of textures from item_texture.json*/
+  readonly itemTextures: DataSetConnector<Texture.Texture, ResourcePack>;
+  /**The collection of textures from terrain_texture.json*/
+  readonly terrainTextures: DataSetConnector<Texture.Texture, ResourcePack>;
 
   /**Creates a new instances of the class*/
   constructor() {
@@ -60,6 +64,8 @@ export class ResourcePackCollection extends PackCollection<ResourcePack> {
     this.render_controllers = new DataSetConnector(this, (pack) => pack.render_controllers);
     this.sounds = new DataSetConnector(this, (pack) => pack.sounds);
     this.textures = new DataSetConnector(this, (pack) => pack.textures);
+    this.itemTextures = new DataSetConnector(this, (pack) => pack.itemTextures);
+    this.terrainTextures = new DataSetConnector(this, (pack) => pack.terrainTextures);
   }
 
   add(folder: string, context: MCProject | string, manifest: Manifest): ResourcePack {
