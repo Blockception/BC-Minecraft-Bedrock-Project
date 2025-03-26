@@ -10,6 +10,10 @@ exports[`BehaviorPack - Animation Controller Process 1`] = `
       ],
     },
     "documentation": "BP Animation Controller: controller.animation.example.base_pose",
+    "events": [
+      "minecraft:entity_spawned",
+      "minecraft:entity_born",
+    ],
     "id": "controller.animation.example.base_pose",
     "location": {
       "position": 77,

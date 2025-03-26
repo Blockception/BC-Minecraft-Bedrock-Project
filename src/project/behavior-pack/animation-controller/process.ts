@@ -33,9 +33,18 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
         animations: DefinedUsing.empty(),
         molang: Molang.MolangSet.harvest(controller),
         documentation: Documentation.getDoc(doc, () => `BP Animation Controller: ${id}`),
+        events: []
       };
 
-      SMap.forEach(controller.states, (state) => getAnimations(state, item.animations));
+      SMap.forEach(controller.states, (state) => {
+        getAnimations(state, item.animations)
+        state.on_entry?.filter(entry => entry.startsWith('@s ')).map(entry => entry.slice(3)).forEach(entry => {
+          if (!item.events.includes(entry)) item.events.push(entry)
+        })
+        state.on_exit?.filter(entry => entry.startsWith('@s ')).map(entry => entry.slice(3)).forEach(entry => {
+          if (!item.events.includes(entry)) item.events.push(entry)
+        })
+      });
 
       out.push(item);
     }
