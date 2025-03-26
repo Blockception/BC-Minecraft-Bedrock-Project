@@ -272,6 +272,7 @@ describe("ProjectData", () => {
       location: loc,
       molang: molang,
       documentation: doc,
+      events: []
     });
     bp.animations.set({
       id: "bp.animation",

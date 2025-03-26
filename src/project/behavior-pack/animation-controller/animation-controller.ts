@@ -10,4 +10,6 @@ export interface AnimationController extends Types.BaseObject, AnimationCarrier<
   molang: Molang.MolangSet;
   /** */
   animations: DefinedUsing<string>;
+  /** */
+  events: string[]
 }
