@@ -138,6 +138,9 @@ export class BehaviorPack implements Container, Pack {
       case FileType.entity:
         return this.entities;
 
+      case FileType.feature:
+        return this.features;
+
       case FileType.function:
         return this.functions;
 
@@ -170,6 +173,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.animation_controllers.deleteFile(uri) || out;
     out = this.blocks.deleteFile(uri) || out;
     out = this.entities.deleteFile(uri) || out;
+    out = this.features.deleteFile(uri) || out;
     out = this.functions.deleteFile(uri) || out;
     out = this.items.deleteFile(uri) || out;
     out = this.loot_tables.deleteFile(uri) || out;
@@ -190,6 +194,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.animation_controllers.deleteFolder(uri) || out;
     out = this.blocks.deleteFolder(uri) || out;
     out = this.entities.deleteFolder(uri) || out;
+    out = this.features.deleteFolder(uri) || out;
     out = this.functions.deleteFolder(uri) || out;
     out = this.items.deleteFolder(uri) || out;
     out = this.loot_tables.deleteFolder(uri) || out;
@@ -211,6 +216,7 @@ export class BehaviorPack implements Container, Pack {
     if ((value = this.animation_controllers.find(predicate))) return value;
     if ((value = this.blocks.find(predicate))) return value;
     if ((value = this.entities.find(predicate))) return value;
+    if ((value = this.features.find(predicate))) return value;
     if ((value = this.functions.find(predicate))) return value;
     if ((value = this.items.find(predicate))) return value;
     if ((value = this.loot_tables.find(predicate))) return value;
@@ -230,6 +236,7 @@ export class BehaviorPack implements Container, Pack {
     this.animation_controllers.forEach(callbackfn);
     this.blocks.forEach(callbackfn);
     this.entities.forEach(callbackfn);
+    this.features.forEach(callbackfn);
     this.functions.forEach(callbackfn);
     this.items.forEach(callbackfn);
     this.loot_tables.forEach(callbackfn);
@@ -261,6 +268,7 @@ export namespace BehaviorPack {
       if (typeof temp.animation_controllers !== "object") return false;
       if (typeof temp.blocks !== "object") return false;
       if (typeof temp.entities !== "object") return false;
+      if (typeof temp.features !== "object") return false;
 
       if (typeof temp.context !== "object") return false;
       if (typeof temp.folder !== "string") return false;
