@@ -54,10 +54,10 @@
     "typescript-eslint": "^8.4.0"
   },
   "dependencies": {
-    "bc-minecraft-bedrock-command": "^1.21.60-1",
-    "bc-minecraft-bedrock-types": "^1.22.1-1",
+    "bc-minecraft-bedrock-command": "^1.21.60",
+    "bc-minecraft-bedrock-types": "^1.22.1-2",
     "bc-minecraft-molang": "^1.21.60-1",
-    "bc-minecraft-project": "^1.22.1-1",
+    "bc-minecraft-project": "^1.22.1-2",
     "jsonc": "^2.0.0"
   }
 }
