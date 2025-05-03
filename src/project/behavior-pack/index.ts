@@ -3,6 +3,8 @@ export * as Animation from "./animation";
 export * as AnimationController from "./animation-controller";
 export * as Block from "./block";
 export * as Entity from "./entity";
+export * as Feature from "./feature"
+export * as FeatureRule from "./feature_rule"
 export * as Item from "./item";
 export * as LootTable from "./loot-table";
 export * as McFunction from "./mcfunction";

@@ -11,6 +11,8 @@ export enum FileType {
   /***/
   feature,
   /***/
+  feature_rule,
+  /***/
   function,
   /***/
   item,
@@ -26,10 +28,6 @@ export enum FileType {
   structure,
   /***/
   trading,
-  /***/
-  terrain_texture,
-  /***/
-  item_texture,
   /***/
   unknown,
 }
@@ -58,8 +56,6 @@ export namespace FileType {
 
     //Files
     if (uri.endsWith("manifest.json")) return FileType.manifest;
-    if (uri.endsWith("terrain_texture.json")) return FileType.terrain_texture;
-    if (uri.endsWith("item_texture.json")) return FileType.item_texture;
 
     return FileType.unknown;
   }

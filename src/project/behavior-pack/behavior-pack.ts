@@ -9,6 +9,7 @@ import * as AnimationController from "./animation-controller";
 import * as Block from "./block";
 import * as Entity from "./entity";
 import * as Feature from "./feature";
+import * as FeatureRule from "./feature_rule";
 import * as Item from "./item";
 import * as LootTable from "./loot-table";
 import * as Function from "./mcfunction";
@@ -42,6 +43,8 @@ export class BehaviorPack implements Container, Pack {
   readonly entities: DataSet<Entity.Entity>;
   /**The collection of features*/
   readonly features: DataSet<Feature.Feature>;
+  /**The collection of features*/
+  readonly features_rules: DataSet<FeatureRule.FeatureRule>;
   /**The collection of mcfunctions*/
   readonly functions: DataSet<Function.Function>;
   /**The collection of items*/
@@ -71,6 +74,7 @@ export class BehaviorPack implements Container, Pack {
     this.structures = new DataSet();
     this.trading = new DataSet();
     this.features = new DataSet();
+    this.features_rules = new DataSet()
   }
 
   /**
@@ -112,6 +116,9 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.feature:
         return this.features.set(Feature.Process(doc));
+
+      case FileType.feature_rule:
+        return this.features_rules.set(FeatureRule.Process(doc))
     }
 
     return undefined;
@@ -140,6 +147,9 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.feature:
         return this.features;
+      
+      case FileType.feature_rule:
+        return this.features_rules;
 
       case FileType.function:
         return this.functions;
@@ -174,6 +184,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.blocks.deleteFile(uri) || out;
     out = this.entities.deleteFile(uri) || out;
     out = this.features.deleteFile(uri) || out;
+    out = this.features_rules.deleteFile(uri) || out;
     out = this.functions.deleteFile(uri) || out;
     out = this.items.deleteFile(uri) || out;
     out = this.loot_tables.deleteFile(uri) || out;
@@ -195,6 +206,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.blocks.deleteFolder(uri) || out;
     out = this.entities.deleteFolder(uri) || out;
     out = this.features.deleteFolder(uri) || out;
+    out = this.features_rules.deleteFolder(uri) || out;
     out = this.functions.deleteFolder(uri) || out;
     out = this.items.deleteFolder(uri) || out;
     out = this.loot_tables.deleteFolder(uri) || out;
@@ -217,6 +229,7 @@ export class BehaviorPack implements Container, Pack {
     if ((value = this.blocks.find(predicate))) return value;
     if ((value = this.entities.find(predicate))) return value;
     if ((value = this.features.find(predicate))) return value;
+    if ((value = this.features_rules.find(predicate))) return value;
     if ((value = this.functions.find(predicate))) return value;
     if ((value = this.items.find(predicate))) return value;
     if ((value = this.loot_tables.find(predicate))) return value;
@@ -237,6 +250,7 @@ export class BehaviorPack implements Container, Pack {
     this.blocks.forEach(callbackfn);
     this.entities.forEach(callbackfn);
     this.features.forEach(callbackfn);
+    this.features_rules.forEach(callbackfn);
     this.functions.forEach(callbackfn);
     this.items.forEach(callbackfn);
     this.loot_tables.forEach(callbackfn);
@@ -269,6 +283,7 @@ export namespace BehaviorPack {
       if (typeof temp.blocks !== "object") return false;
       if (typeof temp.entities !== "object") return false;
       if (typeof temp.features !== "object") return false;
+      if (typeof temp.features_rules !== "object") return false;
 
       if (typeof temp.context !== "object") return false;
       if (typeof temp.folder !== "string") return false;
