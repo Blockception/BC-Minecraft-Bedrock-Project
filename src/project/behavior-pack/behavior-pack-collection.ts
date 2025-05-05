@@ -7,7 +7,8 @@ import * as Animation from "./animation";
 import * as AnimationController from "./animation-controller";
 import * as Block from "./block";
 import * as Entity from "./entity";
-import * as Feature from "./feature"
+import * as Feature from "./feature";
+import * as FeatureRule from "./feature_rule";
 import * as Item from "./item";
 import * as LootTable from "./loot-table";
 import * as Function from "./mcfunction";
@@ -26,6 +27,8 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
   readonly entities: DataSetConnector<Entity.Entity, BehaviorPack>;
   /**The collection of features*/
   readonly features: DataSetConnector<Feature.Feature, BehaviorPack>;
+  /**The collection of features rules*/
+  readonly features_rules: DataSetConnector<FeatureRule.FeatureRule, BehaviorPack>;
   /**The collection of mcfunctions*/
   readonly functions: DataSetConnector<Function.Function, BehaviorPack>;
   /**The collection of items*/
@@ -51,6 +54,7 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
     this.structures = new DataSetConnector(this, (pack) => pack.structures);
     this.trading = new DataSetConnector(this, (pack) => pack.trading);
     this.features = new DataSetConnector(this, (pack) => pack.features);
+    this.features_rules = new DataSetConnector(this, (pack) => pack.features_rules);
   }
 
   /**
