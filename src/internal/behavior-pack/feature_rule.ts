@@ -1,5 +1,15 @@
 import { FormatVersion } from "../types/format-version";
 
+interface Fraction {
+    numerator: number,
+    denominator: number
+}
+
+interface DistributionObject {
+    distribution: "uniform" | "fixed_grid" | "jittered_grid" | "gaussian" | "inverse_gaussian" | "triangle",
+    extent: [number, number]
+}
+
 /** */
 export interface FeatureRule extends Readonly<FormatVersion> {
     /** */
@@ -16,9 +26,9 @@ export interface FeatureRule extends Readonly<FormatVersion> {
         },
         distribution: {
             iterations: number | string,
-            x: object | string,
-            y: object | string,
-            z: object | string
+            x: string | Fraction | DistributionObject,
+            y: string | Fraction | DistributionObject,
+            z: string | Fraction | DistributionObject
         }
     }
 }
