@@ -49,6 +49,7 @@ export namespace FileType {
     if (/[\\/]structures[\\/]/.test(uri)) return FileType.structure;
     if (/[\\/]trading[\\/]/.test(uri)) return FileType.trading;
     if (/[\\/]features[\\/]/.test(uri)) return FileType.feature;
+    if (/[\\/]feature_rules[\\/]/.test(uri)) return FileType.feature_rule;
     //These can also be subfolders
     if (/[\\/]blocks[\\/]/.test(uri)) return FileType.block;
     if (/[\\/]entities[\\/]/.test(uri)) return FileType.entity;
