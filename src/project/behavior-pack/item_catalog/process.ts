@@ -18,7 +18,7 @@ export function Process(doc: TextDocument): Group[] | undefined {
 
   const out: Group[] = []
   imp['minecraft:crafting_items_catalog'].categories.flatMap(category => category.groups).forEach(entry => {
-    let id = entry.group_identifier?.name
+    const id = entry.group_identifier?.name
     if (!id) return
     out.push({
       id: id,
