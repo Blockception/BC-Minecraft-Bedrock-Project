@@ -10,6 +10,7 @@ import * as Entity from "./entity";
 import * as Feature from "./feature";
 import * as FeatureRule from "./feature_rule";
 import * as Item from "./item";
+import * as ItemCatalog from './item_catalog';
 import * as LootTable from "./loot-table";
 import * as Function from "./mcfunction";
 import * as Structure from "./structure";
@@ -33,6 +34,8 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
   readonly functions: DataSetConnector<Function.Function, BehaviorPack>;
   /**The collection of items*/
   readonly items: DataSetConnector<Item.Item, BehaviorPack>;
+   /**The collection of items*/
+  readonly items_groups: DataSetConnector<ItemCatalog.Group, BehaviorPack>;
   /**The collection of loot tables*/
   readonly loot_tables: DataSetConnector<LootTable.LootTable, BehaviorPack>;
   /**The collection of structures*/
@@ -50,6 +53,7 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
     this.entities = new DataSetConnector(this, (pack) => pack.entities);
     this.functions = new DataSetConnector(this, (pack) => pack.functions);
     this.items = new DataSetConnector(this, (pack) => pack.items);
+    this.items_groups = new DataSetConnector(this, (pack) => pack.item_groups);
     this.loot_tables = new DataSetConnector(this, (pack) => pack.loot_tables);
     this.structures = new DataSetConnector(this, (pack) => pack.structures);
     this.trading = new DataSetConnector(this, (pack) => pack.trading);

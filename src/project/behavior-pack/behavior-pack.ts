@@ -11,6 +11,7 @@ import * as Entity from "./entity";
 import * as Feature from "./feature";
 import * as FeatureRule from "./feature_rule";
 import * as Item from "./item";
+import * as ItemCatalog from "./item_catalog";
 import * as LootTable from "./loot-table";
 import * as Function from "./mcfunction";
 import * as Structure from "./structure";
@@ -48,6 +49,8 @@ export class BehaviorPack implements Container, Pack {
   /**The collection of mcfunctions*/
   readonly functions: DataSet<Function.Function>;
   /**The collection of items*/
+  readonly item_groups: DataSet<ItemCatalog.Group>;
+  /**The collection of items*/
   readonly items: DataSet<Item.Item>;
   /**The collection of loot tables*/
   readonly loot_tables: DataSet<LootTable.LootTable>;
@@ -75,6 +78,7 @@ export class BehaviorPack implements Container, Pack {
     this.trading = new DataSet();
     this.features = new DataSet();
     this.features_rules = new DataSet()
+    this.item_groups = new DataSet();
   }
 
   /**
@@ -119,6 +123,10 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.feature_rule:
         return this.features_rules.set(FeatureRule.Process(doc))
+
+      case FileType.item_catalog:
+        return this.item_groups.set(ItemCatalog.Process(doc));
+
     }
 
     return undefined;
@@ -157,6 +165,9 @@ export class BehaviorPack implements Container, Pack {
       case FileType.item:
         return this.items;
 
+      case FileType.item_catalog:
+        return this.item_groups;
+
       case FileType.loot_table:
         return this.loot_tables;
 
@@ -187,6 +198,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.features_rules.deleteFile(uri) || out;
     out = this.functions.deleteFile(uri) || out;
     out = this.items.deleteFile(uri) || out;
+    out = this.item_groups.deleteFile(uri) || out;
     out = this.loot_tables.deleteFile(uri) || out;
     out = this.structures.deleteFile(uri) || out;
     out = this.trading.deleteFile(uri) || out;
@@ -209,6 +221,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.features_rules.deleteFolder(uri) || out;
     out = this.functions.deleteFolder(uri) || out;
     out = this.items.deleteFolder(uri) || out;
+    out = this.item_groups.deleteFolder(uri) || out;
     out = this.loot_tables.deleteFolder(uri) || out;
     out = this.structures.deleteFolder(uri) || out;
     out = this.trading.deleteFolder(uri) || out;
@@ -232,6 +245,7 @@ export class BehaviorPack implements Container, Pack {
     if ((value = this.features_rules.find(predicate))) return value;
     if ((value = this.functions.find(predicate))) return value;
     if ((value = this.items.find(predicate))) return value;
+    if ((value = this.item_groups.find(predicate))) return value;
     if ((value = this.loot_tables.find(predicate))) return value;
     if ((value = this.structures.find(predicate))) return value;
     if ((value = this.trading.find(predicate))) return value;
@@ -253,6 +267,7 @@ export class BehaviorPack implements Container, Pack {
     this.features_rules.forEach(callbackfn);
     this.functions.forEach(callbackfn);
     this.items.forEach(callbackfn);
+    this.item_groups.forEach(callbackfn);
     this.loot_tables.forEach(callbackfn);
     this.structures.forEach(callbackfn);
     this.trading.forEach(callbackfn);
@@ -284,6 +299,7 @@ export namespace BehaviorPack {
       if (typeof temp.entities !== "object") return false;
       if (typeof temp.features !== "object") return false;
       if (typeof temp.features_rules !== "object") return false;
+      if (typeof temp.item_groups !== "object") return false;
 
       if (typeof temp.context !== "object") return false;
       if (typeof temp.folder !== "string") return false;

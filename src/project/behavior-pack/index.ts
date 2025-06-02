@@ -6,6 +6,7 @@ export * as Entity from "./entity";
 export * as Feature from "./feature"
 export * as FeatureRule from "./feature_rule"
 export * as Item from "./item";
+export * as ItemCatalog from './item_catalog';
 export * as LootTable from "./loot-table";
 export * as McFunction from "./mcfunction";
 export * as Structure from "./structure";
