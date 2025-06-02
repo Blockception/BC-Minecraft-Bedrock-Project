@@ -6,4 +6,5 @@ export * from "./block";
 export * from "./entity";
 export * from "./item";
 export * from "./feature";
-export * from "./feature_rule"
+export * from "./feature_rule";
+export * from './item_catalog';

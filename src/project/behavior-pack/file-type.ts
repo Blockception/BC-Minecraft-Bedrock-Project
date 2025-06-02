@@ -17,6 +17,8 @@ export enum FileType {
   /***/
   item,
   /***/
+  item_catalog,
+  /***/
   loot_table,
   /***/
   manifest,
@@ -50,6 +52,7 @@ export namespace FileType {
     if (/[\\/]trading[\\/]/.test(uri)) return FileType.trading;
     if (/[\\/]features[\\/]/.test(uri)) return FileType.feature;
     if (/[\\/]feature_rules[\\/]/.test(uri)) return FileType.feature_rule;
+    if (/[\\/]item_catalog[\\/]/.test(uri)) return FileType.item_catalog;
     //These can also be subfolders
     if (/[\\/]blocks[\\/]/.test(uri)) return FileType.block;
     if (/[\\/]entities[\\/]/.test(uri)) return FileType.entity;
