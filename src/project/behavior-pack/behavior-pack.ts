@@ -24,8 +24,15 @@ type CollectionFieldsDataSet<T> = {
   [K in keyof T]: T[K] extends DataSet<infer U> ? DataSet<U> : never;
 };
 
+type FieldKeysDataSet<T> = {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  [K in keyof T]: T[K] extends DataSet<infer _U> ? K : never;
+};
+
 type ItemTypes = CollectFieldsOfType<BehaviorPack>[keyof BehaviorPack];
 type DataSetTypes = CollectionFieldsDataSet<BehaviorPack>[keyof BehaviorPack];
+
+export type BehaviorPackKeys = FieldKeysDataSet<BehaviorPack>[keyof BehaviorPack];
 
 /** */
 export class BehaviorPack implements Container, Pack {
