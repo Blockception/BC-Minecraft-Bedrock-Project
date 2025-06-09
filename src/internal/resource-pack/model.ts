@@ -108,4 +108,6 @@ export interface Bone {
   name: string;
   /** */
   parent: string;
+  /** */
+  binding?: string;
 }

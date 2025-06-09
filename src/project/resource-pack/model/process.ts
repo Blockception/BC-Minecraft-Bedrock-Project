@@ -28,6 +28,7 @@ export function Process(doc: TextDocument): Model[] | undefined {
         location: Types.Location.create(uri, content.indexOf(key)),
         documentation: Documentation.getDoc(doc, () => `Model: ${key}`),
         bones: getBones(value),
+        root_bone_uses_binding: typeof value.bones[0].binding == 'string' ? true : false
       })
     );
   }
@@ -43,6 +44,7 @@ export function Process(doc: TextDocument): Model[] | undefined {
             location: Types.Location.create(uri, content.indexOf(model.description.identifier)),
             documentation: Documentation.getDoc(doc, () => `Model: ${model.description.identifier}`),
             bones: getBones(model),
+            root_bone_uses_binding: typeof model.bones[0].binding == 'string' ? true : false 
           })
         );
       });
