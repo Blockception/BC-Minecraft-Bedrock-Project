@@ -5,6 +5,7 @@ import { BehaviorPack } from "./behavior-pack";
 
 import * as Animation from "./animation";
 import * as AnimationController from "./animation-controller";
+import * as Biome from "./biome";
 import * as Block from "./block";
 import * as Entity from "./entity";
 import * as Feature from "./feature";
@@ -24,6 +25,8 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
   readonly animation_controllers: DataSetConnector<AnimationController.AnimationController, BehaviorPack>;
   /**The collection of blocks*/
   readonly blocks: DataSetConnector<Block.Block, BehaviorPack>;
+  /**The collection of biomes*/
+  readonly biomes: DataSetConnector<Biome.Biome, BehaviorPack>;
   /**The collection of entities*/
   readonly entities: DataSetConnector<Entity.Entity, BehaviorPack>;
   /**The collection of features*/
@@ -50,6 +53,7 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
     this.animations = new DataSetConnector(this, (pack) => pack.animations);
     this.animation_controllers = new DataSetConnector(this, (pack) => pack.animation_controllers);
     this.blocks = new DataSetConnector(this, (pack) => pack.blocks);
+    this.biomes = new DataSetConnector(this, (pack) => pack.biomes);
     this.entities = new DataSetConnector(this, (pack) => pack.entities);
     this.functions = new DataSetConnector(this, (pack) => pack.functions);
     this.items = new DataSetConnector(this, (pack) => pack.items);

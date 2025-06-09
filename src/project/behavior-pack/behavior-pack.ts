@@ -6,6 +6,7 @@ import { FileType } from "./file-type";
 
 import * as Animation from "./animation";
 import * as AnimationController from "./animation-controller";
+import * as Biome from "./biome";
 import * as Block from "./block";
 import * as Entity from "./entity";
 import * as Feature from "./feature";
@@ -45,6 +46,8 @@ export class BehaviorPack implements Container, Pack {
   readonly animations: DataSet<Animation.Animation>;
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSet<AnimationController.AnimationController>;
+  /**The collection of biomes*/
+  readonly biomes: DataSet<Biome.Biome>;
   /**The collection of blocks*/
   readonly blocks: DataSet<Block.Block>;
   /**The collection of entities*/
@@ -76,6 +79,7 @@ export class BehaviorPack implements Container, Pack {
 
     this.animations = new DataSet();
     this.animation_controllers = new DataSet();
+    this.biomes = new DataSet();
     this.blocks = new DataSet();
     this.entities = new DataSet();
     this.functions = new DataSet();
@@ -134,6 +138,9 @@ export class BehaviorPack implements Container, Pack {
       case FileType.item_catalog:
         return this.item_groups.set(ItemCatalog.Process(doc));
 
+      case FileType.biome:
+        return this.biomes.set(Biome.Process(doc));
+
     }
 
     return undefined;
@@ -184,6 +191,9 @@ export class BehaviorPack implements Container, Pack {
       case FileType.trading:
         return this.trading;
 
+      case FileType.biome:
+        return this.biomes;
+
       default:
         return undefined;
     }
@@ -199,6 +209,7 @@ export class BehaviorPack implements Container, Pack {
 
     out = this.animations.deleteFile(uri) || out;
     out = this.animation_controllers.deleteFile(uri) || out;
+    out = this.biomes.deleteFile(uri) || out;
     out = this.blocks.deleteFile(uri) || out;
     out = this.entities.deleteFile(uri) || out;
     out = this.features.deleteFile(uri) || out;
@@ -222,6 +233,7 @@ export class BehaviorPack implements Container, Pack {
 
     out = this.animations.deleteFolder(uri) || out;
     out = this.animation_controllers.deleteFolder(uri) || out;
+    out = this.biomes.deleteFolder(uri) || out;
     out = this.blocks.deleteFolder(uri) || out;
     out = this.entities.deleteFolder(uri) || out;
     out = this.features.deleteFolder(uri) || out;
@@ -246,6 +258,7 @@ export class BehaviorPack implements Container, Pack {
 
     if ((value = this.animations.find(predicate))) return value;
     if ((value = this.animation_controllers.find(predicate))) return value;
+    if ((value = this.biomes.find(predicate))) return value;
     if ((value = this.blocks.find(predicate))) return value;
     if ((value = this.entities.find(predicate))) return value;
     if ((value = this.features.find(predicate))) return value;
@@ -268,6 +281,7 @@ export class BehaviorPack implements Container, Pack {
   forEach(callbackfn: (value: ItemTypes) => void): void {
     this.animations.forEach(callbackfn);
     this.animation_controllers.forEach(callbackfn);
+    this.biomes.forEach(callbackfn);
     this.blocks.forEach(callbackfn);
     this.entities.forEach(callbackfn);
     this.features.forEach(callbackfn);
@@ -307,6 +321,7 @@ export namespace BehaviorPack {
       if (typeof temp.features !== "object") return false;
       if (typeof temp.features_rules !== "object") return false;
       if (typeof temp.item_groups !== "object") return false;
+      if (typeof temp.biomes !== "object") return false;
 
       if (typeof temp.context !== "object") return false;
       if (typeof temp.folder !== "string") return false;

@@ -5,6 +5,8 @@ export enum FileType {
   /***/
   animation_controller,
   /***/
+  biome,
+  /***/
   block,
   /***/
   entity,
@@ -53,6 +55,7 @@ export namespace FileType {
     if (/[\\/]features[\\/]/.test(uri)) return FileType.feature;
     if (/[\\/]feature_rules[\\/]/.test(uri)) return FileType.feature_rule;
     if (/[\\/]item_catalog[\\/]/.test(uri)) return FileType.item_catalog;
+    if (/[\\/]biomes[\\/]/.test(uri)) return FileType.biome;
     //These can also be subfolders
     if (/[\\/]blocks[\\/]/.test(uri)) return FileType.block;
     if (/[\\/]entities[\\/]/.test(uri)) return FileType.entity;

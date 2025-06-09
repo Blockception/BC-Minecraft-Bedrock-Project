@@ -1,6 +1,7 @@
 /*	Auto generated	*/
 export * as Animation from "./animation";
 export * as AnimationController from "./animation-controller";
+export * as Biome from "./biome";
 export * as Block from "./block";
 export * as Entity from "./entity";
 export * as Feature from "./feature"
