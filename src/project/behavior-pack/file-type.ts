@@ -29,6 +29,8 @@ export enum FileType {
   /***/
   spawn_rule,
   /***/
+  recipe,
+  /***/
   structure,
   /***/
   trading,
@@ -56,6 +58,7 @@ export namespace FileType {
     if (/[\\/]feature_rules[\\/]/.test(uri)) return FileType.feature_rule;
     if (/[\\/]item_catalog[\\/]/.test(uri)) return FileType.item_catalog;
     if (/[\\/]biomes[\\/]/.test(uri)) return FileType.biome;
+    if (/[\\/]recipes[\\/]/.test(uri)) return FileType.recipe;
     //These can also be subfolders
     if (/[\\/]blocks[\\/]/.test(uri)) return FileType.block;
     if (/[\\/]entities[\\/]/.test(uri)) return FileType.entity;

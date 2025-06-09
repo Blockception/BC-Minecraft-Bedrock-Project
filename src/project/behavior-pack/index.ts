@@ -10,6 +10,7 @@ export * as Item from "./item";
 export * as ItemCatalog from './item_catalog';
 export * as LootTable from "./loot-table";
 export * as McFunction from "./mcfunction";
+export * as Recipe from "./recipe";
 export * as Structure from "./structure";
 export * as Trading from "./trading";
 export * from "./behavior-pack";

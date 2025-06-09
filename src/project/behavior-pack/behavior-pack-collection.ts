@@ -14,6 +14,7 @@ import * as Item from "./item";
 import * as ItemCatalog from './item_catalog';
 import * as LootTable from "./loot-table";
 import * as Function from "./mcfunction";
+import * as Recipe from "./recipe";
 import * as Structure from "./structure";
 import * as Trading from "./trading";
 
@@ -41,6 +42,8 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
   readonly items_groups: DataSetConnector<ItemCatalog.Group, BehaviorPack>;
   /**The collection of loot tables*/
   readonly loot_tables: DataSetConnector<LootTable.LootTable, BehaviorPack>;
+  /**The collection of recipes*/
+  readonly recipes: DataSetConnector<Recipe.Recipe, BehaviorPack>;
   /**The collection of structures*/
   readonly structures: DataSetConnector<Structure.Structure, BehaviorPack>;
   /**The collection of trading tables*/
@@ -59,6 +62,7 @@ export class BehaviorPackCollection extends PackCollection<BehaviorPack> {
     this.items = new DataSetConnector(this, (pack) => pack.items);
     this.items_groups = new DataSetConnector(this, (pack) => pack.item_groups);
     this.loot_tables = new DataSetConnector(this, (pack) => pack.loot_tables);
+    this.recipes = new DataSetConnector(this, (pack) => pack.recipes);
     this.structures = new DataSetConnector(this, (pack) => pack.structures);
     this.trading = new DataSetConnector(this, (pack) => pack.trading);
     this.features = new DataSetConnector(this, (pack) => pack.features);
