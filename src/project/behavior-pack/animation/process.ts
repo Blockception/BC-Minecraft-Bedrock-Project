@@ -2,7 +2,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { Molang } from "bc-minecraft-molang";
 import { Json } from "../../../internal";
 import * as Internal from "../../../internal/behavior-pack";
-import { Documentation, TextDocument } from "../../../types";
+import { Documentation, SMap, TextDocument } from "../../../types";
 import { Animation } from "./animation";
 
 /** */
@@ -22,6 +22,16 @@ export function Process(doc: TextDocument): Animation[] | undefined {
     const anim = container[id];
 
     if (Internal.Animation.is(anim)) {
+
+      const events : string[] = [];
+
+      SMap.forEach(anim.timeline, keyframe => {
+        if (typeof keyframe == 'string') keyframe = [keyframe]
+        keyframe.filter(entry => entry.startsWith('@s ')).map(entry => entry.slice(3)).forEach(entry => {
+          if (!events.includes(entry)) events.push(entry)
+        })
+      })
+
       out.push({
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
@@ -30,6 +40,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
           doc,
           () => `BP Animation: \`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`
         ),
+        events: events
       });
     }
   }
