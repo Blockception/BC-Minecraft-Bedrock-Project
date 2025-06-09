@@ -3,6 +3,7 @@
 export * from "./animation";
 export * from "./animation-controller";
 export * from "./attachable";
+export * from "./biome";
 export * from "./block-culling";
 export * from "./entity";
 export * from "./fog";
