@@ -1,4 +1,4 @@
-import * as Internal from "../../../internal/resource-pack/AnimationController";
+import * as Internal from "../../../internal/resource-pack/animation-controller";
 import { Molang } from "bc-minecraft-molang";
 import { TextDocument } from "../../../types";
 import { AnimationController } from "./animation-controller";
