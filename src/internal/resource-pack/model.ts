@@ -108,4 +108,8 @@ export interface Bone {
   name: string;
   /** */
   parent: string;
+  /** */
+  binding?: string;
+  /** */
+  locators?: Record<string, [number, number, number]>
 }

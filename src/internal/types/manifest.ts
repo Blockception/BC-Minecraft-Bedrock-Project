@@ -47,9 +47,11 @@ export interface ManifestHeader {
 /** */
 export interface ManifestModule {
   /** */
-  type: string;
+  module_name?: string;
   /** */
-  uuid: string;
+  type?: string;
+  /** */
+  uuid?: string;
   /** */
   version: number[];
 }

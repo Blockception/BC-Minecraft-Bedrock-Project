@@ -6,6 +6,7 @@ import { FileType } from "./file-type";
 
 import * as Animation from "./animation";
 import * as AnimationController from "./animation-controller";
+import * as Biome from "./biome";
 import * as Block from "./block";
 import * as Entity from "./entity";
 import * as Feature from "./feature";
@@ -14,6 +15,7 @@ import * as Item from "./item";
 import * as ItemCatalog from "./item_catalog";
 import * as LootTable from "./loot-table";
 import * as Function from "./mcfunction";
+import * as Recipe from "./recipe";
 import * as Structure from "./structure";
 import * as Trading from "./trading";
 
@@ -45,6 +47,8 @@ export class BehaviorPack implements Container, Pack {
   readonly animations: DataSet<Animation.Animation>;
   /**The collection of animations controllers*/
   readonly animation_controllers: DataSet<AnimationController.AnimationController>;
+  /**The collection of biomes*/
+  readonly biomes: DataSet<Biome.Biome>;
   /**The collection of blocks*/
   readonly blocks: DataSet<Block.Block>;
   /**The collection of entities*/
@@ -61,6 +65,8 @@ export class BehaviorPack implements Container, Pack {
   readonly items: DataSet<Item.Item>;
   /**The collection of loot tables*/
   readonly loot_tables: DataSet<LootTable.LootTable>;
+  /**The collection of recipes*/
+  readonly recipes: DataSet<Recipe.Recipe>;
   /**The collection of structures*/
   readonly structures: DataSet<Structure.Structure>;
   /**The collection of trading tables*/
@@ -76,11 +82,13 @@ export class BehaviorPack implements Container, Pack {
 
     this.animations = new DataSet();
     this.animation_controllers = new DataSet();
+    this.biomes = new DataSet();
     this.blocks = new DataSet();
     this.entities = new DataSet();
     this.functions = new DataSet();
     this.items = new DataSet();
     this.loot_tables = new DataSet();
+    this.recipes = new DataSet();
     this.structures = new DataSet();
     this.trading = new DataSet();
     this.features = new DataSet();
@@ -134,6 +142,12 @@ export class BehaviorPack implements Container, Pack {
       case FileType.item_catalog:
         return this.item_groups.set(ItemCatalog.Process(doc));
 
+      case FileType.biome:
+        return this.biomes.set(Biome.Process(doc));
+
+      case FileType.recipe:
+        return this.recipes.set(Recipe.Process(doc));
+
     }
 
     return undefined;
@@ -184,6 +198,12 @@ export class BehaviorPack implements Container, Pack {
       case FileType.trading:
         return this.trading;
 
+      case FileType.biome:
+        return this.biomes;
+
+      case FileType.recipe:
+        return this.recipes;
+
       default:
         return undefined;
     }
@@ -199,6 +219,7 @@ export class BehaviorPack implements Container, Pack {
 
     out = this.animations.deleteFile(uri) || out;
     out = this.animation_controllers.deleteFile(uri) || out;
+    out = this.biomes.deleteFile(uri) || out;
     out = this.blocks.deleteFile(uri) || out;
     out = this.entities.deleteFile(uri) || out;
     out = this.features.deleteFile(uri) || out;
@@ -207,6 +228,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.items.deleteFile(uri) || out;
     out = this.item_groups.deleteFile(uri) || out;
     out = this.loot_tables.deleteFile(uri) || out;
+    out = this.recipes.deleteFile(uri) || out;
     out = this.structures.deleteFile(uri) || out;
     out = this.trading.deleteFile(uri) || out;
 
@@ -222,6 +244,7 @@ export class BehaviorPack implements Container, Pack {
 
     out = this.animations.deleteFolder(uri) || out;
     out = this.animation_controllers.deleteFolder(uri) || out;
+    out = this.biomes.deleteFolder(uri) || out;
     out = this.blocks.deleteFolder(uri) || out;
     out = this.entities.deleteFolder(uri) || out;
     out = this.features.deleteFolder(uri) || out;
@@ -230,6 +253,7 @@ export class BehaviorPack implements Container, Pack {
     out = this.items.deleteFolder(uri) || out;
     out = this.item_groups.deleteFolder(uri) || out;
     out = this.loot_tables.deleteFolder(uri) || out;
+    out = this.recipes.deleteFolder(uri) || out;
     out = this.structures.deleteFolder(uri) || out;
     out = this.trading.deleteFolder(uri) || out;
 
@@ -246,6 +270,7 @@ export class BehaviorPack implements Container, Pack {
 
     if ((value = this.animations.find(predicate))) return value;
     if ((value = this.animation_controllers.find(predicate))) return value;
+    if ((value = this.biomes.find(predicate))) return value;
     if ((value = this.blocks.find(predicate))) return value;
     if ((value = this.entities.find(predicate))) return value;
     if ((value = this.features.find(predicate))) return value;
@@ -254,6 +279,7 @@ export class BehaviorPack implements Container, Pack {
     if ((value = this.items.find(predicate))) return value;
     if ((value = this.item_groups.find(predicate))) return value;
     if ((value = this.loot_tables.find(predicate))) return value;
+    if ((value = this.recipes.find(predicate))) return value;
     if ((value = this.structures.find(predicate))) return value;
     if ((value = this.trading.find(predicate))) return value;
 
@@ -268,6 +294,7 @@ export class BehaviorPack implements Container, Pack {
   forEach(callbackfn: (value: ItemTypes) => void): void {
     this.animations.forEach(callbackfn);
     this.animation_controllers.forEach(callbackfn);
+    this.biomes.forEach(callbackfn);
     this.blocks.forEach(callbackfn);
     this.entities.forEach(callbackfn);
     this.features.forEach(callbackfn);
@@ -276,6 +303,7 @@ export class BehaviorPack implements Container, Pack {
     this.items.forEach(callbackfn);
     this.item_groups.forEach(callbackfn);
     this.loot_tables.forEach(callbackfn);
+    this.recipes.forEach(callbackfn);
     this.structures.forEach(callbackfn);
     this.trading.forEach(callbackfn);
   }
@@ -307,6 +335,8 @@ export namespace BehaviorPack {
       if (typeof temp.features !== "object") return false;
       if (typeof temp.features_rules !== "object") return false;
       if (typeof temp.item_groups !== "object") return false;
+      if (typeof temp.biomes !== "object") return false;
+      if (typeof temp.recipes !== "object") return false;
 
       if (typeof temp.context !== "object") return false;
       if (typeof temp.folder !== "string") return false;

@@ -8,4 +8,6 @@ import { MolangCarrier } from '../../../types';
 export interface Animation extends Types.BaseObject, MolangCarrier<Molang.MolangSet> {
   /** */
   molang: Molang.MolangSet;
+  /** */
+  events: string[]
 }

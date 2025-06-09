@@ -2,6 +2,7 @@ export interface EntityBoolProperty {
   default: boolean;
   name: string;
   type: "bool";
+  client_sync?: boolean;
 }
 
 export namespace EntityBoolProperty {
@@ -18,6 +19,7 @@ export interface EntityFloatProperty {
   name: string;
   range: [number, number];
   type: "float";
+  client_sync?: boolean;
 }
 
 export namespace EntityFloatProperty {
@@ -34,6 +36,7 @@ export interface EntityIntProperty {
   name: string;
   range: [number, number];
   type: "int";
+  client_sync?: boolean;
 }
 
 export namespace EntityIntProperty {
@@ -46,7 +49,7 @@ export namespace EntityIntProperty {
 }
 
 export interface EntityEnumProperty {
-  client_sync: boolean;
+  client_sync?: boolean;
   default: string;
   name: string;
   type: "enum";

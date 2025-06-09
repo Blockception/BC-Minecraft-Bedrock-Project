@@ -6,4 +6,6 @@ import { MolangCarrier } from '../../../types';
 export interface Item extends Types.BaseObject, MolangCarrier<Molang.MolangSet> {
   /** */
   molang: Molang.MolangSet;
+  /** */
+  isFood: boolean
 }

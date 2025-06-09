@@ -2,6 +2,4 @@
 import { Types } from "bc-minecraft-bedrock-types";
 
 /** */
-export interface Feature extends Types.BaseObject {
-    type: string
-}
+export interface Recipe extends Types.BaseObject {}

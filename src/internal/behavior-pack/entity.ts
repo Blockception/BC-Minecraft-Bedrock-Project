@@ -104,6 +104,7 @@ export interface Entity {
     /** */
     events?: SMap<EntityEvent>;
   };
+  uses_beta_features?: boolean
 }
 
 /** */

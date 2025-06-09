@@ -45,5 +45,6 @@ exports[`Entity Families 1`] = `
     },
   },
   "properties": [],
+  "runtime_identifier": "",
 }
 `;

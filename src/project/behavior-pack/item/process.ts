@@ -26,6 +26,7 @@ export function Process(doc: TextDocument): Item | undefined {
     location: Types.Location.create(uri, content.indexOf(id)),
     molang: Molang.MolangSet.harvest(container),
     documentation: Documentation.getDoc(doc, () => `BP Item: ${id} ${container.description.category ? "category: " + container.description.category : ""}`),
+    isFood: typeof container.components['minecraft:food'] === 'object' ? true : false
   };
 
   return out;

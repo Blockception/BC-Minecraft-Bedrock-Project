@@ -279,6 +279,7 @@ describe("ProjectData", () => {
       location: loc,
       molang: molang,
       documentation: doc,
+      events: []
     });
     bp.blocks.set({
       id: "bp.block",
@@ -297,6 +298,7 @@ describe("ProjectData", () => {
       families: [],
       groups: [],
       properties: [],
+      runtime_identifier: ''
     });
     bp.functions.set({ id: "bp.function", location: loc, documentation: doc });
     bp.items.set({
@@ -304,6 +306,7 @@ describe("ProjectData", () => {
       location: loc,
       molang: molang,
       documentation: doc,
+      isFood: false
     });
     bp.loot_tables.set({
       id: "bp.loot_table",
@@ -351,7 +354,7 @@ describe("ProjectData", () => {
     });
     rp.fogs.set({ id: "rp.fog", location: loc, documentation: doc });
     rp.materials.set({ id: "rp.material", location: loc, documentation: doc });
-    rp.models.set({ id: "rp.model", location: loc, documentation: doc, bones: [] });
+    rp.models.set({ id: "rp.model", location: loc, documentation: doc, bones: [], root_bone_uses_binding: false, locators: [] });
     rp.particles.set({ id: "rp.particle", location: loc, documentation: doc });
     rp.render_controllers.set({
       id: "rp.render_controller",
