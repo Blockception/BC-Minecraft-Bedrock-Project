@@ -32,6 +32,7 @@ export function Process(doc: TextDocument): Entity | undefined {
     groups: [],
     molang: Molang.MolangSet.harvest(container),
     properties: [],
+    runtime_identifier: ''
   };
   Molang.MolangFullSet.fromScript(container.description.scripts ?? {}, out.molang);
 
@@ -50,6 +51,9 @@ export function Process(doc: TextDocument): Entity | undefined {
       out.animations.using.push(anim);
     });
   }
+
+  const runtime_identifier = container.description.runtime_identifier
+  if (runtime_identifier) out.runtime_identifier = runtime_identifier
 
   if (container.description.properties) {
     for (const [name, property] of Object.entries(container.description.properties)) {

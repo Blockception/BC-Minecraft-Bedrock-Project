@@ -20,4 +20,6 @@ export interface Entity extends Types.BaseObject,
   animations: DefinedUsing<string>;
   /** */
   properties: EntityProperty[];
+  /** */
+  runtime_identifier: string;
 }
