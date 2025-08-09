@@ -10,3 +10,4 @@ export * from "./feature";
 export * from "./feature_rule";
 export * from './item_catalog';
 export * from './recipe';
+export * from './spawn_rule';
