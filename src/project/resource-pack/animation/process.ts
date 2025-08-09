@@ -1,7 +1,8 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang, Using } from "bc-minecraft-molang";
+import { Molang } from "bc-minecraft-molang";
 import * as Internal from "../../../internal/resource-pack";
 import { Documentation, SMap, TextDocument } from "../../../types";
+import { References } from "../../../types/references";
 import { Animation } from "./animation";
 
 /** */
@@ -23,13 +24,13 @@ export function Process(doc: TextDocument): Animation[] | undefined {
       const item: Animation = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: Molang.MolangSet.harvest(anim),
+        molang: Molang.MolangSet.harvest(anim, content),
         documentation: Documentation.getDoc(
           doc,
           () => `RP Animation: '${id}', loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`
         ),
-        particles: Using.empty(),
-        sounds: Using.empty(),
+        particles: References.empty(),
+        sounds: References.empty(),
       };
 
       if (anim.particle_effects)

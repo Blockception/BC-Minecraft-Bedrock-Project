@@ -1,13 +1,11 @@
-import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Molang } from "bc-minecraft-molang";
 import { AnimationCarrier, MolangCarrier } from "../../../types";
-import { EntityProperty } from './properties';
+import { References } from "../../../types/references";
+import { EntityProperty } from "./properties";
 
 /** */
-export interface Entity extends Types.BaseObject,
-    MolangCarrier<Molang.MolangSet>,
-    AnimationCarrier<DefinedUsing<string>> {
-
+export interface Entity extends Types.BaseObject, MolangCarrier<Molang.MolangSet>, AnimationCarrier<References> {
   /** */
   molang: Molang.MolangSet;
   /** */
@@ -17,7 +15,7 @@ export interface Entity extends Types.BaseObject,
   /** */
   families: string[];
   /** */
-  animations: DefinedUsing<string>;
+  animations: References;
   /** */
   properties: EntityProperty[];
   /** */

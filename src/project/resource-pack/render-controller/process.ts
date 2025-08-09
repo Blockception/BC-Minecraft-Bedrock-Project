@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): RenderController[] | undefined {
     const item: RenderController = {
       id: id,
       location: Types.Location.create(uri, content.indexOf(id)),
-      molang: Molang.MolangFullSet.harvest(controller),
+      molang: Molang.MolangSet.harvest(controller, content),
       documentation: Documentation.getDoc(doc, () => `Render Controller: \`${id}\``),
     };
 

@@ -1,11 +1,9 @@
-import * as Internal from "../../../internal/resource-pack/animation-controller";
-import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../types";
-import { AnimationController } from "./animation-controller";
-import { SMap } from "../../../types";
-import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { Documentation } from "../../../types";
+import { Molang } from "bc-minecraft-molang";
+import * as Internal from "../../../internal/resource-pack/animation-controller";
+import { Documentation, SMap, TextDocument } from "../../../types";
+import { References } from "../../../types/references";
+import { AnimationController } from "./animation-controller";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
@@ -26,11 +24,11 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
       const item: AnimationController = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: Molang.MolangSet.harvest(controller),
+        molang: Molang.MolangSet.harvest(controller, content),
         documentation: Documentation.getDoc(doc, () => `RP Animation Controller: '${id}'`),
-        animations: Using.empty(),
-        particles: Using.empty(),
-        sounds: Using.empty(),
+        animations: References.empty(),
+        particles: References.empty(),
+        sounds: References.empty(),
       };
 
       SMap.forEach(controller.states, (State) => {
@@ -48,7 +46,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
   return out;
 }
 
-function harvest(data: { effect?: string }[], receiver: Using<string>) {
+function harvest(data: { effect?: string }[], receiver: Pick<References, "using">) {
   data.forEach((e) => {
     if (e.effect) receiver.using.push(e.effect);
   });

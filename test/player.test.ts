@@ -4,7 +4,7 @@ import { Internal } from "../src/main";
 
 export namespace VanillaPlayer {
   export const Goes: string[] = ["cape", "humanoid.custom"];
-  export const Variables: DefinedUsing<string> = {
+  export const Variables: References = {
     defined: [
       "is_holding_right",
       "is_blinking",
@@ -21,12 +21,7 @@ export namespace VanillaPlayer {
       "map_angle",
       "item_use_normalized",
     ],
-    using: [
-      "attack_time",
-      "gliding_speed_value",
-      "hand_bob",
-      "player_x_rotation",
-    ],
+    using: ["attack_time", "gliding_speed_value", "hand_bob", "player_x_rotation"],
   };
 
   export const Data = `{

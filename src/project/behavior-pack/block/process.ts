@@ -25,7 +25,7 @@ export function Process(doc: TextDocument): Block | undefined {
   const out: Block = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangSet.harvest(container),
+    molang: Molang.MolangSet.harvest(container, content),
     states: [],
     documentation: Documentation.getDoc(doc, () => `BP Block: ${id}`),
   };
