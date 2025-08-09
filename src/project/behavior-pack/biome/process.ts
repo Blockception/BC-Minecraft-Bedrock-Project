@@ -16,13 +16,13 @@ export function Process(doc: TextDocument): Biome | undefined {
 
   if (!Internal.Biome.is(biome)) return undefined;
 
-  const id = biome['minecraft:biome'].description.identifier
+  const id = biome["minecraft:biome"].description.identifier;
 
   const out: Biome = {
     id: id,
-    location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Biome: ${id}`),
-    tags: biome['minecraft:biome'].components['minecraft:tags'] || []
+    location: Types.Location.create(uri, content.indexOf(id)),
+    tags: biome["minecraft:biome"].components["minecraft:tags"] || [],
   };
 
   return out;

@@ -35,6 +35,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
       });
 
       out.push({
+        events: events,
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
         molang: Molang.MolangSet.harvest(anim, content),
@@ -42,7 +43,6 @@ export function Process(doc: TextDocument): Animation[] | undefined {
           doc,
           () => `BP Animation: \`${id}\`, loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`
         ),
-        events: events,
       });
     }
   }

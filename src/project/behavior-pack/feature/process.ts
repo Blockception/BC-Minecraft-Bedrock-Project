@@ -25,9 +25,9 @@ export function Process(doc: TextDocument): Feature | undefined {
 
   const out: Feature = {
     id: id,
-    location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Feature: ${id}`),
-    type: key
+    location: Types.Location.create(uri, content.indexOf(id)),
+    type: key,
   };
 
   return out;

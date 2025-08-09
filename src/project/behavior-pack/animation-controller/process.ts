@@ -30,11 +30,11 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
     if (internal.AnimationController.is(controller)) {
       const item: AnimationController = {
         id: id,
-        location: Types.Location.create(uri, content.indexOf(id)),
         animations: References.empty(),
-        molang: Molang.MolangSet.harvest(controller, content),
         documentation: Documentation.getDoc(doc, () => `BP Animation Controller: ${id}`),
         events: [],
+        location: Types.Location.create(uri, content.indexOf(id)),
+        molang: Molang.MolangSet.harvest(controller, content),
       };
 
       SMap.forEach(controller.states, (state) => {
