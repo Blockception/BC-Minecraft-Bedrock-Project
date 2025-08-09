@@ -1,9 +1,9 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
 import { Json } from "../../../internal";
 import * as Internal from "../../../internal/resource-pack";
 import { Documentation, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang/harvest";
 import { Entity } from "./entity";
 
 /**
@@ -23,7 +23,7 @@ export function Process(doc: TextDocument): Entity | undefined {
   const out: Entity = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangSet.harvest(description, content),
+    molang: harvestMolang(content, description),
     animations: References.empty(),
     documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),
   };

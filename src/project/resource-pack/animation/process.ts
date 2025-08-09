@@ -1,8 +1,8 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
 import * as Internal from "../../../internal/resource-pack";
 import { Documentation, SMap, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang/harvest";
 import { Animation } from "./animation";
 
 /** */
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): Animation[] | undefined {
       const item: Animation = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: Molang.MolangSet.harvest(anim, content),
+        molang: harvestMolang(content, anim),
         documentation: Documentation.getDoc(
           doc,
           () => `RP Animation: '${id}', loop: ${anim.loop ?? false}, length: ${anim.animation_length ?? "unknown"}`

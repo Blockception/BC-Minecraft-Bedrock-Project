@@ -1,8 +1,8 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
 import * as Internal from "../../../internal/resource-pack/animation-controller";
 import { Documentation, SMap, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang/harvest";
 import { AnimationController } from "./animation-controller";
 
 /** */
@@ -24,7 +24,7 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
       const item: AnimationController = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
-        molang: Molang.MolangSet.harvest(controller, content),
+        molang: harvestMolang(content, controller),
         documentation: Documentation.getDoc(doc, () => `RP Animation Controller: '${id}'`),
         animations: References.empty(),
         particles: References.empty(),

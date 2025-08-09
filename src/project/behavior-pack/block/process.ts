@@ -1,11 +1,11 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
 import { Json } from "../../../internal";
 import { Documentation, SMap, TextDocument } from "../../../types";
 import { Block } from "./block";
 import { BlockState } from "./block-state";
 
 import * as Internal from "../../../internal/behavior-pack";
+import { harvestMolang } from "../../molang/harvest";
 
 /**
  *
@@ -26,7 +26,7 @@ export function Process(doc: TextDocument): Block | undefined {
     id: id,
     documentation: Documentation.getDoc(doc, () => `BP Block: ${id}`),
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangSet.harvest(container, content),
+    molang: harvestMolang(content, container),
     states: [],
   };
 

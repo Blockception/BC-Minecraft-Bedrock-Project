@@ -1,12 +1,12 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/minecraft/components";
-import { Molang } from "bc-minecraft-molang";
 import * as internal from "../../../internal/behavior-pack/entity";
 import { Json } from "../../../internal/json";
 import { Documentation, SMap, TextDocument } from "../../../types";
+import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang/harvest";
 import { Entity } from "./entity";
 import { EntityProperty } from "./properties";
-import { References } from "../../../types/references";
 
 /**
  *
@@ -31,7 +31,7 @@ export function Process(doc: TextDocument): Entity | undefined {
     groups: [],
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangSet.harvest(container, content),
+    molang: harvestMolang(content, container),
     properties: [],
     runtime_identifier: "",
   };

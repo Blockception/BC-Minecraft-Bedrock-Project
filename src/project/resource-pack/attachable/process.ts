@@ -1,11 +1,10 @@
-import * as Internal from "../../../internal/resource-pack";
-import { Json } from "../../../internal";
-import { Molang } from "bc-minecraft-molang";
-import { TextDocument } from "../../../types";
-import { Attachable } from "./attachable";
-import { Documentation } from "../../../types";
 import { Types } from "bc-minecraft-bedrock-types";
+import { Json } from "../../../internal";
+import * as Internal from "../../../internal/resource-pack";
+import { Documentation, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang/harvest";
+import { Attachable } from "./attachable";
 
 /**
  *
@@ -25,7 +24,7 @@ export function Process(doc: TextDocument): Attachable | undefined {
   const out: Attachable = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangSet.harvest(container, content),
+    molang: harvestMolang(content, container),
     animations: References.empty(),
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };
