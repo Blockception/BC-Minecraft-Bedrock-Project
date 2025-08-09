@@ -1,9 +1,10 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { ComponentContainer } from "bc-minecraft-bedrock-types/lib/minecraft/components";
-import { DefinedUsing, Molang } from "bc-minecraft-molang";
 import * as internal from "../../../internal/behavior-pack/entity";
 import { Json } from "../../../internal/json";
 import { Documentation, SMap, TextDocument } from "../../../types";
+import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang";
 import { Entity } from "./entity";
 import { EntityProperty } from "./properties";
 
@@ -23,18 +24,17 @@ export function Process(doc: TextDocument): Entity | undefined {
   const id = container.description.identifier;
 
   const out: Entity = {
-    id: id,
-    location: Types.Location.create(uri, content.indexOf(id)),
+    animations: References.empty(),
     documentation: Documentation.getDoc(doc, () => `BP Entity: ${id}`),
-    animations: DefinedUsing.empty(),
     events: [],
     families: [],
     groups: [],
-    molang: Molang.MolangSet.harvest(container),
+    id: id,
+    location: Types.Location.create(uri, content.indexOf(id)),
+    molang: harvestMolang(content, container),
     properties: [],
-    runtime_identifier: ''
+    runtime_identifier: "",
   };
-  Molang.MolangFullSet.fromScript(container.description.scripts ?? {}, out.molang);
 
   if (container.component_groups) {
     SMap.forEach(container.component_groups, (group, name) => {
@@ -52,8 +52,8 @@ export function Process(doc: TextDocument): Entity | undefined {
     });
   }
 
-  const runtime_identifier = container.description.runtime_identifier
-  if (runtime_identifier) out.runtime_identifier = runtime_identifier
+  const runtime_identifier = container.description.runtime_identifier;
+  if (runtime_identifier) out.runtime_identifier = runtime_identifier;
 
   if (container.description.properties) {
     for (const [name, property] of Object.entries(container.description.properties)) {

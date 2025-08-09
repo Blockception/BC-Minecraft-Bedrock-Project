@@ -10,6 +10,7 @@ export * from "./json-path";
 export * from "./pack";
 export * from "./pack-collection";
 export * from "./project-context";
+export * from "./references";
 export * from "./smap";
 export * from "./text";
 export * from "./text-document";

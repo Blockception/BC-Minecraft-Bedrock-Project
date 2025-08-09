@@ -16,17 +16,19 @@ export function Process(doc: TextDocument): Group[] | undefined {
 
   if (!Internal.ItemCatalog.is(imp)) return undefined;
 
-  const out: Group[] = []
-  imp['minecraft:crafting_items_catalog'].categories.flatMap(category => category.groups).forEach(entry => {
-    const id = entry.group_identifier?.name
-    if (!id) return
-    out.push({
-      id: id,
-      location: Types.Location.create(uri, content.indexOf(id)),
-      documentation: `Item Group: ` + id,
-      items: entry.items.map(item => typeof item === 'string' ? item : item.name)
-    })
-  })
+  const out: Group[] = [];
+  imp["minecraft:crafting_items_catalog"].categories
+    .flatMap((category) => category.groups)
+    .forEach((entry) => {
+      const id = entry.group_identifier?.name;
+      if (!id) return;
+      out.push({
+        id: id,
+        documentation: `Item Group: ` + id,
+        items: entry.items.map((item) => (typeof item === "string" ? item : item.name)),
+        location: Types.Location.create(uri, content.indexOf(id)),
+      });
+    });
 
   return out;
 }

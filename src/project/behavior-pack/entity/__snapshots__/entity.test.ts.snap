@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Entity Families 1`] = `
 {
@@ -28,21 +28,13 @@ exports[`Entity Families 1`] = `
     "position": 98,
     "uri": "C:\\temp.json",
   },
-  "molang": {
-    "contexts": {
-      "using": [],
+  "molang": MolangSet {
+    "assigned": Set {},
+    "cache": MolangSyntaxCache {
+      "_data": Map {},
     },
-    "queries": {
-      "using": [],
-    },
-    "temps": {
-      "defined": [],
-      "using": [],
-    },
-    "variables": {
-      "defined": [],
-      "using": [],
-    },
+    "functions": Set {},
+    "using": Set {},
   },
   "properties": [],
   "runtime_identifier": "",

@@ -1,3 +1,3 @@
 /*	Auto generated	*/
 
-export * from "./FileType";
+export * from "./file-type";

@@ -1,9 +1,18 @@
 {
-  "editor.insertSpaces": true,
-  "tslint.enable": true,
-  "typescript.tsc.autoDetect": "off",
-  "typescript.preferences.quoteStyle": "single",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.useTabStops": false,
+  "editor.insertSpaces": true,
+
+  "prettier.printWidth": 180,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsc.autoDetect": "watch",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true
 }
