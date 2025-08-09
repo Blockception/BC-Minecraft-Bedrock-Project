@@ -2,7 +2,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import * as internal from "../../../internal/behavior-pack/item";
 import { Json } from "../../../internal/json";
 import { Documentation, TextDocument } from "../../../types";
-import { harvestMolang } from "../../molang/harvest";
+import { harvestMolang } from "../../molang";
 import { Item } from "./item";
 
 /**

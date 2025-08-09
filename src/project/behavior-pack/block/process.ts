@@ -5,7 +5,7 @@ import { Block } from "./block";
 import { BlockState } from "./block-state";
 
 import * as Internal from "../../../internal/behavior-pack";
-import { harvestMolang } from "../../molang/harvest";
+import { harvestMolang } from "../../molang";
 
 /**
  *

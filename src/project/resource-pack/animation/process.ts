@@ -2,7 +2,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import * as Internal from "../../../internal/resource-pack";
 import { Documentation, SMap, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
-import { harvestMolang } from "../../molang/harvest";
+import { harvestMolang } from "../../molang";
 import { Animation } from "./animation";
 
 /** */

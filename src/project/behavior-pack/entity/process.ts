@@ -4,7 +4,7 @@ import * as internal from "../../../internal/behavior-pack/entity";
 import { Json } from "../../../internal/json";
 import { Documentation, SMap, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
-import { harvestMolang } from "../../molang/harvest";
+import { harvestMolang } from "../../molang";
 import { Entity } from "./entity";
 import { EntityProperty } from "./properties";
 

@@ -3,7 +3,7 @@ import * as internal from "../../../internal/behavior-pack/animation-controller"
 import { Json } from "../../../internal/json";
 import { Documentation, SMap, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
-import { harvestMolang } from "../../molang/harvest";
+import { harvestMolang } from "../../molang";
 import { AnimationController } from "./animation-controller";
 
 /**
