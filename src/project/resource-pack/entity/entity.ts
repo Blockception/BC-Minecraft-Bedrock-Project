@@ -4,7 +4,7 @@ import { AnimationCarrier, MolangCarrier } from "../../../types";
 import { References } from "../../../types/references";
 
 /** */
-export interface Entity extends Types.BaseObject, MolangCarrier<Molang.MolangSet>, AnimationCarrier<References> {
+export interface Entity extends Types.BaseObject, MolangCarrier, AnimationCarrier<References> {
   /** */
   animations: References;
   /** */

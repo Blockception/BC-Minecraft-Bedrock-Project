@@ -4,7 +4,7 @@ import { MolangCarrier } from "../../../types";
 import { BlockState } from "./block-state";
 
 /** */
-export interface Block extends Types.BaseObject, MolangCarrier<Molang.MolangSet> {
+export interface Block extends Types.BaseObject, MolangCarrier {
   /** */
   molang: Molang.MolangSet;
   /** */

@@ -5,7 +5,7 @@ import { References } from "../../../types/references";
 import { EntityProperty } from "./properties";
 
 /** */
-export interface Entity extends Types.BaseObject, MolangCarrier<Molang.MolangSet>, AnimationCarrier<References> {
+export interface Entity extends Types.BaseObject, MolangCarrier, AnimationCarrier<References> {
   /** */
   molang: Molang.MolangSet;
   /** */

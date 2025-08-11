@@ -6,7 +6,7 @@ import { References } from "../../../types/references";
 /** */
 export interface AnimationController
   extends Types.BaseObject,
-    MolangCarrier<Molang.MolangSet>,
+    MolangCarrier,
     AnimationCarrier<Pick<References, "using">> {
   /** */
   molang: Molang.MolangSet;

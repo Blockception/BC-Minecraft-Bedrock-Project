@@ -1,19 +1,21 @@
+import { MolangSet } from "bc-minecraft-molang/lib/src/molang";
+
 /**
- * 
+ *
  */
 export interface AnimationCarrier<T> {
   /**
-   * 
+   *
    */
-  animations : T
+  animations: T;
 }
 
 /**
- * 
+ *
  */
-export interface MolangCarrier<T> {
+export interface MolangCarrier {
   /**
-   * 
+   *
    */
-  molang : T
+  molang: MolangSet;
 }

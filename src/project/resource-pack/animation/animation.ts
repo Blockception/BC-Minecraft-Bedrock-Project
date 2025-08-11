@@ -4,7 +4,7 @@ import { MolangCarrier } from "../../../types/carrier";
 import { References } from "../../../types/references";
 
 /** */
-export interface Animation extends Types.BaseObject, MolangCarrier<Molang.MolangSet> {
+export interface Animation extends Types.BaseObject, MolangCarrier {
   /** */
   molang: Molang.MolangSet;
   /** */
