@@ -1,4 +1,3 @@
-import { SMap } from "../../types";
 import { FormatVersion } from "../types/format-version";
 
 /** */

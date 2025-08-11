@@ -1,7 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { SMap } from "../../types";
-import { FormatVersion } from "../types/format-version";
 import * as General from "../general/controllers/state";
+import { FormatVersion } from "../types/format-version";
 
 /** */
 export interface AnimationControllers extends Readonly<FormatVersion> {

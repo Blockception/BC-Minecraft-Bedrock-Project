@@ -1,5 +1,3 @@
-import { SMap } from "../../types";
-
 /** */
 export interface TextureAtlas {
   /** */
