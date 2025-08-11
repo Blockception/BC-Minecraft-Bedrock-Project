@@ -9,11 +9,11 @@ export interface Block extends Readonly<FormatVersion> {
       identifier: string;
       register_to_creative_menu?: boolean;
       is_experimental?: boolean;
-      properties?: SMap<string[] | number[] | boolean[]>;
+      properties?: Record<string, string[] | number[] | boolean[]>;
     };
     permutations?: Permutation[];
     components: ComponentContainer;
-    events?: SMap<any>;
+    events?: Record<string, any>;
   };
 }
 

@@ -13,11 +13,11 @@ export interface Animation {
   /** */
   bones?: Record<"string", BoneAnimation>;
   /** */
-  particle_effects?: SMap<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
+  particle_effects?: Record<string, { effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
   /** */
-  sound_effects?: SMap<{ effect?: string } | { effect?: string }[]>;
+  sound_effects?: Record<string, { effect?: string } | { effect?: string }[]>;
   /** */
-  timeline?: SMap<string | string[]>;
+  timeline?: Record<string, string | string[]>;
 }
 
 /** */
@@ -28,7 +28,7 @@ export namespace Animation {
    * @returns
    */
   export function is(value: any): value is Animation {
-    return typeof value === "object"
+    return typeof value === "object";
   }
 }
 

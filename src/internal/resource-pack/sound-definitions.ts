@@ -6,7 +6,7 @@ export interface SoundDefinitions extends Readonly<FormatVersion> {
   /** */
   format_version: string;
   /** */
-  sound_definitions: SMap<SoundDefinition>;
+  sound_definitions: Record<string, SoundDefinition>;
 }
 
 /** */
@@ -34,7 +34,11 @@ export namespace SoundDefinitions {
    * @returns
    */
   export function is(value: any): value is SoundDefinitions {
-    if (typeof value === "object" && typeof value.format_version === "string" && typeof value.sound_definitions === "object") {
+    if (
+      typeof value === "object" &&
+      typeof value.format_version === "string" &&
+      typeof value.sound_definitions === "object"
+    ) {
       return true;
     }
 

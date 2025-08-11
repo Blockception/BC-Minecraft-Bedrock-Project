@@ -1,7 +1,7 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { SMap } from "../../types";
 import { FormatVersion } from "../types/format-version";
-import * as General from '../general/controllers/state';
+import * as General from "../general/controllers/state";
 
 /** */
 export interface AnimationControllers extends Readonly<FormatVersion> {
@@ -22,7 +22,12 @@ export namespace AnimationControllers {
    * @returns
    */
   export function is(value: any): value is AnimationControllers {
-    if (typeof value === "object" && typeof value.format_version === "string" && typeof value.animation_controllers === "object") return true;
+    if (
+      typeof value === "object" &&
+      typeof value.format_version === "string" &&
+      typeof value.animation_controllers === "object"
+    )
+      return true;
 
     return false;
   }
@@ -33,7 +38,7 @@ export interface AnimationController {
   /** */
   initial_state?: string;
   /** */
-  states: SMap<State>;
+  states: Record<string, State>;
 }
 
 /** */

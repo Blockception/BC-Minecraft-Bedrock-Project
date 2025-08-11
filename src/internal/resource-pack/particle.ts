@@ -14,9 +14,9 @@ export interface ParticleContainer {
   /** */
   description: ParticleDescription;
   /** */
-  components: SMap<any>;
-  events?: SMap<any>;
-  curves?: SMap<any>;
+  components: Record<string, any>;
+  events?: Record<string, any>;
+  curves?: Record<string, any>;
 }
 
 /** */
@@ -35,7 +35,11 @@ export namespace Particle {
    * @returns
    */
   export function is(value: any): value is Particle {
-    if (typeof value === "object" && typeof value.format_version === "string" && typeof value["particle_effect"] === "object") {
+    if (
+      typeof value === "object" &&
+      typeof value.format_version === "string" &&
+      typeof value["particle_effect"] === "object"
+    ) {
       const desc = value["particle_effect"].description;
 
       if (typeof desc === "object" && typeof desc.identifier === "string") {

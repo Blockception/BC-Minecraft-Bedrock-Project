@@ -102,9 +102,9 @@ export interface Entity {
     /** */
     components: ComponentContainer;
     /** */
-    events?: SMap<EntityEvent>;
+    events?: Record<string, EntityEvent>;
   };
-  uses_beta_features?: boolean
+  uses_beta_features?: boolean;
 }
 
 /** */

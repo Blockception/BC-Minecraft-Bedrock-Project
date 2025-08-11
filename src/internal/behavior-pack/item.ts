@@ -17,9 +17,9 @@ export interface Item extends Readonly<FormatVersion> {
       is_experimental?: boolean;
     };
     /** */
-    components: SMap<any>;
+    components: Record<string, any>;
     /** */
-    events?: SMap<any>;
+    events?: Record<string, any>;
   };
 }
 
@@ -34,7 +34,11 @@ export namespace Item {
     if (value && typeof value.format_version === "string" && typeof value["minecraft:item"] === "object") {
       const b = value["minecraft:item"];
 
-      if (typeof b.description === "object" && typeof b.description.identifier === "string" && typeof b.components === "object") {
+      if (
+        typeof b.description === "object" &&
+        typeof b.description.identifier === "string" &&
+        typeof b.components === "object"
+      ) {
         return true;
       }
     }

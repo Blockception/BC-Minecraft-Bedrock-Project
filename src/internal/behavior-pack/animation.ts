@@ -1,4 +1,3 @@
-import { SMap } from "../../types";
 import { FormatVersion } from "../types";
 
 /** */
@@ -8,7 +7,7 @@ export interface Animation {
   /** */
   loop?: boolean;
   /** */
-  timeline?: SMap<string | string[]>;
+  timeline?: Record<string, string | string[]>;
 }
 
 /** */
