@@ -1,39 +1,33 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`BehaviorPack - Animation Controller Process 1`] = `
 [
   {
     "animations": {
-      "defined": [],
-      "using": [
+      "defined": Set {},
+      "using": Set {
         "base_pose",
-      ],
+      },
     },
     "documentation": "BP Animation Controller: controller.animation.example.base_pose",
-    "events": [
-      "minecraft:entity_spawned",
-      "minecraft:entity_born",
-    ],
+    "events": {
+      "using": Set {
+        "minecraft:entity_spawned",
+        "minecraft:entity_born",
+      },
+    },
     "id": "controller.animation.example.base_pose",
     "location": {
       "position": 77,
       "uri": "example",
     },
-    "molang": {
-      "contexts": {
-        "using": [],
+    "molang": MolangSet {
+      "assigned": Set {},
+      "cache": MolangSyntaxCache {
+        "_data": Map {},
       },
-      "queries": {
-        "using": [],
-      },
-      "temps": {
-        "defined": [],
-        "using": [],
-      },
-      "variables": {
-        "defined": [],
-        "using": [],
-      },
+      "functions": Set {},
+      "using": Set {},
     },
   },
 ]

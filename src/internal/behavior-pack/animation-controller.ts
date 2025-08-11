@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-import { SMap } from "../../types";
-import * as General from '../general/controllers/state';
+import * as General from "../general/controllers/state";
 import { FormatVersion } from "../types";
 
 /** */
@@ -22,7 +21,12 @@ export namespace AnimationControllers {
    * @returns
    */
   export function is(value: any): value is AnimationControllers {
-    if (typeof value === "object" && typeof value.format_version === "string" && typeof value.animation_controllers === "object") return true;
+    if (
+      typeof value === "object" &&
+      typeof value.format_version === "string" &&
+      typeof value.animation_controllers === "object"
+    )
+      return true;
 
     return false;
   }
@@ -33,7 +37,7 @@ export interface AnimationController {
   /** */
   initial_state?: string;
   /** */
-  states: SMap<State>;
+  states: Record<string, State>;
 }
 
 /** */
@@ -50,9 +54,7 @@ export namespace AnimationController {
   }
 }
 
-
-export interface State extends General.State {
-}
+export interface State extends General.State {}
 
 /** */
 export namespace State {

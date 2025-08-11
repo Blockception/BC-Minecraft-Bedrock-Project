@@ -1,10 +1,10 @@
-import * as Internal from "../../../internal/resource-pack";
-import { Json } from "../../../internal";
-import { Molang } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument, Documentation } from "../../../types";
+import { Json } from "../../../internal";
+import * as Internal from "../../../internal/resource-pack";
+import { Documentation, TextDocument } from "../../../types";
+import { References } from "../../../types/references";
+import { harvestMolang } from "../../molang";
 import { Entity } from "./entity";
-import { DefinedUsing } from "bc-minecraft-molang";
 
 /**
  *
@@ -23,59 +23,21 @@ export function Process(doc: TextDocument): Entity | undefined {
   const out: Entity = {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangFullSet.harvest(description),
-    animations: DefinedUsing.create(),
+    molang: harvestMolang(content, description),
+    animations: References.wrap(
+      description.animation_controllers
+        ?.flatMap((item) => (typeof item === "string" ? item : Object.getOwnPropertyNames(item)[0]))
+        .filter((item) => item !== undefined),
+      undefined
+    ),
     documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),
   };
-  Molang.MolangFullSet.fromScript(description.scripts ?? {}, out.molang);
 
   //process animations
   Types.Definition.forEach(description.animations, (reference, id) => {
-    out.animations.defined.push(reference);
-    out.animations.using.push(id);
-  });
-
-  //process Animation controller
-  description.animation_controllers?.forEach((item) => {
-    const temp = flatten(item);
-    if (temp) out.animations.using.push(temp);
-  });
-
-  //process geometries
-  Types.Definition.forEach(description.geometry, (reference, id) => {
-    out.molang.geometries.defined.push(reference);
-    out.molang.geometries.using.push(removePrefix(id));
-  });
-
-  //process materials
-  Types.Definition.forEach(description.materials, (reference, id) => {
-    out.molang.materials.defined.push(reference);
-    out.molang.materials.using.push(removePrefix(id));
-  });
-
-  //process textures
-  Types.Definition.forEach(description.textures, (reference, id) => {
-    out.molang.textures.defined.push(reference);
-    out.molang.textures.using.push(id);
+    out.animations.defined.add(reference);
+    out.animations.using.add(id);
   });
 
   return out;
-}
-
-function flatten(data: string | Types.Definition): string | undefined {
-  if (typeof data === "string") return data;
-
-  const key = Object.getOwnPropertyNames(data)[0];
-
-  if (key) return data[key];
-
-  return undefined;
-}
-
-function removePrefix(id: string): string {
-  const index = id.indexOf(".");
-
-  if (index > -1) return id.slice(index + 1);
-
-  return id;
 }

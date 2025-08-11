@@ -1,19 +1,15 @@
-import { Molang } from "bc-minecraft-molang";
-import { Using } from "bc-minecraft-molang";
 import { Types } from "bc-minecraft-bedrock-types";
-import { AnimationCarrier, MolangCarrier } from "../../../types";
+import { MolangSet } from "bc-minecraft-molang/lib/src/molang";
+import { Using } from "../../../types/references";
 
 /** */
-export interface AnimationController
-  extends Types.BaseObject,
-    MolangCarrier<Molang.MolangSet>,
-    AnimationCarrier<Using<string>> {
+export interface AnimationController extends Types.BaseObject {
   /** */
-  molang: Molang.MolangSet;
+  molang: MolangSet;
   /** */
-  animations: Using<string>;
+  animations: Using;
   /** */
-  particles: Using<string>;
+  particles: Using;
   /** */
-  sounds: Using<string>;
+  sounds: Using;
 }

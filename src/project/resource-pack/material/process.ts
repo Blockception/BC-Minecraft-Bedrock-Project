@@ -1,10 +1,8 @@
-import * as internal from "../../../internal/resource-pack/material";
-import { Json } from "../../../internal/json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../types";
+import { Json } from "../../../internal/json";
+import * as internal from "../../../internal/resource-pack/material";
+import { Documentation, TextDocument } from "../../../types";
 import { Material } from "./material";
-import { Documentation } from "../../../types";
-import { SMap } from "../../../types";
 
 /**
  *
@@ -18,17 +16,13 @@ export function Process(doc: TextDocument): Material[] | undefined {
 
   if (!internal.Material.is(imp)) return undefined;
 
-  const out: Material[] = [];
-
-  SMap.forEach<any>(imp, (value, key) => {
-    if (key !== "format_version") {
-      out.push({
+  return Object.entries(imp)
+    .filter(([key]) => key !== "format_version")
+    .map(([key]) => {
+      return {
         id: key,
         location: Types.Location.create(uri, content.indexOf(key)),
         documentation: Documentation.getDoc(doc, () => `Material: ${key}`),
-      });
-    }
-  });
-
-  return out;
+      };
+    });
 }

@@ -15,17 +15,15 @@ export function Process(doc: TextDocument): FeatureRule | undefined {
   const imp = Json.To<Internal.FeatureRule>(doc);
 
   if (!Internal.FeatureRule.is(imp)) return undefined;
-  
-  const description = imp['minecraft:feature_rules'].description
-  const id = description.identifier
-  const feature_used = description.places_feature
 
-  const out: FeatureRule = {
+  const description = imp["minecraft:feature_rules"].description;
+  const id = description.identifier;
+  const feature_used = description.places_feature;
+
+  return {
     id: id,
-    location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Feature Rule: ${id}`),
-    feature_used: feature_used
+    feature_used: feature_used,
+    location: Types.Location.create(uri, content.indexOf(id)),
   };
-
-  return out;
 }

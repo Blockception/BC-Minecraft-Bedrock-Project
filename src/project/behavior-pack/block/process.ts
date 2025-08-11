@@ -1,11 +1,10 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
 import { Json } from "../../../internal";
-import { Documentation, SMap, TextDocument } from "../../../types";
+import * as Internal from "../../../internal/behavior-pack";
+import { Documentation, TextDocument } from "../../../types";
+import { harvestMolang } from "../../molang";
 import { Block } from "./block";
 import { BlockState } from "./block-state";
-
-import * as Internal from "../../../internal/behavior-pack";
 
 /**
  *
@@ -22,21 +21,13 @@ export function Process(doc: TextDocument): Block | undefined {
   const container = imp["minecraft:block"];
   const id = container.description.identifier;
 
-  const out: Block = {
+  return {
     id: id,
-    location: Types.Location.create(uri, content.indexOf(id)),
-    molang: Molang.MolangSet.harvest(container),
-    states: [],
     documentation: Documentation.getDoc(doc, () => `BP Block: ${id}`),
+    location: Types.Location.create(uri, content.indexOf(id)),
+    molang: harvestMolang(content, container),
+    states: Object.entries(container.description.properties ?? {})
+      .map(([prop, values]) => BlockState.create(prop, values))
+      .filter((b) => b !== undefined),
   };
-
-  const props = container.description.properties;
-  if (props)
-    SMap.forEach(props, (values, prop) => {
-      const s = BlockState.create(prop, values);
-
-      if (s) out.states.push(s);
-    });
-
-  return out;
 }

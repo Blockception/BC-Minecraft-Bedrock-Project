@@ -24,11 +24,9 @@ export function Process(doc: TextDocument): Function | undefined {
     id = `"${id}"`;
   }
 
-  const out: Function = {
+  return {
     id: id,
     location: Types.Location.create(uri, 0),
     documentation: Documentation.getDoc(doc, () => `Mcfunction: ${id}`),
   };
-
-  return out;
 }

@@ -17,15 +17,13 @@ export function Process(doc: TextDocument): Structure | undefined {
   let id = uri.substring(index, uri.length).replace(/\\/g, "/");
   id = id.replace(".mcstructure", "");
 
-  if (id.includes('/')) {
+  if (id.includes("/")) {
     id = '"' + id + '"';
   }
 
-  const out: Structure = {
+  return {
     id: id,
     location: Types.Location.create(uri, 0),
     documentation: `McStructure: ${id}`,
   };
-
-  return out;
 }

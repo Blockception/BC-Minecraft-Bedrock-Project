@@ -1,11 +1,12 @@
 import { Location } from "bc-minecraft-bedrock-types/lib/types";
-import { DefinedUsing, Molang } from "bc-minecraft-molang";
+import { MolangSet } from "bc-minecraft-molang/lib/src/molang";
 import { MCProject } from "bc-minecraft-project";
 import { TextProjectContext } from "../../test/utility";
 import { Manifest } from "../internal/types";
+import { Defined, References, Using } from "../types/references";
 import { BehaviorPack } from "./behavior-pack";
-import { ProjectData } from './project-data';
-import { ResourcePack } from './resource-pack';
+import { ProjectData } from "./project-data";
+import { ResourcePack } from "./resource-pack";
 
 describe("ProjectData", () => {
   describe("Sanity Check", () => {
@@ -262,9 +263,9 @@ describe("ProjectData", () => {
     const rp = data.resourcePacks.add("c:\\rp", MCProject.createEmpty(), {} as Manifest);
 
     const loc = { uri: "", position: 0 };
-    const molang = Molang.MolangFullSet.create();
+    const molang = new MolangSet();
     const doc = "Documentation";
-    const emptyDefinedUsing = DefinedUsing.create<string>();
+    const emptyDefinedUsing = References.create();
 
     bp.animation_controllers.set({
       animations: emptyDefinedUsing,
@@ -272,14 +273,14 @@ describe("ProjectData", () => {
       location: loc,
       molang: molang,
       documentation: doc,
-      events: []
+      events: Using.create(),
     });
     bp.animations.set({
       id: "bp.animation",
       location: loc,
       molang: molang,
       documentation: doc,
-      events: []
+      events: Using.create(),
     });
     bp.blocks.set({
       id: "bp.block",
@@ -290,15 +291,15 @@ describe("ProjectData", () => {
     });
     bp.entities.set({
       id: "bp.entity",
+      animations: References.create(),
+      documentation: doc,
+      events: Defined.create(),
+      families: Defined.create(),
+      groups: Defined.create(),
       location: loc,
       molang: molang,
-      documentation: doc,
-      animations: emptyDefinedUsing,
-      events: [],
-      families: [],
-      groups: [],
       properties: [],
-      runtime_identifier: ''
+      runtime_identifier: "",
     });
     bp.functions.set({ id: "bp.function", location: loc, documentation: doc });
     bp.items.set({
@@ -306,7 +307,7 @@ describe("ProjectData", () => {
       location: loc,
       molang: molang,
       documentation: doc,
-      isFood: false
+      isFood: false,
     });
     bp.loot_tables.set({
       id: "bp.loot_table",
@@ -344,7 +345,12 @@ describe("ProjectData", () => {
       molang: molang,
       documentation: doc,
     });
-    rp.block_culling_rules.set({ id: "rp.block_culling_rules", location: loc, documentation: doc, affected_bones: [] });
+    rp.block_culling_rules.set({
+      id: "rp.block_culling_rules",
+      location: loc,
+      documentation: doc,
+      affected_bones: Defined.create(),
+    });
     rp.entities.set({
       animations: emptyDefinedUsing,
       id: "rp.entity",
@@ -354,7 +360,14 @@ describe("ProjectData", () => {
     });
     rp.fogs.set({ id: "rp.fog", location: loc, documentation: doc });
     rp.materials.set({ id: "rp.material", location: loc, documentation: doc });
-    rp.models.set({ id: "rp.model", location: loc, documentation: doc, bones: [], root_bone_uses_binding: false, locators: [] });
+    rp.models.set({
+      id: "rp.model",
+      location: loc,
+      documentation: doc,
+      bones: Defined.create(),
+      root_bone_uses_binding: false,
+      locators: Defined.create(),
+    });
     rp.particles.set({ id: "rp.particle", location: loc, documentation: doc });
     rp.render_controllers.set({
       id: "rp.render_controller",

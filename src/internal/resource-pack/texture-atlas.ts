@@ -1,11 +1,9 @@
-import { SMap } from "../../types";
-
 /** */
 export interface TextureAtlas {
   /** */
   resource_pack_name: string;
   /** */
-  texture_data: SMap<TextureData>;
+  texture_data: Record<string, TextureData>;
   /** */
   texture_name?: string;
   /** */

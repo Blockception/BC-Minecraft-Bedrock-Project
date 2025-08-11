@@ -1,11 +1,12 @@
-import { DefinedUsing } from "bc-minecraft-molang";
 import { jsonc } from "jsonc";
 import { Internal } from "../src/main";
+import { References } from "../src/types/references";
 
 export namespace VanillaPlayer {
   export const Goes: string[] = ["cape", "humanoid.custom"];
-  export const Variables: DefinedUsing<string> = {
-    defined: [
+  export const Variables = References.wrap(
+    ["attack_time", "gliding_speed_value", "hand_bob", "player_x_rotation"],
+    [
       "is_holding_right",
       "is_blinking",
       "last_blink_time",
@@ -20,14 +21,8 @@ export namespace VanillaPlayer {
       "hand_bob",
       "map_angle",
       "item_use_normalized",
-    ],
-    using: [
-      "attack_time",
-      "gliding_speed_value",
-      "hand_bob",
-      "player_x_rotation",
-    ],
-  };
+    ]
+  );
 
   export const Data = `{
   "format_version": "1.10.0",

@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { Types } from "bc-minecraft-bedrock-types";
+import { Defined } from "../../../types";
 
 /** */
-export interface Biome extends Types.BaseObject { 
-    tags: string[]
+export interface Biome extends Types.BaseObject {
+  tags: Defined;
 }

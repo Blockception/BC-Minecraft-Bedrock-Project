@@ -1,7 +1,7 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import * as Internal from "../../../internal/behavior-pack/biome";
 import { Json } from "../../../internal/json";
-import { Documentation, TextDocument } from "../../../types";
+import { Defined, Documentation, TextDocument } from "../../../types";
 import { Biome } from "./biome";
 
 /**
@@ -16,14 +16,13 @@ export function Process(doc: TextDocument): Biome | undefined {
 
   if (!Internal.Biome.is(biome)) return undefined;
 
-  const id = biome['minecraft:biome'].description.identifier
+  const id = biome["minecraft:biome"].description.identifier;
+  const tagComp = biome["minecraft:biome"]?.components["minecraft:tags"];
 
-  const out: Biome = {
+  return {
     id: id,
-    location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Biome: ${id}`),
-    tags: biome['minecraft:biome'].components['minecraft:tags'] || []
+    location: Types.Location.create(uri, content.indexOf(id)),
+    tags: Defined.wrap(Array.isArray(tagComp) ? tagComp : Array.isArray(tagComp.tags) ? tagComp.tags : []),
   };
-
-  return out;
 }

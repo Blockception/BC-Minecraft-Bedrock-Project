@@ -1,4 +1,3 @@
-import { SMap } from "../../types";
 import { FormatVersion } from "../types/format-version";
 
 /** */
@@ -13,11 +12,11 @@ export interface Animation {
   /** */
   bones?: Record<"string", BoneAnimation>;
   /** */
-  particle_effects?: SMap<{ effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
+  particle_effects?: Record<string, EffectLocator | EffectLocator[]>;
   /** */
-  sound_effects?: SMap<{ effect?: string } | { effect?: string }[]>;
+  sound_effects?: Record<string, Effect | Effect[]>;
   /** */
-  timeline?: SMap<string | string[]>;
+  timeline?: Record<string, string | string[]>;
 }
 
 /** */
@@ -28,7 +27,7 @@ export namespace Animation {
    * @returns
    */
   export function is(value: any): value is Animation {
-    return typeof value === "object"
+    return typeof value === "object";
   }
 }
 
@@ -65,4 +64,13 @@ export interface BoneAnimation {
   rotation?: Vec3 | Record<string, Vec3 | string> | string;
   position?: Vec3 | Record<string, Vec3 | string> | string;
   scale?: Vec3 | Record<string, Vec3 | string> | string;
+}
+
+export interface EffectLocator {
+  effect?: string;
+  locator?: string;
+}
+
+export interface Effect {
+  effect?: string;
 }
