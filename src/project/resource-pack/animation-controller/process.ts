@@ -1,9 +1,10 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import * as Internal from "../../../internal/resource-pack/animation-controller";
-import { Documentation, SMap, TextDocument } from "../../../types";
-import { References } from "../../../types/references";
+import { Documentation, TextDocument } from "../../../types";
+import { References, Using } from "../../../types/references";
 import { harvestMolang } from "../../molang";
 import { AnimationController } from "./animation-controller";
+import { Effect } from "../../../internal/resource-pack";
 
 /** */
 export function Process(doc: TextDocument): AnimationController[] | undefined {
@@ -12,42 +13,36 @@ export function Process(doc: TextDocument): AnimationController[] | undefined {
 
   const uri = doc.uri;
   const content = doc.getText();
-  const out: AnimationController[] = [];
   const container = imp.animation_controllers;
-  const keys = Object.getOwnPropertyNames(container);
 
-  for (let I = 0; I < keys.length; I++) {
-    const id = keys[I];
-    const controller = container[id];
-
-    if (Internal.AnimationController.is(controller)) {
+  return Object.entries(container)
+    .filter(([, controller]) => Internal.AnimationController.is(controller))
+    .map(([id, controller]) => {
       const item: AnimationController = {
         id: id,
         location: Types.Location.create(uri, content.indexOf(id)),
         molang: harvestMolang(content, controller),
         documentation: Documentation.getDoc(doc, () => `RP Animation Controller: '${id}'`),
-        animations: References.empty(),
-        particles: References.empty(),
-        sounds: References.empty(),
+        animations: References.create(),
+        particles: References.create(),
+        sounds: References.create(),
       };
 
-      SMap.forEach(controller.states, (State) => {
-        if (State.animations)
-          Types.Conditional.forEach(State.animations, (reference) => item.animations.using.push(reference));
+      Object.values(controller.states).map((state) => {
+        Types.Conditional.forEach(state.animations, (reference) => item.animations.using.add(reference));
 
-        if (State.particle_effects) harvest(State.particle_effects, item.particles);
-        if (State.sound_effects) harvest(State.sound_effects, item.sounds);
+        if (state.particle_effects) harvest(state.particle_effects, item.particles);
+        if (state.sound_effects) harvest(state.sound_effects, item.sounds);
       });
 
-      out.push(item);
-    }
-  }
-
-  return out;
+      return item;
+    })
+    .filter((item) => item !== undefined);
 }
 
-function harvest(data: { effect?: string }[], receiver: Pick<References, "using">) {
-  data.forEach((e) => {
-    if (e.effect) receiver.using.push(e.effect);
-  });
+function harvest(data: Effect[], receiver: Using) {
+  Using.add(
+    receiver,
+    data.map((e) => e.effect).filter((e) => e !== undefined)
+  );
 }

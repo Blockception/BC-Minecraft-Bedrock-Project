@@ -1,10 +1,8 @@
-import * as internal from "../../../internal/resource-pack/sound-definitions";
-import { Json } from "../../../internal/json";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from "../../../types";
+import { Json } from "../../../internal/json";
+import * as internal from "../../../internal/resource-pack/sound-definitions";
+import { Documentation, TextDocument } from "../../../types";
 import { Sound } from "./sound";
-import { Documentation } from "../../../types";
-import { SMap } from "../../../types";
 
 /**
  *
@@ -18,16 +16,11 @@ export function Process(doc: TextDocument): Sound[] | undefined {
 
   if (!internal.SoundDefinitions.is(imp)) return undefined;
 
-  const container = imp.sound_definitions;
-  const out: Sound[] = [];
-
-  SMap.forEach(container, (value, key) => {
-    out.push({
+  return Object.entries(imp.sound_definitions).map(([key, value]) => {
+    return {
       id: key,
       location: Types.Location.create(uri, content.indexOf(key)),
       documentation: Documentation.getDoc(doc, () => `Sound: ${key} with ${value.sounds?.length ?? 0} sounds`),
-    });
+    };
   });
-
-  return out;
 }

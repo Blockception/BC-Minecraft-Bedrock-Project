@@ -12,9 +12,9 @@ export interface Animation {
   /** */
   bones?: Record<"string", BoneAnimation>;
   /** */
-  particle_effects?: Record<string, { effect?: string; locator?: string } | { effect?: string; locator?: string }[]>;
+  particle_effects?: Record<string, EffectLocator | EffectLocator[]>;
   /** */
-  sound_effects?: Record<string, { effect?: string } | { effect?: string }[]>;
+  sound_effects?: Record<string, Effect | Effect[]>;
   /** */
   timeline?: Record<string, string | string[]>;
 }
@@ -64,4 +64,13 @@ export interface BoneAnimation {
   rotation?: Vec3 | Record<string, Vec3 | string> | string;
   position?: Vec3 | Record<string, Vec3 | string> | string;
   scale?: Vec3 | Record<string, Vec3 | string> | string;
+}
+
+export interface EffectLocator {
+  effect?: string;
+  locator?: string;
+}
+
+export interface Effect {
+  effect?: string;
 }

@@ -20,7 +20,7 @@ export function Process(doc: TextDocument): Item | undefined {
   const container = imp["minecraft:item"];
   const id = container.description.identifier;
 
-  const out: Item = {
+  return {
     id: id,
     isFood: typeof container.components["minecraft:food"] === "object" ? true : false,
     location: Types.Location.create(uri, content.indexOf(id)),
@@ -30,6 +30,4 @@ export function Process(doc: TextDocument): Item | undefined {
       () => `BP Item: ${id} ${container.description.category ? "category: " + container.description.category : ""}`
     ),
   };
-
-  return out;
 }

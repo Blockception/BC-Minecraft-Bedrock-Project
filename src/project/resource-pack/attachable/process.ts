@@ -25,31 +25,15 @@ export function Process(doc: TextDocument): Attachable | undefined {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
     molang: harvestMolang(content, container),
-    animations: References.empty(),
+    animations: References.wrap(description.animation_controllers, undefined),
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };
 
   //process animations
   Types.Definition.forEach(description.animations, (reference, id) => {
-    out.animations.defined.push(reference);
-    out.animations.using.push(id);
-  });
-
-  //process Animation controller
-  description.animation_controllers?.forEach((item) => {
-    const temp = flatten(item);
-    if (temp) out.animations.using.push(temp);
+    out.animations.defined.add(reference);
+    out.animations.using.add(id);
   });
 
   return out;
-}
-
-function flatten(data: string | Types.Definition): string | undefined {
-  if (typeof data === "string") return data;
-
-  const key = Object.getOwnPropertyNames(data)[0];
-
-  if (key) return data[key];
-
-  return undefined;
 }

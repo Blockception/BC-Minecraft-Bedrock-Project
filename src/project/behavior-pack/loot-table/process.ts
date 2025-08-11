@@ -16,11 +16,9 @@ export function Process(doc: TextDocument): LootTable | undefined {
 
   const id = uri.substring(index, uri.length).replace(/\\/g, "/");
 
-  const out: LootTable = {
+  return {
     id: id,
     location: Types.Location.create(uri, 0),
     documentation: Documentation.getDoc(doc, () => `Loot table: ${id}`),
   };
-
-  return out;
 }

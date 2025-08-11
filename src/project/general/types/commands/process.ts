@@ -1,6 +1,6 @@
 import { Command } from "bc-minecraft-bedrock-command";
 import { Json } from "../../../../internal";
-import { SMap, TextDocument } from "../../../../types";
+import { TextDocument } from "../../../../types";
 import { GeneralCollection } from "../../general";
 
 import * as Internal from "../../../../internal";
@@ -36,15 +36,11 @@ export function ProcessAnimationCommands(doc: TextDocument, receiver: GeneralCol
   if (!Internal.BehaviorPack.Animations.is(imp)) return;
 
   //For each animation
-  SMap.forEach(imp.animations, (anim) => {
+  Object.values(imp.animations).forEach((anim) => {
     //For each timeline object
-    SMap.forEach(anim.timeline, (time) => {
-      if (typeof time === "string") {
-        InternalJsonValue(time, doc, receiver);
-      } else {
-        time.forEach((t) => InternalJsonValue(t, doc, receiver));
-      }
-    });
+    Object.values(anim.timeline ?? {})
+      .flatMap((item) => (typeof item === "string" ? [item] : item))
+      .forEach((time) => InternalJsonValue(time, doc, receiver));
   });
 }
 
@@ -60,9 +56,9 @@ export function ProcessAnimationControllerCommands(doc: TextDocument, receiver: 
   if (!Internal.BehaviorPack.AnimationControllers.is(imp)) return;
 
   //for each controller
-  SMap.forEach(imp.animation_controllers, (anim) => {
+  Object.values(imp.animation_controllers).forEach((anim) => {
     //for each state
-    SMap.forEach(anim.states, (state) => {
+    Object.values(anim.states).forEach((state) => {
       state.on_entry?.forEach((p) => InternalJsonValue(p, doc, receiver));
       state.on_exit?.forEach((p) => InternalJsonValue(p, doc, receiver));
     });
@@ -74,16 +70,11 @@ export function processEntityCommands(doc: TextDocument, receiver: GeneralCollec
 
   if (!Internal.BehaviorPack.Entity.is(imp)) return;
 
-  SMap.forEach(imp["minecraft:entity"]?.events, (event) => {
-    let command = event.queue_command?.command;
-    if (command === undefined) return;
-
-    if (!Array.isArray(command)) {
-      command = [command];
-    }
-
-    command.forEach((c) => InternalJsonValue(c, doc, receiver));
-  });
+  Object.values(imp["minecraft:entity"]?.events ?? {})
+    .map((event) => event.queue_command?.command)
+    .filter((comm) => comm !== undefined)
+    .flatMap((comm) => (!Array.isArray(comm) ? [comm] : comm))
+    .forEach((c) => InternalJsonValue(c, doc, receiver));
 }
 
 function InternalJsonValue(prop: string, doc: TextDocument, receiver: GeneralCollection) {

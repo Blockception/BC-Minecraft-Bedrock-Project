@@ -17,12 +17,10 @@ export function Process(doc: TextDocument): Fog | undefined {
   const content = doc.getText();
   const container = imp["minecraft:fog_settings"];
   const id = container.description.identifier;
-  
-  const out: Fog = {
+
+  return {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Fog: ${id}`),
   };
-
-  return out;
 }

@@ -17,11 +17,9 @@ export function Process(doc: TextDocument): Particle | undefined {
   const content = doc.getText();
   const container = imp.particle_effect;
   const id = container.description.identifier;
-  const out: Particle = {
+  return {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Particle: ${id}`),
   };
-
-  return out;
 }

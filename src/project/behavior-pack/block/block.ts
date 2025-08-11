@@ -1,12 +1,11 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
-import { MolangCarrier } from "../../../types";
+import { MolangSet } from "bc-minecraft-molang/lib/src/molang";
 import { BlockState } from "./block-state";
 
 /** */
-export interface Block extends Types.BaseObject, MolangCarrier {
+export interface Block extends Types.BaseObject {
   /** */
-  molang: Molang.MolangSet;
+  molang: MolangSet;
   /** */
   states: BlockState[];
 }

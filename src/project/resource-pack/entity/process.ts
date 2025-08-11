@@ -24,31 +24,20 @@ export function Process(doc: TextDocument): Entity | undefined {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
     molang: harvestMolang(content, description),
-    animations: References.empty(),
+    animations: References.wrap(
+      description.animation_controllers
+        ?.flatMap((item) => (typeof item === "string" ? item : Object.getOwnPropertyNames(item)[0]))
+        .filter((item) => item !== undefined),
+      undefined
+    ),
     documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),
   };
 
   //process animations
   Types.Definition.forEach(description.animations, (reference, id) => {
-    out.animations.defined.push(reference);
-    out.animations.using.push(id);
-  });
-
-  //process Animation controller
-  description.animation_controllers?.forEach((item) => {
-    const temp = flatten(item);
-    if (temp) out.animations.using.push(temp);
+    out.animations.defined.add(reference);
+    out.animations.using.add(id);
   });
 
   return out;
-}
-
-function flatten(data: string | Types.Definition): string | undefined {
-  if (typeof data === "string") return data;
-
-  const key = Object.getOwnPropertyNames(data)[0];
-
-  if (key) return data[key];
-
-  return undefined;
 }

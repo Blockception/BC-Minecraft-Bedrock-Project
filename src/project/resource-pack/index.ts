@@ -2,7 +2,6 @@
 export * as AnimationController from "./animation-controller";
 export * as Animation from "./animation";
 export * as Attachable from "./attachable";
-export * as Block from "./block";
 export * as Entity from "./entity";
 export * from "./file-type";
 export * as Fog from "./fog";

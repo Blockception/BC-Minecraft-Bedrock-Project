@@ -13,14 +13,11 @@ export function Process(doc: TextDocument): Trading | undefined {
   const index = uri.indexOf("trading");
 
   if (index < 0) return undefined;
-
   const id = uri.substring(index, uri.length).replace(/\\/g, "/");
 
-  const out: Trading = {
+  return {
     id: id,
     location: Types.Location.create(uri, 0),
     documentation: Documentation.getDoc(doc, () => `Trading table: ${id}`),
   };
-
-  return out;
 }

@@ -4,10 +4,10 @@ exports[`Resourcepack - Animation Controller Process 1`] = `
 [
   {
     "animations": {
-      "defined": [],
-      "using": [
+      "defined": Set {},
+      "using": Set {
         "base_pose",
-      ],
+      },
     },
     "documentation": "RP Animation Controller: 'controller.animation.example.base_pose'",
     "id": "controller.animation.example.base_pose",
@@ -24,12 +24,12 @@ exports[`Resourcepack - Animation Controller Process 1`] = `
       "using": Set {},
     },
     "particles": {
-      "defined": [],
-      "using": [],
+      "defined": Set {},
+      "using": Set {},
     },
     "sounds": {
-      "defined": [],
-      "using": [],
+      "defined": Set {},
+      "using": Set {},
     },
   },
 ]

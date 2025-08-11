@@ -1,12 +1,11 @@
 import { Types } from "bc-minecraft-bedrock-types";
-import { Molang } from "bc-minecraft-molang";
-import { AnimationCarrier, MolangCarrier } from "../../../types";
+import { MolangSet } from "bc-minecraft-molang/lib/src/molang";
 import { References } from "../../../types/references";
 
 /** */
-export interface Entity extends Types.BaseObject, MolangCarrier, AnimationCarrier<References> {
+export interface Entity extends Types.BaseObject {
   /** */
   animations: References;
   /** */
-  molang: Molang.MolangSet;
+  molang: MolangSet;
 }

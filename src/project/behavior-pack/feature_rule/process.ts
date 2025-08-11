@@ -20,12 +20,10 @@ export function Process(doc: TextDocument): FeatureRule | undefined {
   const id = description.identifier;
   const feature_used = description.places_feature;
 
-  const out: FeatureRule = {
+  return {
     id: id,
     documentation: Documentation.getDoc(doc, () => `Feature Rule: ${id}`),
     feature_used: feature_used,
     location: Types.Location.create(uri, content.indexOf(id)),
   };
-
-  return out;
 }

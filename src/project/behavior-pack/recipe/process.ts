@@ -23,11 +23,9 @@ export function Process(doc: TextDocument): Recipe | undefined {
   if (container === undefined || typeof container === "string") return;
   const id = container.description.identifier;
 
-  const out: Recipe = {
+  return {
     id: id,
     location: Types.Location.create(uri, content.indexOf(id)),
     documentation: Documentation.getDoc(doc, () => `Recipe: ${id}`),
   };
-
-  return out;
 }

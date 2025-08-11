@@ -20,15 +20,12 @@ export function Process(doc: TextDocument): Feature | undefined {
   if (key === undefined) return;
   const container = imp[key as keyof Internal.Feature];
   if (container === undefined || typeof container === "string") return;
-
   const id = container.description.identifier;
 
-  const out: Feature = {
+  return {
     id: id,
     documentation: Documentation.getDoc(doc, () => `Feature: ${id}`),
     location: Types.Location.create(uri, content.indexOf(id)),
     type: key,
   };
-
-  return out;
 }
