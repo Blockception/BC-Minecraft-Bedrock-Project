@@ -7,7 +7,7 @@ import { Structure } from "./structure";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Structure | undefined {
+export function process(doc: TextDocument): Structure | undefined {
   const uri = doc.uri;
   let index = uri.indexOf("structures");
 

@@ -11,7 +11,7 @@ import { Attachable } from "./attachable";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Attachable | undefined {
+export function process(doc: TextDocument): Attachable | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.Attachable>(doc);

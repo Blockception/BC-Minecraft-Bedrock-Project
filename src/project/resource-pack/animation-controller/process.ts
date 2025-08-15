@@ -7,7 +7,7 @@ import { AnimationController } from "./animation-controller";
 import { Effect } from "../../../internal/resource-pack";
 
 /** */
-export function Process(doc: TextDocument): AnimationController[] | undefined {
+export function process(doc: TextDocument): AnimationController[] | undefined {
   const imp = TextDocument.toObject(doc, Internal.AnimationControllers.is);
   if (!imp) return undefined;
 

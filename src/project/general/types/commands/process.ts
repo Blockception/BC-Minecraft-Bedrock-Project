@@ -121,19 +121,19 @@ export function ProcessCommandAt(line: string, offset: number, doc: TextDocument
 
     switch (command != undefined && command.parameters[0].text) {
       case "tag":
-        receiver.tags.set(Tag.Process(command, doc));
+        receiver.tags.set(Tag.process(command, doc));
         break;
 
       case "scoreboard":
-        Objective.Process(command, doc, receiver);
+        Objective.process(command, doc, receiver);
         break;
 
       case "structure":
-        receiver.structures.set(Structure.Process(command, doc));
+        receiver.structures.set(Structure.process(command, doc));
         break;
 
       case "tickingarea":
-        receiver.tickingAreas.set(TickingArea.Process(command, doc));
+        receiver.tickingAreas.set(TickingArea.process(command, doc));
         break;
     }
 

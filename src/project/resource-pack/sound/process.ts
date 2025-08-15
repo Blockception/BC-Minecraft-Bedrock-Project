@@ -9,7 +9,7 @@ import { Sound } from "./sound";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Sound[] | undefined {
+export function process(doc: TextDocument): Sound[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<internal.SoundDefinitions>(doc);

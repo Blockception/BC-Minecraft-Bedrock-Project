@@ -9,7 +9,7 @@ import { Biome } from "./biome";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Biome | undefined {
+export function process(doc: TextDocument): Biome | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const biome = Json.To<Internal.Biome>(doc);

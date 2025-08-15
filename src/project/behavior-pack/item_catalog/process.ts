@@ -9,7 +9,7 @@ import { Group } from "./item_catalog";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Group[] | undefined {
+export function process(doc: TextDocument): Group[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.ItemCatalog>(doc);

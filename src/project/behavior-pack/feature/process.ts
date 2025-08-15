@@ -9,7 +9,7 @@ import { Feature } from "./feature";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Feature | undefined {
+export function process(doc: TextDocument): Feature | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.Feature>(doc);

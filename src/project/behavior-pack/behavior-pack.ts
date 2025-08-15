@@ -92,7 +92,7 @@ export class BehaviorPack implements Container, Pack {
     this.structures = new DataSet();
     this.trading = new DataSet();
     this.features = new DataSet();
-    this.features_rules = new DataSet()
+    this.features_rules = new DataSet();
     this.item_groups = new DataSet();
   }
 
@@ -107,47 +107,46 @@ export class BehaviorPack implements Container, Pack {
     //If extended, also extend the delete
     switch (Type) {
       case FileType.animation:
-        return this.animations.set(Animation.Process(doc));
+        return this.animations.set(Animation.process(doc));
 
       case FileType.animation_controller:
-        return this.animation_controllers.set(AnimationController.Process(doc));
+        return this.animation_controllers.set(AnimationController.process(doc));
 
       case FileType.block:
-        return this.blocks.set(Block.Process(doc));
+        return this.blocks.set(Block.process(doc));
 
       case FileType.entity:
-        return this.entities.set(Entity.Process(doc));
+        return this.entities.set(Entity.process(doc));
 
       case FileType.function:
-        return this.functions.set(Function.Process(doc));
+        return this.functions.set(Function.process(doc));
 
       case FileType.item:
-        return this.items.set(Item.Process(doc));
+        return this.items.set(Item.process(doc));
 
       case FileType.loot_table:
-        return this.loot_tables.set(LootTable.Process(doc));
+        return this.loot_tables.set(LootTable.process(doc));
 
       case FileType.structure:
-        return this.structures.set(Structure.Process(doc));
+        return this.structures.set(Structure.process(doc));
 
       case FileType.trading:
-        return this.trading.set(Trading.Process(doc));
+        return this.trading.set(Trading.process(doc));
 
       case FileType.feature:
-        return this.features.set(Feature.Process(doc));
+        return this.features.set(Feature.process(doc));
 
       case FileType.feature_rule:
-        return this.features_rules.set(FeatureRule.Process(doc))
+        return this.features_rules.set(FeatureRule.process(doc));
 
       case FileType.item_catalog:
-        return this.item_groups.set(ItemCatalog.Process(doc));
+        return this.item_groups.set(ItemCatalog.process(doc));
 
       case FileType.biome:
-        return this.biomes.set(Biome.Process(doc));
+        return this.biomes.set(Biome.process(doc));
 
       case FileType.recipe:
-        return this.recipes.set(Recipe.Process(doc));
-
+        return this.recipes.set(Recipe.process(doc));
     }
 
     return undefined;
@@ -176,7 +175,7 @@ export class BehaviorPack implements Container, Pack {
 
       case FileType.feature:
         return this.features;
-      
+
       case FileType.feature_rule:
         return this.features_rules;
 

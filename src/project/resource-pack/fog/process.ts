@@ -9,7 +9,7 @@ import { Documentation } from "../../../types";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Fog | undefined {
+export function process(doc: TextDocument): Fog | undefined {
   const imp = TextDocument.toObject(doc, Internal.Fog.is);
   if (!imp) return undefined;
 

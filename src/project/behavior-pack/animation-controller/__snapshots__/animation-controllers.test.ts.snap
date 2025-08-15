@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`BehaviorPack - Animation Controller Process 1`] = `
+exports[`BehaviorPack - Animation Controller process 1`] = `
 [
   {
     "animations": {

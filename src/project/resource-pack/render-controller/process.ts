@@ -5,7 +5,7 @@ import { harvestMolang } from "../../molang";
 import { RenderController } from "./render-controller";
 
 /** */
-export function Process(doc: TextDocument): RenderController[] | undefined {
+export function process(doc: TextDocument): RenderController[] | undefined {
   const imp = TextDocument.toObject(doc, Internal.RenderControllers.is);
   if (!imp) return undefined;
 

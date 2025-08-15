@@ -1,4 +1,4 @@
-import { Process } from "./process";
+import { process } from "./process";
 
 describe("Function", () => {
   const data: { uri: string; result: string }[] = [
@@ -21,7 +21,7 @@ describe("Function", () => {
   ];
 
   test.each(data)(`$result from $uri`, (item) => {
-    const data = Process({ uri: item.uri, getText: () => "//example" });
+    const data = process({ uri: item.uri, getText: () => "//example" });
 
     expect(data).toMatchSnapshot();
   });

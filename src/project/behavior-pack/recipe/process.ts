@@ -10,7 +10,7 @@ import { Recipe } from "./recipe";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Recipe | undefined {
+export function process(doc: TextDocument): Recipe | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.Recipe>(doc);

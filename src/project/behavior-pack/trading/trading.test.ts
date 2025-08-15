@@ -1,4 +1,4 @@
-import { Process } from "../../../../src/project/behavior-pack/trading/process";
+import { process } from "../../../../src/project/behavior-pack/trading/process";
 
 describe("Trading", () => {
   const files = [
@@ -8,7 +8,7 @@ describe("Trading", () => {
   ];
 
   test.each(files)("process: $s", (uri) => {
-    const out = Process({ uri: uri, getText: () => "//example" });
+    const out = process({ uri: uri, getText: () => "//example" });
     expect(out).toMatchSnapshot();
   });
 });

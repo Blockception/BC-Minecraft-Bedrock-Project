@@ -1,4 +1,4 @@
-import { Process } from "./process";
+import { process } from "./process";
 
 describe("Resourcepack - Animation Controller", () => {
   const data = `{
@@ -8,8 +8,8 @@ describe("Resourcepack - Animation Controller", () => {
     }
   }`;
 
-  test("Process", () => {
-    const controllers = Process({ getText: () => data, uri: "example" });
+  test("process", () => {
+    const controllers = process({ getText: () => data, uri: "example" });
     expect(controllers).toMatchSnapshot();
   });
 });

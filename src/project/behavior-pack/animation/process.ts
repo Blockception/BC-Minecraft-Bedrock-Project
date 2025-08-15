@@ -6,7 +6,7 @@ import { harvestMolang } from "../../molang";
 import { Animation } from "./animation";
 
 /** */
-export function Process(doc: TextDocument): Animation[] | undefined {
+export function process(doc: TextDocument): Animation[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.Animations>(doc);

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Resourcepack - Animation Controller Process 1`] = `
+exports[`Resourcepack - Animation Controller process 1`] = `
 [
   {
     "animations": {

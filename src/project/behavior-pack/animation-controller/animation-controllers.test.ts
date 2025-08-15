@@ -1,4 +1,4 @@
-import { Process } from './process';
+import { process } from "./process";
 
 describe("BehaviorPack - Animation Controller", () => {
   const data = `{
@@ -12,8 +12,8 @@ describe("BehaviorPack - Animation Controller", () => {
       }
     }`;
 
-  test("Process", () => {
-    const controllers = Process({
+  test("process", () => {
+    const controllers = process({
       getText: () => data,
       uri: "example",
     });

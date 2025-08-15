@@ -9,7 +9,7 @@ import { Documentation } from "../../../types";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Particle | undefined {
+export function process(doc: TextDocument): Particle | undefined {
   const imp = TextDocument.toObject(doc, Internal.Particle.is);
   if (!imp) return undefined;
 
