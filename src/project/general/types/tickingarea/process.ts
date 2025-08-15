@@ -3,7 +3,7 @@ import { Types } from "bc-minecraft-bedrock-types";
 import { GeneralInfo } from "../general-info";
 import { Documentation, TextDocument } from "../../../../types";
 
-export function Process(Command: Command, doc: TextDocument): GeneralInfo | undefined {
+export function process(Command: Command, doc: TextDocument): GeneralInfo | undefined {
   //tickingarea add
   if (Command.parameters[1]?.text !== "add") return;
 

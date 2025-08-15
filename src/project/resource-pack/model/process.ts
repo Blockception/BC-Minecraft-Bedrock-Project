@@ -10,7 +10,7 @@ import { Documentation } from "../../../types";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Model[] | undefined {
+export function process(doc: TextDocument): Model[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<internal.Model>(doc);

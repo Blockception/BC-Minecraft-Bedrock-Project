@@ -9,7 +9,7 @@ import { Material } from "./material";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Material[] | undefined {
+export function process(doc: TextDocument): Material[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<internal.Material>(doc);

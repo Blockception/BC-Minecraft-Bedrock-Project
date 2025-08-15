@@ -8,7 +8,7 @@ import { Trading } from "./trading";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Trading | undefined {
+export function process(doc: TextDocument): Trading | undefined {
   const uri = doc.uri;
   const index = uri.indexOf("trading");
 

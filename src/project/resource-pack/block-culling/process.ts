@@ -4,7 +4,7 @@ import * as Internal from "../../../internal/resource-pack";
 import { Defined, Documentation, TextDocument } from "../../../types";
 import { BlockCulling } from "./culling";
 
-export function Process(doc: TextDocument): BlockCulling | undefined {
+export function process(doc: TextDocument): BlockCulling | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.BlockCulling>(doc);

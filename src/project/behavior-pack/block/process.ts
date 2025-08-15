@@ -11,7 +11,7 @@ import { BlockState } from "./block-state";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Block | undefined {
+export function process(doc: TextDocument): Block | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.Block>(doc);

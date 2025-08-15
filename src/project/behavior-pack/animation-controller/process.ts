@@ -11,7 +11,7 @@ import { AnimationController } from "./animation-controller";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): AnimationController[] | undefined {
+export function process(doc: TextDocument): AnimationController[] | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.AnimationControllers>(doc);

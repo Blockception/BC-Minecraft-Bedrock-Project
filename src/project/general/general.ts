@@ -1,6 +1,6 @@
 import { Types } from "bc-minecraft-bedrock-types";
 import { DataSet, TextDocument } from "../../types";
-import { FileType } from '../behavior-pack';
+import { FileType } from "../behavior-pack";
 import { ProcessMcFunction } from "./types/commands/process";
 import { GeneralInfo } from "./types/general-info";
 
@@ -30,7 +30,7 @@ export class GeneralCollection {
    * @param doc
    * @returns
    */
-  Process(doc: TextDocument) {
+  process(doc: TextDocument) {
     const type = FileType.detect(doc.uri);
 
     switch (type) {
@@ -77,9 +77,7 @@ export class GeneralCollection {
    * @param predicate
    * @returns
    */
-  find(
-    predicate: (value: Types.BaseObject, key: string) => boolean
-  ): Types.BaseObject | undefined {
+  find(predicate: (value: Types.BaseObject, key: string) => boolean): Types.BaseObject | undefined {
     let value = undefined;
 
     if ((value = this.fakeEntities.find(predicate))) return value;

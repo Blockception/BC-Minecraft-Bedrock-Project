@@ -8,7 +8,7 @@ import { LootTable } from "./loot-table";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): LootTable | undefined {
+export function process(doc: TextDocument): LootTable | undefined {
   const uri = doc.uri;
   const index = uri.indexOf("loot_tables");
 

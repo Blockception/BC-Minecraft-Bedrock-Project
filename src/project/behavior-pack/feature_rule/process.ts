@@ -9,7 +9,7 @@ import { FeatureRule } from "./feature_rule";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): FeatureRule | undefined {
+export function process(doc: TextDocument): FeatureRule | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<Internal.FeatureRule>(doc);

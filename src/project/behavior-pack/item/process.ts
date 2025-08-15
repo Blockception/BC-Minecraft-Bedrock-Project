@@ -10,7 +10,7 @@ import { Item } from "./item";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Item | undefined {
+export function process(doc: TextDocument): Item | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<internal.Item>(doc);

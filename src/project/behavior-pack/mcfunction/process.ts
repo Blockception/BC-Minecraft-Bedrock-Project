@@ -8,7 +8,7 @@ import { Function } from "./function";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Function | undefined {
+export function process(doc: TextDocument): Function | undefined {
   const uri = doc.uri;
   if (uri.endsWith(".json")) return undefined;
 

@@ -56,7 +56,7 @@ describe("Entity", () => {
   });
 
   test("Families", () => {
-    const data = Entity.Process(EntityDoc);
+    const data = Entity.process(EntityDoc);
 
     expect(data).toMatchSnapshot();
   });

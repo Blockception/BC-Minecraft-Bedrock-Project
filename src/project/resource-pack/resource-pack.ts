@@ -105,37 +105,37 @@ export class ResourcePack implements Container, Pack {
 
     switch (Type) {
       case FileType.animation:
-        return this.animations.set(Animation.Process(doc));
+        return this.animations.set(Animation.process(doc));
 
       case FileType.animation_controller:
-        return this.animation_controllers.set(AnimationController.Process(doc));
+        return this.animation_controllers.set(AnimationController.process(doc));
 
       case FileType.block_culling_rules:
-        return this.block_culling_rules.set(BlockCulling.Process(doc));
+        return this.block_culling_rules.set(BlockCulling.process(doc));
 
       case FileType.attachable:
-        return this.attachables.set(Attachable.Process(doc));
+        return this.attachables.set(Attachable.process(doc));
 
       case FileType.entity:
-        return this.entities.set(Entity.Process(doc));
+        return this.entities.set(Entity.process(doc));
 
       case FileType.fog:
-        return this.fogs.set(Fog.Process(doc));
+        return this.fogs.set(Fog.process(doc));
 
       case FileType.material:
-        return this.materials.set(Material.Process(doc));
+        return this.materials.set(Material.process(doc));
 
       case FileType.model:
-        return this.models.set(Model.Process(doc));
+        return this.models.set(Model.process(doc));
 
       case FileType.render_controller:
-        return this.render_controllers.set(RenderController.Process(doc));
+        return this.render_controllers.set(RenderController.process(doc));
 
       case FileType.particle:
-        return this.particles.set(Particle.Process(doc));
+        return this.particles.set(Particle.process(doc));
 
       case FileType.sounds_definitions:
-        return this.sounds.set(Sound.Process(doc));
+        return this.sounds.set(Sound.process(doc));
 
       case FileType.texture:
         return this.textures.set(Texture.ProcessTextureAtlas(doc));
@@ -294,8 +294,8 @@ export class ResourcePack implements Container, Pack {
     this.render_controllers.forEach(callbackfn);
     this.sounds.forEach(callbackfn);
     this.textures.forEach(callbackfn);
-    this.itemTextures.forEach(callbackfn)
-    this.terrainTextures.forEach(callbackfn)
+    this.itemTextures.forEach(callbackfn);
+    this.terrainTextures.forEach(callbackfn);
   }
 }
 

@@ -1,4 +1,4 @@
-import { Process } from "../../../../src/project/behavior-pack/structure/process";
+import { process } from "../../../../src/project/behavior-pack/structure/process";
 
 describe("Structure", () => {
   const data: { uri: string; result: string }[] = [
@@ -17,7 +17,7 @@ describe("Structure", () => {
   ];
 
   test.each(data)("$result from $uri", (item) => {
-    const out = Process({ uri: item.uri, getText: () => "//example" });
+    const out = process({ uri: item.uri, getText: () => "//example" });
 
     expect(out).toMatchSnapshot();
   });

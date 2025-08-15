@@ -4,7 +4,7 @@ import { TextDocument, Documentation } from "../../../../types";
 import { GeneralCollection } from "../../general";
 import { GeneralInfo } from "../general-info";
 
-export function Process(command: Command, doc: TextDocument, receiver: GeneralCollection): void {
+export function process(command: Command, doc: TextDocument, receiver: GeneralCollection): void {
   if (command.parameters.length < 3) {
     return;
   }

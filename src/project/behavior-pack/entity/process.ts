@@ -13,7 +13,7 @@ import { EntityProperty } from "./properties";
  * @param doc
  * @returns
  */
-export function Process(doc: TextDocument): Entity | undefined {
+export function process(doc: TextDocument): Entity | undefined {
   const uri = doc.uri;
   const content = doc.getText();
   const imp = Json.To<internal.Entity>(doc);

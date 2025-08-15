@@ -1,10 +1,10 @@
-import { Command } from 'bc-minecraft-bedrock-command';
+import { Command } from "bc-minecraft-bedrock-command";
 import { Types } from "bc-minecraft-bedrock-types";
-import { TextDocument } from '../../../../types';
-import { Documentation } from '../../../../types';
+import { TextDocument } from "../../../../types";
+import { Documentation } from "../../../../types";
 import { GeneralInfo } from "../general-info";
 
-export function Process(command: Command, doc: TextDocument): GeneralInfo | undefined {
+export function process(command: Command, doc: TextDocument): GeneralInfo | undefined {
   //tag <selector> add <tag>
   if (command.parameters[2]?.text !== "add") return undefined;
 
