@@ -5,6 +5,7 @@ import { Documentation, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
 import { harvestMolang } from "../../molang";
 import { Entity } from "./entity";
+import { getUsingResources } from "../../../internal/resource-pack/resources";
 
 /**
  *
@@ -32,6 +33,7 @@ export function process(doc: TextDocument): Entity | undefined {
     ),
     documentation: Documentation.getDoc(doc, () => `Entity: ${id}`),
   };
+  getUsingResources(out.molang, imp["minecraft:client_entity"].description, doc);
 
   //process animations
   Types.Definition.forEach(description.animations, (reference, id) => {

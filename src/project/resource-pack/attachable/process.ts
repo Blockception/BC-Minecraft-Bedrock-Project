@@ -5,6 +5,7 @@ import { Documentation, TextDocument } from "../../../types";
 import { References } from "../../../types/references";
 import { harvestMolang } from "../../molang";
 import { Attachable } from "./attachable";
+import { getUsingResources } from "../../../internal/resource-pack/resources";
 
 /**
  *
@@ -28,6 +29,7 @@ export function process(doc: TextDocument): Attachable | undefined {
     animations: References.wrap(description.animation_controllers, undefined),
     documentation: Documentation.getDoc(doc, () => `Attachable Item: ${id}`),
   };
+  getUsingResources(out.molang, imp["minecraft:attachable"].description, doc);
 
   //process animations
   Types.Definition.forEach(description.animations, (reference, id) => {
