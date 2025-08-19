@@ -270,6 +270,7 @@ export function fromProject<T>(dataSet: () => { get(id: string): T | undefined }
 
 export function fromVanilla<T>(callfn: (id: string, edu: boolean) => T | undefined): checkfn<VanillaItem<T>> {
   return function (id: string, project: MCProject) {
+    if (id === undefined) return;
     const edu = educationEnabled(project);
 
     if (id.includes("<")) {
