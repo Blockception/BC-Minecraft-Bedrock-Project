@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Function "empty/temp build/air_1" from F:/Temp2/world/behavior_packs/EW-BP/functions/empty/temp build/air_1.mcfunction 1`] = `
 {
