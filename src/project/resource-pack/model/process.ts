@@ -17,7 +17,7 @@ export function process(doc: TextDocument): Model[] | undefined {
 
   if (!internal.Model.is(imp)) return undefined;
 
-  const entries: [string, internal.ModelModernSpec][] = Object.entries(imp).filter(
+  const entries: [string, internal.ModelLegacySpec][] = Object.entries(imp).filter(
     ([key, value]) => key.startsWith("geometry.") && internal.ModelLegacySpec.is(value)
   );
 
@@ -33,7 +33,7 @@ export function process(doc: TextDocument): Model[] | undefined {
       location: Types.Location.create(uri, content.indexOf(key)),
       root_bone_uses_binding: typeof model.bones[0].binding == "string" ? true : false,
       bones: Defined.wrap(
-        model.bones.map((bone) => bone.name).filter((name) => typeof name !== "string" || name === "")
+        model.bones.map((bone) => bone.name).filter((name) => typeof name === "string" && name !== "")
       ),
       locators: Defined.wrap(
         model.bones

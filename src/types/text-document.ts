@@ -36,3 +36,12 @@ export namespace TextDocument {
     return imp;
   }
 }
+
+export namespace TestTextDocument {
+  export function create(uri: string, content: string): TextDocument {
+    return {
+      uri,
+      getText: () => content,
+    };
+  }
+}
