@@ -91,6 +91,11 @@ export class BehaviorData {
     fromProject(() => this._behaviorpacks.animation_controllers)
     // No Vanilla
   );
+  biomes = firstReturn(
+    fromDefinition("biome"),
+    fromProject(() => this._behaviorpacks.biomes),
+    fromVanilla(VanillaData.BehaviorPack.getBiome)
+  );
   blocks = firstReturn(
     fromDefinition("block"),
     fromProject(() => this._behaviorpacks.blocks),
